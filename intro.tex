@@ -157,6 +157,80 @@ $O \left ( n \right )$ to reliably locate a specific object\footnote{
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO: SOME DISCUSSION ON P2P ARCHITECTURES
+%
+%\cite{matei_mapgnutella_2002, lv_randomwalks_2002, merugu_str2unstr_2003}
+%showed that the ad-hoc network topology of unstructured overlay networks that
+%preserve \emph{Power Law} and \emph{Small World} characteristics\footnote{Power
+%Law describes the node degree while the Small World describes characteristics
+%of path length and clustering coefficient. The clustering coefficient for a
+%node $\upsilon$ in a graph $G = \left( V, E \right)$ is defined as the ratio of
+%the existing connections between $\upsilon$'s neighbouring nodes to $\gamma
+%\times \left( \gamma - 1 \right)$, where $\gamma$ is the number of neighbouring
+%nodes of $\upsilon$. High cluster coefficient means that neighbouring nodes of
+%any node $\upsilon$ likely connect one another.} \cite{faloutsos_powerlaw_1999,
+%saroiu_measurefileshare_2002} offer a more promising approach. Particularly:
+%\begin{itemize}
+%  \item Peer-to-peer clients are extremely \emph{transient}. Unstructured
+%systems can have high maintenance traffic in delivering messages, updating the
+%mapping, discovering failures and replicating lost data or pointers, making
+%them insufficient on highly volatile networks.
+%  \item \emph{Keyword searches} versus \emph{exact-match queries}. In DHTs
+%there is a tight control between the data placement and the topology of the
+%network. For this reason it is hard to efficiently support partially matched
+%queries while Gnutella and other similar systems effortlessly support keyword
+%searches and other complex queries since the mechanism is realized locally, on
+%a node-by-node basis.
+%  \item Popular content is located at multiple peers and thus it is more likely
+%for a flooding-based search to return results. DHTs, on the other hand, fit
+%better in the systems which require ability to reliably locate content, even in
+%the extreme case that only a single-copy exists in the network.
+%\end{itemize}
+
+%
+% TODO: SOME DISCUSSION ON THE ADVANTAGES OF UNSTRUCTURED NETWORKS FROM
+%       \cite{z-yk_ddno_2005}
+%
+%Unstructured P2P networks o?er a number of
+%important advantages: (i) An unstructured network
+%imposes very small demands on individual nodes,
+%and more speci?cally it allows nodes to join or leave
+%the network without signi?cantly a?ecting the sys-
+%tem performance. (ii) Unstructured networks are
+%appropriate for content-based retrieval (e.g., key-
+%word searches) as opposed to object identi?er loca-
+%tion of structured overlays. (iii) Finally unstructured
+%networks can easily accommodate nodes of vary-
+%ing power. Consequently, they scale to very large
+%sizes and they o?er more robust performance in
+%the presence of node failures and connection
+%unreliability.
+%
+
+%
+% TODO: SOME DISCUSSION ON STRUCTURED OVERLAYS PROBABLY FROM
+%       \cite{wu_laptop_2007}
+% However, the design of a decentralized but structured P2P network has to
+% overcome two critical issues. The first issue is the long routing latency.
+% Several proximity schemes  have been proposed to avert long routing latency in
+% current structured P2P networks, but they require a high-complexity procedure
+% to periodically maintain the routing table (e.g. Pastry system) or they need
+% pre-chosen landmarks to construct the overlay. However, the P2P system is by
+% its very nature unstable since nodes join and leave frequently. For instance,
+% the study of Gnutella shows around approximately 1200 membership changes per
+% minute in a 100 000 nodes P2P system. Another proximity scheme needs some
+% pre-chosen landmarks or a complete BGP routing table support. As a result,
+% they both increase the difficulty of the P2P system deployment. The second
+% issue is system maintenance overhead. The existing structured P2P networks
+% allow nodes to keep some nearby nodes in their routing tables in order to
+% achieve efficient routing.
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Applications and Implications}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -290,6 +364,20 @@ Internet\footnote{
 per month and the potential is to be quintubled by the end of 2012 reaching
 almost 8 petabytes per month.
 
+%
+% TODO: SOME DISCUSSION from \cite{zhao_ctag_2006}
+%
+%%Observations made in various studies (e.g. \cite{matei_mapgnutella_2002})
+% concerning the distribution of nodes among \emph{Internet Service Providers
+%(ISPs)} and \emph{Autonomous Systems (ASs)} have shown that only $2$ to $5$
+%percent of Gnutella connections link peers within a single AS while more than
+%$40$ percent of all Gnutella peers are located within the top 10 ASs.
+%Similarly, measurements in \cite{zeinalipour-yazti_gnudc_2002} used a $244,000$
+%IPs test-bed and results have shown that $45$ percent of the nodes belonged to
+%only $10$ large ISPs and $58$ percent belong to only $20$. Such results mean
+%that most overlay generated traffic crosses AS borders increasing topology
+%mismatch cost.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Topology Mismatch Problem}
@@ -416,6 +504,17 @@ this research field and organise the available information ultimately helping
 the reader sift through the myriad of these efforts, understand the different
 approaches and identify though a taxonomy the advantages and disadvantages of
 each of them.
+
+%
+% TODO: SOME DISCUSSION FROM \cite{xu_globstate_2003) CONTRADICTS TO THE
+%TRIANGLE INEQUALITY ARGUMENT ABOVE
+%
+%[snip]
+%Studies [14] have shown that triangle inequality may not hold in Internet
+%topology. In fact, study from Pastry has shown that the proximity approximation
+% is much worse when using the Mercator topology that is based on the real
+% measurements of the Internet [3].
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
