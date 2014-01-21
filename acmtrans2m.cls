@@ -10,8 +10,9 @@
 % Further changes made by Frederic Goualard on Sep. 27, 2000
 % to take care of the indentation problem in the bibliography 
 % arising without the use of the hyperref package.
-% Modularization to adapt to the needs of ALL Transactions of the ACM, 
-% and the Journal of the ACM, by Marco Aiello on June and October 2001.
+% Modularization to adapt to the needs of JACM, TOCL, 
+% TODAES, TODS, TOGS, TOMS, AND TOPLAS, by Marco Aiello on 
+% June 2001.
 % Here is the basic framework that is needed to convert your paper 
 % into ACM Transactions format and bibliographic format.  For a tutorial
 % introduction, see ``instructions.tex'' (compile it with LaTeX) that
@@ -124,271 +125,157 @@
 %aiellom{
 \RequirePackage{url}
 
-% Do not change the following! Use the appropriate acmtocl, acmtods, ... 
-% options in the .tex file
+% Do not change the following! Use the appropriate acmtocl, acmtods, ... option
 \def\@acmVolume{V} %the volume
 \def\@acmNumber{N} %the number
 \def\@acmYear{YY}  %the last two digits of the year, 
-\def\@acmMonth{0}  %the month number
+\def\@acmMonth{Month}  %the month
 \def\@journalName{ACM Journal Name} %the name of the ACM journal
 \def\@journalNameShort{jn} %the acronym of the ACM journal
 \def\@permissionCodeOne{0000-0000} %the permission code of the ACM journal
-\def\@permissionCodeTwo{\acmMonthCode} %the permission code of the ACM journal part 2
+\def\@permissionCodeTwo{0000} %the permission code of the ACM journal part 2
 \def\@pageCode{\acmPageCode} %the first page of the article in 4 digits
 
-\newif\if@acmnow \newif\if@acmjacm \newif\if@acmcsur
-\newif\if@acmtissec \newif\if@acmtochi \newif\if@acmtocl
-\newif\if@acmtocs \newif\if@acmtodaes \newif\if@acmtods
-\newif\if@acmtogs \newif\if@acmtois \newif\if@acmtoit
-\newif\if@acmtomacs \newif\if@acmtoms \newif\if@acmtoplas
-\newif\if@acmtosem
+
+\newif\if@acmjacm
+\newif\if@acmtocl
+\newif\if@acmtodaes
+\newif\if@acmtods
+\newif\if@acmtogs
+\newif\if@acmtoms
+\newif\if@acmtoplas
 
 \DeclareOption{acmnow}{
+  \typeout{}
   \typeout{Directly generating the Month and Year for footers from the clock.}
   \def\@acmYear{\yearTwoDigits}  
-  \def\@acmMonth{\the\month}  
+  \def\@acmMonth{\monthWord}  
 }
 
 \DeclareOption{acmjacm}{
   \typeout{}
-  \typeout{Using ACM JACM option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, JACM's option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  %\global\@acmjacmfalse
-  \global\@acmcsurfalse \global\@acmtissecfalse \global\@acmtochifalse
-  \global\@acmtoclfalse \global\@acmtocsfalse \global\@acmtodaesfalse
-  \global\@acmtodsfalse \global\@acmtogsfalse \global\@acmtoisfalse
-  \global\@acmtoitfalse \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse 
+  %\global\@acmjacmfalse  
+  \global\@acmtoclfalse
+  \global\@acmtodaesfalse
+  \global\@acmtodsfalse
+  \global\@acmtogsfalse
+  \global\@acmtomsfalse
+  \global\@acmtoplasfalse
   \global\@acmjacmtrue
-  \def\@journalName{Journal of the ACM} 
-  \def\@journalNameShort{jacm}
+  \def\@journalName{Journal of the ACM}
+  \def\@journalNameShort{jacm}        
   \def\@permissionCodeOne{0004-5411} 
+  \def\@permissionCodeTwo{0100} 
 }
 
-\DeclareOption{acmcsur}{
+\DeclareOption{acmtocl}{
   \typeout{}
-  \typeout{Using ACM CSUR option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, TOCL's option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  \global\@acmjacmfalse % \global\@acmcsurfalse
-  \global\@acmtissecfalse \global\@acmtochifalse \global\@acmtoclfalse
-  \global\@acmtocsfalse \global\@acmtodaesfalse \global\@acmtodsfalse
-  \global\@acmtogsfalse \global\@acmtoisfalse \global\@acmtoitfalse
-  \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmcsurtrue
-  \def\@journalName{ACM Computing Surveys}
-  \def\@journalNameShort{csur}        
-  \def\@permissionCodeOne{0360-0300} 
-}
-
-\DeclareOption{acmtissec}{
-  \typeout{}
-  \typeout{Using ACM TISSEC option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse %\global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse \global\@acmtomacsfalse
-  \global\@acmtomsfalse \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmtissectrue
-  \def\@journalName{ACM Transactions on Information Systems and Security}
-  \def\@journalNameShort{tissec}        
-  \def\@permissionCodeOne{1094-9224} 
-}
-
-\DeclareOption{acmtochi}{
-  \typeout{}
-  \typeout{Using ACM TOCHI option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  %\global\@acmtochifalse
-  \global\@acmtoclfalse \global\@acmtocsfalse \global\@acmtodaesfalse
-  \global\@acmtodsfalse \global\@acmtogsfalse \global\@acmtoisfalse
-  \global\@acmtoitfalse \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmtochitrue
-  \def\@journalName{ACM Transactions on Computer-Human Interaction}
-  \def\@journalNameShort{tochi}        
-  \def\@permissionCodeOne{1073-0516} 
-}
-
-\DeclareOption{acmtocl}{ 
-  \typeout{} 
-  \typeout{Using ACM TOCL option: 2001/06/01 by Marco Aiello et al.}  
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse  %\global\@acmtoclfalse
-  \global\@acmtocsfalse \global\@acmtodaesfalse \global\@acmtodsfalse
-  \global\@acmtogsfalse \global\@acmtoisfalse \global\@acmtoitfalse
-  \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse 
+  \global\@acmjacmfalse  
+  \global\@acmtoclfalse
+  \global\@acmtodaesfalse
+  \global\@acmtodsfalse
+  \global\@acmtogsfalse
+  \global\@acmtomsfalse
+  \global\@acmtoplasfalse
   \global\@acmtocltrue
   \def\@journalName{ACM Transactions on Computational Logic}
   \def\@journalNameShort{tocl}        
   \def\@permissionCodeOne{1529-3785} 
-}
-
-\DeclareOption{acmtocs}{
-  \typeout{}
-  \typeout{Using ACM TOCS option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse
-  %\global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse \global\@acmtomacsfalse
-  \global\@acmtomsfalse \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmtocstrue
-  \def\@journalName{ACM Transactions on Computer Systems}
-  \def\@journalNameShort{tocs}        
-  \def\@permissionCodeOne{0734-2071} 
+  \def\@permissionCodeTwo{0700} 
 }
 
 \DeclareOption{acmtodaes}{
   \typeout{}
-  \typeout{Using ACM TODAES option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, TODAES option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
+  \global\@acmjacmfalse  
+  \global\@acmtoclfalse
   %\global\@acmtodaesfalse
-  \global\@acmtodsfalse \global\@acmtogsfalse \global\@acmtoisfalse
-  \global\@acmtoitfalse \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
+  \global\@acmtodsfalse
+  \global\@acmtogsfalse
+  \global\@acmtomsfalse
+  \global\@acmtoplasfalse
   \global\@acmtodaestrue
   \def\@journalName{ACM Transactions on Design Automation of Electronic Systems}
   \def\@journalNameShort{todaes}        
   \def\@permissionCodeOne{1084-4309} 
+  \def\@permissionCodeTwo{0400} 
 }
 
 \DeclareOption{acmtods}{
   \typeout{}
-  \typeout{Using ACM TODS option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, TODS's option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
+  \global\@acmjacmfalse  
+  \global\@acmtoclfalse
   \global\@acmtodaesfalse
   %\global\@acmtodsfalse
-  \global\@acmtogsfalse \global\@acmtoisfalse \global\@acmtoitfalse
-  \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
+  \global\@acmtogsfalse
+  \global\@acmtomsfalse
+  \global\@acmtoplasfalse
   \global\@acmtodstrue
   \def\@journalName{ACM Transactions on Database Systems}
   \def\@journalNameShort{tods}        
   \def\@permissionCodeOne{0362-5915} 
+  \def\@permissionCodeTwo{0300} 
 }
 
 \DeclareOption{acmtogs}{
   \typeout{}
-  \typeout{Using ACM TOGS option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, TOGS's option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse
+  \global\@acmjacmfalse  
+  \global\@acmtoclfalse
+  \global\@acmtodaesfalse
+  \global\@acmtodsfalse
   %\global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse \global\@acmtomacsfalse
-  \global\@acmtomsfalse \global\@acmtoplasfalse \global\@acmtosemfalse
+  \global\@acmtomsfalse
+  \global\@acmtoplasfalse
   \global\@acmtogstrue
   \def\@journalName{ACM Transactions on Graphics}
   \def\@journalNameShort{togs}        
   \def\@permissionCodeOne{0730-0301} 
-}
-
-\DeclareOption{acmtois}{
-  \typeout{}
-  \typeout{Using ACM TOIS option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  %\global\@acmtoisfalse
-  \global\@acmtoitfalse \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmtoistrue
-  \def\@journalName{ACM Transactions on Information Systems}
-  \def\@journalNameShort{tois}        
-  \def\@permissionCodeOne{1046-8188} 
-}
-
-\DeclareOption{acmtoit}{
-  \typeout{}
-  \typeout{Using ACM TOIT option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse
-  %\global\@acmtoitfalse
-  \global\@acmtomacsfalse \global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmtoittrue
-  \def\@journalName{ACM Transactions on Internet Technology}
-  \def\@journalNameShort{toit}        
-  \def\@permissionCodeOne{1533-5399} 
-}
-
-\DeclareOption{acmtomacs}{
-  \typeout{}
-  \typeout{Using ACM TOMACS option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse
-  %\global\@acmtomacsfalse
-  \global\@acmtomsfalse \global\@acmtoplasfalse \global\@acmtosemfalse
-  \global\@acmtomacstrue
-  \def\@journalName{ACM Transactions on Modeling and Computer Simulation}
-  \def\@journalNameShort{tomacs}        
-  \def\@permissionCodeOne{1049-3301} 
+  \def\@permissionCodeTwo{0100} 
 }
 
 \DeclareOption{acmtoms}{
   \typeout{}
-  \typeout{Using ACM TOMS option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, TOMS's option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse \global\@acmtomacsfalse
+  \global\@acmjacmfalse  
+  \global\@acmtoclfalse
+  \global\@acmtodaesfalse
+  \global\@acmtodsfalse
+  \global\@acmtogsfalse
   %\global\@acmtomsfalse
-  \global\@acmtoplasfalse \global\@acmtosemfalse
+  \global\@acmtoplasfalse
   \global\@acmtomstrue
   \def\@journalName{ACM Transactions on Mathematical Software}
   \def\@journalNameShort{toms}        
   \def\@permissionCodeOne{0098-3500} 
+  \def\@permissionCodeTwo{1200} 
 }
 
 \DeclareOption{acmtoplas}{
   \typeout{}
-  \typeout{Using ACM TOPLAS option: 2001/06/01 by Marco Aiello et al.}
+  \typeout{Using ACM, TOPLAS option: 2001/06/01 by Marco Aiello et al.}
   \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse \global\@acmtomacsfalse
+  \global\@acmjacmfalse  
+  \global\@acmtoclfalse
+  \global\@acmtodaesfalse
+  \global\@acmtodsfalse
+  \global\@acmtogsfalse
   \global\@acmtomsfalse
   %\global\@acmtoplasfalse
-  \global\@acmtosemfalse
   \global\@acmtoplastrue
   \def\@journalName{ACM Transactions on Programming Languages and Systems}
   \def\@journalNameShort{toplas}        
   \def\@permissionCodeOne{0164-0925} 
-}
-
-\DeclareOption{acmtosem}{
-  \typeout{}
-  \typeout{Using ACM, TOSEM option: 2001/06/01 by Marco Aiello et al.}
-  \typeout{}
-  \global\@acmjacmfalse \global\@acmcsurfalse \global\@acmtissecfalse
-  \global\@acmtochifalse \global\@acmtoclfalse \global\@acmtocsfalse
-  \global\@acmtodaesfalse \global\@acmtodsfalse \global\@acmtogsfalse
-  \global\@acmtoisfalse \global\@acmtoitfalse \global\@acmtomacsfalse
-  \global\@acmtomsfalse \global\@acmtoplasfalse
-  %\global\@acmtosemfalse
-  \global\@acmtosemtrue
-  \def\@journalName{ACM Transactions on Software Engineering and Methodology}
-  \def\@journalNameShort{tosem}        
-  \def\@permissionCodeOne{1049-331X} 
+  \def\@permissionCodeTwo{0500} 
 }
 %}aiellom
 
@@ -472,17 +359,15 @@
 %{aiellom to automatize the issue specific data
 \def\acmVolume#1{\def\@acmVolume{#1}}
 \def\acmNumber#1{\def\@acmNumber{#1}}
-\if@acmnow\else
 \def\acmYear#1{\def\@acmYear{#1}}
 \def\acmMonth#1{\def\@acmMonth{#1}}
-\fi
-\def\@acmMonthName{\ifnum\@acmMonth=1 January\fi\ifnum\@acmMonth=2 February\fi\ifnum\@acmMonth=3 March\fi\ifnum\@acmMonth=4 April\fi\ifnum\@acmMonth=5 May\fi\ifnum\@acmMonth=6 June\fi\ifnum\@acmMonth=7 July\fi\ifnum\@acmMonth=8 August\fi\ifnum\@acmMonth=9 September\fi\ifnum\@acmMonth=10 October\fi\ifnum\@acmMonth=11 November\fi\ifnum\@acmMonth=12 December\fi}
-
 
 
 % Command to get the year from the system and display the last two digits
 \newcommand{\ignoretwo}[2]{}
 \newcommand{\yearTwoDigits}{\expandafter\ignoretwo\the\year}
+%To transform the month number in its name in English
+\newcommand{\monthWord}{\ifnum\the\month=1 January\fi\ifnum\the\month=2 February\fi\ifnum\the\month=3 March\fi\ifnum\the\month=4 April\fi\ifnum\the\month=5 May\fi\ifnum\the\month=6 June\fi\ifnum\the\month=7 July\fi\ifnum\the\month=8 August\fi\ifnum\the\month=9 September\fi\ifnum\the\month=10 October\fi\ifnum\the\month=11 November\fi\ifnum\the\month=12 December\fi}
 % overright the \@setref definition, so that if a reference is undefined 
 % then it returns a number 0 and then the usual double boldface 
 % question marks ??
@@ -503,10 +388,7 @@
   \setcounter{tempo}{\number\pageref{@firstpg}}\ifnum \c@tempo<1000 0\fi\ifnum \c@tempo<100 0\fi\ifnum \c@tempo<10 0\fi\ifnum \c@tempo<1 0\fi\pageref{@firstpg}
   \egroup
 }
-\newcommand{\acmMonthCode}{\bgroup
-  \newcount\c@tempo
-  \setcounter{tempo}{\number\@acmMonth}\ifnum \c@tempo<10 0\fi\number\@acmMonth00\egroup
-}%}aiellom
+%}aiellom
 
 
 
@@ -1158,9 +1040,9 @@ to\hsize{\if@nfeven\else\hfil\fi\box\@tempboxa\if@nfeven\hfil\fi}
 \def\@evenfoot{\tiny\@runningfoot\hfill\hbox{}}
 \def\sectionmark##1{}\def\subsectionmark##1{}}
 \def\@runningfoot{}
-\def\runningfoot{\def\@runningfoot{\@journalName, Vol.\ \@acmVolume, No.\ \@acmNumber, \@acmMonthName\ 20\@acmYear.}}
+\def\runningfoot{\def\@runningfoot{\@journalName, Vol.\ \@acmVolume, No.\ \@acmNumber, \@acmMonth\ 20\@acmYear.}}
 \def\@firstfoot{}
-\def\firstfoot{\def\@firstfoot{\@journalName, Vol.\ \@acmVolume, No.\ \@acmNumber, \@acmMonthName\ 20\@acmYear, Pages \pages.}}
+\def\firstfoot{\def\@firstfoot{\@journalName, Vol.\ \@acmVolume, No.\ \@acmNumber, \@acmMonth\ 20\@acmYear, Pages \pages.}}
 \def\ps@titlepage{\let\@mkboth\@gobbletwo
 \def\@oddhead{}\def\@oddfoot{\hbox{}\hfill
 \tiny\@firstfoot}\def\@evenhead{}\def\@evenfoot{\tiny\@firstfoot\hfill\hbox{}}}
@@ -1427,7 +1309,7 @@ otherwise, to republish, to post on servers, or to redistribute to lists
 requires prior specific 
 permission and/or a fee.\par
 \copyright\ 20\@acmYear\ 
-ACM \@permissionCodeOne/\@acmYear/\@permissionCodeTwo-\@pageCode\$5.00 % aiellom
+ACM \@permissionCodeOne/20\@acmYear/\@permissionCodeTwo-\@pageCode\$5.00 % aiellom
 }
 
 % make sure \permission doesn't get trashed
@@ -1482,7 +1364,7 @@ The electronic appendix for this article can be accessed in
 \vbox{\sf \parindent0pt\@author{}}\vskip .5em\noindent
 \vskip 10pt\noindent
 {\firstfootsize 
-\@journalName, Vol.\ \@acmVolume, No.\ \@acmNumber, \@acmMonthName\ 20\@acmYear, Pages \pages.}
+\@journalName, Vol.\ \@acmVolume, No.\ \@acmNumber, \@acmMonth\ 20\@acmYear, Pages \pages.}
 \vskip 11pt\noindent
 \hrule height .2pt
 \par

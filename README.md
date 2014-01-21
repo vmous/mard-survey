@@ -1,2 +1,2 @@
-# Alleviating the Topology Mismatch Problem with Location-Aware Overlays: A Survey
+# Alleviating the Topology Mismatch Problem in Unstructured and Structured Overlay Networks: A Survey
 

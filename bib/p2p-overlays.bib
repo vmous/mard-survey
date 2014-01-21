@@ -66,30 +66,6 @@
 	address = "Berkeley, CA, USA"
 }
 
-@InProceedings{ anderson_ron_2001,
-	author = "David Andersen and Hari Balakrishnan and Frans Kaashoek and Robert Morris",
-	title = "Resilient overlay networks",
-	booktitle = "SOSP '01: Proceedings of the eighteenth ACM symposium on Operating systems principles",
-	year = "2001",
-	isbn = "1-58113-389-8",
-	pages = "131--145",
-	location = "Banff, Alberta, Canada",
-	doi = "http://doi.acm.org/10.1145/502034.502048",
-	publisher = "ACM",
-	address = "New York, NY, USA"
-}
-
-@InProceedings{ subramanian_overqos_2004,
-	author = "Lakshminarayanan Subramanian and Ion Stoica and Hari Balakrishnan and Randy H. Katz",
-	title = "OverQos: an overlay based architecture for enhancing internet Qos",
-	booktitle = "NSDI'04: Proceedings of the 1st conference on Symposium on Networked Systems Design and Implementation",
-	year = "2004",
-	pages = "6--6",
-	location = "San Francisco, California",
-	publisher = "USENIX Association",
-	address = "Berkeley, CA, USA"
-}
-
 @InProceedings{ clarke_freenet_2001,
 	author = "Ian Clarke and Oskar Sandberg and Brandon Wiley and Theodore W. Hong",
 	title = "Freenet: a distributed anonymous information storage and retrieval system",
@@ -302,8 +278,15 @@ pages={46},
 
 @Misc{ gnutella,
 	author = "Gnutella",
-	title = "http://rfc-gnutella.sourceforge.net/",
+	title = "The Gnutella Protocol Specification v0.6",
 	url = "http://rfc-gnutella.sourceforge.net/"
+}
+
+@Misc { gnutellav0.4
+        author = "Gnutella V0.4",
+        title = "The Gnutella Protocol Specification v0.4",
+        url = "http://www9.limewire.com/developer/gnutella_protocol0.4.pdf",
+        year = "2000"
 }
 
 @Misc{ kazaa,
@@ -368,7 +351,6 @@ pages={46},
 }
 
 @Misc{ saroiu02measurementp2p,
-	abstract = "The popularity of peer-to-peer multimedia file sharing applications such as Gnutella and Napster has created a flurry of recent research activity into peer-to-peer architectures. We believe that the proper evaluation of a peerto -peer system must take into account the characteristics of the peers that choose to participate. Surprisingly, however, few of the peer-to-peer architectures currently being developed are evaluated with respect to such considerations. In this paper, we remedy this...",
 	author = "S. Saroiu and P. Gummadi and S. Gribble",
 	citeulike-article-id = "166230",
 	keywords = "empirical, p2p",
@@ -929,7 +911,6 @@ pages={46},
 	title = "Socio-Technical Issues in P2P File Sharing Systems",
 	author = "Danny Hughes and James Walkerdine and Kevin Lee",
 	year = "2008",
-	abstract = "Peer-to-Peer (P2P) systems emphasise co-operation between entities known as peers at the edge of the Internet that are essentially equal and can both require and provide services [1]. Since the release of Napster in 1999, Peer-to-Peer file-sharing has enjoyed a dramatic rise in popularity. As early as 2000, a study by Plonka [2] on the University of Wisconsin campus network found that file-sharing accounted for a comparable volume of traffic to web applications, while a 2002 study by Saroiu et al. [3] on the University of Washington campus network found that file-sharing accounted for more than treble the volume of web traffic observed. Today it is widely accepted that P2P file sharing is responsible for more internet traffic than any other application, though the migration of users to more anonymous systems, together with the proliferation of P2P file sharing protocols makes exact measurements difficult [4]. As might be expected given the significance of P2P systems to the modern Internet, a number of large-scale studies of P2P traffic such as [2] [3] and [4] have been performed. These studies typically use a classical network monitoring approach and tend to focus upon the low level properties of deployed P2P systems such as bandwidth consumption, file availability and so on. We argue that existing studies neglect the social aspects of P2P file sharing systems and that empirical evidence shows that socio-technical issues are critically important on such systems. This",
 	url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.62.1347",
 	institution = "CiteSeerX - Scientific Literature Digital Library and Search Engine [http://citeseerx.ist.psu.edu/oai2] (United States)"
 }
@@ -985,4 +966,479 @@ pages={46},
     number    = {1-4},
     year      = {2005},
     pages     = {72-93},
+}
+
+@Misc{ jmm_naptopusage_2001,
+        author = "Jupiter Media Metrix",
+        title = "Global Napster Usage Plummets, But New File-Sharing Alternatives Gaining Ground, Press Release",
+        howpublished = "\url{http://web.archive.org/web/20080413104420/http://www.comscore.com/press/release.asp?id=249}",
+        url = "http://web.archive.org/web/20080413104420/http://www.comscore.com/press/release.asp?id=249",
+        month = jul,
+        year = "2001",
+        note = "Online; accessed 9-March-2012"
+}
+
+@Misc{ wiki_amnaptrial_2001,
+        author = "Wikipedia",
+        title = "A&M Records, Inc. v. Napster, Inc.",
+        howpublished = "\url{http://en.wikipedia.org/wiki/A%26M_Records,_Inc._v._Napster,_Inc.}",
+        url = "http://en.wikipedia.org/wiki/A%26M_Records,_Inc._v._Napster,_Inc.",
+        note = "Online; accessed 9-March-2012"
+}
+
+
+@Misc{ rm_radioheadkida_2000,
+        author = "Richard Menta",
+        title = "Did Napster Take Radiohead's New Album to Number 1?",
+        howpublished = "\url{http://www.mp3newswire.net/stories/2000/radiohead.html}",
+        url = "http://www.mp3newswire.net/stories/2000/radiohead.html",
+        month = oct,
+        year = "2000",
+        note = "Online; accessed 9-March-2012"
+}
+
+@inproceedings{ rsr_gnutellaevol_2006,
+  author    = {Amir H. Rasti and
+               Daniel Stutzbach and
+               Reza Rejaie},
+  title     = {On the Long-term Evolution of the Two-Tier Gnutella Overlay},
+  booktitle = {INFOCOM},
+  year      = {2006},
+  ee        = {http://dx.doi.org/10.1109/INFOCOM.2006.44},
+  crossref  = {DBLP:conf/infocom/2006},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@InProceedings { gdj_skypestudy_2006,
+    author = "Saikat Guha and Neil Daswani and Ravi Jain",
+    booktitle = "IPTPS'06: The 5th International Workshop on Peer-to-Peer Systems",
+    citeulike-article-id = "710178",
+    citeulike-linkout-0 = "http://saikat.guha.cc/pub/iptps06-skype.pdf",
+    keywords = "4phd, decentralised\_index, indexing, overlay, p2p, skype, unstructured",
+    organization = "Microsoft Research",
+    posted-at = "2006-06-25 13:43:41",
+    priority = "2",
+    title = "An Experimental Study of the Skype Peer-to-Peer VoIP System",
+    url = "http://saikat.guha.cc/pub/iptps06-skype.pdf"
+}
+
+
+@misc { g_voipskypesec_2005,
+  added-at = {2007-07-11T00:38:33.000+0200},
+  author = {Garfinkel, S. L.},
+  biburl = {http://www.bibsonomy.org/bibtex/2fa3ca1459d04d5f4b6ca25b6646863d4/camrdale},
+  howpublished = {\url{http://www.simson.net/ref/2005/OSI_Skype6.pdf}},
+  interhash = {12f50651411f33c3cf1af0467da1462a},
+  intrahash = {fa3ca1459d04d5f4b6ca25b6646863d4},
+  keywords = {imported-10-07-2007},
+  month = {January},
+  timestamp = {2007-07-11T00:38:33.000+0200},
+  title = {{VoIP} and {Skype} security},
+  year = 2005
+}
+
+@InProceedings { lkr_kazaameasure_2004,
+        author = "J. Liang and R. Kumar and K. Ross",
+        citeulike-article-id = "201803",
+        journal = "Proceedings of the 19th IEEE Annual Computer Communications Workshop",
+        posted-at = "2005-12-29 14:49:24",
+        priority = "2",
+        title = "{The KaZaA Overlay: A Measurement Study}",
+        year = "2004"
+}
+
+@Proceedings{ kbc_oceanstore_2000,
+        author = "John Kubiatowicz and David Bindel and Yan Chen and Patrick Eaton and Dennis Geels and Ramakrishna Gummadi and Sean Rhea and Hakim Weatherspoon and Westly Weimer and Christopher Wells and Ben Zhao",
+        booktitle = "Proceedings of ACM ASPLOS",
+        citeulike-article-id = "108371",
+        citeulike-linkout-0 = "http://citeseer.ist.psu.edu/kubiatowicz00oceanstore.html",
+        citeulike-linkout-1 = "http://citeseer.lcs.mit.edu/kubiatowicz00oceanstore.html",
+        citeulike-linkout-2 = "http://citeseer.ifi.unizh.ch/kubiatowicz00oceanstore.html",
+        citeulike-linkout-3 = "http://citeseer.comp.nus.edu.sg/kubiatowicz00oceanstore.html",
+        keywords = "network, os",
+        month = nov,
+        organization = "ACM",
+        posted-at = "2006-04-26 17:56:07",
+        priority = "0",
+        title = "{OceanStore: An Architecture for Global-scale Persistent Storage}",
+        url = "http://citeseer.ist.psu.edu/kubiatowicz00oceanstore.html",
+        year = "2000"
+}
+
+@Article{ dkkms_cfs_2001,
+        address = "New York, NY, USA",
+        author = "Frank Dabek and Frans M. Kaashoek and David Karger and Robert Morris and Ion Stoica",
+        booktitle = "SOSP '01: Proceedings of the eighteenth ACM symposium on Operating systems principles",
+        citeulike-article-id = "579807",
+        citeulike-linkout-0 = "http://portal.acm.org/citation.cfm?id=502054",
+        citeulike-linkout-1 = "http://dx.doi.org/10.1145/502034.502054",
+        doi = "10.1145/502034.502054",
+        isbn = "1-58113-389-8",
+        issn = "0163-5980",
+        journal = "SOSP '01: Proceedings of the eighteenth ACM symposium on Operating systems principles",
+        keywords = "cfs, integrity, p2p, security, systems",
+        location = "Banff, Alberta, Canada",
+        month = oct,
+        number = "5",
+        pages = "202--215",
+        posted-at = "2006-04-07 21:32:51",
+        priority = "4",
+        publisher = "ACM",
+        title = "{Wide-area cooperative storage with CFS}",
+        url = "http://dx.doi.org/10.1145/502034.502054",
+        volume = "35",
+        year = "2001"
+}
+
+@InProceedings{ rkcd_scribe_2001,
+        author = "Antony I. T. Rowstron and Anne M. Kermarrec and Miguel Castro and Peter Druschel",
+        booktitle = "Networked Group Communication",
+        citeulike-article-id = "1701767",
+        citeulike-linkout-0 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1.4196",
+        keywords = "scribe",
+        pages = "30--43",
+        posted-at = "2007-09-27 15:39:14",
+        priority = "0",
+        title = "{SCRIBE: The Design of a Large-Scale Event Notification Infrastructure}",
+        url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.1.4196",
+        year = "2001"
+}
+
+@Article{ cdkr_scribe_2002,
+        abstract = "{This paper presents Scribe, a scalable application-level multicast infrastructure. Scribe supports large numbers of groups, with a potentially large number of members per group. Scribe is built on top of Pastry, a generic peer-to-peer object location and routing substrate overlayed on the Internet, and leverages Pastry's reliability, self-organization, and locality properties. Pastry is used to create and manage groups and to build efficient multicast trees for the dissemination of messages to each group. Scribe provides best-effort reliability guarantees, and we outline how an application can extend Scribe to provide stronger reliability. Simulation results, based on a realistic network topology model, show that Scribe scales across a wide range of groups and group sizes. Also, it balances the load on the nodes while achieving acceptable delay and link stress when compared with Internet protocol multicast.}",
+        author = "M. Castro and P. Druschel and A. M. Kermarrec and A. I. T. Rowstron",
+        booktitle = "Selected Areas in Communications, IEEE Journal on",
+        citeulike-article-id = "345316",
+        citeulike-linkout-0 = "http://dx.doi.org/10.1109/JSAC.2002.803069",
+        citeulike-linkout-1 = "http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1038579",
+        doi = "10.1109/JSAC.2002.803069",
+        institution = "Microsoft Res. Ltd., Cambridge",
+        issn = "0733-8716",
+        journal = "Selected Areas in Communications, IEEE Journal on",
+        keywords = "lecture-pap, multicast, p2p, scribe",
+        month = oct,
+        number = "8",
+        pages = "1489--1499",
+        posted-at = "2008-10-22 14:20:40",
+        priority = "0",
+        publisher = "IEEE",
+        title = "{Scribe: a large-scale and decentralized application-level multicast infrastructure}",
+        url = "http://dx.doi.org/10.1109/JSAC.2002.803069",
+        volume = "20",
+        year = "2002"
+}
+
+@inproceedings { agebh_dks_2003,
+ author = {Alima, Luc Onana and Ghodsi, Ali and El-Ansary, Sameh and Brand, Per and Haridi, Seif},
+ title = {Multicast in DKS(N, k, f) Overlay Networks},
+ booktitle = {Proceedings of the 3rd International Conference on Peer-to-Peer Computing},
+ series = {P2P '03},
+ year = {2003},
+ isbn = {0-7695-2023-5},
+ pages = {196--},
+ url = {http://dl.acm.org/citation.cfm?id=942805.943788},
+ acmid = {943788},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+}
+
+@Misc{ ird_squirrel_2002,
+        abstract = "{This paper presents a decentralized, peer-to-peer web cache called Squirrel. The key idea is to enable web browsers on desktop machines to share their local caches, to form an efficient and scalable web cache, without the need for dedicated hardware and the associated administrative cost. We propose and evaluate decentralized web caching algorithms for Squirrel, and discover that it exhibits performance comparable to a centralized web cache in terms of hit ratio, bandwidth usage and latency. It ...}",
+        author = "S. Iyer and A. Rowstron and P. Druschel",
+        citeulike-article-id = "933939",
+        citeulike-linkout-0 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.8568",
+        keywords = "p2p, web-caching",
+        posted-at = "2008-03-16 17:57:29",
+        priority = "0",
+        title = "{Squirrel: A decentralized peer-to-peer web cache}",
+        url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.8568",
+        year = "2002"
+}
+
+@InProceedings{ dr_pastutility_2001,
+        abstract = "{This paper describes PAST, a large-scale, Internet based, global storage utility that provides high availability, persistence and protects the anonymity of clients and storage providers. PAST is a peer-to-peer Internet application and is entirely self-organizing. PAST nodes serve as access points for clients, participate in the routing of client requests, and contribute storage to the system. Nodes are not trusted, they may join the system at any time and may silently leave the system without warning. Yet, the system is able to provide strong assurances, efficient storage access, load balancing and scalability. Among the most}",
+        author = "Peter Druschel and Antony Rowstron",
+        booktitle = "IN HOTOS VIII",
+        citeulike-article-id = "4612930",
+        citeulike-linkout-0 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.28.5740",
+        keywords = "mmog, p2p, past, peer-to-peer",
+        pages = "75--80",
+        posted-at = "2009-05-23 20:27:48",
+        priority = "2",
+        title = "{PAST: A large-scale, persistent peer-to-peer storage utility }",
+        url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.28.5740",
+        year = "2001"
+}
+
+@Misc{ arla,
+        title = "Arla Project",
+        url = "http://www.stacken.kth.se/project/arla/"
+}
+
+@Misc{ seti,
+        title = "Arla Project",
+        url = "http://setiathome.ssl.berkeley.edu"
+}
+
+@Article{ bdet_fsdfs_2000,
+        address = "New York, NY, USA",
+        author = "William J. Bolosky and John R. Douceur and David Ely and Marvin Theimer",
+        citeulike-article-id = "556646",
+        citeulike-linkout-0 = "http://portal.acm.org/citation.cfm?id=345063.339345",
+        citeulike-linkout-1 = "http://dx.doi.org/10.1145/345063.339345",
+        doi = "10.1145/345063.339345",
+        isbn = "1581131941",
+        issn = "0163-5999",
+        journal = "SIGMETRICS Perform. Eval. Rev.",
+        keywords = "distributed, file, system",
+        month = jun,
+        number = "1",
+        pages = "34--43",
+        posted-at = "2006-11-20 13:18:59",
+        priority = "0",
+        publisher = "ACM",
+        title = "{Feasibility of a serverless distributed file system deployed on an existing set of desktop PCs}",
+        url = "http://dx.doi.org/10.1145/345063.339345",
+        volume = "28",
+        year = "2000"
+}
+
+@InProceedings{ wm_tangler_2001,
+        address = "New York, NY, USA",
+        author = "Marc Waldman and David Mazi{\`e}res",
+        booktitle = "CCS '01: Proceedings of the 8th ACM conference on Computer and Communications Security",
+        citeulike-article-id = "3446076",
+        citeulike-linkout-0 = "http://portal.acm.org/citation.cfm?id=501983.502002",
+        citeulike-linkout-1 = "http://dx.doi.org/10.1145/501983.502002",
+        doi = "10.1145/501983.502002",
+        isbn = "1-58113-385-5",
+        keywords = "dight-logging, dight-replication, dight-tamperproof, health, security",
+        location = "Philadelphia, PA, USA",
+        pages = "126--135",
+        posted-at = "2008-10-24 09:21:16",
+        priority = "0",
+        publisher = "ACM",
+        title = "{Tangler: a censorship-resistant publishing system based on document entanglements}",
+        url = "http://dx.doi.org/10.1145/501983.502002",
+        year = "2001"
+}
+
+@InProceedings{ wrc_publius_2000,
+        author = "Marc Waldman and Aviel Rubin and Lorrie Cranor",
+        booktitle = "In Proc. 9th USENIX Security Symposium",
+        citeulike-article-id = "5294295",
+        citeulike-linkout-0 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.7287",
+        keywords = "anonymous, p2p",
+        pages = "59--72",
+        posted-at = "2009-07-28 19:26:41",
+        priority = "2",
+        title = "{Publius: A robust, tamper-evident, censorship-resistant web publishing system}",
+        url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.7287",
+        year = "2000"
+}
+
+@inproceedings{ bags_youserv_2002,
+ author = {Bayardo Jr., Roberto J. and Agrawal, Rakesh and Gruhl, Daniel and Somani, Amit},
+ title = {YouServ: a web-hosting and content sharing tool for the masses},
+ booktitle = {Proceedings of the 11th international conference on World Wide Web},
+ series = {WWW '02},
+ year = {2002},
+ isbn = {1-58113-449-5},
+ location = {Honolulu, Hawaii, USA},
+ pages = {345--354},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/511446.511492},
+ doi = {10.1145/511446.511492},
+ acmid = {511492},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {decentralized systems, p2p, peer-to-peer networks, web hosting},
+}
+
+@Misc{ threedegrees,
+        author = "Microsoft",
+        title = "Three Degrees",
+        howpublished = "\url{http://web.archive.org/web/20040103063458/http://threedegrees.com/}",
+        url = "http://web.archive.org/web/20040103063458/http://threedegrees.com/",
+        note = "Online; accessed 14-March-2012"
+}
+
+@Misc{ abc_farsite_2002,
+        abstract = "{Farsite is a secure, scalable file system that logically functions as a centralized file server but is physically distributed among a set of trotrusted computers. Farsite provides file availability and reliability through randomized replicated storage; it ensures the secrecy of file contents with cryptographic techniques; it maintains the integrity of file and directory data with a Byzantine-fault-tolerant protocol; it is designed to be scalable by using a distributed hint mechanism and...}",
+        author = "A. Adya and W. Bolosky and M. Castro and R. Chaiken and G. Cermak and J. Douceur and J. Howell and J. Lorch and M. Theimer and R. Wattenhofer",
+        citeulike-article-id = "350516",
+        citeulike-linkout-0 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.3814",
+        keywords = "arch, storage",
+        posted-at = "2005-10-14 10:15:30",
+        priority = "2",
+        title = "{FARSITE: Federated, Available, and Reliable Storage for an Incompletely Trusted Environment}",
+        url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.3814",
+        year = "2002"
+}
+
+@InProceedings{ mmfc_ivy_2002,
+        author = "Athicha Muthitacharoen and Robert Morris and Thomer M. Gil and Benjie Chen",
+        booktitle = "Proceedings of 5th Symposium on Operating Systems Design and Implementation",
+        citeulike-article-id = "1084338",
+        citeulike-linkout-0 = "http://dx.doi.org/53221",
+        citeulike-linkout-1 = "http://www.yahoo.com",
+        citeulike-linkout-2 = "http://www.google.com",
+        citeulike-linkout-3 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.20.2147",
+        doi = "53221",
+        keywords = "file-system, test",
+        posted-at = "2007-02-02 14:05:39",
+        priority = "2",
+        title = "{Ivy: A Read/Write Peer-to-Peer File System}",
+        url = "http://www.yahoo.com",
+        year = "2002"
+}
+
+@Misc{ rgrk_bamboo_2004,
+        author = "S. Rhea and D. Geels and T. Roscoe and J. Kubiatowicz",
+        citeulike-article-id = "600462",
+        citeulike-linkout-0 = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.9928",
+        keywords = "churn, dht, p2p",
+        posted-at = "2007-10-29 04:21:05",
+        priority = "0",
+        title = "{Handling churn in a dht}",
+        url = "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.10.9928",
+        year = "2004"
+}
+
+@Misc{ yaci,
+        title = "YaCy Project",
+        howpublished = "\url{http://yacyweb.de}",
+        url = "http://yacyweb.de",
+        note = "Online; accessed 14-March-2012"
+}
+
+@InCollection{ cmm_chorddns_2002,
+        address = "Berlin, Heidelberg",
+        author = "Russ Cox and Athicha Muthitacharoen and Robert Morris",
+        booktitle = "Peer-to-Peer Systems",
+        chapter = "15",
+        citeulike-article-id = "3993224",
+        citeulike-linkout-0 = "http://dx.doi.org/10.1007/3-540-45748-8\_15",
+        citeulike-linkout-1 = "http://www.springerlink.com/content/ba8e6p26wbxq8gbc",
+        comment = "DDNS, a Chord-based DNS architecture. The authors come to quite negative conclusions with respect to their system, also because it's based on a quite naive implementation (e.g., no caching). Slides are at http://swtch.com/\~{}rsc/talks/iptps02.pdf .",
+        day = "10",
+        doi = "10.1007/3-540-45748-8_15",
+        editor = "Peter Druschel and Frans Kaashoek and Antony Rowstron",
+        isbn = "978-3-540-44179-3",
+        journal = "Peer-to-Peer Systems",
+        keywords = "chord, ddns, dht, dns, p2p",
+        month = oct,
+        pages = "155--165",
+        posted-at = "2009-12-27 16:16:29",
+        priority = "0",
+        publisher = "Springer Berlin / Heidelberg",
+        series = "Lecture Notes in Computer Science",
+        title = "{Serving DNS Using a Peer-to-Peer Lookup Service}",
+        url = "http://dx.doi.org/10.1007/3-540-45748-8_15",
+        volume = "2429",
+        year = "2002"
+}
+
+@Article{ mgpj_cloudsnap_2011,
+        author = "R. Mondéjar and P. Garcí­a-López and C. Pairot and L. Pamies-Juarez",
+        citeulike-linkout-0 = "http://dx.doi.org/10.1016/j.future.2011.08.013",
+        doi = "10.1016/j.future.2011.08.013",
+        journal = "Future Generation Computer Systems",
+        month = sep,
+        pages = "1223--1234",
+        title = "{CloudSNAP : A transparent infrastructure for decentralized web deployment using distributed interception}",
+        url = "http://dx.doi.org/10.1016/j.future.2011.08.013",
+        year = "2011"
+}
+
+@Misc{ skypesymusers,
+        author= "Jennifer Caukin"
+        title = "35 Million People Concurrently Online on Skype",
+        howpublished = "\url{http://blogs.skype.com/en/2012/03/35_million_people_concurrently.html}",
+        url = "http://blogs.skype.com/en/2012/03/35_million_people_concurrently.html",
+        series = "blogs.skype.com",
+        month = mar,
+        year = "2012",
+        note = "Online; accessed 18-March-2012"
+}
+
+@Misc{ skypetotalusers,
+        author = "Telecom Paper"
+        title = "Skype grows FY revenues 20%, reaches 663 mln users",
+        howpublished = "\url{http://www.telecompaper.com/news/skype-grows-fy-revenues-20-reaches-663-mln-users}",
+        url = "http://www.telecompaper.com/news/skype-grows-fy-revenues-20-reaches-663-mln-users",
+        month = mar,
+        year = "2011",
+        note = "Online; accessed 18-March-2012"
+}
+
+@Misc{ skypemicrosoft,
+        title = "Microsoft Officially Welcomes Skype, Press Release",
+        howpublished = "\url{http://about.skype.com/press/2011/10/microsoft_officially_welcomes.html}",
+        url = "http://about.skype.com/press/2011/10/microsoft_officially_welcomes.html",
+        month = oct,
+        year = "2011",
+        note = "Online; accessed 18-March-2012"
+}
+
+@Misc{ skype,
+        title = "Skype",
+        howpublished = "\url{http://www.skype.com}",
+        url = "http://www.skype.com"
+}
+
+@Article{ cswh_freenet_2001,
+        author = "Ian Clarke and Oskar Sandberg and Brandon Wiley and Theodore W. Hong",
+        citeulike-article-id = "350519",
+        citeulike-linkout-0 = "http://citeseer.ist.psu.edu/clarke00freenet.html",
+        citeulike-linkout-1 = "http://citeseer.lcs.mit.edu/clarke00freenet.html",
+        citeulike-linkout-2 = "http://citeseer.ifi.unizh.ch/clarke00freenet.html",
+        citeulike-linkout-3 = "http://citeseer.comp.nus.edu.sg/clarke00freenet.html",
+        journal = "Lecture Notes in Computer Science",
+        keywords = "freenet",
+        pages = "46--??",
+        posted-at = "2006-06-10 04:07:32",
+        priority = "0",
+        title = "{Freenet: A Distributed Anonymous Information Storage and Retrieval System}",
+        url = "http://citeseer.ist.psu.edu/clarke00freenet.html",
+        volume = "2009",
+        year = "2001"
+}
+
+@Misc{ retroshare,
+        title = "RetroShare",
+        howpublished = "\url{http://retroshare.sourceforge.net}",
+        url = "http://retroshare.sourceforge.net"
+}
+
+@Misc{ cachelogic,
+        author = "David Ferguson",
+        title = "{P2P File Sharing - The Evolving Distribution Chain}",
+        howpublished = "\url{http://retroshare.sourceforge.net}",
+        url = "http://retroshare.sourceforge.net",
+        month = jun,
+        year = "2006"
+}
+
+@Misc{ ipoque2007,
+        author = "Schulze, H. and Mochalski, K.",
+        title = "{Ipoque: Internet Study 2007}",
+        howpublished = "\url{http://www.ipoque.com/sites/default/files/mediafiles/documents/internet-study-2007.pdf}",
+        url = "http://www.ipoque.com/sites/default/files/mediafiles/documents/internet-study-2007.pdf",
+        year = "2007"
+}
+
+@Misc{ ipoque2009,
+        author = "Schulze, H. and Mochalski, K.",
+        title = "{Ipoque: Internet study 2008/2009}",
+        howpublished = "\url{http://www.ipoque.com/sites/default/files/mediafiles/documents/internet-study-2008-2009.pdf}",
+        url = "http://www.ipoque.com/sites/default/files/mediafiles/documents/internet-study-2008-2009.pdf",
+        year = "2009"
+}
+
+@Misc{ multinteligence,
+        author = "Sizemore, R.",
+        title = "{Multimedia Inteligence: P2P Traffic to Grow Almost 400% over the Next 5 Years, as Legitimate P2P Applications Become a Meaningful Segment}",
+        howpublished = "\url{http://www.multimediaintelligence.com/index.php?option=com_content&view=article&id=133:p2p-traffic-to-grow-almost-400-over-the-next-5-years-as-legitimate-p2p-applications-become-a-meaningful-segment&catid=36:frontage}",
+        url = "http://www.multimediaintelligence.com/index.php?option=com_content&view=article&id=133:p2p-traffic-to-grow-almost-400-over-the-next-5-years-as-legitimate-p2p-applications-become-a-meaningful-segment&catid=36:frontage"
 }
