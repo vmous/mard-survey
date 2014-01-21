@@ -42,15 +42,17 @@
 
 \markboth{}{}{}
 
-\title{Alleviating the Topology Mismatch Problem in Unstructured and Structured Overlay Networks: A Survey}
+\title{Alleviating the Topology Mismatch Problem in Unstructured and Structured
+Overlay Networks: A Survey}
 
 \author{
-VASSILIS S. MOUSTAKAS\\\emph{National and Kapodistrian University of Athens}\\
-H\"USEYIN AKCAN\\\emph{Izmir University of Economics}\\
-MEMA ROUSSOPOULOS\\\emph{National and Kapodistrian University of Athens}\\
+VASSILIS S. MOUSTAKAS\\\emph{Department of Informatics and Telecommunications}\\\emph{National and Kapodistrian University of Athens}\\
+H\"USEYIN AKCAN\\\emph{Department of Software Engineering}\\\emph{Izmir University of Economics}\\
+MEMA ROUSSOPOULOS\\\emph{Department of Informatics and Telecommunications}\\\emph{National and Kapodistrian University of Athens}\\
 AND\\
-ALEX DELIS\\\emph{National and Kapodistrian University of Athens}\\
-%  Vassilis Moustakas$^1$, H\"useyin Akcan$^2$, Mema Roussopoulou$^1$ and Alex Delis$^1$\\
+ALEX DELIS\\\emph{Department of Informatics and Telecommunications}\\\emph{National and Kapodistrian University of Athens}\\
+%  Vassilis Moustakas$^1$, H\"useyin Akcan$^2$, Mema Roussopoulou$^1$ and Alex
+%Delis$^1$\\
 %  $^1$Department of Informatics and Telecommunications,\\
 %  National and Kapodistrian University of Athens\\
 %  \mbox{\texttt{\{b.moystakas, mema, ad\}@di.uoa.gr}}\\
@@ -60,16 +62,37 @@ ALEX DELIS\\\emph{National and Kapodistrian University of Athens}\\
 }
 
 \begin{abstract}
-Peer-to-peer (P2P) systems is a rapidly growing application architecture. The overlay network abstraction on top of a best-effort infrastructure provides a powerful tool to realize a plethora of ever-wanted exotic features like anonymity, high availability and robustness, load balancing, quality-of-service (QoS) at the application layer and many more. Unfortunately weaknesses of early effectuations constrained applications from unleashing the full potential of the paradigm. One of them is the topology mismatch problem between the overlay and the physical underlying network, a problem that imposes a huge amount of unnecessary stress to the network resources and, thus, impede applications from scaling. In this survey we investigate on the recent research developments towards the alleviation of this problem, in both unstructured and structured overlay architectures. We visit the various algorithms available in the lietrature, focusing on the presentation of how each of them tries to tackle the problem. Additionally, we provide a finer grained categorisation of the approaches based on the generic type of methodology they use in order to accomplish this goal.
+Peer-to-peer (P2P) systems is a rapidly growing application architecture. The
+overlay network abstraction on top of a best-effort infrastructure provides a
+powerful tool to realize a plethora of ever-wanted exotic features like
+anonymity, high availability and robustness, load balancing, quality-of-service
+(QoS) at the application layer and many more. Unfortunately weaknesses of early
+effectuations constrained applications from unleashing the full potential of the
+paradigm. One of them is the topology mismatch problem between the overlay and
+the physical underlying network, a problem that imposes a huge amount of
+unnecessary stress to the network resources and, thus, impede applications from
+scaling. In this survey we investigate on the recent research developments
+towards the alleviation of this problem, in both unstructured and structured
+overlay architectures. We visit the various algorithms available in the
+lietrature, focusing on the presentation of how each of them tries to tackle the
+problem. Additionally, we provide a finer grained categorisation of the
+approaches based on the generic type of methodology they use in order to
+accomplish this goal.
 % TODO: Review this after the comparison sections are fixed.
-Finally we discuss the advantages, disadvantages and novelties introduced by the algotithms and offer pictorial comparisons for them in order to further strengthen and organise understanding of the information and knowledge cited, in an attempt to make this survey a one-stop-shop reference for anyone interested in the topic, from researchers and students, to system architects and developers.
+Finally we discuss the advantages, disadvantages and novelties introduced by the
+algotithms and offer pictorial comparisons for them in order to further
+strengthen and organise understanding of the information and knowledge cited, in
+an attempt to make this survey a one-stop-shop reference for anyone interested
+in the topic, from researchers and students, to system architects and
+developers.
 \end{abstract}
 
 \category{}{}{}
 
 \terms{Topology mismatch, distributed, peer-to-peer, P2P, overlay}
 
-\keywords{Topology mismatch problem, distributed algorithm, peer-to-peer architecture, overlay network }
+\keywords{Topology mismatch problem, distributed algorithm, peer-to-peer
+architecture, overlay network }
 
 \begin{document}
 
@@ -79,298 +102,85 @@ SAY SOMETHING COOL HERE...
 
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Distributed architectures have witnessed a significant increase of interest during the last decade, as the number of interconnected computers increased, the available digital information kept proliferating, at an exponetial rate each year, and problems to be addressed by IT became more and more demanding. Why is there a correlation, and it is not just a coincidence? Distributed computation suggests a simple paradigm\footnote{Of course, as always, this is the case only after someone thought about it first!}. Get a set of autonomous computing entities and put them to cooperate with each other in order to fullfil a well defined task. In the World of the Internet and the World Wide Web this also offers a thrilling promise. To harness the immence power scattered across the Internet and get amply rewarded by exploiting the data, storage and computational resources out there.
-
-In order to achieve that, computers collaborate by exchanging messages via an application-level network where they can address each other in the specific context of the task at hand. This communication structure is refered to as an \emph{overlay network} which is an abstract, logical inter-connection formed on top of another network\footnote{The Internet itself is an overalay on top of the telephone network.}. It consists of a set of nodes, the computing elements, that are being connected by virtual (logical) point-to-point links, perhaps corresponding to multiple physical links. Figure~\ref{figure:overlay} illustrates a simple four-node overlay contructed upon a wide area network.
-
-\begin{figure}
-\centering
-  \includegraphics[scale=0.5]{img/p2p.pdf}
-\caption{An example overlay network.}
-\label{figure:overlay}
-\end{figure}
-
-The abstraction of the overlay network has been proposed as a way to implement efficient, fully distributed, application-layer services. For example, backing the routing of messages to destinations that are not known in advance or building one-to-many addressing schemes
-% TODO find citation
-%[Narada, Adobe's Real Time Media Flow Protocol (RTMFP)]
-that would provide higher quality-of-service (QoS) guarantees. \emph{IP multicast}, as well as other proposals such as \emph{IntServ} and \emph{DiffServ} \cite{cisco_diffserv_2005}, have not seen wide acceptance (yet?), largely due to the fact they require support from the physical infrastructure. On the other hand, an overlay network can be deployed on end-systems running the overlay protocol software, without cooperation from the ISPs.
-%Academic research includes \cite{chu_esm_2000,jannotti_overcast_2000,kwon_tag_2002} among others.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Peer-to-Peer (P2P) Architectures in a Nutshell}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Overlay networks on top of the best-effort IP layer, formed a widely ranged family of protocols collectively known as \emph{peer-to-peer} or \emph{P2P} for short. P2P systems consist of a number of networked computers called \emph{peers}, where each, such, \emph{peer} could act both as a resource provider and a resource consumer. This changed the traditional \emph{client-server} model dominating the Internet and lead to the introduction of the \emph{servent} concept \cite{gnutella}, a \emph{portmanteau} that blends the notions of server and client to denote the twofold role of the P2P network participants. Such serverless systems, proved to be able to achieve outstanding aggregate resource capacities as more and more participants join the system without requiring additional expenditure for infrastructure\footnote{
-        Unfortunatelly, there has been observed mitigation of this self-scaling property by the undesirable behaviour of participating users, usually answered in popular file-sharing systems; from \emph{free-riding} \cite{saroiu_measurefileshare_2002, adar_gnutellafreeriders_2000, hughes_gnutellafreeride_2005} to the distribution of illegal content and/or other \emph{socio-technical} issues \cite{hughes_socp2p_2008}.
-}.
-P2p network systems gained extra attention whithin the distributed systems super-set, circa 2000, due to the fact that they succesfully supported popular applications that offered file sharing among vast numbers of participating users. But their development didn't stay still. On the contrary, during the last decade, research on P2P systems was constant and fruitfull generating a wide range of popular protocols, networks and applications. As P2P systems evolved three main architectures have been emerged, namely
-\begin{inparaenum}[\itshape i\upshape)]
-  \item \emph{centralized},
-  \item \emph{decentralized unstructured}, and
-  \item \emph{decentralized structured}.
-\end{inparaenum}
-
-\emph{Centralized} architectures (see Figure~\ref{figure:p2p-archs:centralised}) were the first to recognize that requests for resourses (e.g. CPU cycles \cite{seti} or popular content 
-% TODO find citation for Napster
-\cite{}) need not be sent to a dedicated server but instead could be handled by the many hosts that already posses them. This schema, though, is not fully distributed since it dictates a centralised searching facility, a characteristic that can be proven its ``Achilles' heel'' in terms of being a scalability bottleneck, a central point of failure and vulnerable to malicious acts (e.g. \emph{Denial-of-Service (DoS) attacks}).
-
-The centralized approach has been eventually replaced by architectures that distributed both search and download capabilities (see Figures~\ref{figure:p2p-archs:unstructured-full} and \ref{figure:p2p-archs:unstructured-hierarchical}). In these \emph{decentralized} architectures, file placement is random, which means there is no correlation with the network topology whatsoever \cite{yang_improvep2psearch_2002}. For this reason they are also refered to as \emph{unstructured}. The most important properties of such systems are that they support inherent heterogeneity of peers, are highly resilient to peer failures, and incur low maintenance overhead at handling the dynamics of peer participation \cite{stutzbach_churn_2006}. In the literature, they are also known as \emph{broadcast-based} systems, because they use \emph{message flooding} among peers or super-peers to propagate queries
-%\footnote{The life of each query message is constrained by an integer, refered to as \emph{time-to-live (TTL)}. When a querry is received by a (super-) peer, this value is decreased by one unit. Then, the receiver, back-propagates its results and if the TTL has not reached zero the node forwards the query message to all its neighbours except from the one it received it from.}
-.
-
-Recently, \emph{decentralized structured} schemes have been proposed (see Figure~\ref{figure:p2p-archs:structured}) in order to provide a self-organising infrastructure for large-scale P2P applications \cite{ratnasamy_can_2001, stoica_chord_2001, antony_pastry_2001, zhao_tapestry_2001, maymounkov_kademlia_2002, rgrk_bamboo_2004}. They implement a \emph{Distributed Hash Table (DHT)} that maps objects to nodes through a deterministic mechanism. Even though unstructured networks became highly popular among file sharing applications, they do have a certain limitation in locating rare objects. The DHT approach of structured networks on the other hand, provides a guaranteed bound on the number of overlay routing hops that have to be taken in order for an object to be located, even in the case where only a single copy exists in the system.  This means $O \left ( log n \right )$ hops, compared to unstructured networks that require $O \left ( n \right )$ to reliably locate a specific object\footnote{Unfortunatelly this efficiency does not come without cost. Structured overlays realise what is called object identifier location as opposed to content-based retrieval of unstructured ones. This means that the later can support more versatile object location mechanisms like keyword and partial matching searches.}.
-
-% TODO: Change these pictures to match look-n-feel
-\begin{figure}[ht]
-\centering
-\subfigure[Centralised (SETI@Home or Napster).] {
-  \includegraphics[scale=0.3]{img/centralised.png}
-  \label{figure:p2p-archs:centralised}
-}\qquad\qquad
-\subfigure[Fully unstructured (Gnutella v.0.4).] {
-  \includegraphics[scale=0.3]{img/unstructured-full.png}
-  \label{figure:p2p-archs:unstructured-full}
-}\qquad\qquad
-\subfigure[Hierarchical unstructured (Gnutella v.0.6 or FastTrack).] {
-  \includegraphics[scale=0.3]{img/unstructured-hierarchical.png}
-  \label{figure:p2p-archs:unstructured-hierarchical}
-}\qquad\qquad
-\subfigure[Structured (Chord and Kademlia).] {
-  \includegraphics[scale=0.3]{img/structured.png}
-  \label{figure:p2p-archs:structured}
-}
-\caption{The various peer-to-peer architectures.}
-\label{figure:p2p-archs}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Applications and Implications}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The most successful incarnation of the centrilised approach is without a doubt the popular file-sharing application \emph{Napster}\footnote{Pioneering, though, was the famous \emph{SETI@Home Project} \cite{seti}, which pools spare processing power of participants to search the universe for the existence of extra terrestrial intelligence!}
-% TODO find citation for Napster again
-\cite{}.
-Napster maintained a \emph{central index server} based on file lists provided by participating peers. The central index server was queried by the users and it returned pointers to the actual content. Thus, by centralizing search while distributing downloads, Napster achieved a highly functional design that was widely acknowledged, at the time, as ``the fastest growing Internet application ever'' that toped some 26 million users and 80 million songs \cite{jmm_naptopusage_2001}.
-
-Napster was ultimatelly brought down after Recording Industry Association of America (RIAA) filed a lawsuit for copyright infringement of the intellectual property of artists whose music was distributed by the network\footnote{
-      The sueing spree was initiated by heavy metal giants \emph{Metallica} that feared Napster was undermining record sales. Opposed opinions instantly emerged  with best example the british alternative rock band \emph{Radiohead} whose album \emph{Kid A} had also been leaked to Napster three months before reaching music store shelves \cite{rm_radioheadkida_2000}. Despite music critics labeling the album ``experimental'' and ``challenging'' (it had no official singles nor music videos for any of its songs), in October 2000 Kid A captured the number one spot on the Billboard 200 sales chart in its debut week. Unlike Metallica, Madonna and Dr.Dre that led litigation with Napster, Radiohead had never hit the top20 in the US before.
-}
-\cite{wiki_amnaptrial_2001}. This triggered a shift towards decentralised networks like the classic \emph{Gnutella} and, its ``rival'' at the time, \emph{FastTrack}. Gnutella, in its first realisation (v.0.4 \cite{gnutellav0.4}), was a fully decentralised approach. Unfortunatelly, network resourses tended to be overwhelmed by message flooding and if queries were constrained to live for some (small) number of hops, this ultimatelly resulted to a shrinked search scope, leading to a death spiral that prevented the network from scaling. The solution came with a slightly more structured network by introducing the notions of \emph{ultra-peers} and \emph{leaf-nodes} (v.0.6 \cite{gnutella}). With \emph{Limewire}, the most widely used software that implemented the protocol, the network was highly successful and was reported to have reached connecting more that 3 million users concurrently by the end of 2006 \cite{rsr_gnutellaevol_2006}. Fasttrack and its implementing software KaZaA \cite{kazaa}, on the other hand, went with the hierarchical approach (\emph{super-nodes} in their context) from the very begining, dynamically assigning indexing functions to special peers in order to increase search performace and scaling potential. FastTrack network had an average of 3 million concurrently connected nodes in 2003 \cite{lkr_kazaameasure_2005}. It is estimated that the total number of users was greater than that of Napster at its peak. With Limewire discontinued/shutdown in 2010 and its successor, \emph{Frostwire}, moving to the Bittorent protocol in 2011, seem to very well signal the end of the once-mighty Gnutella network. KaZaA continues as a propriatery music store solution. In the meanwhile, Fastrack design team had already introduced a VoIP and text messaging application based on the design principles of KaZaA's hierarchical P2P nature, that was meant to change how people communicate around the world. This app was no other than Skype \cite{skype}. Despite its wide usage, little is known for the technical aspects of its overlay network, mainly due to its proprietary nature. Studies, though, confirm that it shares strong structural similarities to its file-sharing predecessor (ordinary hosts and super-nodes in Skype's terminology) but they significantly differentiate in terms of traffic behaviour \cite{g_voipskypesec_2005, gdj_skypestudy_2006}. Skype was introduced in 2003 and from then on it witnessed frenzy-rythmed increase to its popularity, with more that 650 milion registered users in 2011  \cite{skypetotalusers} and reported to have broken the barrier of 35 million skypers concurrently online on the the 5th of March 2012 \cite{skypesymusers}. On October 2011 Microsoft Corp. and Skype Global S.à.r.l. anounnced the completion of Microsoft's acquisition of Skype for \$$8.5$ billion \cite{skypemicrosoft}.
-
-File sharing was the most popular application area for structured architectures as well. Overnet
-% TODO find citation
-\cite{},
-for example, was created for sharing large files (e.g., movies and CD images). It implemented the Kademlia tree-like partitioning algorithm. Other implementations of Kademlia are the Kad Network (eMule/aMule  clients), BitTorrent for trackerless torrernts (official BitTorrent client, $\mu$Torrent, BitComet, Transmission and BitSpirit all share compatibility with the Mainline DHT which realises the Kademlia protocol) and the Gnutella DHT (first implemented by LimeWire as the Mojito DHT). Lately, RetroShare \cite{retroshare} is the new trend for file-sharing which incorporates an implementation of the Kademlia DHT to create a Friend-to-Friend (F2F) network with some attributes of a darknet as well. But the potential of structured architectures was not exhausted only to the above. Structured P2P networks became popular in distributed systems because they could scale smoothly and have fast and reliable object location mechanisms. Thus, research and development was very active and productive resulting in a variety of diverse applications such like distributed search engines \cite{yaci}, distributed data storage systems \cite{kbc_oceanstore_2000, bdet_fsdfs_2000, dkkms_cfs_2001, dr_pastutility_2001, abc_farsite_2002, mmfc_ivy_2002, arla, agebh_dks_2003}, Web caches, archives, and publishing systems \cite{ird_squirrel_2002, bags_youserv_2002, wrc_publius_2000, wm_tangler_2001}, messaging applications \cite{threedegrees}, event notification infrastructures \cite{rkcd_scribe_2001, cdkr_scribe_2002, agebh_dks_2003}, naming services \cite{cmm_chorddns_2002}, censor-resistent stores \cite{cswh_freenet_2001} and lately even cloud-based platforms \cite{mgpj_cloudsnap_2011}.
-
-%%%%%%%% NEW TRENDS %%%%%%%%
-%File sharing Limewire Kazzaa The file-sharing landscape is slowly adjusting in response to the continued push for more anti-piracy tools, the final Pirate Bay verdict, and the raids and arrests in the Megaupload case, SOPA, ACTA. This leads to users trying to find new solutions for anonymous, uncensored, decentralised file sharing solutions like Freenet, Tribler and RetroShare where connections are made only between trusted peers — sometimes called "friends" and the respective formed network F2F.
-
-% TODO: READ Dalesa published at eAsia 2009, http://www.e-asia.org/2009/ET_Presentations/Wathsala.pdf
-
-The huge numbers of users, for the various applications we presented above, reveals the tremendous popularity P2P architectures have enjoyed. This, though, does not come without any toll. Measurements on some popular systems, such as FastTrack, Gnutella and DirectConnect have shown that the P2P traffic contributes the largest portion of the overall Internet traffic \cite{seroiu_analysiscds_2002, sen_analyzep2ptraffic_2004}. Even with later studies, this observation still holds on. Using deep packet inspection techniques deployed at selected customer sites \emph{Ipoque} and \emph{CacheLogic} were able to track down application usage \cite{cachelogic, ipoque2007, ipoque2009}. CacheLogic reports that more than 60\% of the traffic is identified as P2P, with Ipoque verifying this observation reporting similar results for 2007, while observing some small decline for 2008/2009 (but still remaining dominant compared to other applications). Apart from its participation in overall usage terms, P2P is already a huge contibutor to the overall data exchanged across the Internet\footnote{
-    Mainly because file-sharing P2P is used to exchange big files of HD video or high sampled audio content compared to simple Web content distributed via, for example, HTTP.
-}.
-\cite{multinteligence} claims that P2P traffic in 2007 was around 1.6 petabytes per month and the potential is to be quintubled by the end of 2012 reaching almost 8 petabytes per month.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The Topology Mismatch Problem}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-One of the major issues that defines the efficiency of an overlay network is the mapping of the overlay structure to the underlying infrastructure. Remember, in Figure~\ref{figure:overlay} Nodes $A$ and $B$ are on the same local network, while $C$ and $D$ are in different networks. The top layer represents the overlay interconnection formed by these nodes at a higher level. Link connections there, can change as needed by the running environment, without any particular constraint by the underlying physical topology. Let's have a closer look with the help of a simple example. Assume nodes $A$, $B$, $C$ and $D$ are connected through the physical network shown in Figure~\ref{figure:phys}, where the network costs are given in milliseconds, and peer $A$ sends a message to peer $D$.
-
-\begin{figure}
-\centering
-  \includegraphics[scale=0.8]{img/phys.pdf}
-\caption{Interconnection of nodes in the physical level.}
-\label{figure:phys}
-\end{figure}
-
-If these peers participate in an overlay network according to one of the setups of Figure~\ref{figure:overlay-confs} then users will expierience different performances. In the overlay depicted in Figure~\ref{figure:overlay-1}, the message will traverse the following sequence of links in the physical layer (marked with their costs): $3 \rightarrow 7 \rightarrow 1 \rightarrow 2 \rightarrow 2 \rightarrow 1 \rightarrow 7 \rightarrow 8 \rightarrow 5 \rightarrow 5 \rightarrow 4$. In the alternative overlay of Figure ~\ref{figure:overlay-2}, the path will be: $3 \rightarrow 8 \rightarrow 4$. The total cost of the first sequnce is $45 ms$, while the second yields a mere $15 ms$. Therefore, we can conclude that the second overlay is more congruent with the underlying physical network than the first one and, thus, is more efficient.
-
-\begin{figure}[ht]
-\centering
-\subfigure[Nodes B and C have direct overlay connection.] {
-  \includegraphics[scale=0.8]{img/overlay-1.pdf}
-  \label{figure:overlay-1}
-}\qquad\qquad
-\subfigure[Nodes A and D have direct overlay connection.] {
-  \includegraphics[scale=0.8]{img/overlay-2.pdf}
-  \label{figure:overlay-2}
-}
-\caption{Two different overlay connection configuration.}
-\label{figure:overlay-confs}
-\end{figure}
-
-Ideally, overlay networks are expected to achieve an optimal mapping among the overlay paths and the underlying physical links, and avoid inefficient states. The problem of constructing an optimal overlay is referred to as the \emph{topology mismatch problem}, and formally defined as follows:
-\begin{definition}
-    Let $V = \{v_1, ..., v_n\}$ be a set of points denoting the network nodes, $\{v_i, v_j\} \in E$ be the set of unicast distances between nodes $v_i$ and $v_j$, $G=(V,E)$ be a complete distance graph over $V$. The topology mismatch problem is to construct a minimal spanning tree,  where node degree is restricted to a constant ($k\geq 2$) by the bandwidth of each node $v_i$.
-\end{definition}
- 
-Early incarnations of the overlay protocols, however, did not make use of the optimal mapping with the physical network topology. Gnutella protocol for example was considered far from scalable \cite{ritter_gnucantscale_2001}. Since every peer can chοse its logical neighbours without knowledge of the underlying network had as a result a mismatch between physical and application-level topologies. Additionally, queries may be flooded to multiple paths merging in one peer while
-in such case one of the paths would have been enough. Nevertheless, peers may forward the same message to each other before they receive the query messages from each other. \cite{matei_mapgnutella_2002} showed that, even given that 95\% of any two nodes are less than 7 hops away from each other, a flooding-based algorithm, like the one used by Gnutella, can generate 330TB/month in a 50.000 node network! Therefore, P2P traffic can have a serious effect on the overall well-being of the Internet as a whole.
-
-Similar problems are observed in decentralized structured schemes also. Typically, node IDs are assigned \emph{randomly}, resulting in excellent load balancing, scalability and robustness. Unfortunately, this randomness has a negative impact on the \emph{routing locality} of the network. This means that
-even though the target node can be reached with logarithmic overlay hops, the distance traveled in the physical underlying network, during the overlay routing
-process, can be far from optimal.  The ratio of the physical distance, a query travels through the overlay to an object, and the minimal distance to that object (i.e. through IP) is known in the literature as \emph{stretch} or \emph{Relative Delay Penalty (RDP)} \cite{chu_esm_2000}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Motivation and our Goal for this Survey}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-A topology unaware overlay network is able to control the sequence of peers a message traverses before reaching its destination, but it is completely unaware of how the actual packets are switched at the underlying infrastructure along the overlay path. For example, a single logical point-to-point link on the overlay, most of the time, corresponds to multiple physical links in the underlying layer. Additionally, a link in the underlying network often serves the mapping of several overlay paths causing increase of the traffic on the physical link, which is also called the link's \emph{stress}\cite{chu_esm_2002}. Furthermore, the network's \emph{churn}, that is the stochastic behaviour of peers randomly joining and leaving the P2P network, all cause the overlay to physical mapping to create such unnecessary, redundant maintenance traffic that impacts the efficiency of the network in terms of average response time.
-
-The topology mismatch problem is exacerbated by the high amounts of traffic generated by the highly popular P2P applications. This creats the killer combination for the network infrastructure, ultimately effecting all Internet users. Solving it, on the other hand, is no easy task. Topology mismatch is known to be an NP-Hard problem \cite{NPBOOK,chawathe_scattercast_2000}. Moreover, the Internet itself is an interesting environment where end-to-end latencies demonstrate what is called \emph{triangle inequality violations (TIVs)}, which further complicate the problem. These delay space TIV is a consequence of the Internet's structure and routing policies and thus will remain a property of the Internet for the foreseeable future \cite{zheng_irprtt_2005}. TIVs affect network coordinate \cite{cox_vivaldi_2004,wong_meridian_2005} and positioning \cite{ng_gnp_2001} and makes the construction of location/delay aware overlays difficult. An extensive array of heuristic approaches have been proposed in an effort to find an algorithm that performs reasonably and consistently well. The purpose of this survey is to gather the extensive knowledge that has been produced recently in this research field and organise the available information ultimately helping the reader sift through the myriad of these efforts, understand the different approaches and identify though a taxonomy the advantages and disadvantages of each of them.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Survey Outline}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO: Review this after the content and article structure is fixed.
-In the introduction we had the oportunity to recognise the importance of overly networks in contemporary application architectures. Also we quickly reviewed the basic trends in both overlay construction\footnote{
-    The main focus of this paper is the topology mismatch problem, therefore the available approaches in overlay networks are briefly summarized, and interested readers are pointed to the available surveys on overlay networks \cite{TheotokisS04,LuaCPSL05}.
-}
-and application development. Last but not least, we identified and formaly defined the phenomenon of the topology mismatch problem and its impact on the utilization of network resources. The rest of the survey\ldots
-
-Sections~\ref{sec:unstructured} and \ref{sec:structured} discuss the recent academic work that has been conducted in the field.
-
-Ultimately, it reviews the most important resources found in the literature that attempt to tackle the problem as it proposes a taxonomic scheme, using a set of supertype-subtype relationships based on unique characteristics they have and/or specific goals they target. What follows does not claim to be a thorough citation of all known protocols that are available out there, but instead, a careful selection of those that left a distinctive fingerprint contribution in the efforts of the research community to alleviate the topology mismatch problem.
+\input{intro}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % start
 %TODO: Maybe this section should be reviewed or deleted or go to another section
-%Studying the behaviour of the various peer-to-peer schemes \cite{matei_mapgnutella_2002, lv_randomwalks_2002, merugu_str2unstr_2003} showed that the ad-hoc network topology of unstructured overlay networks that preserve \emph{Power Law} and \emph{Small World} characteristics\footnote{Power Law describes the node degree while the Small World describes characteristics of path length and clustering coefficient. The clustering coefficient for a node $\upsilon$ in a graph $G = \left( V, E \right)$ is defined as the ratio of the existing connections between $\upsilon$'s neighbouring nodes to $\gamma \times \left( \gamma - 1 \right)$, where $\gamma$ is the number of neighbouring nodes of $\upsilon$. High cluster coefficient means that neighbouring nodes of any node $\upsilon$ likely connect one another.} \cite{faloutsos_powerlaw_1999, saroiu_measurefileshare_2002} offer a more promising approach. Particularly:
+%Studying the behaviour of the various peer-to-peer schemes
+%\cite{matei_mapgnutella_2002, lv_randomwalks_2002, merugu_str2unstr_2003}
+%showed that the ad-hoc network topology of unstructured overlay networks that
+%preserve \emph{Power Law} and \emph{Small World} characteristics\footnote{Power
+%Law describes the node degree while the Small World describes characteristics
+%of path length and clustering coefficient. The clustering coefficient for a
+%node $\upsilon$ in a graph $G = \left( V, E \right)$ is defined as the ratio of
+%the existing connections between $\upsilon$'s neighbouring nodes to $\gamma
+%\times \left( \gamma - 1 \right)$, where $\gamma$ is the number of neighbouring
+%nodes of $\upsilon$. High cluster coefficient means that neighbouring nodes of
+%any node $\upsilon$ likely connect one another.} \cite{faloutsos_powerlaw_1999,
+%saroiu_measurefileshare_2002} offer a more promising approach. Particularly:
 %\begin{itemize}
-%  \item Peer-to-peer clients are extremely \emph{transient}. Unstructured systems can have high maintenance traffic in delivering messages, updating the mapping, discovering failures and replicating lost data or pointers, making them insufficient on highly volatile networks.
-%  \item \emph{Keyword searches} versus \emph{exact-match queries}. In DHTs there is a tight control between the data placement and the topology of the network. For this reason it is hard to efficiently support partially matched queries while Gnutella and other similar systems effortlessly support keyword searches and other complex queries since the mechanism is realized locally, on a node-by-node basis.
-%  \item Popular content is located at multiple peers and thus it is more likely for a flooding-based search to return results. DHTs, on the other hand, fit better in the systems which require ability to reliably locate content, even in the extreme case that only a single-copy exists in the network.
+%  \item Peer-to-peer clients are extremely \emph{transient}. Unstructured
+%systems can have high maintenance traffic in delivering messages, updating the
+%mapping, discovering failures and replicating lost data or pointers, making
+%them insufficient on highly volatile networks.
+%  \item \emph{Keyword searches} versus \emph{exact-match queries}. In DHTs
+%there is a tight control between the data placement and the topology of the
+%network. For this reason it is hard to efficiently support partially matched
+%queries while Gnutella and other similar systems effortlessly support keyword
+%searches and other complex queries since the mechanism is realized locally, on
+%a node-by-node basis.
+%  \item Popular content is located at multiple peers and thus it is more likely
+%for a flooding-based search to return results. DHTs, on the other hand, fit
+%better in the systems which require ability to reliably locate content, even in
+%the extreme case that only a single-copy exists in the network.
 %\end{itemize}
 % end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % TODO: how 
-%For this reasons, efforts have been placed for optimizing the efficiency of decentralized unstructured peer-to-peer networks. Research mainly focuses on
+%For this reasons, efforts have been placed for optimizing the efficiency of
+%decentralized unstructured peer-to-peer networks. Research mainly focuses on
 %\begin{inparaenum}[\itshape i\upshape)]
 %  \item reducing unnecessary, redundant communication traffic, and
 %  \item exploiting physical locality to reduce communication response.
 %\end{inparaenum}
-%The goal can be achieved at, both, the application-level network as well as the underlying physical one. In the first case by refining the message relay techniques, while in the second one, by adaptively reconstructing the application network to map as well as possible to the the physical network.
+%The goal can be achieved at, both, the application-level network as well as the
+%underlying physical one. In the first case by refining the message relay
+%techniques, while in the second one, by adaptively reconstructing the
+%application network to map as well as possible to the the physical network.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{The Topology Mismatch Problem}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%\section{ADDITIONAL MATERIAL}
-
 %%%%%%%
 %%%%%%% TODO: NEEDS REWORDING
+%%%%%%% Additional Material
 %%%%%%%
 %%%%%%%
 %%%%%%%
-%Bindal et al. [14] proposed to improve the traffic
-%locality in BitTorrent systems via biased neighbor selection
-%enforced by packet control mechanisms on border gateway
-%routers. More recently, Ono [15] proposed to leverage the
-%existing CDN infrastructure to estimate the distance between
-%BitTorrent peers before making peer connections. P4P [16],
-%instead, aimed to provide a general framework for P2P
+% P4P [16],instead, aimed to provide a general framework for P2P
 %applications by developing ISP-application interfaces so that
 %application software can use the network layer information,
 %such as congestion status and network topology, for better
 %performance and resource utilization.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%P4P [37] project attempts to address
+%the problem through custom trackers, both for ISPs and P2P
+%systems, using an interface based on a primal-dual decomposition
+%of an optimization problem. This interface design simplifies
+%the realization of traffic-engineering objectives from each parties’
+%perspective and ensures the extensibility of the approach. Through
+%simulation-based studies and limited experimental deployments,
+%these collaborative approaches have been shown to effectively
+%reduce network costs while minimally impacting application performance.
+%A clear advantage of these proposals is that they
+%allow ISPs to incorporate aggregated traffic policies in their tracker
+%recommendations (e.g., a particular traffic balance ratio between
+%peering providers). However, all of them require deployments
+%of oracles for each participating ISP and their effectiveness is
+%ultimately predicated on their adoption by P2P applications and a
+%trust relationship between P2P users and their ISPs.
 
 % TODO: Taxomize the approaches that have been proposed in the literature
 % for unstructured and structured overlay networks
@@ -406,10 +216,10 @@ Ultimately, it reviews the most important resources found in the literature that
 %
 %\subsection{cache based} 
 %
-%Caching based protocols are effectively used to reduce traffic costs and response
-%times. The caching policy varies depending on the way protocol handles the index and the
-%content. Centralized P2P systems
-%use central index servers, while local caching systems, such as KazaA, use super peers
+%Caching based protocols are effectively used to reduce traffic costs and
+%response times. The caching policy varies depending on the way protocol handles
+%the index and the content. Centralized P2P systems use central index servers,
+% while local caching systems, such as KazaA, use super peers
 %to cache indices in a distributed way. Content caching is also possible in P2P
 %systems, where nodes cache the forwarded content for further retrievals.
 %Although caching has the above mentioned advantages,  duplication
@@ -427,8 +237,8 @@ Ultimately, it reviews the most important resources found in the literature that
 %The overlay optimization based protocols modify the topology of the P2P network
 %using various techniques. These approaches include creating spanning trees using 
 %connection graphs, creating cluster of physically close nodes, or using latency
-%information to detect proximity. The brief description of each category is presented
-%below:
+%information to detect proximity. The brief description of each category is
+%presented below:
 %
 %  \begin{itemize}
 %    \item \emph{Spanning tree based}. These approaches construct of a rich graph
@@ -530,7 +340,9 @@ Ultimately, it reviews the most important resources found in the literature that
 %HA: Possible criteria: based on which protocol (eg Gnutella, CAN etc), peer
 %selection (topology selection, cluster, cache etc), supports dynamic update,
 %runtimes}}
-%%\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Forwarding} & \textbf{Cache} & \textbf{Overlay optimization} & \textbf{Proximity information} & \textbf{Base protocol} & \textbf{Dynamic update} & \textbf{Runtime} \\
+%%\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Forwarding} &
+%\textbf{Cache} & \textbf{Overlay optimization} & \textbf{Proximity information}
+%& \textbf{Base protocol} & \textbf{Dynamic update} & \textbf{Runtime} \\
 %
 %
 %{\sethlcolor{yellow}\hl{
@@ -541,1049 +353,10 @@ Ultimately, it reviews the most important resources found in the literature that
 %HA: maybe add also the year of publication, and see if there is a pattern in
 %terms of the method and the year??}}
 
+\input{unstructured}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Unstructured Decentralized Algorithms}\label{sec:unstructured}
-
-This section is dedicated to the unstructured P2P architectures. In the next paragraphs, algorithms for tackling the topology mismatch problem on such networks are visited, analysed and categorised based on the use of the overlay structure, messaging approach for peer communication and techniques proposed for detecting proximity in order to optimise overlay topology. In short, the methods that are highlighted here are divided into
-\begin{inparaenum}[\itshape i\upshape)]
-  \item broadcast-based,
-  \item cache-based,
-  \item overlay optimisation-based, and
-  \item landmark-based
-\end{inparaenum}
- approaches.
-
-% TODO: READ A Near-Optimal Algorithm Attacking the Topology Mismatch Problem in Unstructured Peer-to-Peer Networks (This is an Approximation alg for Top-mis problem)
-
-%{\sethlcolor{yellow}\hl{
-%HA: TALK ABOUT GNUTELLA HERE!!!!}}
-
-\subsection{Broadcast Based}
-
-In the first realisation of the Gnutella protocol, each query request received by a peer is then forwarded to all its
-neighbours, clearly generating unnecessary traffic over the network. The algorithms highlighted in this paragraph are referred to as broadcast-based because they enhance the "naive" broadcasting approach described above and prefer forwarding messages to a selected subset of a node's outgoing links. The selection criteria vary depending on the algorithm but they mainly use one or multiple statistical metrics that span from the obvious ones, like the latency of the link between the nodes, to more sophisticated alternatives (that may even take into account application level requirements) such as the reliability of the neighbour. The forwarding-based approach has the advantage of enhancing search efficiency but on the other hand suffer drawbacks like the drastic reduction of the search scope because of the restrictions of the broadcasting policies as well as limitations when scaling to large networks.
-
-%Expanding the search scope, on the other hand, is no easy task
-%because the overhead of forming multicast trees is proportional to the multicast group size.  
-%forwarding based schemes do not consider dynamic joining
-%and leaving of peers so they do not scale well on dynamic environments.
-
-\paragraph*{\bf Improving search in peer-to-peer networks}
-
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.4]{img/algorithms/iterative_deepening}
-\caption{Iterative deepening with three levels.}
-\label{fig:iterative_deepening}
-\end{figure*}
-
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.4]{img/algorithms/directed_bfs}
-  \includegraphics[scale=0.4]{img/algorithms/local_indices}
-\caption{(left) directed BFS. (right) local indices with radius size equal to $2$.}
-\label{fig:directed_bfs}
-\end{figure*}
-
-\cite{yang_improvep2psearch_2002} proposes an easy to implement and practical
-solution to the inefficiency problem caused by blind flooding in Gnutella-like
-P2P file sharing protocols. The paper replaces blind flooding with three
-approaches, namely \textit{iterative deepening}, \textit{directed BFS}, and
-\textit{local indices}. In \textit{iterative deepening}, as shown in Figure \ref{fig:iterative_deepening},
-the search is performed
-on a BFS tree with multiple preset depths. The depth limit is iteratively
-increased by the source node for each query based on the quality of the results.
-The source node, after examining the results, may issue a new request by
-increasing the depth limit, which will trigger the nodes at the last depth
-level to resume the search. The iterative approach avoids to start the search
-from scratch at each iteration and reduces the load of the nodes on the upper
-levels of the tree. The major drawback of \textit{iterative deepening} is the
-delay between successive iterations, as the source node needs to examine the
-results at each iteration before deciding to quit or resume the query.  The
-\textit{directed BFS}, as shown in Figure \ref{fig:directed_bfs}(left), tries to avoid this delay by forwarding the query messages
-only to a selected set of neighbours, in which the selection criteria varies
-from the number of results received previously, distance in terms of hops,
-bandwidth, or the query load of the neighbour. In \textit{local indices}, as shown in Figure \ref{fig:directed_bfs}(right), each
-node sustains a local data index of the nodes within a radius of $r$ hops from
-itself and uses this local index to remotely query the neighbour nodes without
-generating additional traffic.  \textit{Local indices} greatly reduces the
-aggregate bandwidth usage of the network and improves query efficiency, however,
-updating the indices in cases with frequent node joins and leaves introduces a
-serious overhead to the system if the radius is kept broad.
-
-\paragraph*{\bf Gia}
-
-\emph{Gia} \cite{chawathe_gia_2003} is an effort to solve the scalability
-problem of the unstructured P2P file sharing systems, in particular Gnutella.
-The main novelty in the design of Gia is the replacement of the blind flooding
-approach of Gnutella with random walks \cite{lv_randomwalks_2002}. Although
-random walks is a step in the right direction, issuing only a single copy of the
-query within the network reduces the search scope, thus affecting negatively the success rate
-of the query.  In order to overcome this limitation, Gia introduces a
-token-based flow control mechanism, which is essentially an intelligent flow
-control algorithm that gradually redirects the queries to nodes which are more likely to answer. In order to prevent overloading of nodes with query requests, Gia uses a token-based flow control algorithm in which each node announces the number of query requests it
-can handle in terms of tokens to its neighbours, so that neighbours only forward
-query requests to nodes that they previously received tokens from. Gia also acknowledges the heterogenity in peer bandwidth,
-processing power, disk speed, etc, of the nodes in P2P networks and uses this
-information when connecting nodes to each other and by using a topology
-adaptation algorithm, Gia ensures that high capacity nodes have high degrees and
-low capacity nodes are within short proximity to high capacity ones. Although the
-topology adaptation algorithm Gia uses improves the scalability of the network,
-it does not help much in solving the topology mismatch problem, since it does
-not consider the underlying physical topology.
-
-\paragraph*{\bf Distributed Cycle Minimization Protocol}
-
-We have already mentioned Gnutella's inefficient broadcasting mechanism in flooding messages across the network with no actual targeting. This leads, to nodes that are far from the path towards the query request gratification, to spend their valuable resources to receive, queue and process messages that they shouldn't have received in the first place and eventually simply forward them blindly to continue this vicious cycle. Except from that, though, an other case of wasting network resources is when a node that is on the right path for the query, receives the same message multiple times from different neighbours. The reason for these duplicate messages is cycles in the forwarding paths. Actually, this duplicate packet problem seems to hurt more the active nodes; those with higher capacities and bandwidth that contribute the most to the network. Distributed Cycle Minimization Protocol (DCMP) \cite{zhu_dcmp_2008} introduces a method to
-remove the cycles and eliminate the duplicate packets, without sacrificing overlay
-connectivity. In DCMP, once a cycle is detected, the most powerful node in the
-cycle is elected as the \emph{Gate Peer} and the cycle is then destroyed by cutting that special link which will result in the minimisation of the distance to the Gate Peer for all the nodes that participated in that cycle. The process is managed by using two special message types namely \emph{Information Collection (IC)} and \emph{Cut Message (CM)}. One disadvantage of DCMP is that since the distance a forwarded message can travel is limited
-by the TTL value, which is practically $7$ in most cases DCMP cannot detect
-cycles formed by more than 7 peers. Even though cycle elimination improves the
-network performance, it does not actually solve the topology mismatch problem.
-
-
-%\subsection{Cache Based}
-%
-%Caching based protocols are effectively used to reduce traffic costs and response
-%times. The caching policy varies depending on the way protocol handles the index and the
-%content. Centralized P2P systems
-%use central index servers, while local caching systems, such as KazaA, use super peers
-%to cache indices in a distributed way. Content caching is also possible in P2P
-%systems, where nodes cache the forwarded content for further retrievals.
-%Although caching has the above mentioned advantages,  duplication
-%of messages still exist, which limits the scalability of these approaches.
-%Therefore, cache based approaches are analyzed in the following categories:
-%  \begin{itemize}
-%    \item \emph{data index caching},
-%    \item \emph{content index caching},
-%    \item \emph{centralized}, and
-%    \item \emph{local}.
-%  \end{itemize}
-%
-
-\subsection{Cache Based}
-Caching is a widely used technique to exploit locality and minimise
-redundant transfer of data, initially adopted by web and file server application environments with great success. Since peers in a P2P system also work as servers, it is intuitively expected that P2P file sharing systems can also benefit from caching. However, two of the main characteristic properties of P2P systems, nodes frequently joining and leaving and query lifetime relatively short (at least compared to those needed to be served by web servers) , makes caching in P2P networks a non-trivial issue. There are
-usually two levels of caching possible in file sharing systems, caching indices or pointers to data or caching the data itself. Caching is already implemented and successfully used in some commercial P2P systems. One popular example is KazaA, which uses caching of indices on its super-peer level. In the paragraphs below, caching-based algorithms are presented and explained in more depth.
-
-\paragraph*{\bf Replication Strategies in Unstructured Peer-to-Peer Networks}
-
-\cite{Cohen02} aim to improve the inefficient blind search algorithm by
-replicating the data in a P2P network. The main intuition behind the
-idea of replication, or using cached copies, is that as the number of copies for
-each item increases in the network, it would be easier for a search algorithm,
-even a random one, to locate these items. In order to analyse the feasibility of
-such an approach, the authors investigate three different replication
-strategies, namely uniform, proportional, and square root allocation. In the
-uniform model, the copies of items are uniformly replicated in the network,
-while in the proportional model, the items are replicated based on their query
-rate, so that frequently queried items are replicated more. The square root
-allocation is a strategy proposed in this paper, which is a model between the
-uniform and proportional allocation.  In order to evaluate the outcome of the
-replication models, the overall costs of successful and unsuccessful searches in the network are compared. Results argue that the uniform allocation model minimizes the maximum search size, therefore reduces the time spent on an unsuccessful search. The proportional model, on the other hand, promotes the more frequently queried items by replicating them
-more, therefore decreases the search time for popular items, but suffers when
-needing to locate the rare items. The authors also claim that the expected successful
-search size is the same for uniform and proportional models, and any approach
-between them would behave much better. Therefore they propose the square root
-allocation approach, which is a replication strategy that minimizes the expected
-search size of successful queries in P2P networks.
-
-\paragraph*{\bf Tracing a large-scale Peer to Peer System: an hour in the life of
-Gnutella}
-
-\cite{Markatos02} analyses Gnutella network traffic traces and by concluding there is locality among query requests, proposes a caching algorithm that tries to exploit these findings . The analysis of the trace data reveals other important facts about the structure of the Gnutella network and the query data.  One significant observation is that the geographic locations of clients do not have a correlation with the number of query requests they receive. This is an obvious result of the topology mismatch problem caused by the overlay structure of the Gnutella network. Gnutella's traffic is observed to be bursty
-both for query requests and query responses, even in longer intervals, and nine
-out of ten queries do not generate any response due to the inefficient design of
-the Gnutella network. When developing a caching system to exploit locality,
-applying an approach similar to web caching does not fit well with P2P systems.
-Caches in P2P systems not only have to consider the query string, but also
-the TTL value, the source of the query, and the time of the query as well.  In
-general, even though optimum caching is hard to achieve, it is reported that
-it improves the overall performance of the Gnutella network.
-
-\subsection{Overlay Optimization Based}
-
-The overlay optimization based protocols modify the topology of the P2P network
-using various techniques. The two commonly used approach that is investigated in
-this section are creating spanning trees using 
-connection graphs, and creating clusters of physically close nodes. 
-%The brief description of each category is presented below:
-Spanning tree based approaches construct rich graphs based on the network
-connections and build minimum spanning trees on these graphs. Even though spanning trees provides efficient query performance, the construction
-and the update costs of the spanning tree, especially in dynamic environments
-with many nodes joining and leaving the network, cause large traffic
-overhead to the corresponding network \cite{chu_esm_2000,chu_esm_2002}. The cluster based approaches on the other hand select to link physically closer nodes with each other, therefore significantly shrinking the search scope of the system. Added to that,
-commonly used methods for correct determination of physical node positions across Internet do not always return reliable results, therefore mapping
-accuracy is not guaranteed. Bellow, the details of the algorithms that use the spanning tree based or cluster based topology optimization methods are presented.
-
-\paragraph*{\bf Narada}
-
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.4]{img/algorithms/narada}
-  \includegraphics[scale=0.4]{img/algorithms/narada2}
-  \includegraphics[scale=0.4]{img/algorithms/narada3}
-\caption{(left) underlying network with edge costs. (middle) Peer A sends a message to the rest using regular broadcast. (right) Peer A sends a message to the rest using end system multicast.}
-\label{fig:narada}
-\end{figure*}
-
-Narada \cite{chu_esm_2000,chu_esm_2001,chu_esm_2002} is a generic protocol for creating self-adapting overlay networks, that can achieve application-layer multicast communication without requiring IP multicast infrastructure at the network layer. IP multicast is the term reffering to the method of sending IP datagrams to a group of receivers in a single transmission. Even though the method is available some years now, IP multicast has not taken off as anticipated since many believe that it violates the stateless design of the current Internet. For this reason it is widely deployed in contained environments like enterprises (i.e. IPTV applications - distance learning, video conferencing), commercial stock exchanges, and multimedia content delivery networks. Narada tries to break these constraints. Although it was not originally designed as a P2P file sharing protocol, it has become one of the pioneering works in the overlay networks area. The authors claim that, although Narada is not as efficient as IP multicast, still it provides reasonable performance, without the additional cost of implementing multicast services on the current Internet infrastructure. Additionally, authors realised the inefficiency caused by the topology mismatch problem and tried to encounter it by building a richer connected graph, called a mesh, and building per source minimum spanning trees \footnote{ENarada \cite{li_enarada_2008} used Gossip protocol for the construction} as shown in Figure \ref{fig:narada}. They also keep the
-graph and the trees dynamically updated while nodes continue to join and leave the network. Moreover, the protocol tries to ease the physical link stress, the overall resource usage and the relative delay among end systems. Unfortunately, the most imporpant limitation of Narada is that although it works reasonably well for small groups, it does not scale well for larger networks, therefore it is not suitable for, potentially very large, P2P file sharing application networks.
-
-\paragraph*{\bf Adaptive Overlay Topology Optimization and Adaptive Connection
-Establishment}
-
-\emph{Adaptive Overlay Topology Optimization (AOTO)} \cite{liu_auto_2003} is one of the first attempts, along with Narada, from the P2P research community to address the topology mismatch problem. AOTO is a distributed algorithm that uses \emph{Selective Flooding} and \emph{Active Topology} to optimize the overlay network topology. The \emph{Selective Flooding} algorithm creates a minimum spanning tree over the overlay and uses this tree instead of flooding the whole network, without shrinking the search scope. In \emph{Active Topology}, the physical locations of nodes are estimated based on the network delay among them and physically close nodes are connected as neighbours to revise the overlay topology as close as possible to the physical network topology. Overall, AOTO reports a $55\%$ performance improvement in terms of the traffic load. In \emph{Adaptive Connection Establishment (ACE)} \cite{liu_ace_2004}, the authors extend the idea by introducing optimizations based on the depths of the minimum spanning trees. But since the network delay is not always a reliable estimation method to detect the physical location of peers, the algorithm still suffers from the discrepancies caused by mislocated nodes.
-
-\paragraph*{\bf Location-aware Topology Matching}
-
-\emph{Location-aware Topology Matching (LTM)} \cite{liu_ltm_2004} proposes a method to optimize the overlay structure of the P2P network based on the physical topology. To achieve this, the algorithm issues a special message called \textit{TTL2-detector} to detect the latency of two-hop neighbours ($N^2$) around each node. The latency information gathered is later used to evolve the overlay network into a more efficient one, without reducing the search scope. Each node examines the latency information with the neighbours and low productive connections are dropped and replaced by more efficient ones, thus reducing the latency on the overall network, and eliminating some potential inefficiencies, such as unnecessary crossing of messages over autonomous system (AS) boundaries, etc. Although LTM improves the overall efficiency of the P2P network, it does not actually use real physical topology information, just latency metrics, therefore it does not offer a guaranteed safety net for the topology mismatch problem.
-
-\paragraph*{\bf Scalable Bipartite Overlay}
-
-\emph{Scalable Bipartite Overlay (SBO)} \cite{liu_bipartite_IPDPS,liu_bipartite_2007} reduces the overhead of creating and maintaining a minimum spanning tree cost by randomly dividing the nodes into two groups, namely red and white and assigning different tasks to different groups. The white peers measure distances to neighbours by using the network delay as the metric and reports the results to red peers. The red peers, equipped with the
-information of all two-hop neighbours ($N^2$), creates a minimum spanning tree
-of these neighbours and assigns efficient forwarding paths. The white peers can
-further optimize their positions within the overlay if this is required.
-
-%\paragraph*{\textbf{Two-Hop-Away Neighbour Comparison and Selection\\}}
-%
-%\paragraph{}
-%Work in \cite{liu_thancs_2005,liu_thancs_2008} proposes a distributed heuristic called \emph{Two-Hop-Away Neighbour Comparison and Selection (THANCS)} that
-%\begin{inparaenum}[\itshape i\upshape)]
-%  \item is completely distributed and needs no global knowledge,
-%  \item presents trivial overhead compared to the query cost savings
-%  \item its convergent speed of the algorithm is fast enough (faster than minimum spanning tree approaches) so that is effective to dynamic environments, and
-%  \item does not shrink the search scope.
-%\end{inparaenum}
-%
-%\paragraph{}
-%THANCS is considered a \emph{local search method}, in the sense that it targets in finding a locally optimum solution, by exploiting knowledge within a 2-hop radius. The algorithm consists of two main components: \emph{piggybacking neighbour distance on queries} and \emph{neighbour comparison and selection} which are furtherly discussed bellow.
-%
-%\paragraph{Piggybacking neighbour distance on queries}
-%Using network delay as a metric for measuring the distance, each peer probes distances with its immediate naighbours and stores information locally. For this reason a special query message type, \emph{Piggy Message (PM)}, is introduced. It is 6 bytes long and includes two fields: Neighbour IP Address and Neighbour Distance. A peer $P$ constructs a PM for its neighbour $Q$, which contains $Q$'s IP address and $Q$'s distance from $P$. When $P$ receives a query from $Q$, this PM will be piggybacked by the query that goes to all other neighbours of peer $P$. Upon receiving such a query message, each of the other neighbours will detach the PM, record the $PQ$ distance and process the query. This PM will not be further forwarded. In selecting which incoming queries  should piggyback a PM the paper proposes the \emph{pure propability-based (PPB)} and the \emph{new neighbour triggered (NNT)} policies.
-%
-%\paragraph{Neighbour comparison and selection}
-%Figure~\ref{figure:thancs} illustrates this component of the THANCS algorithm. A peer $S$ probes the distance to all known unprobed $N^2(S)$\footnote{$N^2(S)$ denotes the set of peers being two hops away from $S$, while $N(S)$ denotes the set of direct logical neighbours of $S$.}. The distance of $SP$ is known to $S$. Upon receiving a PM from node $P$ with the distance of $PQ$, $S$ follows one of the following:
-%\begin{itemize}
-%  \item $Q \in \left( N(S) \cap N^2(S) \right)$, i.e. $Q$ is direct neighbour of $S$. In this case $S$ will compare cost of $SQ$, $SP$ and $PQ$. If the most costly connection is one of $SQ$ or $SP$ the corresponding link will be put into a \emph{will-cut list}\footnote{Links are not immediately disconnected when put in the will-cut list. There are useless for forwarding but are kept active, for some time, in order to serve query responses that are traveling to the source peer along the inverse search path.}. If the most costly connection is $PQ$ then $S$ will do nothing, as the fully distributed nature of the algorithm will give a chance to either $P$ or $Q$ to cut the connection.
-%  \item $Q \in \left( N^2(S) - N(S) \right)$, i.e. $Q$ is a two-hop-away neighbour of $S$. If $S$ hasn't probed $Q$ before\footnote{A distance cache is maintained and looked up in such a case.}, it probes and stores the result in the \emph{distance cache}. Having the distance of $SQ$, $S$ compares costs of $SQ$, $SP$ and $PQ$. If $SQ$ is the most costly, $S$ will not establish the connection. If $SP$ is the most costly, $S$ will establish connection $SQ$ and put $SP$ in the will-cut list. If $PQ$ is the longest, $S$ will keep  the connection with both $P$ and $Q$, expecting that $P$ or $Q$ will eventually disconnect link $PQ$, later.
-%\end{itemize}
-%
-%\begin{figure}
-%\centering
-%  \includegraphics[scale=0.4]{img/thancs.jpeg}
-%\caption{Probing two-hop-away neighbours}
-%\label{figure:thancs}
-%\end{figure}
-%
-%\paragraph{}
-%In a static environment THANCS has been proven to be effective; optimizing 45 percent out of the 60 percent of mismatched paths, constructing a nearly optimal overlay. This leads to a 60 percent reduction in traffic cost as well as a 40 percent decrease in query response time. In dynamic environments (Gnutella 0.6/Limewire super-peer-like and Ion flat-like), THANCS saves up to 70 percent of the traffic cost in the super-peer topology and 55 percent for the flat one. Average response time is also decreased by 60 and 45 percent, respectively. Generally, THANCS has similar performance to LTM, without needing synchronization. SBO, incurring half the  overhead of AOTO, reduces the traffic cost the most, while THANCS has lower response time and converges faster than SBO. THANCS is, thus, more suitable for a more dynamic environment. In addition, THANCS is easy to implement and its operation overhead is trivial, compared with the other three approaches. This design, however, has the limitation of not being easily extend to also support non-flooding-based systems.
-
-
-\paragraph*{\bf Peer-exchange Routing Optimization Protocols}
-
-\cite{qiu_prop_2007} introduces two protocols called \emph{Peer-exchange Routing
-Optimization Protocols (PROP)} to adjust the neighbourhood graph of an overlay
-network in order to reduce its overall link latency. PROP algorithms are based on the exchange of neighbours among peers, driven by the mutual benefit of the participants to reduce the network delay among their connections.  In PROP-G (Generic), a peer can exchange all of its neighbours with another peer, while in PROP-O (Optimized) two peers exchange a selected subset of their neighbours. PROP-G is a generic protocol that guarantees the connectivity of the overlay graph during exchanges, therefore can be applied to both unstructured and structured overlay networks. 
-
-\paragraph*{\bf T2MC}
-
-T2MC \cite{shi_t2mc_2008} uses traceroute logs to detect different autonomous systems and
-cluster close by peers, thus reducing redundant traffic that crosses autonomous system boundaries. T2MC uses a customized k-mean classification
-algorithm with $k=2$ to perform the classification, and exploits the stable
-structure of the Internet routers to guide clustering.
-Even though traceroute provides detailed information about the network
-structure, its excessive use creates additional overhead that stresses further the overall network infrastructure. This forces network administrators to disable its support from the routers they manage, thus jeopardizing the effectiveness of the T2MC algorithm. 
-
-%\paragraph*{\textbf{T2MC\\}}
-
-%\paragraph{}
-%\emph{T2MC}\cite{shi_t2mc_2008} exploits some properties of the Internet paradigm and clusters nodes belonging to the same ISP without any centralised control or predefined system parameterization. The algorithm considers the dynamic nature of peers and exploits the stable nature of routers in order to build a topology location relationship among end peers.
-%
-%\paragraph{}
-%Some special routers split the physical network into autonomous system domains. Using a Traceroute mechanism T2MC searches for latency leaps among the path to a host in order to form ``near'' and ``remote'' router clusters. This is achieved by a 2-Means Classification, defined by the following steps:
-%\begin{enumerate}
-% \item the peer chooses the minimum and maximum Latency results from the Traceroute for initializing the cntroinds of two sets ``first'' and ``second''.
-% \item The peer calculates, for all hops allong its tracerouted path, the absolute distance to the centroids of both sets and assigns the routers to that centroid with which it has the smaller absolute distance.
-% \item The peer calculates the latncy mean and variance value of two sets
-% \item If the variance is larger than a predefined threshold then the algorithm takes a loop from step 2 picking the two latency mean values as new centroids of sets ``first'' and ``second''.
-%\end{enumerate}
-%Ultimately peer will end up with two sets having the minimum intra-set variance. Finally the peer chooses the router from ``second'' set with the minimum hops attribute and sets it as a threshold. The selected router and all others whose hops attribute is larger than the threshold are classified as ``remote'' router cluster. The remaining are classified as ``near''. From the ``near'' class, the peer chooses the one with maximum hops attribute as its edge router, and registers it along with the all the ``near'' cluster into the DHT of the p2p overlay. As new peers join the network, those that share the same edge router or any of the members of the ``near'' router clustersm ther would gather to form a ``close'' peer cluster. As Edge routers can provide more valuable information than other members of the ``near'' set, T2MC was designed to prioritize interaction of peers and edge gateways.
-%
-%% TODO: figure t2mc.jpeg (a) stars represent edge routers (b) hop leaps
-%
-%\paragraph{}
-%The use of Traceroute as a tool for implementing the distance measuring infrastructure raise concearns about its efficiency and scalability. Being, primarilly, a network diagnostic utility, it is concearned too heavy weighted and intrucive for use in a larger scale\cite{ratnasamy_binning_2002}. Additionally, disabling ICMP is a common administrative policy for edge sites to enforce security, while dumping BGP routing tables\cite{krishnamurthy_bgpclust_2000} is not directly available to the application layer.
-
-\paragraph*{\textbf{Resolving the Topology Mismatch Problem in Unstructured Peer-to-Peer Networks (?)}}
-% TODO: to be reviewed
-
-In \cite{hsiao_redblue_2009}, Hsiao et al, claim to construct topology-aware unstructured overlays that \emph{guarantee} performance qualities in terms of
-\begin{inparaenum}[\itshape i\upshape)]
-  \item the expected communication latency among any two overlay peers regardless of the network size, and
-  \item the broadcasting scope of each participating peer
-\end{inparaenum}
-. The algorithm constructs an undirected graph $G = \left( V, E \right)$ comprised by two subgraphs. The first, namely $G^{\left( red \right)} = \left( V^{\left( red \right)}, E^{\left( red \right)} \right)$ in the paper's context, includes all vertices of $G$ and ensures the connectivity of the graph by securing at least one path between any two nodes. In contrast, $G^{\left( blue \right)} = \left( V^{\left( blue \right)}, E^{\left( blue \right)} \right)$, contains those vertices of $G$ that have free edges to link to other nodes and because these are fully utilized, the following also stands $E = E^{\left( red \right)} \cup E^{\left( blue \right)}$. A joining peer $u$, partitions its neighbours into two subsets, the $B_u^{\left( red \right)}$ and $B_u^{\left( blue \right)}$. In order to populate the $B_u^{\left( red \right)}$ subset, peer $u$ samples peers uniformly and at random. Then, each of these selected peers discovers a routing path starting from itself towards the node with the smallest (or the largest) ID in the system.
-
-\paragraph*{\bf Distributed Domain Name Order}
-
-\emph{Distributed Domain Name Order (DDNO)} \cite{zeinalipour-yazti_ddno_2005}
-uses the domain names to detect topologically close nodes based on the
-assumption that nodes within the same domain are topologically close to each
-other. Half of the possible connections of a node is used to connect to these
-local peers, and the other half is used to randomly connect to the peers
-anywhere on the network.  \textit{DDNO} is a heuristic approach to solve the
-topology mismatch problem, with local connections to improve the efficiency and
-reduce the delay on the network.  The random connections on the other hand help
-ensure the connectivity in the network and avoid partitioning. \textit{DDNO}
-uses \textit{Split-Hash} and \textit{dnMatch} algorithms to detect locality by
-using domain names.
-
-\subsection{Landmark Based Proximity}\label{sec:landmark}
-
-Detecting the proximity of a node using landmarks, also known as \textit{Landmark
-Clustering}, is based on the view that nodes with similar distances to a
-set of predefined well-known landmark nodes are pretty likely being close to
-each other. But this approach has its weaknesses itself, like the fact that
-is a rather coarse grained approximation, therefore not particularly well suited
-for detecting the correct positions of nodes within close distance to each other.
-
-\paragraph*{\bf Landmark Binning}\label{sec:landmark_binning}
-
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.4]{img/algorithms/landmark_binning}
-\caption{Example 2D coordinate overlay and a sample routing path from node D to (x,y).}
-\label{fig:landmark_binning}
-\end{figure*}
-
-Landmark Binning \cite{ratnasamy_binning_2002} is an approach to partition close
-by nodes into bins based on their distance to well known anchor nodes across the Internet, as shown in Figure \ref{fig:landmark_binning}. In order to detect locality, nodes use network latency (round trip
-time) as a measurement technique. The network latency, even though not always
-accurate, is selected in this work due to its non-intrusive, transparent and
-easy to apply behaviour. In order for the binning to work, few well known anchor servers with known physical locations on the Internet. Authors estimate that a number of 12 such servers can prove sufficient for this. The nodes measure their distance to all these servers and record the latency values for each. Later, the tuple of these latency values represents the bin of each node. Nodes with similar latency values are considered close to each other, or at least within the same autonomous system. The operation of the method is independent of the model incorporated by the overlay network and thus it can be applied with no significant changes to both structured and unstructured P2P systems. \cite{ratnasamy_binning_2002} has the detailed description of such algorithm for both architectures. Landmark binning is also considered as a good candidate for content distribution networks in particular. The major disadvantage of landmark
-binning is to install and maintain landmark servers on different autonomous systems, all over the world.  A typical P2P network usually has a couple of million nodes
-connected at any given time, thus rendering landmark servers an important parameter when designing for large scales.  The authors claim that latency estimation does not drain
-much from the network resources but in case scalability problems arise, they claim the solution is replacing single landmark servers with clusters of servers
-within the same physical area. However, this approach does not reduce the
-possibility of excessive network traffic flow through these landmark servers. One other
-possible problem is the incorrect binning caused by the use of inaccurate methods for delay measurement, since tracking down, for example, network latencies is far from proven to be safe for location estimation.
-
-% TODO: MAYBE THANCS deserves some more attention here
-
-\paragraph*{\bf mOverlay}
-
-mOverlay \cite{zhang_moverlay_2004} tries to addresses the scalability issues that might be imposed to networks when using static landmark servers by introducing the dynamic landmarks. The authors introduce the notion of a group which is a set of  peer considered close to each other with respect to any  position in the underlying network, proximity being some  user-defined cost metric (i.e. round-trip-time). mOverlay, tries to recreate small-world-like properties to the overlay network by creating a a two-level hierarchical structure, where on the top level we have connections between groups while on the bottom we have connections between peers inside groups. Finding the correct closest group is the most important part  of the overlay construction. Nodes are grouped based on their  distance to the groups already in the network, rendering the  later the (dynamic) landmarks for the process. The authors formally prove that any new node can reach its group by exchanging at most $O(logN)$ messages within the network. Finally mOverlay also considers a second important function in its protocol which is the constant maintenance of the overlay.
-
-\renewcommand\arraystretch{1.4}% (MyValue=1.0 is for standard)
-
-%\begin{figure}[h!]
-\hspace{-3ex}
-\begin{center}
-\footnotesize
-%\begin{tabular}{
-%\begin{landscape}
-\begin{longtable}{
-|>{\columncolor[gray]{.7}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.4\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.2\columnwidth}
-%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|}
-\caption{Decentralized Unstructured Algorithms} \label{fig:unstruct_compare_table} \\
-\hline
-\rowcolor[gray]{.5}
-\textbf{Algorithm} &  \textbf{Overlay structure} & \textbf{Base protocol} &
- \textbf{Scalability}\\
-\hline
-\endfirsthead
-\multicolumn{4}{c}%
-{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
-\hline
-\rowcolor[gray]{.5}
-\textbf{Algorithm} &  \textbf{Overlay structure} & \textbf{Base protocol} &
- \textbf{Scalability}\\
-\hline
-\endhead
-\hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
-\endfoot
-\hline
-\endlastfoot
-\textbf{Narada} & \textbf{Overlay optimization
-based}. Creates a mesh (richer connected graph) and builds minimum spanning
-trees on this mesh & & Small and sparse groups \\
-
-\hline
-\textbf{Gia} & \textbf{Broadcast based} Replaces
-Gnutella flooding with random walk, and introduces KaZaA style supernodes. Uses
-dynamic topology adaptation protocol &
- Gnutella &  Better than Gnutella  \\
-
-\hline
-\textbf{Adaptive Overlay Topology Optimization} & \textbf{Overlay optimization
-based}. Creates overlay multicast tree with Selective Flooding protocol&
-Gnutella &  Better than Gnutella \\
-
-\hline
-\textbf{Location-aware Topology Matching} & 
-\textbf{Overlay Optimization Based}. Uses \textit{TTL2-detector flooding}, \textit{low productive
-connection cutting}, and \textit{source peer probing}. & Gnutella &  Better than Gnutella \\
-
-\hline
-\textbf{Replication Strategies in Unstructured P2P Networks} &
-\textbf{Cache Based}. Uses uniform, proportional and square root allocation
-strategies to replicate data. & Gnutella &  Better than Gnutella \\
-
-\hline
-\textbf{Tracing a large-scale Peer to Peer System: an hour in the life of Gnutella.} &
-\textbf{Cache Based}. Proposes a caching algorithm based on the traces of the Gnutella traffic & Gnutella & Better than Gnutella \\
-
-\hline
-\textbf{Improving search in P2P networks} &
-\textbf{Broadcast Based}. Uses \textit{iterative deepening}, \textit{directed
-BFS}, and \textit{local indices} to improve efficiency. & Gnutella &  Better than Gnutella \\
-
-\hline
-\textbf{Distributed Cycle Minimization Protocol} & 
-\textbf{Broadcast based} Uses a decentralized cycle elimination protocol  &  &  \\
-
-\hline
-\textbf{Scalable Bipartite Overlay} & 
-\textbf{Overlay optimization based} Uses bipartite partition graph and builds
-local minimum spanning trees  & Gnutella  & Better than Gnutella \\
-
-\hline
-\textbf{Adaptive Connection Establishment} & 
-\textbf{Overlay optimization based} Forms Neighbour Cost Tables, builds local
-minimum spanning trees and perform local optimizations & Adaptive Overlay
-Topology Optimization (AOTO), Gnutella & Better than Gnutella \\
-
-\hline
-\textbf{Hops Adaptive Neighbour Discovery} &  & &  \\
-
-\hline
-\textbf{Two-Hop-Away Neighbour Comparison and Selection (THANCS)} &
-\textbf{Overlay optimization based} Uses piggybacking to discover neighbour
-distances and selects neighbours  & Gnutella  & \\
-
-\hline
-\textbf{mOverlay} &\textbf{Landmark based proximity} Uses dynamic landmarks to find node locality
-& & Due to dynamic landmarks and grouping, more scalable than tree-based or mesh-based protocols \\
-
-\hline
-\textbf{Distributed Domain Name Order (DDNO)} &
-\textbf{Overlay optimization based} Connects half of the nodes connections to
-the nodes in the same domain and the other half to random nodes, therefore
-supports locality and topological connection  &  & Yes, by using super
-peers \\
-
-\hline
-\textbf{Peer-exchange Routing Optimization Protocols} & \textbf{Overlay optimization based} Optimizes overlay by the exchange of
-neighbors among peers  & Can work with both decentralized structured and
-unstructured architecture & Yes \\
-
-\hline
-\textbf{MAY OMIT- T2MC} &
-\textbf{Overlay optimization based} Uses traceroute results for clustering the
-nodes  & & \\
-
-\hline
-\textbf{Unnamed-unstructured} & 
-\textbf{Overlay optimization based} Minimizes the communication delay and
-maximizes the broadcasting range & & Better than THANCS and mOverlay \\
-
-\hline
-\textbf{Landmark Binning} & \textbf{Landmark based proximity} Uses network latency to partition
-nodes into bins & Can work with both decentralized structured and unstructured architecture & \\
-
-\hline
-%\end{tabular}
-\end{longtable}
-%\end{landscape}
-\end{center}
-\vspace{-2.5ex}
-\vspace{-2.5ex}
-%\end{figure}
-
-\subsection{Discussion on the Algrithms for Unstructured Architectures}
-
-In this section we presented the state of the art for the algorithms applied to unstructured P2P systems. We categorised it based on their philosophy for alleviating the topology mismatch problem into four major categories namely
-\begin{inparaenum}[\itshape i\upshape)]
-  \item broadcast-based,
-  \item cache-based,
-  \item overlay optimisation-based and
-  \item landmark-based approaches
-\end{inparaenum}
-. Here we present a overall discussion on the above categories trying to point out the advantages, disadvantages and novelties introduced by each and by all of them. A quick overview can be seen in Table \ref{fig:unstruct_compare_table}.
-
-Broadcast-based approaches in general propose intelligent neighbour
-selection in order to replace the inefficient blind flooding first used in the Gnutella protocol. Instead of forwarding the queries to all their outgoing links they dictate the intelligent selection of neighbours with either higher probability to answer a query than others or neighbours  that expose specific features such as high bandwidth, high capacity, or low latency. This, in practice reduces the aggregate resource usage of the P2P network and improves the overall performance of the system. On the other hand, the algorithms do not offer a real solution to the topology mismatch problem. Thus, none can guarantee that overlay and underlying topologies are aligned with each other let alone quantify the mismatch and try to alleviate. Broadcast-based methods can be used in conjunction with other approaches to improve the quality of the P2P systems.
-
-The success of caching, as a well studied method in client-server Internet
-applications, also made it a good candidate for the P2P networks. Even
-though caching improves the performance, and reduces the overall resource usage
-of P2P systems, the design of caches in this context is non-trivial compared to the web-based caching. Due to the unique, inherent characteristic of all P2P systems that, each node can act as both a server and a client, two important issues have to be considered when designing caches. First, the lifetime of a query is short, as the nodes join and
-leave frequently. Second, the result of a single query string is not always the
-same, as it is dependent on the source of the query, the TTL value set for the messages, the current interconnection of peers and the high volatility of the environment. So, in order to develop a successful caching system for a P2P architecture, these parameters also have to be considered. Even though the state of the art P2P algorithms using caching methods reduce the resource usage of the network, they also fail to consistently address the probelem of the topology mismatch.
-
-Overlay-optimisation-based  can further be devided into minimum-spanning-tree-based and clustering-based. Researchers initially started considering alternatives to IP multicast for the application layer, which led Narada, that simulates the same one-to-many communication approach requiring IP multicast services. Application layer multicast, however, is not as efficient as the one enabled by IP and still struggles to ease the difficulties imposed by the topology mismatch problem. Narada, and its followers (AOTO, LTM, SBO) try to solve the topology mismatch problem by building a richer connected graph and forming minimum spanning trees over this graph that can efficiently route messages among peers. Application level multicast protocols, pioneered by Narada, are generic protocols that can be applied to both P2P file sharing systems, as well as content distribution networks. The original Narada algorithm is designed for small groups therefore it is not scalable. Its followers try to solve the scalability problem by introducing
-various methods including forming minimum spanning trees for the two-hop neighbours ($N^2$) of each node, partitioning the graph into two random groups where each group is
-responsible of different tasks, or performing local optimizations dynamically on
-the overlay graph. The advantage of building minimum spanning trees is that they maintain the connectivity on the network in an efficient manner, while
-still preserving the overall search scope. However, building and maintaining a
-minimum spanning tree creates additional overhead for the network. 
-The alternative method used in overlay optimization is the cluster based
-approache. According to that, nodes use various methods to detect
-physically close nodes to form clusters. T2MC uses traceroute logs and DDNO uses
-domain names to cluster close by nodes. However, the accuracy of the methods
-used to form clusters directly affect the success rate of the algorithm. Traceroute for
-example is a heavy weight utility to be frequently used on the network, let alone the fact that many network equipment vendors do not allow traceroute calls. The major problem with
-cluster based approaches is that the limited connectivity within the local
-domains shrink the search scope dramatically, which negatively affects the
-search performance of the P2P system. DDNO addresses this limitation by allowing
-half of each nodes connections to be to random nodes over the network, which
-balances the efficiency of the clustering approach with improved connectivity.
-
-In landmark-based algorithms, nodes use network delay (round trip
-time) as a distance measurement method to position themselves with respect to ``a priori'' known servers (the landmark servers) on the Internet. Landmark servers are used by nodes to estimate their positions based on the intutive assumption that nodes with similar distances to a set of landmarks, are physically close to each other, as well, over the network. The landmark based protocol has two important drawbacks. Firstly the network delay is not a reliable distance estimation method. For example, based on the load on the network the delay to certain nodes or networks can change from time to time, which will eventually affect the distance measurements and wrong measurements will lead to wrong estimated positions for the nodes, or incorrect and non optimal clusterings of the nodes. The second drawback of using landmark servers is the cost of installing and maintaining this kind of infrastructure across the whole Internet and for all the different autonomous system domains. As popular P2P file sharing applications usually have millions of peers connected at any time, it is not false to assume that the network costs of maintaining these landmark servers will be quite high. A possible solution to the scalability problem of the static landmark servers is to use ordinary nodes as dynamic landmarks once they estimate their own positions. Even though this approach scales much better than static landmark servers, still the measurement accuracy problem affects the overall performance of the system.
-
-
-\section{Structured Decentralized Algorithms}\label{sec:structured}
-
-This section focuses on the structured P2P architectures. The following paragraphs contain a thorough discussion and analysis of the algorithms proposed in the literature for dealing with the topology mismatch problem in such architectures. In structured P2P systems, the construction of the routing tables in every participating node determines the efficiency of message forwarding. Therefore, routing tables that represent the underlying physical structure well can achieve increased performance. For this reason, the proposed methods for topology mismatch problem basically use different levels of proximity information to optimize them towards this direction. The algorithms are here categorised based the previous work done by \cite{castro_proximitydht_2002,castro_topawareroute_2002,ratnasamy_openq_2002}.
-
-%{\sethlcolor{yellow}\hl{HA:  Talk about Tapestry, Pastry, CAN and Chord briefly here!}} 
-
-\subsection{Geographic Layout}
-
-Inside geographic layout category fall those kind of methods which practically position physically close by nodes together in the application space as well. This is done by adjusting and maintaining the routing tables of all involved peers accordingly by exploiting proximity information that describe the overall geographic positioning of the peer nodes. One popular method for detecting and constructing a geographic view of the underlying network is the use of well established servers dedicated to landmarking the physical space, pretty much as discussed in Section \ref{sec:landmark} of landmark based proximity in the unstructured P2P networks. The same disadvantages of difficult and inaccurate positioning and the cost of deploying and maintaining these landmarks apply in this case as well.
-% TODO: maybe a discussion sentence bellow
-Even though managing the overlay structure based on the geographic layout of the nodes improves the query efficiency of the system, on the other hand, it tends to create hotspots, and the needed failure resilience is undermined by the fact that close by nodes are more likely to suffer collective failures.
-
-\paragraph*{\bf Global Soft-State}
-
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.8]{img/algorithms/global_softstate}
-\caption{(left) Position of $p$ in the space of $3$ landmarks. (right) Position of $p$ on the map.}
-\label{fig:global_softstate}
-\end{figure*}
-
-\textit{Global Soft-State} \cite{xu_globstate_2003} builds a global map to help
-choose shorter routing paths, combining the landmark binning method and small
-scale distance probes to reveal the proximity properties of the underlying
-network to the overlay. Figure \ref{fig:global_softstate} presents the landmark space and the mapping of the position of the nodes. This global view of the state is made available to all
-nodes in order to help them find the best way to route their messages.
-\textit{Global Soft-State} operates in two main stages, generation and use of
-the proximity information. For generating the proximity information a hybrid
-approach is proposed, which uses landmark clustering as a preprocessing step in
-order to select a number of potential nearest neighbour candidates and then
-refine the selection by incorporating a round-trip-time-based scheme to ultimately choose the
-closest node. For using the proximity information, the algorithm chooses a
-different path from the classic gossiping approaches for constructing and
-maintaining the overlay. It is based on landmark clustering for strategic
-placement of proximity information on the overlay enabling any node to access
-such information using a landmark number that reflects its physical position in
-the network. For various logical regions\footnote{This might be a high-order
-zone in the eCAN\cite{xu_ecan_2002} context or a set of nodes sharing a
-particular prefix in overlays such as Pastry.} maps of physical information are
-built and published where each node may appear in a maximum of $log\left( N
-\right)$ such maps. To dynamically adapt to changing network conditions, a node
-subscribes to relevant \emph{soft states} that utilize a notification system in
-order to initialize any necessary neighbour re-selection.
-
-Maintaining several host states at different layers, makes any content migration
-costly. Additionally, the method does not make any continuing effort to remap the
-overlay structure after a node successfully joins, in order to adapt its state to
-any condition change. Although this approach greatly reduces the
-routing latency to far nodes, it is unable to dynamically identify nodes that are
-close to routers and gateways in order to construct the secondary overlay.
-Nevertheless, static recognition of such nodes is currently done based on BGP
-reports and pre-chosen landmarks, sacrificing the self-organising attribute of
-traditional DHTs.
-
-\paragraph*{\bf Mithos}
-
-\textit{Mithos} \cite{waldvogel_mythos_2003} is a P2P protocol which
-incorporates directed incremental probing to find near optimal node placement,
-and is classified by its authors as an integration of geographic layout
-and proximity routing overlay optimization methods.
-
-The bootstrap phase of \textit{Mithos} starts with a subset of existing members
-as the first set of candidates, and while the iteratively closest nodes are
-detected by probing the neighborhood, the candidate neighbor list is updated. In
-order to avoid a local minima \textit{Mithos} probes all the neighbours within a
-two hop distance from the current minimum before concluding the process.
-
-After finding its first neighbour, the newcomming peer is assigned an ID using
-information gathered during the iterative neighbour selection phase. Virtual
-coordinates are assigned to the newcomming peer by using the distances of two
-closest nodes and their neighbours, so that Euclidean distances between the node
-and all known hosts predict the network latency between
-them\cite{cox_vivaldi_2004}.  The benefit of these synthetic coordinates are
-that they are explicitly used as the node's ID, and distance computations among
-nodes can be done in ID space without requiring physical measurements.
-
-The last step of the algorithm is the interconnection among neighbours.
-\emph{Mithos} uses a \emph{quadrant}-based mechanism according to which each
-node establishes a link to the closest neighbour in each quadrant. During
-forwarding, the next hop is performed towards a neighbour in the same quadrant
-as the final destination. The newcoming node may not know of other neighbours
-in all quadrants, therefore, the node first identifies neighbours in all
-quadrants using a mechanism based on ideas similar to a perimeter
-walk\footnote{Used in Greedy Perimeter Stateless Routing (GPSR) protocol.} and
-then improves the results using parallel path processing by taking into account
-further geometric properties of node relationships.
-
-One major limitation of \textit{Mithos} is that the protocol cannot handle
-dynamic arrivals and removals from the network, as is happens in mobile
-networks.
-
-\paragraph*{\bf LAPTOP}
-
-\textit{LAPTOP} \cite{wu_laptop_2007},  organises the overlay into a tree based
-hierarchy with main focus on reducing hops during message routing as well as
-minimizing maintenance overhead. Additionally, a caching scheme is also
-incorporated so as to further reduce routing table update costs. The authors
-theoretically show that in \textit{LAPTOP} routing path length is bounded by $O(log_d
-N)$ and node joining and leaving in the overlay network is bounded by $O\left( d
-log_d N \right)$ hops in a balanced overlay tree, where $N$ is the number of
-nodes, and $d$ is the maximum degree of each node. \textit{LAPTOP} implements
-the geographical layout approach  and constructs a geographical layout in a
-self-organizing and efficient fashion, by estimating the round-trip-times to a small number of nodes in the overlay network in order to make them roughly
-aware of their physical distances among them.
-
-Each node is assigned an address in a dotted format (e.g 1.3.4). Each octet
-ranges from $1$ to $d$, where $d$ is the maximum degree of the nodes. The
-assignment process is done by appending a unique octet to the address of each
-nodes
-parent, while root node is assigned address 1.  The routing scheme is similar to the
-longest-prefix IP matching scheme. At each forwarding hop, any message travels
-up the tree until the first common ancestor of both source and destination nodes is
-reached and then starts descending to arrive to its target. During tree
-traversals, special entries in the routing tables, called \emph{routing cache},
-are maintained in order to increase routing efficiency and achieve finer load
-balance. Caching enables a node to forward a message to a better longest-prefix
-match than that of its direct ancestor making a larger, quicker and more cost
-effective step through the overlay and toward the destination. To improve
-scalability, the number of children nodes and the size of the routing cache are
-limited.  In terms of overlay maintenance, \textit{LAPTOP} incorporates a simple
-\emph{heartbeat}-based technique where each parent node is responsible for
-monitoring its children.  At join process the newcomming node is assigned its
-level label as well as its address by its parent node. Additionally it
-initializes its routing table (with normal and caching entries) as it traverses
-the overlay in search for its parent node.  During a graceful departure, the
-referred node checks for children in the overlay. If it does not have any, it
-simply notifies its parent and leaves. If it has, it selects the child node with
-the lowest round-trip-time to it in order to take its place so that the locality property is
-preserved.
-
-\subsection{Proximity Routing}
-Proximity routing does not require routing tables to be built using any knowledge
-about network proximity. On the other hand it exploits such knowledge in order
-to choose the best next hop during routing a message. This approach 
-balances between choosing the node that will further progress the routing
-towards the destination and choosing the closest entry in the routing table, in
-terms of network proximity.
-% TODO: looks like discussion material
-Thus, it is relatively less effective than
-geographical layout when applied to CAN(-like) implementations. Moreover, the
-technique has been incorporated into a version of Chord causing an increase on the overhead of
-node joins and the size as well as maintenance cost of finger tables.
-%
-%\cite{dabek_cfs_2001} proposes a server selection scheme for the Chord DHT, on
-%the domain of proximity routing selection. In \emph{CFS}, each node predicts
-%the entire lookup latency as a function of the total number of nodes and the
-%average overlay next routing peer. The problem is that it is very difficult to
-%have a clear picture on the total number of nodes and the average hop latency
-%from the local. This leads to rough estimations that consequently decreases
-%overall performance.
-%
-The methods that use proximity routing and their details are listed below.
-
-\paragraph*{\bf Proximity in Kademlia}
-Before discussing {\em Proximity in Kademlia}, it would be helpful to briefly
-summarize the highlights about the {\em Kademlia} protocol.
-{\em Kademlia} \cite{maymounkov_kademlia_2002} is a distributed hash table (DHT) based
-protocol for P2P networks, which uses an iteration based lookup algorithm. The
-protocol uses the standard $160$ bit ID system for nodes and locates the nodes in
-a prefix binary tree, where IDs are used as prefixes. The iterative lookup
-operations are done over this prefix binary tree, which converges to logarithmic lookup
-times. The ID's are assigned randomly, therefore in Kademlia,
-there is no proximity control, which results in inefficient use of the underlying
-network during lookup and retrieve operations.
-
-{\em Proximity in Kademlia} \cite{kaune_pkad_2008} introduces proximity controls
-over the base Kademlia protocol to optimize the underlying network usage of the
-protocol. The authors define an abstract {\em underlay metric} that calculates
-the suitability of establishing a communication link between peers as a cost
-function, based on the used proximity criteria (RTT, ISP locality, etc.).
-{\em Proximity in Kademlia} adapted both {\em proximity routing} and {\em
-proximity neighbour selection} overlay optimization algorithms for controlling proximity. Therefore,
-we categorize the protocol only in this section, and skip the discussion in the
-further {\em proximity neighbour selection} section (Sec.\ref{sec:pns}). {\em
-Proximity in Kademlia} also uses the MaxMind GeoIP database\footnote{MaxMind
-Geolocation Technology. http://www.maxmind.com} to detect the
-proximity information of a given peer based on its region, country, or ISP
-location, and use this information to form clusters of nearby peers. One
-other method {\em Proximity in Kademlia} uses is the Vivaldi \cite{cox_vivaldi_2004} protocol. However, authors report that
-clustering approach performs better than Vivaldi protocol based on their
-experiments. Authors also report that {\em Proximity routing} protocol
-successfully worked with the Kademlia protocol and improved the locality of the
-connections over peers.
-
-\paragraph*{\bf CHOord considering Proximity on IPv6 (CHOP6)}
-
-\textit{CHOP6} \cite{morimoto_chop6_2007} is designed based on the
-\textit{Chord} protocol. \textit{CHOP6} roughly estimates the proximity among
-nodes by exploiting the IPv6 address format and RTT information if available.
-The proximity estimation is achieved by introducing a 64-bit ID scheme in which
-the least significant bit part is the IPv6 global routing prefix and thus
-enabling a longest prefix match scheme. The protocol is designed based on the
-observation that it is possible to estimate a node's geographical location by
-simply examining the upper 32-bits of its IPv6 address. Moreover, similar to
-\textit{Chord}, \textit{CHOP6} uses a finger table, whose entries hold more than
-one candidate node.  
-
-\paragraph*{\bf Chord6}
-\emph{Chord6} \cite{xiong_chord6_2005} is another \textit{Chord} variant that
-tries to exploit the hierarchical features of IPv6 in order to create a
-substrate that reduces interdomain traffic between service providers.
-\textit{Chord6} is based on the original Chord protocol, and the main difference
-from the original protocol is in the identifier definition. Therefore, the
-approach can be easily portable to other DHTs such as CAN, Pastry and Tapestry.
-In Chord6 the identifier contains two parts: the higher bits are obtained by
-hashing the node's IPv6 address prefix of specific length, while the remaining
-lower bits are the hash value of the rest of that IPv6 address. As a result of
-this assignment, nodes in a domain will be mapped onto a continuous key space on
-the overlay network, which avoids unnecessary message forwarding across
-different service providers, thus minimizing overall routing cost. 
-
-
-\subsection{Proximity Neighbour Selection}\label{sec:pns}
-\textit{Proximity Neighbour Selection} constructs the routing tables using proximity
-knowledge. The proximity information used in this method is different than the
-landmark based systems described in the \textit{Geographic Layout} section, as time-to-live values between
-nodes, or directly node ID prefixes are used to detect proximity.  Tapestry,
-Pastry, and CAN successfully implemented the proximity into their algorithms by
-using this approach.  The routing protocol in Pastry is based on longest node ID
-prefix matching, while CAN uses RTT values to detect close by nodes.
-\cite{castro_proximityp2p_2002}  reports that proximity neighbour selection as
-an effective proximity based method.
-%
-Proximity Neighbor Selection based algorithms are described in detail below.
-
-
-\paragraph*{\bf DHT-PNS}
-
-Chord-DHT-PNS \cite{hancong_pnsbased_2006} implements proximity neighbour
-selection on top of the Chord DHT. The main goal is to use proximity
-information to group physically close by nodes as neighbours in the DHT table.
-In order to detect proximity, virtual network coordinates of peers are used, by
-using the Vivaldi protocol \cite{cox_vivaldi_2004}. The virtual coordinates are
-then used by the nodes to map to identifier space in the DHT. The space is
-partitioned using a \emph{concentric circle clustering scheme} where successive
-cycles of radiuses $\rho$, $2\rho$, $3\rho$ and so on, are constructed. Then the
-formed annuluses are divided into $2\chi-1$ \emph{sectors}, where $\chi$ denotes
-the sequence number of the annulus starting from $\chi = 1$ for the centre
-cycle. It is proved in the paper, that this way each sector occupies the same
-area as does the center cycle. Assuming uniform node distribution, this
-characteristic, favours a more load balanced clustering operation. Every sector
-in this $2D$ coordinate space is mapped to a unique \emph{region} in the DHT
-space forming a multi-layer node identifier space.  Thus, any nodes that belong
-to the same sector, are mapped to the same region as well, preserving their
-proximity relationship unveiled by the use of the Vivaldi protocol. The
-individual pieces are mapped to the identifier space uniquely, allowing
-logarithmic lookup operations with high probability on Chord.
-
-\paragraph*{\bf IP-based Clustering (IPBC)}
-Proximity neighbour selection algorithms use probing and other techniques
-to detect proximity. However, such methods are either not precise enough, or
-overload the network. \emph{IP-based clustering}
-\cite{karwaczynski_ipbc_2007} is a proximity neighbour selection based
-algorithm in which the authors propose to use the IP address prefixes (16 bit
-for IPv4) in order to detect proximity.  \cite{freedman_iploc_2005} states that
-$97\%$ of prefixes larger than $24$ bits belong to a single geographical
-location. However, using less number of bits creates less precise results and
-more number of bits increase the burden on the network and reduce the possible
-number of neighbours. Therefore, a careful selection is required in terms of
-performance/accuracy tradeoff. The {\em IP-based Clustering} generates a key and
-its prefix and stores the later in the DHT itself, so that any newly joining
-nodes with the same IP prefix can query it and identify all the
-neighbours with the same one relatively easily. Nodes periodically update
-their entries in the DHT by removing those who leave, or those who has been timed out with no further activity detected from the node.
-
-
-\paragraph*{\bf Cone}
-
-\textit{Cone}\cite{wang_cone_2007} extends Chord using proximity neighbour selection
-topology optimization algorithm. The proximity information is generated using
-landmarks and round-trip-time-based distances to landmarks.  \textit{Cone} uses a two-layered
-identifier space. The first, named Chord-layer identifier, denoted as
-$Id_{Chord}$, is the same as in Chord. The second is the Cone-layer
-identifier, $Id_{Cone}$ which is constructed by two component identifiers. The
-first, known as \emph{group identifier (gid)} denotes a relevant group the node
-belongs to while the second, namely \emph{local identifier (lid)} indicates the
-local identifier within the group. The group concept, which is introduced here,
-is a way of dividing nodes according to a common $Id_{Chord}$ prefix.  The
-structure of a Cone overlay, retains the Chord's circular topology. The difference
-lies on the fact that, now, two rings are created. A big ring, where nodes with
-the same \emph{gid} are arranged at each position. Each of these positions are a
-smaller ring for the particular group's \emph{lid}s. The routing is achieved in
-both clockwise and counter-clockwise directions in the big-ring, for which two
-routing tables are maintained, namely \emph{front} and \emph{back} finger
-tables. Entries in these tables, display physical network
-proximity with the current node. Moreover, a third table called \emph{group}
-maintains information about other online peers within the current node's
-group in a way that entries are now close in the ID space.
-
-\paragraph*{\bf SAT-Match: Self-Adaptive Topology Matching}
-
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.6]{img/algorithms/SAT_match}
-  \hspace{3ex}
-  \includegraphics[scale=0.6]{img/algorithms/SAT_match2}
-\caption{(left) Example physical topology of nodes. (middle) A jumps to B in order to match the logical topology to the physical. (right) State of the logical topology after the jump.}
-\label{fig:SAT_match}
-\end{figure*}
-
-\textit{SAT-Match} \cite{ren_satmatch_2004} is a protocol that specifically
-tries to solve the topology mismatch problem by mapping the overlay network as
-close as possible to the physical one. Even though no theoretical proof is
-given, valid results are obtained and demonstrated through experimentations.
-Similar to the other approaches in the proximity neighbour selection,
-\textit{SAT-Match} uses probing to detect close by peers and obtain proximity
-information. However, as an additional feature, \textit{SAT-Match} peers can do
-selective jumps to adjust their positioning in the DHT, if it reduces the stretch
-of its one-hop neighbourhood. Figure \ref{fig:SAT_match} demonstrates the selective jump on an example topology.
-The stretch is defined as the ratio between the
-average logical and physical latency of a link. It is reported that, due to the
-selective jumps, the \textit{SAT-Match} achieves $40\%$ reduction in link
-stretch, and when used with the \textit{Landmark Binning} approach (see Sec.
-\ref{sec:landmark_binning}), the reduction rate increases up to $60\%$.
-For dynamic environments, with frequent node arrival and leave,
-\textit{SAT-Match} scales much better than \textit{Mithos}, due to its self
-adaptation mechanism and selective jumps.
-
-\emph{SAT-Match} uses a small TTL value for the probing messages in order to
-reduce redundancy\cite{jiang_lightflood_2008}. This process begins as soon as
-the node joins the network using a DHT mechanism. Each probing message contains
-information about the source and a small TTL value. The recipient of such a
-message returns information about itself to the source and forwards the probing
-message to its neighbours if the TTL is non-zero. The discovered nodes are
-referred to as $TTL-k$ neighbourhood of the source node based on the $TTL$ distance
-to the source node. 
-
-Blindly selecting the peer with the smallest RTT as neighbour is, generally, not
-the optimal decision to make in order to achieve global \emph{stretch} reduction.
-In a structured scheme, when a node jumps to connect to a
-physically close node, it may need to connect to other distant nodes to maintain
-the structure's integrity, thus creating an overall increase in the overlay's
-\emph{stretch}. The two nodes with the smallest RTT are then used in order to
-select one zone to jump in this phase. The algorithm is as follows: The source
-node $S$ calculates the stretch change of its $TTL-1$ neighbourhood and that of
-the $TTL-1$ neighbourhood of the first of the previously selected peers. These
-calculations are made as if the jump has been made. If the stretch reduction is
-over a predefined threshold the jump is performed, otherwise the second selected
-candidate is picked and the same computations are performed. If again, the
-threshold is not met, then no jump is ultimately done. In case of a jump, this
-is performed as a combination of \emph{leave} and \emph{join} operations, in the
-CAN context.
-
-
-
-%\begin{figure}[h!]
-\hspace{-3ex}
-\begin{center}
-\footnotesize
-%\begin{landscape}
-\begin{longtable}{
-|>{\columncolor[gray]{.7}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.4\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.2\columnwidth}
-%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|}
-\caption{Decentralized Structured Algorithms}\label{fig:struct_compare_table}\\
-\hline
-\rowcolor[gray]{.5}
-\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Base protocol} & \textbf{Scalability} \\
-\hline
-\endfirsthead
-\multicolumn{4}{c}%
-{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
-\hline
-\rowcolor[gray]{.5}
-\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Base protocol} & \textbf{Scalability} \\
-\hline
-\endhead
-\hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
-\endfoot
-\hline
-\endlastfoot
-
-\hline
-\textbf{Global Softstate} & 
-\textbf{Geographic layout} Uses first landmark clustering
-then measures RTTs to identify close nodes &  &  \\
-
-\hline
-\textbf{Mithos} &
-\textbf{Geographic layout} Uses nodes as topology landmarks and directed
-incremental probing to optimize topology & & Scales well as all
-operations are local ??? \\
-
-\hline
-\textbf{Self-Adaptive Topology Matching} &
-\textbf{Proximity neighbour selection} Uses lightweight probing and
-selective jumps to optimize the topology & CAN &  Better than Mithos \\
-
-\hline
-\textbf{Delay Aware P2P System} & \textbf{} & & \\
-
-\hline
-\textbf{VERSION OF CHORD - DHT-PNS} &
-\textbf{Proximity neighbour selection} Uses Proximity Neighbour Selection and the Vivaldi
-system & Chord  &  \\
-
-\hline
-\textbf{MAY OMIT- VERSION OF CHORD - Quasi-Chord} &
-\textbf{Proximity based}  & Chord  &  \\
-
-\hline
-\textbf{LAPTOP} & 
-\textbf{Geographic layout} Hierarchical overlay structure  &  & routing path length $\log{_d N}$, 
-join/leave overhead $d\log{_d N}$ \\
-
-\hline
-\textbf{IP-Based Clustering} & 
-\textbf{Proximity neighbour selection} Proximity neighbour selection based on longest common
-prefix of IP addresses &    &  \\
-
-\hline
-\textbf{CHOord considering Proximity on IPv6} & 
-\textbf{Proximity routing} Uses IPv6 address format to provide proximity &  Chord
- & Better than Chord \\
-
-\hline
-\textbf{Proximity in Kademlia} & 
-\textbf{Proximity routing} Applies  proximity neighbour selection (PNS) and proximity route selection (PRS)
-to Kademlia & Kademlia &   \\
-
-\hline
-\textbf{Cone} & 
-\textbf{Proximity neighbour selection} Uses proximity neighbour selection (PNS) & Chord  & Better than Chord \\
-
-\hline
-\textbf{Dynamo} &  &  &  \\
-
-\hline
-\textbf{MAY OMIT-BADLY WRITTEN-PChord} & 
-\textbf{Proximity based}  &  Chord  & \\
-
-\hline
-\textbf{AChord} &  & & \\
-
-\hline
-\textbf{Chord6} & 
-\textbf{Proximity routing} Uses IPv6 hierarchical address format to cluster
-topologically close nodes & Chord  &  \\
-
-\hline
-\end{longtable}
-%\end{landscape}
-\end{center}
-\vspace{-2.5ex}
-\vspace{-2.5ex}
-%\label{fig:struct_compare_table}
-%\end{figure}
-
-
-\subsection{Discussion on the Algrithms for Structured Architectures}
-In this section we presented the state of the art for the algorithms applied to structured P2P systems. We categorised it based on their philosophy they incorporated in order to alleviate the topology mismatch problem into overall three categories following the previous work from \cite{castro_proximitydht_2002,castro_topawareroute_2002,ratnasamy_openq_2002} namely
-\begin{inparaenum}[\itshape i\upshape)]
-  \item geographic-layout-based,
-  \item proximity-routing-based, and
-  \item proximity neighbour selection based
-\end{inparaenum}
-. Following is a discussion on the above categories trying to point out the advantages, disadvantages and novelties introduced by each and by all of them. A quick overview can be seen in Table \ref{fig:struct_compare_table}.
-
-
-In section \ref{sec:structured},  we presented the state of the art structured
-decentralized P2P algorithms in three different categories based on their
-handling of the network structure to tackle the topology mismatch problem:
-geographic layout based, proximity routing based, and proximity neighbour
-selection based. In this section, we present a final discussion of all the
-methods including the advantages, disadvantages,
-and novelties related to solve the topology mismatch problem.
-Table \ref{fig:struct_compare_table} presents an overview of all the
-structured decentralized algorithms described earlier in this section.
-
-Structured P2P network algorithms use a global distributed hash table or a
-prefix tree structure to uniquely lookup peers or their data in the overlay
-network. As all the data is kept within the overlay, each node behaves as a
-client and a server, therefore nodes join and leave according to rules
-determined by the integrity of the global data structure. The main advantage of
-the structured P2P topology is that by the help of the global data structure,
-peers or their data can be found within the network even if there is only a
-single copy of that item present. However, each node join and leave creates
-maintenance overhead for the network due to updates required by the global data
-structure, and for networks with frequent node arrivals and departures the
-topology uses valuable network resources just to update the global structure.
-Nodes join the network by using a key value, which determines the location and
-the neighbourhood of the new node within the network. However, assigning
-random key values to the newly inserted nodes creates non-optimal matching with
-the underlying physical network topology, therefore, increasing the overhead of
-the network even more. One solution for handling the topology mismatch problem
-is to consider the proximity of the peers when generating the key and joining
-the node to the network, so that nodes within the same network domains are
-selected as peers, or neighbours, during the overlay topology construction. In
-this chapter, we have described three such approaches to optimize the topology
-matching problem: geographic layout, proximity routing and proximity neighbour
-selection. 
-
-In geographic layout, nodes try to estimate the geographic positions of the
-peers, and construct the DHT considering the proximity of the peers. Landmark
-servers and RTT measurements are two popular methods, which can also be used in 
-conjunction, to discover physically close by peers over the network. However, as
-discussed in Section \ref{sec:landmark_binning}, these methods do not always
-give reliable estimates for the node positions over the internet. The landmark
-servers are not self-organizing and have maintenance overheads. To serve a
-P2P network with millions of peers, multiple landmark servers
-distributed over the whole world is required, which is hard to manage. The RTT
-measurements also can measure the delay between peers, but it is a greedy method,
-which can result non-optimal overlay topologies especially if close by nodes
-have low bandwidth connections among themselves.
-
-Proximity routing does not discover or store proximity information for the
-peers, however, during package forwarding, nodes that have lower latency to the
-destination, or with a closer key to the destination is selected. As no
-proximity information is used, the system is based on a greedy approach and it
-usually selects low latency paths over the overlay, which maps to suboptimal
-longer paths on the physical topology. For these obvious reasons, proximity
-neighbour selection is generally considered as a superior method to proximity
-routing, however, joint uses of these two protocols are also possible.
-
-Proximity neighbour selection approach is similar to proximity routing, with an
-exception that during forwarding, the proximity information of the peers are
-also considered. Therefore, for each application, proximity information is
-extracted and used during routing. Depending on the application, the proximity
-information can be the node sharing the same prefix with the current node, or
-TTL to detect close by neighbours. Tapstry and Pastry are two popular methods
-implementing the proximity neighbour selection among others mentioned above in the
-proximity neighbour selection section.
-
+\input{structured}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{The Algorithms}
@@ -1905,7 +678,7 @@ proximity neighbour selection section.
 %
 %\paragraph{Locating process} A new coming host, $Q$, first connects to a globally known host cache called the \emph{rendezvous point (RP)} in order to retrieve the starting point in the overlay, say $A$ in group $1$. Host $Q$ then, measures its distance to host $A$. At the same time, the later, sends information about the neighbour groups of group $1$ back to host $Q$. This list is called \emph{candidate group list}, and the newcoming host sequnentially measures its distance to each of them in seek for the closest one. If the \emph{grouping criterion} is met, host $Q$ belongs to group $1$. If not, a boot host from the closest group is found and the algorithm is re-run until the criterion is met or after a predefined number of repetitions. In the later case, $Q$ creates a new group comprising itself only. The above protocol does not favour hotspots as it spreads the probability of visiting a group across the whole overlay and limits the overhead in the level of $O \left ( log N \right )$.
 %
-%\paragraph{General overlay operations} A set of additional protocols, are also introduced, similar to those found in traditional unstructured networks, but modified focusing on scalability and robustness. For example a protocol for \emph{group formation} is introduced that exploits the inherent characteristic of proximity, in the overlay, in order to efficiently detect the neighbouring groups of a newly formated group from the set of adjasent groups of its closest neighbour. Additionaly, during \emph{group joining} the coresponding protocol denotes the exchange of important information for group maintenance. This can be furtherly improved by \emph{information sharing} between nodes of the same group, functionality handled by a dedicated flood-like protocol\footnote{Since nodes that belong to the same group are physically close this can be achieved at a minimum price.}. Moreover, another set of distributed protocols handle the \emph{information update}. The information that needs update, in the proposed architecture, is
+%\paragraph{General overlay operations} A set of additional protocols, are also introduced, similar to those found in traditional unstructred networks, but modified focusing on scalability and robustness. For example a protocol for \emph{group formation} is introduced that exploits the inherent characteristic of proximity, in the overlay, in order to efficiently detect the neighbouring groups of a newly formated group from the set of adjasent groups of its closest neighbour. Additionaly, during \emph{group joining} the coresponding protocol denotes the exchange of important information for group maintenance. This can be furtherly improved by \emph{information sharing} between nodes of the same group, functionality handled by a dedicated flood-like protocol\footnote{Since nodes that belong to the same group are physically close this can be achieved at a minimum price.}. Moreover, another set of distributed protocols handle the \emph{information update}. The information that needs update, in the proposed architecture, is
 %\begin{inparaenum}[\itshape i\upshape)]
 %  \item the host cache, when a new node joins, and
 %  \item the neighbours of groups, when a close-by group is generated.
@@ -1932,7 +705,7 @@ proximity neighbour selection section.
 %}}
 %
 %\paragraph{}
-%\cite{zeinalipour-yazti_ddno_2005} proposes the \emph{Distributed Domain Name Order (DDNO)} technique which makes unstructured overlay networks, topologically aware. It results in a flat overlay topology but with some changes it can be utilized in \emph{superpeer} environments. In DDNO, a node of degree $d$, tries to connect to $\frac{d}{2}$ nodes that belong to the same domain (\emph{sibling} connections) and another $\frac{d}{2}$ of random nodes (\emph{random} connections). Connecting to \emph{sibling} nodes ensures the reduction of long distance message travelling and thus resulting to better performance, while \emph{random} nodes keep the structure connected.
+%\cite{z-yk_ddno_2005} proposes the \emph{Distributed Domain Name Order (DDNO)} technique which makes unstructured overlay networks, topologically aware. It results in a flat overlay topology but with some changes it can be utilized in \emph{superpeer} environments. In DDNO, a node of degree $d$, tries to connect to $\frac{d}{2}$ nodes that belong to the same domain (\emph{sibling} connections) and another $\frac{d}{2}$ of random nodes (\emph{random} connections). Connecting to \emph{sibling} nodes ensures the reduction of long distance message travelling and thus resulting to better performance, while \emph{random} nodes keep the structure connected.
 %
 %\paragraph{Discovering \emph{random} neighbours}
 %Initially, when a new coming node wants to join a network $N$, uses a \emph{hostcache} mechanism to provide it with a list of nodes with which to establish its $\frac{d}{2}$ \emph{random} connections.
@@ -2304,38 +1077,14 @@ proximity neighbour selection section.
 %\emph{Chord6} \cite{xiong_chord6_2005} is a Chord variant that tries to exploit the hierarchical features of IPv6 in order to create a substrate that reduces interdomain trafic and does that in a cost efficient way. Chord6 bareley modifies the original Chord protocol, only in the part of identifier definition. This, renders the aproach easily portable to other DHTs such as CAN, Pastry and Tapestry. In Chord6 the identifier contains two pares: the higher bits are obtained by hashing the  node's IPv6 address prefix of specific length, while the remaining lower bitss are the hash value of the rest of that IPv6 address. This way nodes in a domain will be mapped onto a contihuous key space on the overlay network. This guarantees that messages are routed in a way that they do not hop in and out of domains many time, thus minimizing overall routing cost. (TODO: Recheck validity) However, even though nodes in the same domain would have close identifiers, nodes in two close domains may have very different ones.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% TODO: Should be rewritten
-\section{Conclusions}
-Peer-to-peer architecture has been in the center of research attention in the
-last decade. Especially the decentralized unstructured genre exploits the
-advantages of loose coupling and self organization of computing nodes to form
-application-layer networks on top of the physical, best-effort infrastructure of
-the Internet that exhibit interesting properties. Scalability problems arouse
-quickly, though, because of the inefficient construction of this overlay that
-was built with no concern for the underlying physical network that causes a
-great deal of redundant traffic. The problem was identified by the research
-community as the topology mismatch problem between the overlay and the
-corresponding underlying physical network and a great deal of effort has been
-set towards alleviating it. Some fruits of this effort have been gathered and
-presented in this survey. Measurement of link cost through latency or RTT and
-deletion of inefficient established connections are the key concepts of almost
-all approaches. Others, manage to address the problem through hierarchical peer
-clustering (e.g. best IP matching). Additionally, some protocols focus on
-specific problems that furtherly arise, such as overlay partitioning, search
-scope reduction or convergence speed, to name just a few. Another desire is to
-form a protocol that could be applied to both decentralized unstructured and
-decentralized structured networks. Unfortunately no approach has equally
-addressed these problems in order to form a robust solution. So the field seems
-to be, still, fertile for any, new, clever idea.
 
+\input{conclusion}
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{acmtrans}
-%\bibliographystyle{abbrv}
-\bibliography{bib/p2p-overlays}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{mard-survey}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{received}
 Received Month Year;
 revised Month Year; accepted Month Year

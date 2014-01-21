@@ -5,32 +5,35 @@ TARGET = ad@perth.di.uoa.gr:/home/users/ad/public_html/k24/
 PRINTER = lp
 
 all: $(FILE).tex
-	rm -f $(FILE).ps
-	pdflatex $(FILE).tex
-	okular $(FILE).pdf
+	pdflatex $(FILE)
+	bibtex $(FILE)
+	pdflatex $(FILE)
+	pdflatex $(FILE)
+	okular $(FILE).pdf &
+
+clean:
+	rm -f $(FILE).ps $(FILE).pdf $(FILE).log $(FILE).dvi $(FILE).bbl $(FILE).blg $(FILE).aux
+
+update: $(FILE).tex
+	pdflatex $(FILE)
+	bibtex $(FILE)
+	pdflatex $(FILE)
+	pdflatex $(FILE)
 
 install:
 	scp $(FILE).ps  $(TARGET)
 	scp $(FILE).pdf  $(TARGET)
 
-clean:
-	rm -f $(FILE).ps $(FILE).pdf $(FILE).log $(FILE).dvi $(FILE).bbl $(FILE).aux $(FILE).blg
+#pdf:
+#	gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=$(FILE).pdf $(FILE).ps -c quit
 
-pdf:
-	gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=$(FILE).pdf $(FILE).ps -c quit
-
-bib:$(FILE).tex
-	pdflatex $(FILE)
+bib: $(FILE).tex
 	bibtex $(FILE)
-	pdflatex $(FILE)
-	pdflatex $(FILE)
-	dvips $(FILE).dvi -o $(FILE).ps
-	# rm $(FILE).dvi $(FILE).log $(FILE).blg
 
-s:$(FILE).tex
+s: $(FILE).tex
 	pdflatex $(FILE)
 
-p:	
+p:
 	lpr -P$(PRINTER) $(FILE).ps; 
 	lpq -P$(PRINTER)
 
