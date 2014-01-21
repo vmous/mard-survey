@@ -572,11 +572,27 @@ neighbours, clearly generating unnecessary traffic over the network. The algorit
 
 \paragraph*{\bf Improving search in peer-to-peer networks}
 
+\begin{figure*}
+\centering
+  \includegraphics[scale=0.4]{img/algorithms/iterative_deepening}
+\caption{Iterative deepening with three levels.}
+\label{fig:iterative_deepening}
+\end{figure*}
+
+\begin{figure*}
+\centering
+  \includegraphics[scale=0.4]{img/algorithms/directed_bfs}
+  \includegraphics[scale=0.4]{img/algorithms/local_indices}
+\caption{(left) directed BFS. (right) local indices with radius size equal to $2$.}
+\label{fig:directed_bfs}
+\end{figure*}
+
 \cite{yang_improvep2psearch_2002} proposes an easy to implement and practical
 solution to the inefficiency problem caused by blind flooding in Gnutella-like
 P2P file sharing protocols. The paper replaces blind flooding with three
 approaches, namely \textit{iterative deepening}, \textit{directed BFS}, and
-\textit{local indices}. In \textit{iterative deepening}, the search is performed
+\textit{local indices}. In \textit{iterative deepening}, as shown in Figure \ref{fig:iterative_deepening},
+the search is performed
 on a BFS tree with multiple preset depths. The depth limit is iteratively
 increased by the source node for each query based on the quality of the results.
 The source node, after examining the results, may issue a new request by
@@ -586,10 +602,10 @@ from scratch at each iteration and reduces the load of the nodes on the upper
 levels of the tree. The major drawback of \textit{iterative deepening} is the
 delay between successive iterations, as the source node needs to examine the
 results at each iteration before deciding to quit or resume the query.  The
-\textit{directed BFS} tries to avoid this delay by forwarding the query messages
+\textit{directed BFS}, as shown in Figure \ref{fig:directed_bfs}(left), tries to avoid this delay by forwarding the query messages
 only to a selected set of neighbours, in which the selection criteria varies
 from the number of results received previously, distance in terms of hops,
-bandwidth, or the query load of the neighbour. In \textit{local indices}, each
+bandwidth, or the query load of the neighbour. In \textit{local indices}, as shown in Figure \ref{fig:directed_bfs}(right), each
 node sustains a local data index of the nodes within a radius of $r$ hops from
 itself and uses this local index to remotely query the neighbour nodes without
 generating additional traffic.  \textit{Local indices} greatly reduces the
@@ -705,7 +721,16 @@ accuracy is not guaranteed. Bellow, the details of the algorithms that use the s
 
 \paragraph*{\bf Narada}
 
-Narada \cite{chu_esm_2000,chu_esm_2001,chu_esm_2002} is a generic protocol for creating self-adapting overlay networks, that can achieve application-layer multicast communication without requiring IP multicast infrastructure at the network layer. IP multicast is the term reffering to the method of sending IP datagrams to a group of receivers in a single transmission. Even though the method is available some years now, IP multicast has not taken off as anticipated since many believe that it violates the stateless design of the current Internet. For this reason it is widely deployed in contained environments like enterprises (i.e. IPTV applications - distance learning, video conferencing), commercial stock exchanges, and multimedia content delivery networks. Narada tries to break these constraints. Although it was not originally designed as a P2P file sharing protocol, it has become one of the pioneering works in the overlay networks area. The authors claim that, although Narada is not as efficient as IP multicast, still it provides reasonable performance, without the additional cost of implementing multicast services on the current Internet infrastructure. Additionally, authors realised the inefficiency caused by the topology mismatch problem and tried to encounter it by building a richer connected graph, called a mesh, and building per source minimum spanning trees \footnote{ENarada \cite{li_enarada_2008} used Gossip protocol for the construction}. They also keep the
+\begin{figure*}
+\centering
+  \includegraphics[scale=0.4]{img/algorithms/narada}
+  \includegraphics[scale=0.4]{img/algorithms/narada2}
+  \includegraphics[scale=0.4]{img/algorithms/narada3}
+\caption{(left) underlying network with edge costs. (middle) Peer A sends a message to the rest using regular broadcast. (right) Peer A sends a message to the rest using end system multicast.}
+\label{fig:narada}
+\end{figure*}
+
+Narada \cite{chu_esm_2000,chu_esm_2001,chu_esm_2002} is a generic protocol for creating self-adapting overlay networks, that can achieve application-layer multicast communication without requiring IP multicast infrastructure at the network layer. IP multicast is the term reffering to the method of sending IP datagrams to a group of receivers in a single transmission. Even though the method is available some years now, IP multicast has not taken off as anticipated since many believe that it violates the stateless design of the current Internet. For this reason it is widely deployed in contained environments like enterprises (i.e. IPTV applications - distance learning, video conferencing), commercial stock exchanges, and multimedia content delivery networks. Narada tries to break these constraints. Although it was not originally designed as a P2P file sharing protocol, it has become one of the pioneering works in the overlay networks area. The authors claim that, although Narada is not as efficient as IP multicast, still it provides reasonable performance, without the additional cost of implementing multicast services on the current Internet infrastructure. Additionally, authors realised the inefficiency caused by the topology mismatch problem and tried to encounter it by building a richer connected graph, called a mesh, and building per source minimum spanning trees \footnote{ENarada \cite{li_enarada_2008} used Gossip protocol for the construction} as shown in Figure \ref{fig:narada}. They also keep the
 graph and the trees dynamically updated while nodes continue to join and leave the network. Moreover, the protocol tries to ease the physical link stress, the overall resource usage and the relative delay among end systems. Unfortunately, the most imporpant limitation of Narada is that although it works reasonably well for small groups, it does not scale well for larger networks, therefore it is not suitable for, potentially very large, P2P file sharing application networks.
 
 \paragraph*{\bf Adaptive Overlay Topology Optimization and Adaptive Connection
@@ -829,8 +854,15 @@ for detecting the correct positions of nodes within close distance to each other
 
 \paragraph*{\bf Landmark Binning}\label{sec:landmark_binning}
 
+\begin{figure*}
+\centering
+  \includegraphics[scale=0.4]{img/algorithms/landmark_binning}
+\caption{Example 2D coordinate overlay and a sample routing path from node D to (x,y).}
+\label{fig:landmark_binning}
+\end{figure*}
+
 Landmark Binning \cite{ratnasamy_binning_2002} is an approach to partition close
-by nodes into bins based on their distance to well known anchor nodes across the Internet. In order to detect locality, nodes use network latency (round trip
+by nodes into bins based on their distance to well known anchor nodes across the Internet, as shown in Figure \ref{fig:landmark_binning}. In order to detect locality, nodes use network latency (round trip
 time) as a measurement technique. The network latency, even though not always
 accurate, is selected in this work due to its non-intrusive, transparent and
 easy to apply behaviour. In order for the binning to work, few well known anchor servers with known physical locations on the Internet. Authors estimate that a number of 12 such servers can prove sufficient for this. The nodes measure their distance to all these servers and record the latency values for each. Later, the tuple of these latency values represents the bin of each node. Nodes with similar latency values are considered close to each other, or at least within the same autonomous system. The operation of the method is independent of the model incorporated by the overlay network and thus it can be applied with no significant changes to both structured and unstructured P2P systems. \cite{ratnasamy_binning_2002} has the detailed description of such algorithm for both architectures. Landmark binning is also considered as a good candidate for content distribution networks in particular. The major disadvantage of landmark
@@ -854,133 +886,127 @@ mOverlay \cite{zhang_moverlay_2004} tries to addresses the scalability issues th
 \begin{center}
 \footnotesize
 %\begin{tabular}{
-\begin{landscape}
+%\begin{landscape}
 \begin{longtable}{
-|>{\columncolor[gray]{.7}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.7}}m{0.2\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.4\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.2\columnwidth}
 |>{\columncolor[gray]{.9}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
 |}
 \caption{Decentralized Unstructured Algorithms} \label{fig:unstruct_compare_table} \\
 \hline
 \rowcolor[gray]{.5}
-\textbf{Algorithm} & \textbf{Arch.} & \textbf{Overlay structure} & \textbf{Base protocol} &
-\textbf{Dynamic update} & \textbf{Runtime} & \textbf{Scalability} & \textbf{cites}\\
+\textbf{Algorithm} &  \textbf{Overlay structure} & \textbf{Base protocol} &
+ \textbf{Scalability}\\
 \hline
 \endfirsthead
 \multicolumn{4}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
 \rowcolor[gray]{.5}
-\textbf{Algorithm} & \textbf{Arch.} & \textbf{Overlay structure} & \textbf{Base protocol} &
-\textbf{Dynamic update} & \textbf{Runtime} & \textbf{Scalability} & \textbf{cites}\\
+\textbf{Algorithm} &  \textbf{Overlay structure} & \textbf{Base protocol} &
+ \textbf{Scalability}\\
 \hline
 \endhead
 \hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
 \hline
 \endlastfoot
-\textbf{Narada} & Decentralized unstructured & \textbf{Overlay optimization
+\textbf{Narada} & \textbf{Overlay optimization
 based}. Creates a mesh (richer connected graph) and builds minimum spanning
-trees on this mesh & & Yes. Supports incremental evolving & & Small and sparse
-groups & 2000  \\
+trees on this mesh & & Small and sparse groups \\
 
 \hline
-\textbf{Gia} & Decentralized unstructured & \textbf{Forwarding based} Replaces
+\textbf{Gia} & \textbf{Broadcast based} Replaces
 Gnutella flooding with random walk, and introduces KaZaA style supernodes. Uses
 dynamic topology adaptation protocol &
- Gnutella & Yes & & Better than Gnutella & 974  \\
+ Gnutella &  Better than Gnutella  \\
 
 \hline
-\textbf{Adaptive Overlay Topology Optimization} & Decentralized unstructured & \textbf{Overlay optimization
+\textbf{Adaptive Overlay Topology Optimization} & \textbf{Overlay optimization
 based}. Creates overlay multicast tree with Selective Flooding protocol&
-Gnutella & Yes, using Active Topology protocol & & Better than Gnutella & 36 \\
+Gnutella &  Better than Gnutella \\
 
 \hline
-\textbf{Location-aware Topology Matching} & Decentralized unstructured &
+\textbf{Location-aware Topology Matching} & 
 \textbf{Overlay Optimization Based}. Uses \textit{TTL2-detector flooding}, \textit{low productive
-connection cutting}, and \textit{source peer probing}. & Gnutella & Yes & & Better than Gnutella & 204 \\
+connection cutting}, and \textit{source peer probing}. & Gnutella &  Better than Gnutella \\
 
 \hline
-\textbf{Replication Strategies in Unstructured P2P Networks} & Decentralized unstructured &
+\textbf{Replication Strategies in Unstructured P2P Networks} &
 \textbf{Cache Based}. Uses uniform, proportional and square root allocation
-strategies to replicate data. & Gnutella & Yes & & Better than Gnutella & 580 \\
+strategies to replicate data. & Gnutella &  Better than Gnutella \\
 
 \hline
-\textbf{Tracing a large-scale Peer to Peer System: an hour in the life of Gnutella.} & Decentralized unstructured &
-\textbf{Cache Based}. Proposes a caching algorithm based on the traces of the Gnutella traffic & Gnutella &
-Yes & & Better than Gnutella & 199 \\
+\textbf{Tracing a large-scale Peer to Peer System: an hour in the life of Gnutella.} &
+\textbf{Cache Based}. Proposes a caching algorithm based on the traces of the Gnutella traffic & Gnutella & Better than Gnutella \\
 
 \hline
-\textbf{Improving search in P2P networks} & Decentralized unstructured &
-\textbf{Forwarding Based}. Uses \textit{iterative deepening}, \textit{directed
-BFS}, and \textit{local indices} to improve efficiency. & Gnutella & Yes & & Better than Gnutella & 380 \\
+\textbf{Improving search in P2P networks} &
+\textbf{Broadcast Based}. Uses \textit{iterative deepening}, \textit{directed
+BFS}, and \textit{local indices} to improve efficiency. & Gnutella &  Better than Gnutella \\
 
 \hline
-\textbf{Distributed Cycle Minimization Protocol} & Decentralized unstructured &
-\textbf{Forwarding based} Uses a decentralized cycle elimination protocol  &  & Yes &  &  & 9 \\
+\textbf{Distributed Cycle Minimization Protocol} & 
+\textbf{Broadcast based} Uses a decentralized cycle elimination protocol  &  &  \\
 
 \hline
-\textbf{Scalable Bipartite Overlay} & Decentralized unstructured &
+\textbf{Scalable Bipartite Overlay} & 
 \textbf{Overlay optimization based} Uses bipartite partition graph and builds
-local minimum spanning trees  & Gnutella & Yes &  & Better than Gnutella & 77 \\
+local minimum spanning trees  & Gnutella  & Better than Gnutella \\
 
 \hline
-\textbf{Adaptive Connection Establishment} & Decentralized unstructured &
+\textbf{Adaptive Connection Establishment} & 
 \textbf{Overlay optimization based} Forms Neighbour Cost Tables, builds local
 minimum spanning trees and perform local optimizations & Adaptive Overlay
-Topology Optimization (AOTO), Gnutella & Yes &  & Better than Gnutella & 110 \\
+Topology Optimization (AOTO), Gnutella & Better than Gnutella \\
 
 \hline
-\textbf{Hops Adaptive Neighbour Discovery} &  &
- &  &  &  &  & 1 \\
+\textbf{Hops Adaptive Neighbour Discovery} &  & &  \\
 
 \hline
-\textbf{Two-Hop-Away Neighbour Comparison and Selection (THANCS)} & Decentralized unstructured &
+\textbf{Two-Hop-Away Neighbour Comparison and Selection (THANCS)} &
 \textbf{Overlay optimization based} Uses piggybacking to discover neighbour
-distances and selects neighbours  & Gnutella & Yes &  &  & 36 \\
+distances and selects neighbours  & Gnutella  & \\
 
 \hline
-\textbf{mOverlay} & Decentralized unstructured &
-\textbf{Overlay optimization based} Uses dynamic landmarks to find node locality
-& & Yes &  & Due to dynamic landmarks and grouping, more scalable than tree-based or mesh-based protocols & 123 \\
+\textbf{mOverlay} &\textbf{Landmark based proximity} Uses dynamic landmarks to find node locality
+& & Due to dynamic landmarks and grouping, more scalable than tree-based or mesh-based protocols \\
 
 \hline
-\textbf{Distributed Domain Name Order (DDNO)} & Decentralized unstructured &
+\textbf{Distributed Domain Name Order (DDNO)} &
 \textbf{Overlay optimization based} Connects half of the nodes connections to
 the nodes in the same domain and the other half to random nodes, therefore
-supports locality and topological connection  & & Yes &  & Yes, by using super
-peers & 5 \\
+supports locality and topological connection  &  & Yes, by using super
+peers \\
 
 \hline
-\textbf{Peer-exchange Routing Optimization Protocols} & Works with both decentralized
-structured and unstructured &
-\textbf{Overlay optimization based} Optimizes overlay by the exchange of
-neighbors among peers  & & Yes &  & Yes & 13 \\
+\textbf{Peer-exchange Routing Optimization Protocols} & \textbf{Overlay optimization based} Optimizes overlay by the exchange of
+neighbors among peers  & Can work with both decentralized structured and
+unstructured architecture & Yes \\
 
 \hline
-\textbf{MAY OMIT- T2MC} & Decentralized unstructured &
-\textbf{Cluster based---{\sethlcolor{yellow}\hl{ IS IT ALSO PROXIMITY BASED?}}} Uses traceroute results for clustering the
-nodes  & &  &  &  & 1 \\
+\textbf{MAY OMIT- T2MC} &
+\textbf{Overlay optimization based} Uses traceroute results for clustering the
+nodes  & & \\
 
 \hline
-\textbf{Unnamed-unstructured} & Decentralized unstructured &
+\textbf{Unnamed-unstructured} & 
 \textbf{Overlay optimization based} Minimizes the communication delay and
-maximizes the broadcasting range & & Yes &  & Better than THANCS and mOverlay & 7\\
+maximizes the broadcasting range & & Better than THANCS and mOverlay \\
 
 \hline
-\textbf{Landmark Binning} & Can work with both decentralized structured and unstructured &
-\textbf{Proximity based, landmark binning} Uses network latency to partition
-nodes into bins & & Yes &  &  & 817 \\
+\textbf{Landmark Binning} & \textbf{Landmark based proximity} Uses network latency to partition
+nodes into bins & Can work with both decentralized structured and unstructured architecture & \\
 
 \hline
 %\end{tabular}
 \end{longtable}
-\end{landscape}
+%\end{landscape}
 \end{center}
 \vspace{-2.5ex}
 \vspace{-2.5ex}
@@ -1043,10 +1069,17 @@ Even though managing the overlay structure based on the geographic layout of the
 
 \paragraph*{\bf Global Soft-State}
 
+\begin{figure*}
+\centering
+  \includegraphics[scale=0.8]{img/algorithms/global_softstate}
+\caption{(left) Position of $p$ in the space of $3$ landmarks. (right) Position of $p$ on the map.}
+\label{fig:global_softstate}
+\end{figure*}
+
 \textit{Global Soft-State} \cite{xu_globstate_2003} builds a global map to help
 choose shorter routing paths, combining the landmark binning method and small
 scale distance probes to reveal the proximity properties of the underlying
-network to the overlay. This global view of the state is made available to all
+network to the overlay. Figure \ref{fig:global_softstate} presents the landmark space and the mapping of the position of the nodes. This global view of the state is made available to all
 nodes in order to help them find the best way to route their messages.
 \textit{Global Soft-State} operates in two main stages, generation and use of
 the proximity information. For generating the proximity information a hybrid
@@ -1313,6 +1346,15 @@ group in a way that entries are now close in the ID space.
 
 \paragraph*{\bf SAT-Match: Self-Adaptive Topology Matching}
 
+\begin{figure*}
+\centering
+  \includegraphics[scale=0.6]{img/algorithms/SAT_match}
+  \hspace{3ex}
+  \includegraphics[scale=0.6]{img/algorithms/SAT_match2}
+\caption{(left) Example physical topology of nodes. (middle) A jumps to B in order to match the logical topology to the physical. (right) State of the logical topology after the jump.}
+\label{fig:SAT_match}
+\end{figure*}
+
 \textit{SAT-Match} \cite{ren_satmatch_2004} is a protocol that specifically
 tries to solve the topology mismatch problem by mapping the overlay network as
 close as possible to the physical one. Even though no theoretical proof is
@@ -1321,7 +1363,8 @@ Similar to the other approaches in the proximity neighbour selection,
 \textit{SAT-Match} uses probing to detect close by peers and obtain proximity
 information. However, as an additional feature, \textit{SAT-Match} peers can do
 selective jumps to adjust their positioning in the DHT, if it reduces the stretch
-of its one-hop neighbourhood. The stretch is defined as the ratio between the
+of its one-hop neighbourhood. Figure \ref{fig:SAT_match} demonstrates the selective jump on an example topology.
+The stretch is defined as the ratio between the
 average logical and physical latency of a link. It is reported that, due to the
 selective jumps, the \textit{SAT-Match} achieves $40\%$ reduction in link
 stretch, and when used with the \textit{Landmark Binning} approach (see Sec.
@@ -1361,30 +1404,28 @@ CAN context.
 \hspace{-3ex}
 \begin{center}
 \footnotesize
-\begin{landscape}
+%\begin{landscape}
 \begin{longtable}{
-|>{\columncolor[gray]{.7}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.7}}m{0.2\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.4\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.2\columnwidth}
 |>{\columncolor[gray]{.9}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
 |}
 \caption{Decentralized Structured Algorithms}\label{fig:struct_compare_table}\\
 \hline
 \rowcolor[gray]{.5}
-\textbf{Algorithm} & \textbf{Arch.} & \textbf{Overlay structure} & \textbf{Base protocol} &
-\textbf{Dynamic update} & \textbf{Runtime} & \textbf{Scalability} & \textbf{cites}\\
+\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Base protocol} & \textbf{Scalability} \\
 \hline
 \endfirsthead
 \multicolumn{4}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
 \rowcolor[gray]{.5}
-\textbf{Algorithm} & \textbf{Arch.} & \textbf{Overlay structure} & \textbf{Base protocol} &
-\textbf{Dynamic update} & \textbf{Runtime} & \textbf{Scalability} & \textbf{cites}\\
+\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Base protocol} & \textbf{Scalability} \\
 \hline
 \endhead
 \hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
@@ -1393,82 +1434,75 @@ CAN context.
 \endlastfoot
 
 \hline
-\textbf{Global Softstate} & decentralized structured &
-\textbf{Proximity based, landmark clustering} Uses first landmark clustering
-then measures RTTs to identify close nodes & & Yes &  &  & 195 \\
+\textbf{Global Softstate} & 
+\textbf{Geographic layout} Uses first landmark clustering
+then measures RTTs to identify close nodes &  &  \\
 
 \hline
-\textbf{Mithos} & decentralized structured &
-\textbf{Proximity based} Uses nodes as topology landmarks and directed
-incremental probing to optimize topology & & Yes &  & Scales well as all
-operations are local ??? & 172 \\
+\textbf{Mithos} &
+\textbf{Geographic layout} Uses nodes as topology landmarks and directed
+incremental probing to optimize topology & & Scales well as all
+operations are local ??? \\
 
 \hline
-\textbf{Self-Adaptive Topology Matching} & decentralized structured &
-\textbf{Proximity based} Uses lightweight probing and
-selective jumps to optimize the topology & CAN & Yes &  & Better than Mithos
-& 40 \\
+\textbf{Self-Adaptive Topology Matching} &
+\textbf{Proximity neighbour selection} Uses lightweight probing and
+selective jumps to optimize the topology & CAN &  Better than Mithos \\
 
 \hline
-\textbf{Delay Aware P2P System} & &
-\textbf{} & &  &  &  & 1 \\
+\textbf{Delay Aware P2P System} & \textbf{} & & \\
 
 \hline
-\textbf{VERSION OF CHORD - DHT-PNS} & decentralized structured &
-\textbf{Proximity based} Uses Proximity Neighbour Selection and the Vivaldi
-system & Chord  & Yes &  &  & 5 \\
+\textbf{VERSION OF CHORD - DHT-PNS} &
+\textbf{Proximity neighbour selection} Uses Proximity Neighbour Selection and the Vivaldi
+system & Chord  &  \\
 
 \hline
-\textbf{MAY OMIT- VERSION OF CHORD - Quasi-Chord} & decentralized structured &
-\textbf{Proximity based}  & Chord  & Yes &  &  & 0 \\
+\textbf{MAY OMIT- VERSION OF CHORD - Quasi-Chord} &
+\textbf{Proximity based}  & Chord  &  \\
 
 \hline
-\textbf{LAPTOP} & decentralized structured &
-\textbf{Geographic layout based} Hierarchical overlay structure  &   & Yes &  & routing path length $\log{_d N}$, 
-join/leave overhead $d\log{_d N}$& 4 \\
+\textbf{LAPTOP} & 
+\textbf{Geographic layout} Hierarchical overlay structure  &  & routing path length $\log{_d N}$, 
+join/leave overhead $d\log{_d N}$ \\
 
 \hline
-\textbf{IP-Based Clustering} & decentralized structured &
-\textbf{Proximity based} Proximity neighbour selection based on longest common
-prefix of IP addresses &   & Yes &  &  & 1 \\
+\textbf{IP-Based Clustering} & 
+\textbf{Proximity neighbour selection} Proximity neighbour selection based on longest common
+prefix of IP addresses &    &  \\
 
 \hline
-\textbf{CHOord considering Proximity on IPv6} & decentralized structured &
-\textbf{Proximity based} Uses IPv6 address format to provide proximity &  Chord
-& Yes &  & Better than Chord & 1 \\
+\textbf{CHOord considering Proximity on IPv6} & 
+\textbf{Proximity routing} Uses IPv6 address format to provide proximity &  Chord
+ & Better than Chord \\
 
 \hline
-\textbf{Proximity in Kademlia} & decentralized structured &
-\textbf{Proximity based} Applies  proximity neighbour selection (PNS) and proximity route selection (PRS)
-to Kademlia & Kademlia & Yes &  &  & 13 \\
+\textbf{Proximity in Kademlia} & 
+\textbf{Proximity routing} Applies  proximity neighbour selection (PNS) and proximity route selection (PRS)
+to Kademlia & Kademlia &   \\
 
 \hline
-\textbf{Cone} & decentralized structured &
-\textbf{Proximity based} Uses proximity neighbour selection (PNS) & Chord & Yes
-&  & Better than Chord & 3 \\
+\textbf{Cone} & 
+\textbf{Proximity neighbour selection} Uses proximity neighbour selection (PNS) & Chord  & Better than Chord \\
 
 \hline
-\textbf{Dynamo} &  & &  & 
-&  & & 3 \\
+\textbf{Dynamo} &  &  &  \\
 
 \hline
-\textbf{MAY OMIT-BADLY WRITTEN-PChord} & decentralized structured &
-\textbf{Proximity based}  &  Chord
-& Yes &  & & 16 \\
+\textbf{MAY OMIT-BADLY WRITTEN-PChord} & 
+\textbf{Proximity based}  &  Chord  & \\
 
 \hline
-\textbf{AChord} & &  &  
-&  &  & & 7 \\
+\textbf{AChord} &  & & \\
 
 \hline
-\textbf{Chord6} & decentralized structured &
-\textbf{Proximity based} Uses IPv6 hierarchical address format to cluster
-topologically close nodes & Chord & Yes
-&  &  & 14 \\
+\textbf{Chord6} & 
+\textbf{Proximity routing} Uses IPv6 hierarchical address format to cluster
+topologically close nodes & Chord  &  \\
 
 \hline
 \end{longtable}
-\end{landscape}
+%\end{landscape}
 \end{center}
 \vspace{-2.5ex}
 \vspace{-2.5ex}
