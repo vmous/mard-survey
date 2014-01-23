@@ -1,4 +1,4 @@
-\section{Decentralized Structured Algorithms}
+\section{Decentralized Structured Architectures}
 \label{section:structured}
 
 This section focuses on the structured P2P architectures. The following
@@ -13,54 +13,18 @@ information to optimize them towards this direction. The algorithms are here
 categorised based the previous work done by
 \cite{castro_proximitydht_2002,castro_topawareroute_2002,ratnasamy_openq_2002}.
 
-%{\sethlcolor{yellow}\hl{HA:  Talk about Tapestry, Pastry, CAN and Chord briefly here!}}
+\subsection{Algorithms for Structured Architectures}
+
+%###############################################################################
+%###############################################################################
+%###############################################################################
+%       GEGRAPHIC LAYOUT
+%###############################################################################
+%###############################################################################
+%###############################################################################
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Geographic Layout} \label{section:geographic_layout}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Inside geographic layout category fall those kind of methods which practically
-position physically close by nodes together in the application space as well.
-This is done by adjusting and maintaining the routing tables of all involved
-peers accordingly by exploiting proximity information that describe the overall
-geographic positioning of the peer nodes. One popular method for detecting and
-constructing a geographic view of the underlying network is the use of well
-established servers dedicated to landmarking the physical space, pretty much as
-discussed in Section \ref{sec:landmark} of landmark based proximity in the
-unstructured P2P networks. The same disadvantages of difficult and inaccurate
-positioning and the cost of deploying and maintaining these landmarks apply in
-this case as well.
-% TODO: maybe a discussion sentence bellow
-Even though managing the overlay structure based on the geographic layout of the
-nodes improves the query efficiency of the system, on the other hand, it tends
-to create hotspots, and the needed failure resilience is undermined by the fact
-that close by nodes are more likely to suffer collective failures.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% TODO: Geographic Layout
-%
-%\begin{itemize}
-% \item Geographic Layout\\
-%The node IDs are assigned in such a way that nodes close by in the physical
-%network topology, be close in the node ID space as well. Implementations that
-%work relatively well with this approach have been incorporated into CAN. Nodes
-%measure the RTT between themselves and a set of landmarks in order to match the
-%CAN space as much as possible to the physical one. Unfortunately, the approach
-%requires well known landmark servers and for that matter is  not fully
-%self-organizing which can further lead to imbalanced node distribution. On
-%other DHTs, such as Chord or Pastry, another problem emerges.  To gain fault
-%tolerant properties, these protocols, replicate key-value pairs on neighbouring
-%(in the ID space) nodes. When a proximity-based node ID assignment has been
-%used, the needed failure resilience is undermined by the fact that close by
-%nodes are more likely to suffer collective failures.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Global Soft-State}
+\subsubsection{Global Soft-State}
 
 \begin{figure*}
 \centering
@@ -98,9 +62,9 @@ neighbour re-selection.
 Maintaining several host states at different layers, makes any content migration
 costly. Additionally, the method does not make any continuing effort to remap
 the overlay structure after a node successfully joins, in order to adapt its
-state to any condition change. Although this approach greatly reduces the
-routing latency to far nodes, it is unable to dynamically identify nodes that
-are close to routers and gateways in order to construct the secondary overlay.
+  state to any condition change. Although this approach greatly reduces the
+  routing latency to far nodes, it is unable to dynamically identify nodes that
+  are close to routers and gateways in order to construct the secondary overlay.
 Nevertheless, static recognition of such nodes is currently done based on BGP
 reports and pre-chosen landmarks, sacrificing the self-organising attribute of
 traditional DHTs.
@@ -157,7 +121,7 @@ traditional DHTs.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Mithos}
+\subsubsection{Mithos}
 \emph{Mithos} \cite{waldvogel_mythos_2003} is a P2P protocol which incorporates
 directed incremental probing to find near optimal node placement, and is
 classified by its authors as an integration of geographic layout and proximity
@@ -203,7 +167,7 @@ networks.
 % real-world p2p deployment of the scheme.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf LAPTOP}
+\subsubsection{LAPTOP}
 \emph{LAPTOP} \cite{wu_laptop_2007}, organises the overlay into a tree-based
 hierarchy with main focus on reducing hops during message routing as well as
 minimizing maintenance overhead. Additionally, a caching scheme is also
@@ -304,44 +268,19 @@ responsible for monitoring its children.
 %Even though this scheme can
 %
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Proximity Routing}
-\label{section:pr}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Proximity routing does not require routing tables to be built using any
-knowledge about network proximity. On the other hand it exploits such knowledge
-in order to choose the best next hop during routing a message. This approach
-balances between choosing the node that will further progress the routing
-towards the destination and choosing the closest entry in the routing table, in
-terms of network proximity.
-% TODO: looks like discussion material
-Thus, it is relatively less effective than
-geographical layout when applied to CAN(-like) implementations. Moreover, the
-technique has been incorporated into a version of Chord causing an increase on
-the overhead of node joins and the size as well as maintenance cost of finger
-tables.
 
-% Moreover, the technique has been incorporated into a version of Chord
-% (TODO: PChord | additionally check whether this is true) causing an increase
-% on the overhead of node joins and the size as well as maintenance cost of
-% finger tables.
+%###############################################################################
+%###############################################################################
+%###############################################################################
+%       PROXIMITY ROUTING
+%###############################################################################
+%###############################################################################
+%###############################################################################
 
-%
-%\cite{dabek_cfs_2001} proposes a server selection scheme for the Chord DHT, on
-%the domain of proximity routing selection. In \emph{CFS}, each node predicts
-%the entire lookup latency as a function of the total number of nodes and the
-%average overlay next routing peer. The problem is that it is very difficult to
-%have a clear picture on the total number of nodes and the average hop latency
-%from the local. This leads to rough estimations that consequently decreases
-%overall performance.
-%
-The methods that use proximity routing and their details are listed below.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Proximity in Kademlia}
+\subsubsection{Proximity in Kademlia}
 % Before discussing {\em Proximity in Kademlia}, it would be helpful to briefly
 % summarize the highlights about the {\em Kademlia} protocol. {\em Kademlia}
 % \cite{maymounkov_kademlia_2002} is a distributed hash table (DHT) based
@@ -374,7 +313,7 @@ a cost function, based on the used proximity criteria (RTT, ISP locality, etc.).
 %\end{itemize}
 The paper proposes two approaches for overlay optimisation. One falling into
 {\em proximity routing} and the other on {\em proximity neighbour selection}
-(see Section~\ref{section:pns}) approaches overlay optimization techiques for
+approaches overlay optimization techiques for
 exploiting proximity. For the first, the goal is in choosing the best next hop
 during routing a message. Due to the fact that the routing in Kademlia is
 iterative, it is the initiator of the lookup that chooses each next hop from a
@@ -394,8 +333,16 @@ experiments. Authors also report that {\em Proximity routing} protocol
 successfully worked with the Kademlia protocol and improved the locality of the
 connections over peers.
 
+As already mentioned the paper
+proposes \emph{proximity neighbour selection} method, as well, for overlay
+optimisation. The goal, according to this, is to keep peers with the least
+contact cost in the routing table. As Kademlia constantly learns new peers
+(incoming requests, through iterative lookup) no special algorithm for
+searching more cost effective peers is necessary and simply choose the best
+peers seen so far.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf CHOord considering Proximity on IPv6 (CHOP6)}
+\subsubsection{CHOord considering Proximity on IPv6 (CHOP6)}
 \emph{CHOP6} \cite{morimoto_chop6_2007} roughly estimates the proximity among
 nodes by exploiting the IPv6 address format and RTT information if available.
 The proximity estimation is achieved by introducing a 64-bit ID scheme in which
@@ -428,7 +375,7 @@ one candidate node.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf T2MC}
+\subsubsection{T2MC}
 T2MC \cite{shi_t2mc_2008} uses traceroute logs to detect different autonomous
 systems and cluster close by peers, thus reducing redundant traffic that crosses
 autonomous system boundaries. T2MC uses a customized k-mean classification
@@ -447,7 +394,7 @@ attribute and sets it as a threshold. The selected router and all others whose
 hops attribute is larger than the threshold are classified as \emph{remote}
 router cluster. The remaining are classified as \emph{near}. From the near
 class, the peer chooses the one with maximum hops attribute as its edge router,
-and registers it along with the all the near cluster into the DHT of the P@P
+and registers it along with the all the near cluster into the DHT of the P2P
 overlay. As new peers join the network, those that share the same edge router
 or any of the members of the near router clustersm there would gather to form a
 close peer cluster. As Edge routers can provide more valuable information than
@@ -473,7 +420,7 @@ peers and edge gateways.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf PChord}
+\subsubsection{PChord}
 \emph{PChord}\cite{hong_pchord_2005} is a based on the Chord DHT which adds
 proximity routing into its routing mechanism. The main modification over the
 vanilla Chord is the inclusion of a \emph{proximity list} into its routing table
@@ -491,7 +438,7 @@ partitions, PChord prevents hops from jumping in and out the network partition
 the current node belongs to.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf AChord}
+\subsubsection{AChord}
 \emph{AChord} \cite{dao_achord_2006} uses IPv6's anycast mechanism in order to
 releave the protocol from complex joining procedures, and achieve high accuracy
 of network proximity giving high routing efficiency, Anycast delivers a message
@@ -512,7 +459,7 @@ requires few changes to Chord in order not to affecting its own advantageous
 characteristics.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Chord6}
+\subsubsection{Chord6}
 \emph{Chord6} \cite{xiong_chord6_2005} is another Chord variant that tries to
 exploit the hierarchical features of IPv6 in order to create a substrate that
 reduces interdomain traffic between service providers. The difference between
@@ -527,44 +474,22 @@ service providers, thus minimising overall routing cost.
 
 %
 % TODO: SOME DISCUSSION
-%       RECHECK VALIDITY
-%
 % However, even though nodes in the same domain would have close identifiers,
 % nodes in two close domains may have very different ones.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Proximity Neighbour Selection}
-\label{section:pns}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\emph{Proximity Neighbour Selection} constructs the routing tables using
-proximity knowledge. The proximity information used in this method is different
-than the landmark based systems described in
-Section~\ref{section:geographic_layout}, as time-to-live values between nodes,
-or directly node ID prefixes are used to detect proximity. Tapestry, Pastry, and
-CAN successfully implemented the proximity into their algorithms by using this
-approach. The routing protocol in Pastry is based on longest node ID prefix
-matching, while CAN uses RTT values to detect close by nodes.
-\cite{castro_proximityp2p_2002} reports that proximity neighbour selection as an
-effective proximity based method. Proximity Neighbor Selection based algorithms
-are described in detail below.
+
+
+%###############################################################################
+%###############################################################################
+%###############################################################################
+%       PROXIMITY NEIGHBOUR SELECTION
+%###############################################################################
+%###############################################################################
+%###############################################################################
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Proximity in Kademlia}
-As already mentioned on the the corresponding paragraph when discussing
-proximity routing approaches (see Section~\ref{section:pr}), the paper
-proposes \emph{proximity neighbour selection} method, as well, for overlay
-optimisation. The goal, according to this, is to keep peers with the least
-contact cost in the routing table. As Kademlia constantly learns new peers
-(incoming requests, through iterative lookup) no special algorithm for
-searching more cost effective peers is necessary and simply choose the best
-peers seen so far. For more information on the Proximity in Kademlia please
-consult the paragraph in Section~\ref{section:pr}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf DHT-PNS}
+\subsubsection{DHT-PNS}
 The work in \cite{hancong_pnsbased_2006} propose a proximity neighbour selection
 scheme on top of the Chord DHT. The main goal is to use proximity information
 to group physically close by nodes as neighbours in the DHT table. In order to
@@ -598,7 +523,7 @@ regions and towards an upper layer identifier space until one is found or the
 first layer reached.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Quasi-Chord}
+\subsubsection{Quasi-Chord}
 The approach that is proposed by Sun and Zhang in \cite{sun_quasi_2008}
 confronts the topology mismatch problem, in the Chord DHT context which, in its
 vanilla version, takes no consiteration for the underlying physical network
@@ -608,9 +533,10 @@ acquires its coordinates in the geometric space utilizing the \emph{global
 network position (GNP)} protocol \cite{ng_gnp_2001}. Second, using the
 \emph{Cantor space filling curve}, the $2$-dimensional space is converted to a
 $1$-dimensional one, used in the last, third, step to build the Quasi-Chord
-circle according to the host's Cantor value. In the following paragraphs,
-these steps are furtherly discussed.
+circle according to the host's Cantor value.
 
+
+%In the following paragraphs, these steps are furtherly discussed.
 %
 %\paragraph{GNP coordinates}
 %First of all the host must be positioned in the geometric space. The algoritm
@@ -660,7 +586,7 @@ these steps are furtherly discussed.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf IP-based Clustering (IPBC)}
+\subsubsection{IP-based Clustering (IPBC)}
 Proximity neighbour selection algorithms use probing and other techniques to
 detect proximity. However, such methods are either not precise enough, or
 overload the network. \emph{IP-based clustering} \cite{karwaczynski_ipbc_2007}
@@ -703,7 +629,7 @@ those who has been timed out with no further activity detected from the node.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf Cone}
+\subsubsection{Cone}
 \emph{Cone} \cite{wang_cone_2007} extends Chord using proximity neighbour
 selection topology optimization algorithm. The proximity information is
 generated using landmarks and round-trip-time-based distances to landmarks.
@@ -735,7 +661,7 @@ space.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf DynaMo}
+\subsubsection{DynaMo}
 \emph{DynaMO} \cite{winter_dynamo_2004} tries to build an overlay that not only 
 considers physical proximity among peers but their mobility attributes as well.
 DynaMO is based on a Pastry overlay network and this was a preety concious
@@ -798,7 +724,7 @@ of being more coarse-grained.
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{\bf SAT-Match: Self-Adaptive Topology Matching}
+\subsubsection{SAT-Match: Self-Adaptive Topology Matching}
 
 \begin{figure}[ht]
 \centering
@@ -854,7 +780,7 @@ example topology.
 %\paragraph{}
 %Moreover the algorithm takes several issues into consiteration in order to
 %  furtherly improve the resulted overlay. For example when multiple nodes try
-% to jump simultaneously into a regeon, then the logical link brakes from one
+% to jump simultaneously into a region, then the logical link brakes from one
 % attempt may result in inacurate computation of the gain factor, for an other.
 % This situation is identified as \emph{contention} and the nodes use an
 % exponatial back-off algorithm to avoid it. An other problem is the uneseccary
@@ -891,6 +817,20 @@ boundary or the pruning factor $L_t$ in the paper's context. Request messages
 will be forwarded only to nodes whose delay less than or equal to $L_t$. With
 the clustered routing tables and the loose organisation the overlay network of
 \emph{DAPS} is between structured and unstructured.
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Discussion on the Algorithms for Structured Architectures}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 %\begin{figure}[h!]
 \hspace{-3ex}
@@ -1001,11 +941,126 @@ topologically close nodes & Chord  &  \\
 %\label{fig:struct_compare_table}
 %\end{figure}
 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Discussion on the Algrithms for Structured Architectures}
+\subsection{Geographic Layout} \label{section:geographic_layout}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: TAKEN FROM ALGORITHMS SUBSECTION. SHOULD BE MERGED WITH DISCUSSION
+
+Inside geographic layout category fall those kind of methods which practically
+position physically close by nodes together in the application space as well.
+This is done by adjusting and maintaining the routing tables of all involved
+peers accordingly by exploiting proximity information that describe the overall
+geographic positioning of the peer nodes. One popular method for detecting and
+constructing a geographic view of the underlying network is the use of well
+established servers dedicated to landmarking the physical space, pretty much as
+discussed in Section \ref{sec:landmark} of landmark based proximity in the
+unstructured P2P networks. The same disadvantages of difficult and inaccurate
+positioning and the cost of deploying and maintaining these landmarks apply in
+this case as well.
+% TODO: maybe a discussion sentence bellow
+Even though managing the overlay structure based on the geographic layout of the
+nodes improves the query efficiency of the system, on the other hand, it tends
+to create hotspots, and the needed failure resilience is undermined by the fact
+that close by nodes are more likely to suffer collective failures.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TODO: Geographic Layout
+%
+%\begin{itemize}
+% \item Geographic Layout\\
+%The node IDs are assigned in such a way that nodes close by in the physical
+%network topology, be close in the node ID space as well. Implementations that
+%work relatively well with this approach have been incorporated into CAN. Nodes
+%measure the RTT between themselves and a set of landmarks in order to match the
+%CAN space as much as possible to the physical one. Unfortunately, the approach
+%requires well known landmark servers and for that matter is  not fully
+%self-organizing which can further lead to imbalanced node distribution. On
+%other DHTs, such as Chord or Pastry, another problem emerges.  To gain fault
+%tolerant properties, these protocols, replicate key-value pairs on neighbouring
+%(in the ID space) nodes. When a proximity-based node ID assignment has been
+%used, the needed failure resilience is undermined by the fact that close by
+%nodes are more likely to suffer collective failures.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proximity Routing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: TAKEN FROM ALGORITHMS SUBSECTION. SHOULD BE MERGED WITH DISCUSSION
+
+Proximity routing does not require routing tables to be built using any
+knowledge about network proximity. On the other hand it exploits such knowledge
+in order to choose the best next hop during routing a message. This approach
+balances between choosing the node that will further progress the routing
+towards the destination and choosing the closest entry in the routing table, in
+terms of network proximity.
+% TODO: looks like discussion material
+Thus, it is relatively less effective than
+geographical layout when applied to CAN(-like) implementations. Moreover, the
+technique has been incorporated into a version of Chord causing an increase on
+the overhead of node joins and the size as well as maintenance cost of finger
+tables.
+
+% Moreover, the technique has been incorporated into a version of Chord
+% (TODO: PChord | additionally check whether this is true) causing an increase
+% on the overhead of node joins and the size as well as maintenance cost of
+% finger tables.
+
+%
+%\cite{dabek_cfs_2001} proposes a server selection scheme for the Chord DHT, on
+%the domain of proximity routing selection. In \emph{CFS}, each node predicts
+%the entire lookup latency as a function of the total number of nodes and the
+%average overlay next routing peer. The problem is that it is very difficult to
+%have a clear picture on the total number of nodes and the average hop latency
+%from the local. This leads to rough estimations that consequently decreases
+%overall performance.
+%
+The methods that use proximity routing and their details are listed below.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Proximity Neighbour Selection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TODO: TAKEN FROM ALGORITHMS SUBSECTION. SHOULD BE MERGED WITH DISCUSSION
+
+\emph{Proximity Neighbour Selection} constructs the routing tables using
+proximity knowledge. The proximity information used in this method is different
+than the landmark based systems described in
+Section~\ref{section:geographic_layout}, as time-to-live values between nodes,
+or directly node ID prefixes are used to detect proximity. Tapestry, Pastry, and
+CAN successfully implemented the proximity into their algorithms by using this
+approach. The routing protocol in Pastry is based on longest node ID prefix
+matching, while CAN uses RTT values to detect close by nodes.
+\cite{castro_proximityp2p_2002} reports that proximity neighbour selection as an
+effective proximity based method. Proximity Neighbor Selection based algorithms
+are described in detail below.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 In this section we presented the state of the art for the algorithms applied to
 structured P2P systems. We categorised it based on their philosophy they
