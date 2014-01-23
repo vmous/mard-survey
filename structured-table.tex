@@ -1,4 +1,4 @@
-%\renewcommand\arraystretch{1.9}
+\renewcommand\arraystretch{1.1}
 
 %\begin{figure}[h!]
 \hspace{-3ex}
@@ -7,31 +7,42 @@
 %\begin{tabular}{
 \begin{landscape}
 \begin{longtable}{
-|>{\columncolor[gray]{.7}}m{0.2\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|}
+m{2cm}
+m{1cm}
+m{1cm}
+m{1cm}
+m{1cm}
+m{1cm}
+m{1cm}
+m{3cm}
+m{5cm}
+}
+%|>{\columncolor[gray]{.7}}m{0.15\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.05in}
+%|>{\columncolor[gray]{.8}}m{0.05\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.05\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.05\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.05\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.05\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+%|>{\columncolor[gray]{.8}}m{0.1\columnwidth+}
+%|
+%}
 \caption[Summary table for structured algorithms]{Summary table for structured algorithms.} \label{structured:table} \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % first head
 \rowcolor[gray]{.5}
-\textbf{Algorithm/Paper} &
+\textbf{Algorithm / Paper} &
 \textbf{Topology Adaptation} &
 \textbf{Landmarking} &
 \textbf{Proximity Routing} &
 \textbf{Proximity Neighbour Selection} &
 \textbf{Geographic Layout} &
-\textbf{Caching/Replication} &
+\textbf{Caching / Replication} &
 \textbf{Highlights} &
-\textbf{Pros/Cons}\\
+\textbf{Pros / Cons}\\
 \hline
 \endfirsthead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -40,15 +51,15 @@
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
 \rowcolor[gray]{.5}
-\textbf{Algorithm/Paper} &
+\textbf{Algorithm / Paper} &
 \textbf{Topology Adaptation} &
 \textbf{Landmarking} &
 \textbf{Proximity Routing} &
 \textbf{Proximity Neighbour Selection} &
 \textbf{Geographic Layout} &
-\textbf{Caching/Replication} &
+\textbf{Caching / Replication} &
 \textbf{Highlights} &
-\textbf{Pros/Cons}\\
+\textbf{Pros / Cons}\\
 \hline
 \endhead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,13 +79,13 @@
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
-Hybrid landmark binning\\
-Probing scheme for proximity detection\\
-Strategic injection of proximity info around the network\\
-Subscription-notification system to dynamically adapt to network changes
+\begin{tabular}[l]{m{3cm}}
+Hybrid landmark binning.\\
+Probing scheme for proximity detection.\\
+Strategic injection of proximity info around the network.\\
+Subscription-notification system to dynamically adapt to network changes.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Greatly reduces routing latency to far away nodes.\\
 -- Host state maintenance.\\
 -- Unable to identify nodes that are close to routers/gateways.\\
@@ -90,11 +101,13 @@ Subscription-notification system to dynamically adapt to network changes
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Directed incremental probing\\
-Synthetic coordinates
+\begin{tabular}[l]{m{3cm}}
+Directed incremental probing.\\
+Synthetic coordinates.
 \end{tabular} &
-- Does not effectively manage dynamic peer arrival and leave.
+\begin{tabular}[l]{m{5cm}}
+-- Does not effectively manage dynamic peer arrival and leave.
+\end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,8 +118,10 @@ Synthetic coordinates
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
-Tree-based hierarchy &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+Tree-based hierarchy.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Reduces hops during message routing.\\
 + Minimal maintenance overhead.\\
 -- Heartbeat approach incurs overhead even when not needed.
@@ -132,11 +147,13 @@ Binning &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Replacing XOR metric with a function that minimises the underlying cost.\\
-Clustering (MaxMind geolocation technology)
+\begin{tabular}[l]{m{3cm}}
+% Replacing XOR metric with a function that minimises the underlying cost.\\
+% Clustering (MaxMind geolocation technology).
 \end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Proximity routing works in Kademlia to improve connection locality.
+\end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -147,9 +164,9 @@ Clustering (MaxMind geolocation technology)
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Ipv6 format exploitation\\
-Additional RTT information
+\begin{tabular}[l]{m{3cm}}
+Ipv6 format exploitation.\\
+Additional RTT information.
 \end{tabular} &
 \\
 \hline
@@ -161,8 +178,10 @@ Additional RTT information
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Clusterting using traceroute logs &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+Clusterting using traceroute logs.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Prioritise interaction of peers and edge gateways.\\
 -- Extended overhead.\\
 -- Traceroute is sometimes disabled by ISPs.
@@ -177,8 +196,10 @@ Clusterting using traceroute logs &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Maintenance of a proximity list &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+Maintenance of a proximity list.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Dynamic maintenance of the proximity list.\\
 + Reduces routing costs.\\
 + Can constrain constly jumps in and out of network partitions.\\
@@ -194,8 +215,10 @@ Maintenance of a proximity list &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Exploits IPv6's anycast mechanism &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+Exploits IPv6's anycast mechanism.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Releaved from the bootstrapping process.\\
 + Easy to implement (just the additional neighbourhood table).
 \end{tabular}
@@ -209,11 +232,14 @@ Exploits IPv6's anycast mechanism &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Exploits IPv6's hierarchical features. &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+Exploits IPv6's hierarchical features.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Reduces inter-domain traffic between ISPs.\\
 + Easily portable to other DHTs.\\
--- It cannot distinguish between close by domains in order to identify the best next hop when an interdomain step must be taken
+-- It cannot distinguish between close by domains in order to identify the best
+next hop when an interdomain step must be taken.
 \end{tabular}
 \\
 \hline
@@ -225,11 +251,11 @@ Exploits IPv6's hierarchical features. &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Grouping through synthetic coordinates\\
-Partitioning using a concentric cycle clustering scheme
+\begin{tabular}[l]{m{3cm}}
+Grouping through synthetic coordinates.\\
+Partitioning using a concentric cycle clustering scheme.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 -- It assumes uniform node distribution which is not always the case in a synthetic coordinate system.\\
 -- Clustering nodes might be a single point of failure.
 \end{tabular}
@@ -243,12 +269,12 @@ Partitioning using a concentric cycle clustering scheme
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
 Geometric space coordinates (GNP)\\
 Transformation of the coordinate space into 1-d Cantor space for easier mapping to the Chord hierarchy\\
 Two finger tables (clockwise, anti-clockwise)
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 -- Not fully distributed (GNP is landmark based).\\
 -- Makes an indirect assumption of a maximum number of allowable hosts.\\
 -- Doubles the required routing information which needs to be created and maintained.
@@ -263,8 +289,10 @@ Two finger tables (clockwise, anti-clockwise)
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-IP address prefixes (16 bit for IPv4) to detect proximity &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+IP address prefixes (16 bit for IPv4) to detect proximity.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Prefix is stored in the DHT so the proximity identification becomes as easy as to query the prefix.\\
 + DHT maintenance mechanisms for both volunteer or falure departures of peers.\\
 -- Performance/accuracy tradeoff in choosing the prefix length to be used.
@@ -279,11 +307,11 @@ IP address prefixes (16 bit for IPv4) to detect proximity &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-2-layer ID space\\
+\begin{tabular}[l]{m{3cm}}
+2-layer ID space.\\
 Group concept for dividing nodes according to a common Chord id prefix.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + The first step of the routing scheme exploits proximity thus reducing message exchange costs.\\
 -- Not fully distributed as it relies on landmarks.\\
 -- Maintenance of three routing tables is needed.
@@ -298,8 +326,12 @@ Group concept for dividing nodes according to a common Chord id prefix.
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-Random Landmarking (RLM) and Closest Neighbour Prefix Assignment (CPNA) in order to make last hop in routing mechanism as local as possible &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
+Random Landmarking (RLM).\\
+Closest Neighbour Prefix Assignment (CPNA).\\
+Making last hop as local as possible.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Developed with mobile, ad-hoc networks in mind.\\
 + Evenly distributed IDs.\\
 + Dynamic landmarking is a fully distributed approach.\\
@@ -316,11 +348,11 @@ Random Landmarking (RLM) and Closest Neighbour Prefix Assignment (CPNA) in order
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
 Selective jumps to adjust peer positioning in the DHT.\\
 Stretch reduction scheme.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Continuously adaptive mechanism.\\
 + It can be considered lightweight.\\
 + Can coexist with other approaches (like landmarking).\\
@@ -420,5 +452,3 @@ Stretch reduction scheme.
 \vspace{-2.5ex}
 %\label{fig:struct_compare_table}
 %\end{figure}
-
-

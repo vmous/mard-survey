@@ -7,26 +7,34 @@
 %\begin{tabular}{
 \begin{landscape}
 \begin{longtable}{
-|>{\columncolor[gray]{.7}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
-|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
-|}
+m{2cm}
+m{1cm}
+m{1cm}
+m{1cm}
+m{1cm}
+m{3cm}
+m{5cm}
+}
+% |>{\columncolor[gray]{.7}}m{0.1\columnwidth}
+% |>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+% |>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+% |>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+% |>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+% |>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+% |>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+% |}
 \caption[Summary table for unstructured algorithms]{Summary table for unstructured algorithms.} \label{unstructured:table} \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % first head
 \rowcolor[gray]{.5}
-\textbf{Algorithm/Paper} &
+\textbf{Algorithm / Paper} &
 \textbf{Topology Adaptation} &
 \textbf{Forwarding Optimisation} &
-\textbf{Caching/Replication} &
+\textbf{Caching / Replication} &
 \textbf{Landmarking} &
 \textbf{Highlights} &
-\textbf{Pros/Cons}\\
+\textbf{Pros / Cons}\\
 \hline
 \endfirsthead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,13 +43,13 @@
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
 \rowcolor[gray]{.5}
-\textbf{Algorithm/Paper} &
+\textbf{Algorithm / Paper} &
 \textbf{Topology Adaptation} &
 \textbf{Forwarding Optimisation} &
-\textbf{Caching/Replication} &
+\textbf{Caching / Replication} &
 \textbf{Landmarking} &
 \textbf{Highlights} &
-\textbf{Pros/Cons}\\
+\textbf{Pros / Cons}\\
 \hline
 \endhead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -59,12 +67,12 @@
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}l@{}}
-Iterativie Depening (ID)\\
-Directed BFS (DBFS)\\
-Local Indices (LI)
+\begin{tabular}[l]{m{3cm}}
+Iterativie Depening (ID).\\
+Directed BFS (DBFS).\\
+Local Indices (LI).
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + ID reduces the messages especially in upper levels of the tree.\\
 + DBFS ??????\\
 + LI reduces aggregate bandwidth usage and improves query efficiency.\\
@@ -80,8 +88,10 @@ Local Indices (LI)
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
-Random Walks (RW) &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Random Walks (RW).
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + RWs issue one copy of the query thus not flooding the whole network.\\
 -- RWs can reduce search scope.\\
 -- Gia does not actually consider the underlying network.
@@ -94,8 +104,10 @@ Random Walks (RW) &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Cycle detection &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Cycle detection.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Drastically reduces duplicate messages.\\
 -- Cannot detect cycles in distance bigger than the TTL value of the IC message.\\
 -- DCMP does not consider the underline network.
@@ -108,12 +120,12 @@ Cycle detection &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}l@{}}
-Uniform replication\\
-Proportional replication\\
-Square root replication allocation
+\begin{tabular}[l]{m{3cm}}
+Uniform replication.\\
+Proportional replication.\\
+Square root replication allocation.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Uniform replication reduces time spend on unsuccessfull searches.\\
 + Reduces search time for frequent queries.\\
 -- Proportional replication struggles in locating rare objects.
@@ -136,11 +148,11 @@ Square root replication allocation
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Mess creation\\
-Minimum spanning trees
+\begin{tabular}[l]{m{3cm}}
+Mess creation.\\
+Minimum spanning trees.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Mess and trees are kept up to date in high churn environments.\\
 -- Works well only for small groups of peers.
 \end{tabular}
@@ -152,11 +164,11 @@ Minimum spanning trees
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Minimum spanning trees\\
-Peer proximity heuristic for removing costly links
+\begin{tabular}[l]{m{3cm}}
+Minimum spanning trees.\\
+Peer proximity heuristic for removing costly links.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Spanning trees only to immediate neighbours so no flooding and at the same time no shrinked search scope.\\
 + Selective flooding effectiveness is detached from physical or overlay topologies.\\
 + The more logical neighbours the more effective selective flooding becomes\\
@@ -171,11 +183,11 @@ Peer proximity heuristic for removing costly links
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-TTL detector (2-hop distance)\\
-Delayed low productive connection cutting
+\begin{tabular}[l]{m{3cm}}
+TTL detector (2-hop distance).\\
+Delayed low productive connection cutting.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Compared to AOTO, ACE and SBO achieves faster convergence speed.\\
 -- Creates more overhead than AOTO, ACE and SBO.\\
 -- Needs synchronisation of peer clocks.\\
@@ -189,8 +201,10 @@ Delayed low productive connection cutting
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-Red/white bipartite overlay &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Red/white bipartite overlay.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Efficient in both static and dynamic environments.\\
 + Compared to AOTO incurs half the overhead.\\
 -- Needs almost double the steps of LTM in order to converge (static or dynamic environments).
@@ -203,11 +217,11 @@ Red/white bipartite overlay &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}[l]{m{3cm}}
 Local optimum heuristic\\
 Piggybacking neighbour distance in queries
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Completely distributed approach.\\
 + Presents trivial overhead compared to the query cost savings.\\
 + Convergent speed faster among AOTO, LTM, SBO.\\
@@ -222,8 +236,10 @@ Piggybacking neighbour distance in queries
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Triple-hop adjustment &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Triple-hop adjustment.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + No need for clock synch.\\
 + Fully distributed.\\
 + Low overhead for the triple hop adjustment.\\
@@ -239,8 +255,10 @@ Triple-hop adjustment &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-machine learning adaptive mechanism &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}{m{3cm}}
+machine learning adaptive mechanism.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Fully dynamic switching decision policy.\\
 - Low convergence due to the learning process.
 \end{tabular}
@@ -252,11 +270,11 @@ machine learning adaptive mechanism &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Short/long connections\\
-Local flooding
+\begin{tabular}[l]{m{3cm}}
+Short/long connections.\\
+Local flooding.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Low clustering.\\
 + Large peer coverage.\\
 + Reduced duplication.\\
@@ -270,8 +288,12 @@ Local flooding
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Selfish shortest path routing &
+\begin{tabular}{m{3cm}}
+Selfish shortest path routing
+\end{tabular} &
+\begin{tabular}{m{3cm}}
 -- constructs a global view of the network
+\end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -280,12 +302,12 @@ Selfish shortest path routing &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}l@{}}
-ISP clustering (tracker-side or ISP-side detection)\\
-Bandwidth throttling\\
-Caching
+\begin{tabular}[l]{m{3cm}}
+ISP clustering (tracker-side or ISP-side detection).\\
+Bandwidth throttling.\\
+Caching.
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Localises traffic within an ISP.\\
 + Preserves the efficiency of bittorrent protocol.\\
 -- Needs ISPs to either provide information or infrastructure changes.\\
@@ -299,15 +321,15 @@ Caching
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-\begin{tabular}[l]{@{}l@{}}
-ISP clustering\\
-Landmarking based on existing CDN infrastructure (CDN redirection measurements)
+\begin{tabular}[l]{m{3cm}}
+ISP clustering.\\
+Landmarking based on existing CDN infrastructure (CDN redirection measurements).
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + Needs no ISP cooperation.\\
 + Needs no extra infrastructure.\\
 + Needs no network topology information.\\
--- Locality based approaches do not treat fair all peers
+-- Locality based approaches do not treat fair all peers.
 \end{tabular}
 \\
 \hline
@@ -317,8 +339,11 @@ Landmarking based on existing CDN infrastructure (CDN redirection measurements)
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-AS hop count minimisation on neighbour selection, on chocking/unchocking mechanisms and on next-chunk picking &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}{m{3cm}}
+AS hop count minimisation on neighbour selection, on chocking/unchocking
+mechanisms and on next-chunk picking.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Optimisation of the inter-AS traffic.\\
 -- Locality based approaches do not treat fair all peers.
 \end{tabular}
@@ -330,11 +355,13 @@ AS hop count minimisation on neighbour selection, on chocking/unchocking mechani
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}[l]{@{}l@{}}
-Peer selection metric that tacks both downloading speed and network topology into account\\
-Applied in multiple places of the bittorrent protocol (bootstrap, connection establishment/replacement, unchocking)
+\begin{tabular}[l]{m{3cm}}
+Peer selection metric that tacks both downloading speed and network topology
+into account.\\
+Applied in multiple places of the bittorrent protocol (bootstrap, connection
+establishment/replacement, unchocking).
 \end{tabular} &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}[l]{m{5cm}}
 + No need for additional infrastructure.\\
 + Enhances both traffic and downloading.\\
 -- Needs offline processing of BGP dumps.
@@ -347,8 +374,10 @@ Applied in multiple places of the bittorrent protocol (bootstrap, connection est
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-Network tomography to construct a picture for the underlying network &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Network tomography to construct a picture for the underlying network.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Reduced ISP burden.\\
 + Better downloading speeds.\\
 -- not thoroughly evaluated.
@@ -361,8 +390,10 @@ Network tomography to construct a picture for the underlying network &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-Cluster peers in a swarm into local, intra- and inter-ISP &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Cluster peers in a swarm into local, intra- and inter-ISP.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Reduced ISP burden.\\
 + Better downloading speeds.\\
 -- Not thoroughly evaluated.
@@ -375,8 +406,10 @@ Cluster peers in a swarm into local, intra- and inter-ISP &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Neighbour exchange between peers &
-\begin{tabular}[l]{@{}l@{}}
+\begin{tabular}{m{3cm}}
+Neighbour exchange between peers.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Cooperation between peers.\\
 + Guarrantees the connectivity of the network between exchanges.\\
 \end{tabular}
@@ -398,8 +431,10 @@ Neighbour exchange between peers &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Domain name topology detection (Split-Hash and dnMatch) &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Domain name topology detection (Split-Hash and dnMatch).
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + Can be applied to both fully unstructured and super-peer based architectures.\\
 + Secures connectivity of the network.\\
 + Reduces cost of message exchange.
@@ -412,8 +447,12 @@ Domain name topology detection (Split-Hash and dnMatch) &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-Clustering based on longest matching IP segment &
+\begin{tabular}{m{3cm}}
+Clustering based on longest matching IP segment.
+\end{tabular} &
+\begin{tabular}{m{5cm}}
 + Focuses on both construction and adaptation.
+\end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -422,8 +461,10 @@ Clustering based on longest matching IP segment &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-Landmark binning &
-\begin{tabular}[l]{@{}l@{}l@{}@{}l@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Landmark binning.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + It is independent of the overlay model.\\
 + The technique can be considered scalable.\\
 -- Uses not so reliable network latency metric (this can lead to load imbalance etc).\\
@@ -440,11 +481,13 @@ Landmark binning &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-Dynamic landmarks &
-\begin{tabular}[l]{@{}l@{}l@{}}
+\begin{tabular}{m{3cm}}
+Dynamic landmarks.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
 + fully distributed.\\
 + It is independent of the overlay model.\\
-- Coarse-grained scheme.
+-- Coarse-grained scheme.
 \end{tabular}
 \\
 \hline
