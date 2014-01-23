@@ -1,0 +1,424 @@
+%\renewcommand\arraystretch{1.9}
+
+%\begin{figure}[h!]
+\hspace{-3ex}
+\begin{center}
+\footnotesize
+%\begin{tabular}{
+\begin{landscape}
+\begin{longtable}{
+|>{\columncolor[gray]{.7}}m{0.2\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+|}
+\caption[Summary table for structured algorithms]{Summary table for structured algorithms.} \label{structured:table} \\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% first head
+\rowcolor[gray]{.5}
+\textbf{Algorithm/Paper} &
+\textbf{Topology Adaptation} &
+\textbf{Landmarking} &
+\textbf{Proximity Routing} &
+\textbf{Proximity Neighbour Selection} &
+\textbf{Geographic Layout} &
+\textbf{Caching/Replication} &
+\textbf{Highlights} &
+\textbf{Pros/Cons}\\
+\hline
+\endfirsthead
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% subsequent heads
+\multicolumn{9}{c}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+\hline
+\rowcolor[gray]{.5}
+\textbf{Algorithm/Paper} &
+\textbf{Topology Adaptation} &
+\textbf{Landmarking} &
+\textbf{Proximity Routing} &
+\textbf{Proximity Neighbour Selection} &
+\textbf{Geographic Layout} &
+\textbf{Caching/Replication} &
+\textbf{Highlights} &
+\textbf{Pros/Cons}\\
+\hline
+\endhead
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% foot
+\hline \multicolumn{9}{r}{\textit{Continued on next page}} \\
+\endfoot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% last foot
+\hline
+\endlastfoot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% data
+\textbf{Global Soft-State} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
+Hybrid landmark binning\\
+Probing scheme for proximity detection\\
+Strategic injection of proximity info around the network\\
+Subscription-notification system to dynamically adapt to network changes
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
++ Greatly reduces routing latency to far away nodes.\\
+-- Host state maintenance.\\
+-- Unable to identify nodes that are close to routers/gateways.\\
+-- Its static nature sacrifices the self-organising attribute of DHTs.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Mithos} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Directed incremental probing\\
+Synthetic coordinates
+\end{tabular} &
+- Does not effectively manage dynamic peer arrival and leave.
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{LAPTOP} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+Tree-based hierarchy &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Reduces hops during message routing.\\
++ Minimal maintenance overhead.\\
+-- Heartbeat approach incurs overhead even when not needed.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Landmark Binning} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+Binning &
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Proximity in Kademlia} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Replacing XOR metric with a function that minimises the underlying cost.\\
+Clustering (MaxMind geolocation technology)
+\end{tabular} &
++ Proximity routing works in Kademlia to improve connection locality.
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{CHOP6} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Ipv6 format exploitation\\
+Additional RTT information
+\end{tabular} &
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{T2MC} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Clusterting using traceroute logs &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Prioritise interaction of peers and edge gateways.\\
+-- Extended overhead.\\
+-- Traceroute is sometimes disabled by ISPs.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{PChord} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Maintenance of a proximity list &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
++ Dynamic maintenance of the proximity list.\\
++ Reduces routing costs.\\
++ Can constrain constly jumps in and out of network partitions.\\
++ Maintenance cost kept to a minimal (node join/leave heartbeat for lists)
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{AChord} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Exploits IPv6's anycast mechanism &
+\begin{tabular}[l]{@{}l@{}}
++ Releaved from the bootstrapping process.\\
++ Easy to implement (just the additional neighbourhood table).
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Chord6} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Exploits IPv6's hierarchical features. &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Reduces inter-domain traffic between ISPs.\\
++ Easily portable to other DHTs.\\
+-- It cannot distinguish between close by domains in order to identify the best next hop when an interdomain step must be taken
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{DHT-PNS} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Grouping through synthetic coordinates\\
+Partitioning using a concentric cycle clustering scheme
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}}
+-- It assumes uniform node distribution which is not always the case in a synthetic coordinate system.\\
+-- Clustering nodes might be a single point of failure.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Quasi-Chord} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}l@{}}
+Geometric space coordinates (GNP)\\
+Transformation of the coordinate space into 1-d Cantor space for easier mapping to the Chord hierarchy\\
+Two finger tables (clockwise, anti-clockwise)
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}}
+-- Not fully distributed (GNP is landmark based).\\
+-- Makes an indirect assumption of a maximum number of allowable hosts.\\
+-- Doubles the required routing information which needs to be created and maintained.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{IPBC} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+IP address prefixes (16 bit for IPv4) to detect proximity &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Prefix is stored in the DHT so the proximity identification becomes as easy as to query the prefix.\\
++ DHT maintenance mechanisms for both volunteer or falure departures of peers.\\
+-- Performance/accuracy tradeoff in choosing the prefix length to be used.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Cone} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+2-layer ID space\\
+Group concept for dividing nodes according to a common Chord id prefix.
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ The first step of the routing scheme exploits proximity thus reducing message exchange costs.\\
+-- Not fully distributed as it relies on landmarks.\\
+-- Maintenance of three routing tables is needed.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{DynaMo} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+Random Landmarking (RLM) and Closest Neighbour Prefix Assignment (CPNA) in order to make last hop in routing mechanism as local as possible &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}}
++ Developed with mobile, ad-hoc networks in mind.\\
++ Evenly distributed IDs.\\
++ Dynamic landmarking is a fully distributed approach.\\
+-- RLM imposes extra network stress especially to landmark nodes.\\
+-- CPNA is a coarse-grained proximity approach.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{SAT-Match} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Selective jumps to adjust peer positioning in the DHT.\\
+Stretch reduction scheme.
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}l@{}l@{}}
++ Continuously adaptive mechanism.\\
++ It can be considered lightweight.\\
++ Can coexist with other approaches (like landmarking).\\
++ Works sufficiently for large scopes as well as environments with high churn.\\
++ Compared to Mithos scales much better.\\
+-- Contention situation in selective jump phase.\\
+-- Probing phase incurs unnecessary traffic.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Delay Aware P2P System} &
+? &
+? &
+? &
+? &
+? &
+? &
+? &
+?
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \hline
+% \textbf{Global Softstate} &
+% \textbf{Geographic layout} Uses first landmark clustering
+% then measures RTTs to identify close nodes &  &  \\
+
+% \hline
+% \textbf{Mithos} &
+% \textbf{Geographic layout} Uses nodes as topology landmarks and directed
+% incremental probing to optimize topology & & Scales well as all
+% operations are local ??? \\
+% 
+% \hline
+% \textbf{Self-Adaptive Topology Matching} &
+% \textbf{Proximity neighbour selection} Uses lightweight probing and
+% selective jumps to optimize the topology & CAN &  Better than Mithos \\
+
+% \hline
+% \textbf{Delay Aware P2P System} & \textbf{} & & \\
+
+% \hline
+% \textbf{VERSION OF CHORD - DHT-PNS} &
+% \textbf{Proximity neighbour selection} Uses Proximity Neighbour Selection and the Vivaldi
+% system & Chord  &  \\
+
+% \hline
+% \textbf{MAY OMIT- VERSION OF CHORD - Quasi-Chord} &
+% \textbf{Proximity based}  & Chord  &  \\
+
+% \hline
+% \textbf{LAPTOP} &
+% \textbf{Geographic layout} Hierarchical overlay structure  &  & routing path length $\log{_d N}$,
+% join/leave overhead $d\log{_d N}$ \\
+
+% \hline
+% \textbf{IP-Based Clustering} &
+% \textbf{Proximity neighbour selection} Proximity neighbour selection based on longest common
+% prefix of IP addresses &    &  \\
+
+% \hline
+% \textbf{CHOord considering Proximity on IPv6} &
+% \textbf{Proximity routing} Uses IPv6 address format to provide proximity &  Chord
+%  & Better than Chord \\
+
+% \hline
+% \textbf{Proximity in Kademlia} &
+% \textbf{Proximity routing} Applies  proximity neighbour selection (PNS) and proximity route selection (PRS)
+% to Kademlia & Kademlia &   \\
+
+% \hline
+% \textbf{Cone} &
+% \textbf{Proximity neighbour selection} Uses proximity neighbour selection (PNS) & Chord  & Better than Chord \\
+
+% \hline
+% \textbf{DynaMO} &  &  &  \\
+% 
+% \hline
+% \textbf{MAY OMIT-BADLY WRITTEN-PChord} &
+% \textbf{Proximity based}  &  Chord  & \\
+% 
+% \hline
+% \textbf{AChord} &  & & \\
+
+% \hline
+% \textbf{Chord6} &
+% \textbf{Proximity routing} Uses IPv6 hierarchical address format to cluster
+% topologically close nodes & Chord  &  \\
+
+% \hline
+ \end{longtable}
+ \end{landscape}
+\end{center}
+\vspace{-2.5ex}
+\vspace{-2.5ex}
+%\label{fig:struct_compare_table}
+%\end{figure}
+
+

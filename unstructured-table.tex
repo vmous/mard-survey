@@ -1,0 +1,575 @@
+%\renewcommand\arraystretch{1.9}% (MyValue=1.0 is for standard)
+
+%\begin{figure}[h!]
+\hspace{-3ex}
+\begin{center}
+\footnotesize
+%\begin{tabular}{
+\begin{landscape}
+\begin{longtable}{
+|>{\columncolor[gray]{.7}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.8}}m{0.1\columnwidth}
+|>{\columncolor[gray]{.9}}m{0.1\columnwidth}
+|}
+\caption[Summary table for unstructured algorithms]{Summary table for unstructured algorithms.} \label{unstructured:table} \\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% first head
+\rowcolor[gray]{.5}
+\textbf{Algorithm/Paper} &
+\textbf{Topology Adaptation} &
+\textbf{Forwarding Optimisation} &
+\textbf{Caching/Replication} &
+\textbf{Landmarking} &
+\textbf{Highlights} &
+\textbf{Pros/Cons}\\
+\hline
+\endfirsthead
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% subsequent heads
+\multicolumn{7}{c}%
+{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+\hline
+\rowcolor[gray]{.5}
+\textbf{Algorithm/Paper} &
+\textbf{Topology Adaptation} &
+\textbf{Forwarding Optimisation} &
+\textbf{Caching/Replication} &
+\textbf{Landmarking} &
+\textbf{Highlights} &
+\textbf{Pros/Cons}\\
+\hline
+\endhead
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% foot
+\hline \multicolumn{7}{r}{\textit{Continued on next page}} \\
+\endfoot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% last foot
+\hline
+\endlastfoot
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% data
+\textbf{Improving search in peer-to-peer networks} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}l@{}}
+Iterativie Depening (ID)\\
+Directed BFS (DBFS)\\
+Local Indices (LI)
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}l@{}}
++ ID reduces the messages especially in upper levels of the tree.\\
++ DBFS ??????\\
++ LI reduces aggregate bandwidth usage and improves query efficiency.\\
+-- ID needs evaluation time between iterations.\\
+-- DBFS uses heuristics so it depends on their efficient choise.\\
+-- LI add index update overhead which might be heavy and might not work at all in systems with high churn.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Gia} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+Random Walks (RW) &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ RWs issue one copy of the query thus not flooding the whole network.\\
+-- RWs can reduce search scope.\\
+-- Gia does not actually consider the underlying network.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{DCMP} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Cycle detection &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Drastically reduces duplicate messages.\\
+-- Cannot detect cycles in distance bigger than the TTL value of the IC message.\\
+-- DCMP does not consider the underline network.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Replication Strategies in Unstructured Peer-to-Peer Networks} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}l@{}}
+Uniform replication\\
+Proportional replication\\
+Square root replication allocation
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Uniform replication reduces time spend on unsuccessfull searches.\\
++ Reduces search time for frequent queries.\\
+-- Proportional replication struggles in locating rare objects.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Tracing a large-scale Peer to Peer System: an hour in the life of Gnutella} &
+? &
+? &
+? &
+? &
+? &
+?
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Narada} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Mess creation\\
+Minimum spanning trees
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}}
++ Mess and trees are kept up to date in high churn environments.\\
+-- Works well only for small groups of peers.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{AOTO} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Minimum spanning trees\\
+Peer proximity heuristic for removing costly links
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}}
++ Spanning trees only to immediate neighbours so no flooding and at the same time no shrinked search scope.\\
++ Selective flooding effectiveness is detached from physical or overlay topologies.\\
++ The more logical neighbours the more effective selective flooding becomes\\
+-- High recalculation costs.\\
+-- No sophisticated selection policy for candidate non-flooding peers.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{LTM} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+TTL detector (2-hop distance)\\
+Delayed low productive connection cutting
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
++ Compared to AOTO, ACE and SBO achieves faster convergence speed.\\
+-- Creates more overhead than AOTO, ACE and SBO.\\
+-- Needs synchronisation of peer clocks.\\
+-- Does not consider shortcuts created by powerful peers when choosing to disable connections (only uses delay metric).
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{SBO} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+Red/white bipartite overlay &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Efficient in both static and dynamic environments.\\
++ Compared to AOTO incurs half the overhead.\\
+-- Needs almost double the steps of LTM in order to converge (static or dynamic environments).
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{THANCS} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Local optimum heuristic\\
+Piggybacking neighbour distance in queries
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}}
++ Completely distributed approach.\\
++ Presents trivial overhead compared to the query cost savings.\\
++ Convergent speed faster among AOTO, LTM, SBO.\\
++ Does not shrink the search scope.\\
+-- Limited by design to not being easily extend to also support non-flooding-based systems.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{HAND} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Triple-hop adjustment &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}l@{}l@{}}
++ No need for clock synch.\\
++ Fully distributed.\\
++ Low overhead for the triple hop adjustment.\\
++ Applicable to both static and dynamic environments.\\
++ Low query response time.\\
+-- Compared to LTM has lower traffic reduction and query response rates.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{APS} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+machine learning adaptive mechanism &
+\begin{tabular}[l]{@{}l@{}}
++ Fully dynamic switching decision policy.\\
+- Low convergence due to the learning process.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{ITA} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Short/long connections\\
+Local flooding
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
++ Low clustering.\\
++ Large peer coverage.\\
++ Reduced duplication.\\
++ Low or no impact to other mechanisms of unstructured p2p networks (e.g. 1-hop replication, dynamic quering).
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{EGOIST} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Selfish shortest path routing &
+-- constructs a global view of the network
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{BNS} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}l@{}}
+ISP clustering (tracker-side or ISP-side detection)\\
+Bandwidth throttling\\
+Caching
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
++ Localises traffic within an ISP.\\
++ Preserves the efficiency of bittorrent protocol.\\
+-- Needs ISPs to either provide information or infrastructure changes.\\
+-- Locality-based approaches do not treat fair all peers.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Ono} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+\begin{tabular}[l]{@{}l@{}}
+ISP clustering\\
+Landmarking based on existing CDN infrastructure (CDN redirection measurements)
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}l@{}}
++ Needs no ISP cooperation.\\
++ Needs no extra infrastructure.\\
++ Needs no network topology information.\\
+-- Locality based approaches do not treat fair all peers
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Locality-Awareness in BitTorrent-like P2P Applications} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+AS hop count minimisation on neighbour selection, on chocking/unchocking mechanisms and on next-chunk picking &
+\begin{tabular}[l]{@{}l@{}}
++ Optimisation of the inter-AS traffic.\\
+-- Locality based approaches do not treat fair all peers.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{TopBT} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{@{}l@{}}
+Peer selection metric that tacks both downloading speed and network topology into account\\
+Applied in multiple places of the bittorrent protocol (bootstrap, connection establishment/replacement, unchocking)
+\end{tabular} &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ No need for additional infrastructure.\\
++ Enhances both traffic and downloading.\\
+-- Needs offline processing of BGP dumps.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{UTAPS} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+Network tomography to construct a picture for the underlying network &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Reduced ISP burden.\\
++ Better downloading speeds.\\
+-- not thoroughly evaluated.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{An Effective Network-Aware Peer Selection Algorithm in Bittorrent} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+Cluster peers in a swarm into local, intra- and inter-ISP &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Reduced ISP burden.\\
++ Better downloading speeds.\\
+-- Not thoroughly evaluated.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{PROP} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Neighbour exchange between peers &
+\begin{tabular}[l]{@{}l@{}}
++ Cooperation between peers.\\
++ Guarrantees the connectivity of the network between exchanges.\\
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Resolving the Topology Mismatch Problem in Unstructured Peer-to-Peer Networks} &
+? &
+? &
+? &
+? &
+? &
+?
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{DDNO} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Domain name topology detection (Split-Hash and dnMatch) &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ Can be applied to both fully unstructured and super-peer based architectures.\\
++ Secures connectivity of the network.\\
++ Reduces cost of message exchange.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{CTAG} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+Clustering based on longest matching IP segment &
++ Focuses on both construction and adaptation.
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Landmark Binning} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+Landmark binning &
+\begin{tabular}[l]{@{}l@{}l@{}@{}l@{}l@{}l@{}}
++ It is independent of the overlay model.\\
++ The technique can be considered scalable.\\
+-- Uses not so reliable network latency metric (this can lead to load imbalance etc).\\
+-- The use of landmark servers renders the technique not fully distributed.\\
+-- Excessive traffic flow towards the landmark servers is possible.\\
+-- Fixed points in a network are inherently more exposed to malicius attacks.\\
+-- Coarse-grained scheme.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{mOverlay} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \CheckedBox} &
+Dynamic landmarks &
+\begin{tabular}[l]{@{}l@{}l@{}}
++ fully distributed.\\
++ It is independent of the overlay model.\\
+- Coarse-grained scheme.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{tabular}[l]{@{}}
+%+ ID reduces the messages especially in upper levels of the tree\\
+%+ DBFS\\
+%+ LI reduces aggregate bandwidth usage and improves query efficiency\\
+%- ID needs evaluation time between iterations\\
+%- DBFS uses heuristics so it depends on their efficient choise\\
+%- LI add index update overhead which might be heavy and might not work at all in systems with high churn
+%\end{tabular} &
+
+
+%\textbf{Narada} & \textbf{Overlay optimization
+%based}. Creates a mesh (richer connected graph) and builds minimum spanning
+%trees on this mesh & & Small and sparse groups \\
+
+%\hline
+%\textbf{Gia} & \textbf{Broadcast based} Replaces
+%Gnutella flooding with random walk, and introduces KaZaA style supernodes. Uses
+%dynamic topology adaptation protocol &
+% Gnutella &  Better than Gnutella  \\
+
+%\hline
+%\textbf{Adaptive Overlay Topology Optimization} & \textbf{Overlay optimization
+%based}. Creates overlay multicast tree with Selective Flooding protocol&
+%Gnutella &  Better than Gnutella \\
+
+% \hline
+% \textbf{Location-aware Topology Matching} &
+% \textbf{Overlay Optimization Based}. Uses \textit{TTL2-detector flooding}, \textit{low productive
+% connection cutting}, and \textit{source peer probing}. & Gnutella &  Better than Gnutella \\
+% 
+% \hline
+% \textbf{Replication Strategies in Unstructured P2P Networks} &
+% \textbf{Cache Based}. Uses uniform, proportional and square root allocation
+% strategies to replicate data. & Gnutella &  Better than Gnutella \\
+% 
+% % \hline
+% \textbf{Tracing a large-scale Peer to Peer System: an hour in the life of Gnutella.} &
+% \textbf{Cache Based}. Proposes a caching algorithm based on the traces of the Gnutella traffic & Gnutella & Better than Gnutella \\
+% 
+% \hline
+% \textbf{Improving search in P2P networks} &
+% \textbf{Broadcast Based}. Uses \textit{iterative deepening}, \textit{directed
+% BFS}, and \textit{local indices} to improve efficiency. & Gnutella &  Better than Gnutella \\
+% 
+% \hline
+% \textbf{Distributed Cycle Minimization Protocol} &
+% \textbf{Broadcast based} Uses a decentralized cycle elimination protocol  &  &  \\
+% 
+% \hline
+% \textbf{Scalable Bipartite Overlay} &
+% \textbf{Overlay optimization based} Uses bipartite partition graph and builds
+% local minimum spanning trees  & Gnutella  & Better than Gnutella \\
+% 
+% \hline
+% \textbf{Adaptive Connection Establishment} &
+% \textbf{Overlay optimization based} Forms Neighbour Cost Tables, builds local
+% minimum spanning trees and perform local optimizations & Adaptive Overlay
+% Topology Optimization (AOTO), Gnutella & Better than Gnutella \\
+
+% \hline
+% \textbf{Hops Adaptive Neighbour Discovery} &  & &  \\
+% 
+% \hline
+% \textbf{Two-Hop-Away Neighbour Comparison and Selection (THANCS)} &
+% \textbf{Overlay optimization based} Uses piggybacking to discover neighbour
+% distances and selects neighbours  & Gnutella  & \\
+
+% \hline
+% \textbf{mOverlay} &\textbf{Landmark based proximity} Uses dynamic landmarks to find node locality
+% & & Due to dynamic landmarks and grouping, more scalable than tree-based or mesh-based protocols \\
+% 
+% \hline
+% \textbf{Distributed Domain Name Order (DDNO)} &
+% \textbf{Overlay optimization based} Connects half of the nodes connections to
+% the nodes in the same domain and the other half to random nodes, therefore
+% supports locality and topological connection  &  & Yes, by using super
+% peers \\
+
+% \hline
+% \textbf{Peer-exchange Routing Optimization Protocols} & \textbf{Overlay optimization based} Optimizes overlay by the exchange of
+% neighbors among peers  & Can work with both decentralized structured and
+% unstructured architecture & Yes \\
+
+% \hline
+% \textbf{MAY OMIT - I CHANGED IT TO STRUCTURED SINCE THERE IS A REFERENCE FOR
+% DHT (OF COURSE IT MIGHT POSIBLE TO BE APPLIED TO BOTH. MAYBE NEED TO CHECK) -
+% T2MC} &
+% \textbf{Overlay optimization based} Uses traceroute results for clustering the
+% nodes  & & \\
+% 
+% \hline
+% \textbf{Unnamed-unstructured} &
+% \textbf{Overlay optimization based} Minimizes the communication delay and
+% maximizes the broadcasting range & & Better than THANCS and mOverlay \\
+
+% \hline
+% \textbf{Landmark Binning} & \textbf{Landmark based proximity} Uses network latency to partition
+% nodes into bins & Can work with both decentralized structured and unstructured architecture & \\
+% 
+% \hline
+%\end{tabular}
+\end{longtable}
+\end{landscape}
+\end{center}
+\vspace{-2.5ex}
+\vspace{-2.5ex}
+%\end{figure}
