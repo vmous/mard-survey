@@ -1,125 +1,186 @@
- %\pgfplotsset{width=7cm,compat=newest}
-%\begin{tikzpicture}
-%\begin{axis}[
-%  ybar,
-%  enlargelimits=0.15,
-%  legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
-%  ylabel={Relative ranking},
-%  symbolic x coords={excellent,good,neutral,not good,poor},
-%  xtick=data,
-%  nodes near coords,
-%  nodes near coords align={vertical},
-%  x tick label style={rotate=45,anchor=east}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             UNSTRUCTURED
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\pgfplotsset{width=7cm,compat=newest}
 
-
-%  ybar,
-%  x tick label style={rotate=90,anchor=near xticklabel, /pgf/string format/1000 sep=},
-%  ylabel=Relative ranking,
-%  enlargelimits=0.15,
-%  legend style={at={(0.5,-0.15)},anchor=south,legend columns=1},
-%  symbolic y coords={low,medium,high},
-%  ybar,
+%%%%%%%%%%%%%%%%%%% EFFICIENCY %%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
 %  bar width=7pt,
-%]
-%\addplot coordinates {
-%  (1930,low)
-%  (1940,low)
-%  (1950,low)
-%  (1960,low)
-%  (1970,low)
-%};
-%\addplot coordinates {
-%  (1930,medium)
-%  (1940,medium)
-%  (1950,medium)
-%  (1960,medium)
-%  (1970,medium)
-%};
-%\addplot coordinates {
-%  (1930,high)
-%  (1940,high)
-%  (1950,high)
-%  (1960,high)
-%  (1970,high)
-%};
-%\legend{efficiency,overhead,scalability}
-%\end{axis}
-%\end{tikzpicture}
+  xlabel=Algorithm,
+  ylabel= Efficiency,
+  symbolic x coords={
+    IterativeDeepening,
+    DirectedBFS,
+    LocalIndices,
+    Gia,
+    DCMP,
+    UniformReplication,
+    ProportionalReplication,
+    SqrtReplication,
+    %Markatos02,
+    Narada,
+    AOTO,
+    ACE,
+    LTM,
+    SBO,
+    THANCS,
+    HAND,
+    APS,
+    ITA,
+    EGOIST,
+    %BNS,
+    Ono,
+    LiuEtAl,
+    TopBT,
+    UTAPS,
+    QinEtAl,
+    PROP-G,
+    PROP-O,
+    %hsiao_redblue_2009,
+    DDNO,
+    CTAG,
+    LB,
+    mOverlay
+  },
+  symbolic y coords={lo, med, hi},
+  x tick label style={rotate=45,anchor=east},
+  xtick=data, ytick=data,
+%   ymin=low,ymax=high,ytickmin=low,
+  height=\textheight - 2.0cm,
+  width=\textwidth + 4.0cm,
+  enlargelimits=0.05
+]
 
-%\pgfplotsset{width=25cm,compat=newest}
-%\begin{tikzpicture}
-%\begin{axis}[
-%  ybar,
-%  enlargelimits=0.15,
-%  %legend style={at={(0.5,-0.2)},anchor=north,legend columns=-1},
-%  symbolic y coords={low,medium,high},
-%  ylabel={Relative ranking},
-%  symbolic x coords={
-%  yang_improvep2psearch_2002,
-%  Gia,
-%  DCMP,
-%  Cohen02,
-%  Markatos02,
-%  Narada,
-%  AOTO,
-%  ACE,
-%  LTM,
-%  SBO,
-%  THANCS,
-%  HAND,
-%  APS,
-%  ITA,
-%  EGOIST,
-%  BNS,
-%  Ono,
-%  lclx_bitlocal_2009,
-%  TopBT,
-%  UTAPS,
-%  qlzg_biteffpeersel_2009,
-%  PROP,
-%  hsiao_redblue_2009,
-%  DDNO,
-%  CTAG,
-%  LB,
-%  mOverlay},
-  %xtick=data,
-  %nodes near coords,
-%  nodes near coords align={vertical},
-%  x tick label style={rotate=45,anchor=east},
-%]
-%\addplot file[skip first, y=efficiency_l] {mard-survey-unstructured.dat};
-%\addplot coordinates {
-%  (Improving search in peer-to-peer networks,medium)
-%  (Gia,medium)
-%  (DCMP,medium)
-%  (Replication Strategies in Unstructured Peer-to-Peer Networks,medium)
-%  ("Tracing a large-scale Peer to Peer System: an hour in the life
-%of Gnutella",medium)
-%  (Narada,medium)
-%  (AOTO,medium)
-%  (ACE,medium)
-%  (LTM,medium)
-%  (SBO,medium)
-%  (THANCS,medium)
-%  (HAND,medium)
-%  (Adaptive Peer Selection,medium)
-%  (ITA,medium)
-%  (EGOIST,medium)
-%  (Biased Neighbour Selection,medium)
-%  (Ono,medium)
-%  (Locality-Awareness in BitTorrent-like P2P Applications,medium)
-%  (TopBT,medium)
-%  (UTAPS,medium)
-%  (An Effective Network-Aware Peer Selection Algorithm in Bittorrent,medium)
-%  (PROP,medium)
-%  ("Resolving the Topology Mismatch Problem in Unstructured
-%Peer-to-Peer Networks",medium)
-%  (DDNO,medium)
-%  (CTAG,medium)
-%  (Landmark Binning,medium)
-%  (mOverlay,medium)
-%};
-%\legend{efficiency,overhead,scalability}
-%\end{axis}
-%\end{tikzpicture}
+\addplot[black,fill=green] table[x=ALGORITHM,y=EFFICIENCY]
+{unstructured-plot.dat};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%% OVERHEAD %%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+%  bar width=7pt,
+  xlabel=Algorithm,
+  ylabel= Overhead,
+  symbolic x coords={
+    IterativeDeepening,
+    DirectedBFS,
+    LocalIndices,
+    Gia,
+    DCMP,
+    UniformReplication,
+    ProportionalReplication,
+    SqrtReplication,
+    %Markatos02,
+    Narada,
+    AOTO,
+    ACE,
+    LTM,
+    SBO,
+    THANCS,
+    HAND,
+    APS,
+    ITA,
+    EGOIST,
+    %BNS,
+    Ono,
+    LiuEtAl,
+    TopBT,
+    UTAPS,
+    QinEtAl,
+    PROP-G,
+    PROP-O,
+    %hsiao_redblue_2009,
+    DDNO,
+    CTAG,
+    LB,
+    mOverlay
+  },
+  symbolic y coords={lo, med, hi},
+  x tick label style={rotate=45,anchor=east},
+  xtick=data, ytick=data,
+%   ymin=low,ymax=high,ytickmin=low,
+  height=\textheight - 2.0cm,
+  width=\textwidth + 4.0cm,
+  enlargelimits=0.05
+]
+
+\addplot[black,fill=red] table[x=ALGORITHM,y=OVERHEAD] {unstructured-plot.dat};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%% SCALABILITY %%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+%  bar width=7pt,
+  xlabel=Algorithm,
+  ylabel= Scalability,
+  symbolic x coords={
+    IterativeDeepening,
+    DirectedBFS,
+    LocalIndices,
+    Gia,
+    DCMP,
+    UniformReplication,
+    ProportionalReplication,
+    SqrtReplication,
+    %Markatos02,
+    Narada,
+    AOTO,
+    ACE,
+    LTM,
+    SBO,
+    THANCS,
+    HAND,
+    APS,
+    ITA,
+    EGOIST,
+    %BNS,
+    Ono,
+    LiuEtAl,
+    TopBT,
+    UTAPS,
+    QinEtAl,
+    PROP-G,
+    PROP-O,
+    %hsiao_redblue_2009,
+    DDNO,
+    CTAG,
+    LB,
+    mOverlay
+  },
+  symbolic y coords={lo, med, hi},
+  x tick label style={rotate=45,anchor=east},
+  xtick=data, ytick=data,
+%   ymin=low,ymax=high,ytickmin=low,
+  height=\textheight - 2.0cm,
+  width=\textwidth + 4.0cm,
+  enlargelimits=0.05
+]
+
+\addplot[black,fill=blue] table[x=ALGORITHM,y=SCALABILITY]
+{unstructured-plot.dat};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{landscape}

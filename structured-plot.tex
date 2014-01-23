@@ -1,1 +1,142 @@
- 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               STRUCTURED
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pgfplotsset{width=7cm,compat=newest}
+
+%%%%%%%%%%%%%%%%%%% EFFICIENCY %%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+%  bar width=7pt,
+  xlabel=Algorithm,
+  ylabel= Efficiency,
+  symbolic x coords={
+    GlobalSoftState,
+    Mithos,
+    LAPTOP,
+    %Landmark Binning,
+    ProximityInKademlia,
+    CHOP6,
+    T2MC,
+    PChord,
+    AChord,
+    Chord6,
+    DHTPNS,
+    QuasiChord,
+    IPBC,
+    Cone,
+    DynaMo,
+    SATMatch,
+    DelayAwareP2PSystem
+  },
+  symbolic y coords={lo, med, hi},
+  x tick label style={rotate=45,anchor=east},
+  xtick=data, ytick=data,
+%   ymin=low,ymax=high,ytickmin=low,
+  height=\textheight - 2cm,
+  width=\textwidth - 2cm,
+  enlargelimits=0.05
+]
+
+\addplot[black,fill=green] table[x=ALGORITHM,y=EFFICIENCY]
+{structured-plot.dat};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%% OVERHEAD %%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+%  bar width=7pt,
+  xlabel=Algorithm,
+  ylabel= Overhead,
+  symbolic x coords={
+    GlobalSoftState,
+    Mithos,
+    LAPTOP,
+    %Landmark Binning,
+    ProximityInKademlia,
+    CHOP6,
+    T2MC,
+    PChord,
+    AChord,
+    Chord6,
+    DHTPNS,
+    QuasiChord,
+    IPBC,
+    Cone,
+    DynaMo,
+    SATMatch,
+    DelayAwareP2PSystem
+  },
+  symbolic y coords={lo, med, hi},
+  x tick label style={rotate=45,anchor=east},
+  xtick=data, ytick=data,
+%   ymin=low,ymax=high,ytickmin=low,
+  height=\textheight - 2cm,
+  width=\textwidth - 2cm,
+  enlargelimits=0.05
+]
+
+\addplot[black,fill=red] table[x=ALGORITHM,y=OVERHEAD]
+{structured-plot.dat};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%% SCALABILITY %%%%%%%%%%%%%%%%%%%
+\begin{landscape}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+  ybar,
+%  bar width=7pt,
+  xlabel=Algorithm,
+  ylabel= Scalability,
+  symbolic x coords={
+    GlobalSoftState,
+    Mithos,
+    LAPTOP,
+    %Landmark Binning,
+    ProximityInKademlia,
+    CHOP6,
+    T2MC,
+    PChord,
+    AChord,
+    Chord6,
+    DHTPNS,
+    QuasiChord,
+    IPBC,
+    Cone,
+    DynaMo,
+    SATMatch,
+    DelayAwareP2PSystem
+  },
+  symbolic y coords={lo, med, hi},
+  x tick label style={rotate=45,anchor=east},
+  xtick=data, ytick=data,
+%   ymin=low,ymax=high,ytickmin=low,
+  height=\textheight - 2cm,
+  width=\textwidth - 2cm,
+  enlargelimits=0.05
+]
+
+\addplot[black,fill=blue] table[x=ALGORITHM,y=SCALABILITY]
+{structured-plot.dat};
+
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\end{landscape}

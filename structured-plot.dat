@@ -1,18 +1,18 @@
-% algorithm			efficiency_l	efficiency_n	overhead_l	overhead_n	scalability_l	scalability_n
-Global Soft-State		medium		2		high		3		low		1
-Mithos				medium		2		medium		2		low		1
-LAPTOP				medium		2		low		1		high		3
-%Landmark Binning		medium		2		medium		2		medium		2
-Proximity in Kademlia		medium		2		medium		2		medium		2
-CHOP6				low		1		low		1		medium		2
-T2MC				high		3		high		3		low		1
-PChord				medium		2		medium		2		high		3
-AChord				medium		2		medium		2		medium		2
-Chord6				low		1		low		1		medium		2
-DHT-PNS				medium		2		medium		2		medium		2
-Quasi-Chord			medium		2		high		3		medium		2
-IPBC				low		1		low		1		medium		2
-Cone				medium		2		medium		2		medium		2
-DynaMo				medium		2		low		1		high		3
-SAT-Match			high		3		medium		2		medium		2
-Delay Aware P2P System		low		1		low		1		medium		2
+ALGORITHM		EFFICIENCY	OVERHEAD	SCALABILITY
+GlobalSoftState		med		hi		lo
+Mithos			med		med		lo
+LAPTOP			med		lo		hi
+%Landmark Binning	med		med		med
+ProximityInKademlia	med		med		med
+CHOP6			lo		lo		med
+T2MC			hi		hi		lo
+PChord			med		med		hi
+AChord			med		med		med
+Chord6			lo		lo		med
+DHTPNS			med		med		med
+QuasiChord		med		hi		med
+IPBC			lo		lo		med
+Cone			med		med		med
+DynaMo			med		lo		hi
+SATMatch		hi		med		med
+DelayAwareP2PSystem	lo		lo		med

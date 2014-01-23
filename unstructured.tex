@@ -193,6 +193,32 @@ low
 \end{tabular}
 \end{center}
 
+% \begin{center}
+% \begin{tikzpicture}
+% \begin{axis}[
+%   ybar,
+%    symbolic x coords={
+%      Efficiency,
+%      Overhead,
+%      Scalability
+%    },
+%    symbolic y coords={lo, med, hi},
+%    x tick label style={rotate=45,anchor=east},
+%    xtick=data, ytick=data
+% ]
+
+% \addplot coordinates {
+%   (Efficiency,lo)
+%   (Overhead,lo)
+%   (Scalability,lo)
+% };
+
+% \end{axis}
+% \end{tikzpicture}
+% \end{center}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Distributed Cycle Minimization Protocol (DCMP)}
 We have already discussed that blind flooding mechanism broadcasts messages with
@@ -1591,6 +1617,8 @@ each of them incorporates along with their highlights and a rough estimation of
 positive and negative aspects of their implementation.
 
 \input{unstructured-table}
+
+\input{unstructured-plot}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Topology adaptation}

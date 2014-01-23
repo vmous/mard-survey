@@ -1,29 +1,33 @@
-% algorithm			efficiency_l		efficiency_n	overhead_l		overhead_n	scalability_l		scalability_n
-
-yang_improvep2psearch_2002	low/medium/high		1/2/3		low/medium/medium	1/2/2		medium/medium/medium	2/2/2
-Gia				low			1		low			1		low			1
-DCMP				medium			2		low			1		high			3
-Cohen02				low/low/medium		1/1/2		low/medium/medium	1/2/2		medium/low/medium	2/1/2
-Markatos02			-			-		-			-		-			-
-Narada				low			1		high			3		low			1
-AOTO				medium			2		high			3		medium			2
-ACE				medium			2		high			3		medium			2
-LTM				medium			2		medium			2		medium			2
-SBO				high			3		medium			2		medium			2
-THANCS				medium			2		low			1		high			3
-HAND				medium			2		low			1		high			3
-APS				high			3		high			3		low			1
-ITA				medium			2		low			1		medium			2
-EGOIST				high			3		high			3		low			1
-BNS				high			3		low			1		medium/high		2/3
-Ono				high			3		medium			2		low			1
-lclx_bitlocal_2009		medium			2		low			1		high			3
-TopBT				medium			2		low			1		high			3
-UTAPS				medium			2		medium			2		medium			2
-qlzg_biteffpeersel_2009		medium			2		medium			2		medium			2
-PROP				medium/medium		2/2		low/medium		1/2		medium/medium		2/2
-hsiao_redblue_2009		-			-		-			-		-			-
-DDNO				medium			2		low			1		medium			2
-CTAG				low			1		low			1		medium			2
-LB				medium			2		low			1		low			1
-mOverlay			medium			2		medium			2		medium			2
+ALGORITHM			EFFICIENCY	OVERHEAD	SCALABILITY
+IterativeDeepening		lo		lo		med
+DirectedBFS			med		med		med
+LocalIndices			hi		med		med
+Gia				lo		lo		lo
+DCMP				med		lo		hi
+UniformReplication		lo		lo		med
+ProportionalReplication		lo		med		lo
+SqrtReplication			med		med		med
+%Markatos02			-		-		-
+Narada				lo		hi		lo
+AOTO				med		hi		med
+ACE				med		hi		med
+LTM				med		med		med
+SBO				hi		med		med
+THANCS				med		lo		hi
+HAND				med		lo		hi
+APS				hi		hi		lo
+ITA				med		lo		med
+EGOIST				hi		hi		lo
+%BNS				hi		lo		med/hi
+Ono				hi		med		lo
+LiuEtAl				med		lo		hi
+TopBT				med		lo		hi
+UTAPS				med		med		med
+QinEtAl				med		med		med
+PROP-G				med		lo		med
+PROP-O				med		med		med
+%hsiao_redblue_2009		-		-		-
+DDNO				med		lo		med
+CTAG				lo		lo		med
+LB				med		lo		lo
+mOverlay			med		med		med
