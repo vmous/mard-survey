@@ -1,57 +1,49 @@
 \section{Introduction}
 \label{section:intro}
 
-Peer-to-peer (P2P) networks are self-organizing distributed systems
-where participating nodes, called \emph{peers}, act as both resource
-providers and resource consumers, in contrast to the traditional \emph{client-server}
-model where nodes take on the role of pure servers or pure clients.  
-Peer-to-peer networks have enjoyed immense attention from Internet users,
-companies, and researchers and have been widely
-deployed for over a decade, primarily because of the great
-number of features they offer distributed applications that are built
-on top of them.  These features include:  high availability and robustness,
-load-balancing, quality of service, scalability, decentralized
-administration, and anonymity.  
+\emph{Peer-to-peer (P2P)} networks are self-organizing distributed systems where
+participating nodes, called \emph{peers}, act as both resource providers and
+resource consumers, in contrast to the traditional \emph{client-server} model
+where nodes take on the role of pure servers or pure clients. Peer-to-peer
+networks have enjoyed immense attention from Internet users, companies, and
+researchers and have been widely deployed for over a decade, primarily because
+of the great number of features they offer distributed applications that are
+built on top of them. These features include:  high availability and robustness,
+load-balancing, quality of service, scalability, decentralized administration,
+and anonymity. 
 
-A myriad of applications have been built and deployed using the peer-to-peer
-paradigm including two widely-known ``killer'' applications:  file-sharing and telephony.
-P2P file-sharing was originally introduced by Napster (see Section 2)
-which by 2001 was widely acknowledged as the ``fastest growing Internet application
-ever" with 26 million users sharing 80 million songs at the height of its popularity.  
-Other file-sharing applications
-quickly followed suit including Gnutella and its descendent, Limewire, connecting
-3 million users concurrently by the end of 2006 and BitTorrent, connecting
-over 150 million users.
-P2P telephony
-has seen explosive growth with the advent of Skype.  Introduced in 2003, Skype
-has experienced explosive popularity with 
-more that 650 million users in 2011 \cite{skypetotalusers} and
-35 million skypers concurrently online on
-the 5th of March 2012 \cite{skypesymusers}.
+Two ``killer'' applications of the peer-to-peer paradigm are, but not limited
+to, file-sharing and telephony. P2P file-sharing was originally introduced by
+Napster (see Section~\ref{section:background}), which by 2001 was widely
+acknowledged as the ``fastest growing Internet application ever" with 26 million
+users sharing 80 million songs at the height of its popularity. Other similar
+applications quickly followed suit including Gnutella and its descendent,
+Limewire, enjoying 3 million concurrently connected peers by the end of 2006
+and BitTorrent, connecting over 150 million users. P2P telephony has seen
+explosive growth with the advent of Skype. Introduced in 2003, Skype has
+experienced explosive popularity with more that 650 million users in 2011
+\cite{skypetotalusers} and 35 million skypers concurrently online on the 5th of
+March 2012 \cite{skypesymusers}.
 
-
-In addition to file-sharing and telephony, a large number of diverse applications have
-been built on top of peer-to-peer systems including:
+In addition to file-sharing and telephony, a large number of diverse
+applications have been built on top of peer-to-peer systems including:
 distributed search engines \cite{yaci}, distributed data storage systems
-\cite{kbc_oceanstore_2000,bdet_fsdfs_2000,dkkms_cfs_2001,dr_pastutility_2001,abc_farsite_2002,mmfc_ivy_2002,arla,agebh_dks_2003}, Web caches, archives,
-and publishing systems \cite{ird_squirrel_2002,bags_youserv_2002,wrc_publius_2000,wm_tangler_2001},
+\cite{kbc_oceanstore_2000,bdet_fsdfs_2000,dkkms_cfs_2001,dr_pastutility_2001,abc_farsite_2002,mmfc_ivy_2002,arla,agebh_dks_2003},
+Web caches, archives and publishing systems
+\cite{ird_squirrel_2002,bags_youserv_2002,wrc_publius_2000,wm_tangler_2001},
 messaging applications \cite{threedegrees}, event notification infrastructures
 \cite{rkcd_scribe_2001,cdkr_scribe_2002,agebh_dks_2003}, naming services
 \cite{cmm_chorddns_2002}, censor-resistant stores \cite{cswh_freenet_2001} and
 lately even cloud-based platforms \cite{mgpj_cloudsnap_2011}.
 
-
-Peer-to-peer systems are implemented using overlay networks.   
-An overlay network is a virtual network of nodes and logical links 
-that is built on top of an existing network with the aim of providing 
-a service (such as content distribution) that is not available 
-in the existing network.  Nodes in the overlay are connected via virtual 
-links, each of which corresponds to a path of possibly many physical 
-links in the underlying network.  
-Figure~\ref{figure:overlay}
-illustrates a simple four-node overlay constructed over a wide-area network.
-In the case of peer-to-peer networks, typically the participating nodes
-are user PCs sitting at the edge of the Internet.
+Peer-to-peer systems are implemented using overlay networks. An \emph{overlay
+network} is a virtual system of nodes and logical links, that is built on top of
+an existing network with the aim of providing a service (such as content
+distribution) that is not available in the existing one. Nodes in the overlay,
+communicate via virtual connections, each of which may correspond to a path of
+possibly many physical links in the underlying network.
+Figure~\ref{figure:overlay} illustrates a simple four-node overlay constructed
+over a wide-area network.
 
 \begin{figure}
 \centering
@@ -60,59 +52,55 @@ are user PCs sitting at the edge of the Internet.
 \label{figure:overlay}
 \end{figure}
 
-One of the fundamental issues that defines the efficiency of an overlay 
-network is how 
-well the overlay network topology maps to the underlying network topology on which it rests.
-Consider two nodes that share a link in an overlay network which maps to multiple 
-hops in the underlying IP topology.  If the traffic patterns of the application are such
-that traffic flows heavily over the overlay link between the two nodes, then it is
-beneficial to construct the overlay topology such that the number of underlying IP links
-between these two nodes is minimized.   
+One of the fundamental issues that defines the efficiency of an overlay network
+is how well the overlay maps to the underlying network topology on which it
+rests. Consider two nodes\footnote{In the case of peer-to-peer networks,
+typically the participating nodes are user PCs sitting at the edge of the
+Internet.} that share a link in an overlay network which maps to multiple hops
+in the underlying (say IP) topology. If the traffic patterns of the application
+are such that traffic flows heavily over the overlay link between the two nodes,
+then it is beneficial to construct the overlay topology such that the number of
+underlying IP links between these two nodes is minimized.
 
 If the overlay network is constructed such that the topology does not match the 
-underlying IP topology well, the resulting \emph{topology mismatch} 
-can result in
-two significant problems.  First, application performance (e.g., search query latency
-or jitter) can be adversely affected since application traffic must flow over a larger number
-of IP hops than if the overlay were constructed more wisely.  Second, studies have shown
-that P2P traffic contributes the largest portion of overall Internet traffic
+underlying IP topology well, the resulting \emph{topology mismatch} (See
+Section~\ref{section:background} for a more formal definition) can result in two
+significant problems. First, application performance (e.g. search query latency
+or jitter) can be adversely affected since application traffic must flow over a
+larger number of IP hops than if the overlay were constructed more wisely.
+Second, studies have shown that P2P applications contribute the largest portion
+of overall Internet traffic
 \cite{seroiu_analysiscds_2002,sen_analyzep2ptraffic_2004,krp_ispfear_2005}, with
-some reporting that more than 60\% of the traffic is P2P~\cite{cachelogic,ipoque2007,ipoque2009}  
-and others reporting that P2P traffic is expected to reach almost 8 petabytes 
-per month by the end of 2012~\cite{multinteligence}.  This is a significant burden for Internet Service Providers (ISPs) who 
-must transfer this traffic to destination nodes sitting at the edge of the Internet.
-If the overlay topology of a peer-to-peer system is not cleverly constructed, then 
-the burden of ISPs carrying P2P traffic could be even greater.
-For example, traffic might have to
-flow back and forth several times between two neighboring ISPs as it travels from its
-source node in the overlay to its destination node.
-Thus, it is fundamentally important that P2P overlay networks are constructed
-and maintained so that
+some reporting that more than 60\% of it, is
+P2P-related~\cite{cachelogic,ipoque2007,ipoque2009} and others claiming that it
+is expected to reach almost 8 petabytes per month by the end of
+2012~\cite{multinteligence}. This is a significant burden for Internet Service
+Providers (ISPs) who must handle all this traffic to destination nodes sitting
+at the edge of the Internet. If the overlay topology of a peer-to-peer system is
+not efficintly constructed, then this burden to the Internet's backbone
+infrastructure could be even greater. For example, traffic might have to flow
+back and forth several times between two neighboring ISPs as it travels from its
+source node in the overlay to its destination node. Thus, it is fundamentally
+important that P2P overlay networks are constructed and maintained so that
 their topology matches as closely as possible the underlying IP topology. 
 
 For over a decade, several tens of researchers have published profusely on the 
-topology mismatch problem.  In this paper, we survey the literature
-on this topic and provide a taxonomy of the proposed approaches and solutions.
-We point out synergies
-as well as similarities and differences in the published approaches.  
-Ultimately, our goal is to help readers sift through the vast
-amount of literature, to help them understand the advantages and 
-disadvantages of each approach, and to provide them with enough 
-perspective so that when the need arises, they are able to select 
-amongst the different approaches for their 
-particular application.
+topology mismatch problem.  In this paper, we survey this research area and
+provide a taxonomy of the proposed solutions. We point out synergies as well as
+similarities and differences in the published approaches. Ultimately, our goal
+is to help readers sift through the vast amount of literature, to help them
+understand the advantages and disadvantages of each of each work, and to provide
+them with enough perspective so that when the need arises, they are able to
+select amongst the different approaches for their particular application.
 
-The rest of the paper is as follows:  In Section~\ref{section:background}, 
-we provide some background information
-on peer-to-peer overlay architectures including centralized, decentralized unstructured
-and decentralized structured peer-to-peer systems.  We also present formally the
-problem of alleviating the topology mismatch between a peer-to-peer overlay and the
-underlying IP network.  In Sections~\ref{section:unstructured} and 
-\ref{section:structured}, we describe a taxonomy of
-the research efforts and solutions
-proposed for decentralized unstructured peer-to-peer systems 
-and decentralized
-structured peer-to-peer systems, respectively.  Finally, 
-in Section~\ref{section:conclusion}, we conclude.
-
-
+The rest of the paper is as follows: In Section~\ref{section:background}, we
+provide some background information on peer-to-peer overlay architectures
+including centralized, decentralized unstructured and decentralized structured
+peer-to-peer systems. We also formally define the problem of topology mismatch
+between an overlay and its underlying physical network and elaborate on the
+rationale behind our coarse grained evaluation of the techinques presented
+throughout this survey. In Sections~\ref{section:unstructured} and
+\ref{section:structured}, we present the various research efforts for
+decentralized unstructured and decentralized structured peer-to-peer systems,
+respectively. Finally, with Section~\ref{section:conclusion}, we
+conclude.

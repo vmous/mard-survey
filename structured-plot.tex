@@ -11,11 +11,12 @@
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-  ybar,
-%  bar width=7pt,
-  xlabel=Algorithm,
-  ylabel= Efficiency,
-  symbolic x coords={
+  xbar,
+  bar width=7pt,
+  xlabel=\emph{Efficiency},
+  ylabel=\emph{Algorithm},
+  symbolic x coords={low, medium, high},
+  symbolic y coords={
     GlobalSoftState,
     Mithos,
     LAPTOP,
@@ -34,16 +35,18 @@
     SATMatch,
     DelayAwareP2PSystem
   },
-  symbolic y coords={lo, med, hi},
-  x tick label style={rotate=45,anchor=east},
+  every axis y label/.style=
+    {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
+%   x tick label style={rotate=45,anchor=east},
   xtick=data, ytick=data,
 %   ymin=low,ymax=high,ytickmin=low,
-  height=\textheight - 2cm,
-  width=\textwidth - 2cm,
-  enlargelimits=0.05
+  height=\textheight - 0.3cm,
+  width=\textwidth,
+  enlargelimits=0.05,
+  title=\emph{Efficiency} Pictorial Comparison of Structured Approaches.
 ]
 
-\addplot[black,fill=green] table[x=ALGORITHM,y=EFFICIENCY]
+\addplot[black,fill=green] table[x=EFFICIENCY,y=ALGORITHM]
 {structured-plot.dat};
 
 \end{axis}
@@ -56,11 +59,12 @@
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-  ybar,
-%  bar width=7pt,
-  xlabel=Algorithm,
-  ylabel= Overhead,
-  symbolic x coords={
+  xbar,
+  bar width=7pt,
+  xlabel=\emph{Overhead},
+  ylabel=\emph{Algorithm},
+  symbolic x coords={low, medium, high},
+  symbolic y coords={
     GlobalSoftState,
     Mithos,
     LAPTOP,
@@ -79,16 +83,18 @@
     SATMatch,
     DelayAwareP2PSystem
   },
-  symbolic y coords={lo, med, hi},
-  x tick label style={rotate=45,anchor=east},
+  every axis y label/.style=
+    {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
+%   x tick label style={rotate=45,anchor=east},
   xtick=data, ytick=data,
 %   ymin=low,ymax=high,ytickmin=low,
-  height=\textheight - 2cm,
-  width=\textwidth - 2cm,
-  enlargelimits=0.05
+  height=\textheight - 0.3cm,
+  width=\textwidth,
+  enlargelimits=0.05,
+  title=\emph{Overhead} Pictorial Comparison of Structured Approaches.
 ]
 
-\addplot[black,fill=red] table[x=ALGORITHM,y=OVERHEAD]
+\addplot[black,fill=red] table[x=OVERHEAD,y=ALGORITHM]
 {structured-plot.dat};
 
 \end{axis}
@@ -101,11 +107,12 @@
 \begin{center}
 \begin{tikzpicture}
 \begin{axis}[
-  ybar,
-%  bar width=7pt,
-  xlabel=Algorithm,
-  ylabel= Scalability,
-  symbolic x coords={
+  xbar,
+  bar width=7pt,
+  xlabel=\emph{Scalability},
+  ylabel=\emph{Algorithm},
+  symbolic x coords={low, medium, high},
+  symbolic y coords={
     GlobalSoftState,
     Mithos,
     LAPTOP,
@@ -124,16 +131,18 @@
     SATMatch,
     DelayAwareP2PSystem
   },
-  symbolic y coords={lo, med, hi},
-  x tick label style={rotate=45,anchor=east},
+  every axis y label/.style=
+    {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
+%   x tick label style={rotate=45,anchor=east},
   xtick=data, ytick=data,
 %   ymin=low,ymax=high,ytickmin=low,
-  height=\textheight - 2cm,
-  width=\textwidth - 2cm,
-  enlargelimits=0.05
+  height=\textheight - 0.3cm,
+  width=\textwidth,
+  enlargelimits=0.05,
+  title=\emph{Scalability} Pictorial Comparison of Structured Approaches.
 ]
 
-\addplot[black,fill=blue] table[x=ALGORITHM,y=SCALABILITY]
+\addplot[black,fill=blue] table[x=SCALABILITY,y=ALGORITHM]
 {structured-plot.dat};
 
 \end{axis}

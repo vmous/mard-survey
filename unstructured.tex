@@ -32,7 +32,7 @@ topology.
 
 \subsection{Algorithms for Unstructured Architectures}
 
-%       BROADCAST OPTIMISATION
+% BROADCAST OPTIMISATION
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Improving search in peer-to-peer networks}
@@ -55,10 +55,10 @@ topology.
 \label{figure:dbfs}
 \end{figure}
 
-\cite{yang_improvep2psearch_2002} proposes an easy to implement and practical
-solution to the inefficiency of Gnutella's ``blind flooding'' approach. The
-paper introduces three different forwarding methods, namely \emph{iterative
-deepening}, \emph{directed BFS}, and \emph{local indices}.
+\cite{YG-M2002} proposes an easy to implement and practical solution to the
+inefficiency of Gnutella's ``blind flooding'' approach. The paper introduces
+three different forwarding methods, namely \emph{iterative deepening},
+\emph{directed BFS}, and \emph{local indices}.
 
 In iterative deepening (see Figure~\ref{figure:dbfs:iterdeep}), the search is
 performed on a BFS tree with multiple preset depths. The depth limit is
@@ -121,7 +121,7 @@ medium &
 % BFS is Gnutella's non efficient communcation method
 medium \\
 \emph{Local Indices} &
-% efficiency is enhanced greatly since data pointers are replicated acros the
+% efficiency is enhanced greatly since data pointers are replicated across the
 % network
 high &
 % updating indices is a time and resource consuming process.
@@ -134,7 +134,7 @@ medium \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Gia}
-\emph{Gia} \cite{chawathe_gia_2003} is an effort to solve the scalability
+\emph{Gia} \cite{CRBLS2003} is an effort to solve the scalability
 problem of the unstructured P2P file sharing systems, in particular Gnutella.
 The main novelty in the design of Gia is the replacement of the blind flooding
 approach of Gnutella with random walks \cite{lv_randomwalks_2002}. Although
@@ -186,10 +186,11 @@ since it does not consider the underlying physical topology.
 low &
 % Only one copy of the query is issued to the network.
 % A token based flow control mechanism redirects queries to nodes that are most
-% likely to fulfill them
+% likely to fulfill them.
 low &
-% Reduced search scope makes this not really scalable
-low
+% Even thought the low overhead scalability is reduced by the reducing of
+% search scope.
+medium
 \end{tabular}
 \end{center}
 
@@ -225,21 +226,21 @@ We have already discussed that blind flooding mechanism broadcasts messages with
 no real targeting, many times to a direction far from the path that can
 ultimatelly fullfil the query request. Another problem with topology unaware
 systems is the duplication of messages due to cycles, even along the correct
-forwarding path. The authors of \cite{zhu_dcmp_2008} fucused on that exact
-deficiency of overlay networks and introduced Distributed Cycle Minimization
-Protocol (DCMP), a dynamic, fully distributed method to remove cycles without
-sacrificing overlay connectivity, resilience and other important properties of
-unstructured architectures by avoiding a hierarchical organisation of peers. In
-DCMP, once a cycle is detected, the most powerful node in that cycle is
-elected as the \emph{Gate Peer} and the cycle is then broken at a strategic
-place so that it will result in the minimisation of the distance between the
-Gate Peer and all other nodes that participated in that cycle. The process
-is managed by using two special message types namely \emph{Information
-Collection (IC)} and \emph{Cut Message (CM)}. One disadvantage of DCMP is that
-since the distance a forwarded message can travel is limited by the TTL value,
-which is practically $7$ in most cases DCMP cannot detect cycles formed by more
-than 7 peers. Even though cycle elimination improves the network performance, it
-does not actually solve the topology mismatch problem.
+forwarding path. The authors of \cite{ZKB2008} fucused on that exact deficiency
+of overlay networks and introduced Distributed Cycle Minimization Protocol
+(DCMP), a dynamic, fully distributed method to remove cycles without sacrificing
+overlay connectivity, resilience and other important properties of unstructured
+architectures by avoiding a hierarchical organisation of peers. In DCMP, once a
+cycle is detected, the most powerful node in that cycle is elected as the
+\emph{Gate Peer} and the cycle is then broken at a strategic place so that it
+will result in the minimisation of the distance between the Gate Peer and all
+other nodes that participated in that cycle. The process is managed by using two
+special message types namely \emph{Information Collection (IC)} and \emph{Cut
+Message (CM)}. One disadvantage of DCMP is that since the distance a forwarded
+message can travel is limited by the TTL value, which is practically $7$ in most
+cases DCMP cannot detect cycles formed by more than 7 peers. Even though cycle
+elimination improves the network performance, it does not actually solve the
+topology mismatch problem.
 
 %
 %\subsection{Distributed Cycle Minimization Protocol}
@@ -303,13 +304,13 @@ does not actually solve the topology mismatch problem.
 \emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
 \hline
 % It return more result than LTM according to experiments in
-% \cite{zhu_dcmp_2008}
+% \cite{ZKB2008}
 medium &
 % Duplicates are an important fraction of the redundant overhead imposed by
 % topology mismatch and thus DCMP minimises this as possible.
 % The control overhead is also one to two orders of magnitude less than LTM due
 % to its ``lazy'' broadcasting of control messages (as opposed to LTM's periodic
-% approach) - \cite{zhu_dcmp_2008}
+% approach) - \cite{ZKB2008}
 low &
 % fully distributed method
 high
@@ -320,7 +321,7 @@ high
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Replication Strategies in Unstructured Peer-to-Peer Networks}
-\cite{Cohen02} aim to improve the inefficient blind search algorithm by
+\cite{CS2002} aim to improve the inefficient blind search algorithm by
 replicating the data in a P2P network. The main intuition behind the
 idea of replication, or using cached copies, is that as the number of copies for
 each item increases in the network, it would be easier for a search algorithm,
@@ -382,42 +383,42 @@ medium \\
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Tracing a large-scale Peer to Peer System: an hour in the life
-of Gnutella}
+% \subsubsection{Tracing a large-scale Peer to Peer System: an hour in the life
+% of Gnutella}
 % TODO: This looks better as an analysis for the unstructured networks in
 % general and specifically for caching, so it doesn't seem to contribute any
 % new approach.... At least we do not present anything here. Maybe we need to
 % revisit the paper itself once more
-\cite{Markatos02} analyses Gnutella network traffic traces and by concluding
-there is locality among query requests, proposes a caching algorithm that tries
-to exploit these findings . The analysis of the trace data reveals other
-important facts about the structure of the Gnutella network and the query data.
-One significant observation is that the geographic locations of clients do not
-have a correlation with the number of query requests they receive. This is an
-obvious result of the topology mismatch problem caused by the overlay structure
-of the Gnutella network. Gnutella's traffic is observed to be bursty both for
-query requests and query responses, even in longer intervals. It is observed
-that a peer receives 50 query messages per second on average! Moreover nine out
-of ten queries do not generate any response due to the inefficient design of
-the Gnutella network. When developing a caching system to exploit locality,
-applying an approach similar to web caching does not fit well with P2P systems.
-Caches in P2P systems not only have to consider the query string, but also
-the TTL value, the source of the query, and the time of the query as well.  In
-general, even though optimum caching is hard to achieve, it is reported that
-it improves the overall performance of the Gnutella network.
+% \cite{Markatos02} analyses Gnutella network traffic traces and by concluding
+% there is locality among query requests, proposes a caching algorithm that tries
+% to exploit these findings . The analysis of the trace data reveals other
+% important facts about the structure of the Gnutella network and the query data.
+% One significant observation is that the geographic locations of clients do not
+% have a correlation with the number of query requests they receive. This is an
+% obvious result of the topology mismatch problem caused by the overlay structure
+% of the Gnutella network. Gnutella's traffic is observed to be bursty both for
+% query requests and query responses, even in longer intervals. It is observed
+% that a peer receives 50 query messages per second on average! Moreover nine out
+% of ten queries do not generate any response due to the inefficient design of
+% the Gnutella network. When developing a caching system to exploit locality,
+% applying an approach similar to web caching does not fit well with P2P systems.
+% Caches in P2P systems not only have to consider the query string, but also
+% the TTL value, the source of the query, and the time of the query as well.  In
+% general, even though optimum caching is hard to achieve, it is reported that
+% it improves the overall performance of the Gnutella network.
 
-\begin{center}
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+% \begin{center}
+% \begin{tabular}{ccc}
+% \emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
+% \hline
 %
-? &
+% ? &
 %
-? &
+% ? &
 %
-?
-\end{tabular}
-\end{center}
+% ?
+% \end{tabular}
+% \end{center}
 
 
 %       OVERLAY OPTIMISATION
@@ -443,7 +444,7 @@ it improves the overall performance of the Gnutella network.
 \label{figure:narada}
 \end{figure}
 
-\emph{Narada} \cite{chu_esm_2000,chu_esm_2001,chu_esm_2002} is a generic
+\emph{Narada} \cite{CRZ2000,CRSZ2001,CRSZ2002} is a generic
 protocol for creating self-adapting overlay networks, that can achieve
 application-layer multicast communication without requiring IP multicast
 infrastructure at the network layer\footnote{
@@ -456,14 +457,15 @@ infrastructure at the network layer\footnote{
   commercial stock exchanges, and multimedia content delivery networks.
 }. Although it was not originally designed as a P2P system nor can be considered
 scalable in the contemporary sense of the term, Narada has been pioneering
-(maybe along with \emph{Scattercast} \cite{chawathe_scattercast_2000}) in that
+(maybe along with \emph{Scattercast} \cite{C2000}) in that
 it was the first to consider the feasibility of overlay-based, application
 layer, services over the Internet that can take into account bandwidth and
 latency properties of the physical underlying infrastructure. Additionally,
 authors realised the inefficiency caused by the topology mismatch problem and
 tried to encounter it by building a richer connected graph, called a
 \emph{mesh}, and building per source minimum spanning trees\footnote{
-  ENarada \cite{li_enarada_2008} used Gossip protocol for the construction
+  ENarada \cite{LYL2008} used Gossip protocol for the
+construction
 }
 as shown in Figure~\ref{figure:narada}. They also keep the graph and the trees
 dynamically updated while nodes continue to join and leave the network.
@@ -488,7 +490,7 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Adaptive Overlay Topology Optimization (AOTO)}
-\emph{Adaptive Overlay Topology Optimization (AOTO)} \cite{liu_aoto_2003} is one
+\emph{Adaptive Overlay Topology Optimization (AOTO)} \cite{LZXN2003} is one
 of the first attempts, along with Narada, to address the topology mismatch
 problem. AOTO is a distributed algorithm that works in two steps, namelly
 \emph{Selective Flooding} and \emph{Active Topology} to optimize the usage of
@@ -550,7 +552,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Adaptive Connection Establishment (ACE)}
-\emph{Adaptive Connection Establishment (ACE)} \cite{liu_ace_2004} builds an
+\emph{Adaptive Connection Establishment (ACE)} \cite{LZXN2004} builds an
 overlay multicast tree among each source node and the peers within a certain
 diameter from the source peer and optimizes the neighbour connections that are
 not in that tree. To achieve that it calculates cost between nodes using network
@@ -590,7 +592,7 @@ the computational overhead.
 %sophisticated selection policy for candidate non-flooding peers.
 %
 
-%In \emph{Adaptive Connection Establishment (ACE)} \cite{liu_ace_2004}, the
+%In \emph{Adaptive Connection Establishment (ACE)} \cite{LZXN2004}, the
 %authors extend the idea of AOTO by introducing optimizations based on the
 %depths of the minimum spanning trees. But since the network delay is not
 %always a reliable estimation method to detect the physical location of peers,
@@ -604,7 +606,7 @@ the computational overhead.
 medium &
 % A little bit better that AOTO since the computation here is done within a
 % certain diameter from the source peer
-high &
+medium &
 % Larger diameter topologies lead to better topology optimization
 % rate but also to higher communication and computation overhead.
 medium
@@ -613,7 +615,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Location-aware Topology Matching (LTM)}
-\emph{Location-aware Topology Matching (LTM)} \cite{liu_ltm_2004} proposes a
+\emph{Location-aware Topology Matching (LTM)} \cite{LLXNZ2004} proposes a
 method to optimize the overlay structure of the P2P network based on the
 physical topology. To achieve this, peers issue special messages called
 \textit{TTL-detector}s with TTL values of 0 and 1 so that the receiving peers
@@ -703,7 +705,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Scalable Bipartite Overlay (SBO)}
 \emph{Scalable Bipartite Overlay (SBO)}
-\cite{liu_bipartite_IPDPS,liu_bipartite_2007} reduces the overhead of creating
+\cite{LXN2004,LXN2007} reduces the overhead of creating
 and maintaining a minimum spanning tree cost by randomly dividing the nodes into
 two groups, namely red and white and assigning different tasks to different
 groups. When a peer joins the network, is randomly assigned with an initial
@@ -754,7 +756,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Two-Hop-Away Neighbour Comparison and Selection (THANCS)}
-Work in \cite{liu_thancs_2005,liu_thancs_2008} proposes a distributed heuristic
+Work in \cite{LNXE2005,L2008} proposes a distributed heuristic
 called \emph{Two-Hop-Away Neighbour Comparison and Selection (THANCS)} that
 tries to minimise the overlay hop costs. THANCS is considered a \emph{local
 search method}, in the sense that it targets in finding a locally optimum
@@ -834,7 +836,7 @@ high
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Hops Adaptive Neighbour Discovery (HAND)}
-\cite{chen_hand_2006} proposes the \emph{HAND} algorithm which uses a
+\cite{CLZHC2006} proposes the \emph{HAND} algorithm which uses a
 fully distributed triple hop adjustment strategy to address the topology
 mismatch problem. The approach's ultimate goal is to shape the current overlay
 graph $G$ into the \emph{Logical Communication Network (LCN)} $G^{*}$ which is
@@ -898,13 +900,13 @@ high
 % TODO: DOUBLE CHECK IF THIS ALGORITHM GOES IN THIS SECTION/SUBSECTION
 \subsubsection{Adaptive Peer Selection (APS)}
 Bernstein et al., contributed on the use of machine learning for building peer
-selection strategies from past experience \cite{bflz_adaptpeersel_2003}. A
-decision tree is used to rate peers based on information about connection
-characteristics that is collected. These can be load, bandwidth, and past
-uploading experience. Then a by Markov decision process is incorporated as a
-mechanism to shape the policy for switching among the peers. The problem
-with this approach is that the peer selection algorithm is slow due to the
-learning process and the complexity of the method.
+selection strategies from past experience \cite{BFLZ2003}. A decision tree is
+used to rate peers based on information about connection characteristics that is
+collected. These can be load, bandwidth, and past uploading experience. Then a
+by Markov decision process is incorporated as a mechanism to shape the policy
+for switching among the peers. The problem with this approach is that the peer
+selection algorithm is slow due to the learning process and the complexity of
+the method.
 
 \begin{center}
 \begin{tabular}{ccc}
@@ -922,7 +924,7 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Innocuous Topology Aware (ITA) Overlay Construction}
-\cite{prfm_ita_2009} intoduces an algorithm for Innocuous Topology Aware
+\cite{PRFM2009} intoduces an algorithm for Innocuous Topology Aware
 construction of unstructured P2P networks. The paper's proposition is twoforld.
 Overlay construction and search method. For the overlay construction it employs
 the notion of \emph{short} and \emph{long} connections. Assuming $N$ is the
@@ -962,7 +964,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{EGOIST}
-EGOIST \cite{egoist_2008} is a set of algorithms to construct and manage overlay
+EGOIST \cite{SLLBBR2008} is a set of algorithms to construct and manage overlay
 networks. It utilises a selfish approach in the sense that every participating
 peer continuously updates its neigbours so as to minimise the sum of distances
 to all destinations under shortest-path routing. In EGOIST, a newlly arriving
@@ -995,7 +997,7 @@ low
 % TODO: CHECK IF THE FOLLOWING BITTORRENT ALGORITMS BELONG IN THIS SUBSECTION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Biased Neighbour Selection (BNS)}
-Bindal et al. \cite{rpc_bitbiased_2006} claim to strengthen BitTorrent
+Bindal et al. \cite{BCCMSBZ2006} claim to strengthen BitTorrent
 protocol\cite{c_bittorrent_2003} locality by selecting most of a peer's
 neighbours to be out of the same ISP, while preserving the near optimal download
 performance of the protocol itself. BitTorrent systems employ most of the time
@@ -1029,17 +1031,17 @@ high &
 low &
 % trackers should maintain and update proximity info/proximity info is
 % retrieved from special hardware.
-medium/high
+medium
 \end{tabular}
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Ono}
-Choffnes and Bustamante propose Ono \cite{cb_ono_2008}, a protocol for managing
+Choffnes and Bustamante propose Ono \cite{CB2008}, a protocol for managing
 BitTorrent traffic so that it significantly reduces cross-ISP traffic and in
 the same time enhances downloading rates by favouring connections within the
 borders of a single autonomous system. Contrary to biased peer selection
-proposed in \cite{rpc_bitbiased_2006}, this work can lead to improved
+proposed in \cite{BCCMSBZ2006}, this work can lead to improved
 performance with no cooperation between ISPs and their subscribers, no
 additional infrastructure and no network topology information. The selection
 approach is landmark-based and leverages existing CDN infrastructure for peer
@@ -1075,7 +1077,7 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Locality-Awareness in BitTorrent-like P2P Applications}
-In \cite{lclx_bitlocal_2009} the authors study and compare three different
+In \cite{LCLX2009} the authors study and compare three different
 approaches in injecting locality awareness in BitTorrent-like applications. The
 first acts at a \emph{macroscopic-level} and targets neighbour selection. When a
 peer asks the tracker to join, the later sorts the swarm peers according to
@@ -1110,7 +1112,7 @@ high
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{TopBT}
-\cite{rtl_topbt_2010} proposed an approach for enhancing proximity awareness
+\cite{RTLCGZ2010} proposed an approach for enhancing proximity awareness
 in the BitTorrent protocol without any need of any infrastructure installed. It
 suggests that a good peer selection metric should take into account both the
 downloading speed and the network topology. Thus, it proposes the use of the
@@ -1156,11 +1158,11 @@ high
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Underlying Topology-Aware Peer Selection (UTAPS)}
-UTAPS \cite{lcy_utaps_2008} is another peer selection strategy for the
-BitTorrent protocol. Its first step is to collect the needed information in
-order to construct a picture of the underlying topology and the second is to
-make the peer selection, per se, based on this knowledge. For the first part,
-the algorithm uses network tomography, a techni  que which suggests probing only
+UTAPS \cite{LCY2008} is another peer selection strategy for the BitTorrent
+protocol. Its first step is to collect the needed information in order to
+construct a picture of the underlying topology and the second is to make the
+peer selection, per se, based on this knowledge. For the first part, the
+algorithm uses network tomography, a techni  que which suggests probing only
 from a large network's end points in order to infer its internal characteristics
 \cite{chny_tomography_2002}. Upon a new peer arrival, the tracker traceroutes it
 to get some knowledge (IP address, routers involved, RTT and hops conducted
@@ -1183,7 +1185,7 @@ conclusions.
 % coarse grained approach of the network tomography doesn't provide a detailed
 % picture of the underlying network that the peers can then exploit
 medium &
-% tracerout and hop counts and calculation from both the tracker and the peers
+% traceroute and hop counts and calculation from both the tracker and the peers
 % (the later for all peers in the bootstrapping list) increases the control
 % overhead of the approach.
 medium &
@@ -1195,7 +1197,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{An Effective Network-Aware Peer Selection Algorithm in
 BitTorrent}
-Qin et al., in their work in \cite{qlzg_biteffpeersel_2009}, propose a
+Qin et al., in their work in \cite{QLZG2009}, propose a
 clustering approach that differentiates peers in a swarm into local, intra-ISP
 and inter-ISP neighbours. The classification is done through the routers they
 use in order to communicate with the tracker. For this, a newly arriving
@@ -1210,7 +1212,7 @@ returned list. In choosing $c$, the tracker employs an iterative search process
 first in the peer's local neighbourhood. If not enough peers are available
 there, it goes to intra-ISP and subsequently, if needed, to the inter-ISP
 cluster. The evaluation of the algorithm is done in a similar artificial,
-contained laboratory enviromnent as in \cite{lcy_utaps_2008} and it shows up to
+contained laboratory enviromnent as in \cite{LCY2008} and it shows up to
 5\% faster downloading times, and up to 22\% reduction of the total cross-ISP
 traffic.
 
@@ -1234,7 +1236,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Peer-exchange Routing Optimization Protocols (PROP)}
-\cite{qiu_prop_2007} introduces two protocols called \emph{Peer-exchange Routing
+\cite{QCYCZ2007} introduces two protocols called \emph{Peer-exchange Routing
 Optimization Protocols (PROP)} to adjust the neighbourhood graph of an overlay
 network in order to reduce its overall link latency. PROP algorithms are based
 on the exchange of neighbours among peers, driven by the mutual benefit of the
@@ -1281,52 +1283,52 @@ medium \\
 % PROP-G can be applied to both structured and unstructured overlays.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Resolving the Topology Mismatch Problem in Unstructured
-Peer-to-Peer Networks}
+% \subsubsection{Resolving the Topology Mismatch Problem in Unstructured
+% Peer-to-Peer Networks}
 % TODO: to be reviewed
 
-In \cite{hsiao_redblue_2009}, Hsiao et al, claim to construct topology-aware
-unstructured overlays that \emph{guarantee} performance qualities in terms of
-\begin{inparaenum}[\itshape i\upshape)]
-  \item the expected communication latency among any two overlay peers
-regardless of the network size, and
-  \item the broadcasting scope of each participating peer
-\end{inparaenum}
-. The algorithm constructs an undirected graph $G = \left( V, E \right)$
-comprised by two subgraphs. The first, namely $G^{\left( red \right)} = \left(
-V^{\left( red \right)}, E^{\left( red \right)} \right)$ in the paper's context,
-includes all vertices of $G$ and ensures the connectivity of the graph by
-securing at least one path between any two nodes. In contrast, $G^{\left( blue
-\right)} = \left( V^{\left( blue \right)}, E^{\left( blue \right)} \right)$,
-contains those vertices of $G$ that have free edges to link to other nodes and
-because these are fully utilized, the following also stands $E = E^{\left( red
-\right)} \cup E^{\left( blue \right)}$. A joining peer $u$, partitions its
-neighbours into two subsets, the $B_u^{\left( red \right)}$ and $B_u^{\left(
-blue \right)}$. In order to populate the $B_u^{\left( red \right)}$ subset, peer
-$u$ samples peers uniformly and at random. Then, each of these selected peers
-discovers a routing path starting from itself towards the node with the smallest
-(or the largest) ID in the system.
+% In \cite{hsiao_redblue_2009}, Hsiao et al, claim to construct topology-aware
+% unstructured overlays that \emph{guarantee} performance qualities in terms of
+% \begin{inparaenum}[\itshape i\upshape)]
+%   \item the expected communication latency among any two overlay peers
+% regardless of the network size, and
+%   \item the broadcasting scope of each participating peer
+% \end{inparaenum}
+% . The algorithm constructs an undirected graph $G = \left( V, E \right)$
+% comprised by two subgraphs. The first, namely $G^{\left( red \right)} = \left(
+% V^{\left( red \right)}, E^{\left( red \right)} \right)$ in the paper's context,
+% includes all vertices of $G$ and ensures the connectivity of the graph by
+% securing at least one path between any two nodes. In contrast, $G^{\left( blue
+% \right)} = \left( V^{\left( blue \right)}, E^{\left( blue \right)} \right)$,
+% contains those vertices of $G$ that have free edges to link to other nodes and
+% because these are fully utilized, the following also stands $E = E^{\left( red
+% \right)} \cup E^{\left( blue \right)}$. A joining peer $u$, partitions its
+% neighbours into two subsets, the $B_u^{\left( red \right)}$ and $B_u^{\left(
+% blue \right)}$. In order to populate the $B_u^{\left( red \right)}$ subset, peer
+% $u$ samples peers uniformly and at random. Then, each of these selected peers
+% discovers a routing path starting from itself towards the node with the smallest
+% (or the largest) ID in the system.
 
 % TODO: CHECK ONCE AGAIN
-\begin{center}
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+% \begin{center}
+% \begin{tabular}{ccc}
+% \emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
+% \hline
 %
-? &
+% ? &
 %
-? &
+% ? &
 %
-?
-\end{tabular}
-\end{center}
+% ?
+% \end{tabular}
+% \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Distributed Domain Name Order (DDNO)}
-\emph{Distributed Domain Name Order (DDNO)} \cite{z-yk_ddno_2005} uses the
-domain names to detect topologically close nodes based on the assumption that
-nodes within the same domain are topologically close to each other. DDNO is
-a heuristic approach to solve the topology mismatch problem and uses
+\emph{Distributed Domain Name Order (DDNO)} \cite{Z-YK2005} uses the domain
+names to detect topologically close nodes based on the assumption that nodes
+within the same domain are topologically close to each other. DDNO is a
+heuristic approach to solve the topology mismatch problem and uses
 \emph{Split-Hash} and \emph{dnMatch} algorithms to detect locality by using
 domain names. The result is a flat overlay topology but with some changes it
 can be utilized in super-peer architectures as well. According to the algorithm
@@ -1363,7 +1365,8 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Critical Topology-Aware Grouping (CTAG)}
 \emph{Critical Topology-Aware Grouping (CTAG)} presented in
-\cite{zhao_ctag_2006}, is a grouping algorithm. The grouping strategy is based
+\cite{ZL2006}, is a grouping algorithm. The grouping strategy is
+based
 on the \emph{Internet Assigned Numbers Authority (IANA)} and the respective
 \emph{Regionanal Internet Registry (RIR)}'s IP assignment strategies, according
 to which nodes within the same organization are always addressed from the same
@@ -1382,7 +1385,7 @@ neighbour connections, node disconnects the neighbours with the lowestAM.
 \begin{tabular}{ccc}
 \emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
 \hline
-% The technique is partitions the system reducing the search efficiency
+% The technique partitions the system reducing the search efficiency
 low &
 % IP-based clustering involves low overhead
 low &
@@ -1411,7 +1414,7 @@ medium
 \label{fig:landmark_binning}
 \end{figure*}
 
-Landmark Binning \cite{ratnasamy_binning_2002} is an approach to partition close
+Landmark Binning \cite{RHMKS2002} is an approach to partition close
 by nodes into bins based on their distance to well known anchor nodes across the
 Internet, as shown in Figure~\ref{fig:landmark_binning}. In order to detect
 locality, nodes use network latency (i.e. RTT) as a measurement technique. The
@@ -1428,18 +1431,18 @@ and hance belong to the same bin. This means that a landmark system consisting
 of $m$ such nodes results in $m!$ potentional different bins.The operation of
 the method is independent of the model incorporated by the overlay network and
 thus it can be applied with no significant changes to both structured and
-unstructured P2P systems. \cite{ratnasamy_binning_2002} has the detailed
-description of such algorithm for both architectures. Landmark binning is also
-considered as a good candidate for content distribution networks in particular.
-The major disadvantage of landmark binning is to install and maintain landmark
-servers on different autonomous systems, all over the world. A typical P2P
-network usually has a couple of million nodes connected at any given time, thus
-rendering landmark servers an important parameter when designing for large
-scales.  The authors claim that latency estimation does not drain much from the
-network resources but in case scalability problems arise, they claim the
-solution is replacing single landmark servers with clusters of servers within
-the same physical area. However, this approach does not reduce the possibility
-of excessive network traffic flow through these landmark servers. One other
+unstructured P2P systems. \cite{RHMKS2002} has the detailed description of such
+algorithm for both architectures. Landmark binning is also considered as a good
+candidate for content distribution networks in particular. The major
+disadvantage of landmark binning is to install and maintain landmark servers on
+different autonomous systems, all over the world. A typical P2P network usually
+has a couple of million nodes connected at any given time, thus rendering
+landmark servers an important parameter when designing for large scales.  The
+authors claim that latency estimation does not drain much from the network
+resources but in case scalability problems arise, they claim the solution is
+replacing single landmark servers with clusters of servers within the same
+physical area. However, this approach does not reduce the possibility of
+excessive network traffic flow through these landmark servers. One other
 possible problem is the incorrect binning caused by the use of inaccurate
 methods for delay measurement, since tracking down, for example, network
 latencies is far from proven to be safe for location estimation.
@@ -1514,7 +1517,7 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{mOverlay}
-\emph{mOverlay} \cite{zhang_moverlay_2004} tries to addresses the scalability
+\emph{mOverlay} \cite{ZZZSZ2004} tries to addresses the scalability
 issues that might be imposed to networks (i.e. load unbalance) when using static
 landmark servers by introducing dynamic landmarks. Zhang et al. introduce the
 notion of a \emph{group} which is a set of peers considered close to each other
@@ -1641,7 +1644,7 @@ graph that can efficiently route messages among peers. Even though spanning
 trees provide efficient query performance, the construction and the update costs
 of the spanning tree, especially in dynamic environments with many nodes joining
 and leaving the network, cause large traffic overhead to the corresponding
-network \cite{chu_esm_2000,chu_esm_2002}. Thus, the original Narada algorithm is
+network \cite{CRZ2000,CRSZ2001,CRSZ2002}. Thus, the original Narada algorithm is
 designed for small groups therefore it is not scalable. Its followers try to
 solve the scalability problem by introducing various methods including forming
 minimum spanning trees for the two-hop neighbours ($N^2$) of each node,
