@@ -533,9 +533,9 @@ neighbors follows a random policy (called \emph{Randomized AT} algorithm in the
 paper's context). For these steps a peer needs to keep track of communication
 costs to all its neighbors (e.g. the network delay) as well as between any
 pair of neighbors (meaning also that additional, cost probing, message types
-need to be added to the Gnutella protocol). Whenever a new neighbor cost table
-is received or there is a change of neighbors, the source peer has to
-re-calculate the multi-cast tree and apply the randomized AT algorithm.
+need to be added to the Gnutella protocol). The randomized AT algorithm is
+applied by the source peer everytime the neighbour list is updated or an updated
+neighbour cost table is received.
 
 %\paragraph*{Selective Flooding (SF)}
 %
@@ -580,16 +580,14 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Adaptive Connection Establishment (ACE)}
-\emph{Adaptive Connection Establishment (ACE)} \cite{LZXN2004} builds an
-overlay multi-cast tree among each source node and the peers within a certain
-diameter from the source peer and optimizes the neighbor connections that are
-not in that tree. To achieve that, it calculates cost between nodes using
-network delay as a metric. Each peer probes the costs with its immediate logical
+\emph{Adaptive Connection Establishment (ACE)} \cite{LZXN2004} uses the network
+delay as a metric to calculate the costs between nodes in a spanning tree.
+Each peer calculates the costs to its logical one-hop
 neighbors and forms a \emph{neighbor cost table (NCT)} using a special
 routing message type. Two neighboring peers exchange their NCTs in order for
 every peer to obtain the cost between any pair of its local neighbors forming a
 small overlay topology. Moreover, based on obtained NCTs a minimum spanning tree
-among each peer and its immediate neighbors is built. Ultimately, physically
+among each peer and its one-hop neighbors is built. Ultimately, physically
 far away neighbors are replaced by physically close ones. Specifically, a peer
 $S$ probes the distance between one of its non-flooding neighbor's neighbor,
 say $G$ and $H$ respectively. Assuming that the neighbor's neighbor ($SH$) is
@@ -798,27 +796,26 @@ locally. This is done by introducing a special query message type, the
 identification and measured distance. A peer $p$ constructs a PM for its
 neighbor $n$, which contains $n$'s IP address and the distance between them.
 When $p$ receives a query from $n$, this PM will be piggybacked to the query
-message that will be then forwarded to all other neighbors of peer $p$. Upon
-receiving such a query message, each of the other neighbors will detach the PM
-information (it will not be further forwarded), record the $pq$ distance and
-process the query as always. Selection of which incoming queries should
-piggyback a PM is proposed by either \emph{pure probability-based (PPB)} or
-\emph{new neighbor triggered (NNT)} policies. The second component, namely
-neighbor comparison and selection, dictates peer $p$ to probe the distance to
-all his known, not yet probed, two-hop neighbors ($ N^2(p)$). The distance of
-$pn$ is known to $p$. Upon receiving a PM from node $n$ with the distance of
-$nq$, where $q$ is a direct neighbor of $n$, $p$ chooses one of the following
-two paths. First, if $q$ is a direct neighbor of $p$, then the later will check
-the cost of the involved links. If the most cost-intensive link is one of $pq$
-or $pn$, then it is put into a \emph{will-cut} list. If it is $nq$ then nothing
-is done (since either $n$ or $q$ will have the chance to handle it themselves).
-On the other hand, if $q$ is within two-hop radius from $p$, the later probes
-the former (if it hasn't got the distance information yet) and again compares
-distances $pq$, $pn$ and $nq$. If $pq$ is the most cost-intensive, $p$ will not
-establish the connection. If it is $pn$, $p$ will establish connection $pq$ and
-put $pn$ in the will-cut list. If it is $nq$, $p$ will keep the connection with
-both $n$ and $q$, expecting that eventually either $n$ or $q$ will disconnect
-link $nq$, later.
+message that will be then forwarded to all other neighbors of peer $p$. 
+Each neighbor will detach the PM information (it will not be further forwarded),
+record the $pq$ distance and process the query as always after receiving a query
+message. Selection of which incoming queries should piggyback a PM is proposed
+by either \emph{pure probability-based (PPB)} or \emph{new neighbor triggered
+(NNT)} policies. The second component, namely neighbor comparison and selection,
+dictates peer $p$ to probe the distance to all his known, not yet probed,
+two-hop neighbors ($ N^2(p)$). The distance of $pn$ is known to $p$. Upon
+receiving a PM from node $n$ with the distance of $nq$, where $q$ is a direct
+neighbor of $n$, $p$ chooses one of the following two paths. First, if $q$ is a
+direct neighbor of $p$, then the later will check the cost of the involved
+links. If the most cost-intensive link is one of $pq$ or $pn$, then it is put
+into a \emph{will-cut} list. If it is $nq$ then nothing is done (since either
+$n$ or $q$ will have the chance to handle it themselves).  On the other hand, if
+$q$ is within two-hop radius from $p$, the later probes the former (if it hasn't
+got the distance information yet) and again compares distances $pq$, $pn$ and
+$nq$. If $pq$ is the most cost-intensive, $p$ will not establish the connection.
+If it is $pn$, $p$ will establish connection $pq$ and put $pn$ in the will-cut
+list. If it is $nq$, $p$ will stay connected with both $n$ and $q$,
+such that eventually in later stages either $n$ or $q$ will disconnect link $nq$.
 
 %
 % TODO: SOME DISCUSSION
@@ -888,10 +885,10 @@ additional delays caused by possible forwarding and jitter delays. The
 advantages of the HAND algorithm compared to other approaches are that:
 \begin{inparaenum}[\itshape i\upshape)]
   \item it does not need any clock synchronization,
-  \item it is a fully distributed algorithm making it robust and reliable in
+  \item it is a fully distributed algorithm making it suitable for
         decentralized systems,
-  \item the traffic overhead of the triple hop adjustment is very low,
-  \item it is applicable to dynamic peer-to-peer environments, and
+  \item the traffic overhead is low,
+  \item it can be used in dynamic peer-to-peer environments, and
   \item maintains lower query response times.
 \end{inparaenum}
 
@@ -1065,27 +1062,27 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Ono}
 Choffnes and Bustamante propose Ono \cite{CB2008}, a protocol for managing
-BitTorrent traffic so that it significantly reduces cross-ISP traffic and in
-the same time enhances downloading rates by favoring connections within the
-borders of a single autonomous system. Contrary to biased peer selection
-proposed in \cite{BCCMSBZ2006}, this work can lead to improved performance with
-no cooperation between ISPs and their subscribers, no additional infrastructure
-and no network topology information. The selection approach is landmark-based
-and leverages existing CDN infrastructure for peer distance estimation. CDNs
-already use both static (i.e. geographical) and dynamic (network measurement
-systems) information for their replica selection, so the authors claim that
-peers which exhibit similar redirection behavior, are very likely they are close
-to the replica servers and as a consequence to each other. The redirection
-behavior is modeled in terms of \emph{ratio map} in the article's parlance, a
-vector of <replica-server,ratio> tuples, where ratio is the percentage of times
-CDN redirects the peer to the specific replica-server. The bootstrapping phase
-consists of the peer performing DNS lookup to CDN names in order to build its
-redirection information. The interval for polling DNSs starts from 30 seconds
-and increases by one minute every time redirection information to the CDN is
-found to remain unchanged after a lookup. On the other hand, the interval is
-halved whenever is found to have been changed. In order not to avoid the
-bootstrapping phase if the ratio map is sufficiently fresh, the protocol
-persists the information after the end of a BitTorrent session.
+BitTorrent traffic so that it significantly reduces cross-ISP traffic and in the
+same time enhances downloading rates by favoring connections within the borders
+of a single autonomous system. Contrary to biased peer selection proposed in
+\cite{BCCMSBZ2006}, this work can lead to improved performance without requiring
+any cooperation between ISPs subscribers, or requiring any additional
+infrastructure and network topology information. The selection approach is
+landmark-based and leverages existing CDN infrastructure for peer distance
+estimation. CDNs already use both static (i.e. geographical) and dynamic
+(network measurement systems) information for their replica selection, so the
+authors claim that peers which exhibit similar redirection behavior, are very
+likely they are close to the replica servers and as a consequence to each other.
+The redirection behavior is modeled in terms of \emph{ratio map} in the
+article's parlance, a vector of <replica-server,ratio> tuples, where ratio is
+the percentage of times CDN redirects the peer to the specific replica-server.
+The bootstrapping phase consists of the peer performing DNS lookup to CDN names
+in order to build its redirection information. The interval for polling DNSs
+starts from 30 seconds and increases by one minute every time redirection
+information to the CDN is found to remain unchanged after a lookup. On the other
+hand, the interval is halved whenever is found to have been changed. In order
+not to avoid the bootstrapping phase if the ratio map is sufficiently fresh, the
+protocol persists the information after the end of a BitTorrent session.
 
 \begin{center}
 \begin{tabular}{ccc}

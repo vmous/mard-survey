@@ -211,10 +211,9 @@ that in LAPTOP routing path length is bounded by $O(log_d N)$ and node joining
 and leaving in the overlay network is bounded by $O\left( d log_d N \right)$
 hops in a balanced overlay tree, where $N$ is the number of nodes, and $d$ is
 the maximum degree of each node. LAPTOP implements the geographical layout
-approach  and constructs its layout in a self-organizing and efficient fashion,
-by estimating the round-trip times to a small number of nodes in the overlay
-network in order to make them roughly aware of their physical distances among
-them.
+approach  and constructs its layout in a self-organizing and efficient fashion.
+The physical distances are estimated with round trip times to a few existing
+nodes in the overlay network.
 
 Each node is assigned a dot-formated address (e.g 1.3.4). Each octet ranges from
 $1$ to $d$, where $d$ is the maximum degree of the nodes. The assignment process
@@ -456,30 +455,42 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{T2MC}
-T2MC \cite{SLCGZ2008} uses trace-route logs to detect different autonomous
-systems and cluster close by peers, thus reducing redundant traffic that crosses
-autonomous system boundaries. T2MC uses a customized k-mean classification
-algorithm with $k=2$ to perform the classification, and exploits the stable
-structure of the Internet routers to guide clustering. The peer chooses the
-minimum and maximum Latency results from the trace-route to initialize the
-centroids of two sets. Then the peer calculates, for all hops along its
-trace-routed path, the peer calculates the absolute distance to these centroids
-of both sets and assigns the routers to that centroid with which it has the
-smaller absolute distance. After that, the mean and variance values are
-calculated and if the variance is larger than a predefined threshold then the
-algorithm sets the two latency mean values as new centroids for the two sets and
-loops again. Ultimately peer will end up with two sets having the minimum
-intra-set variance. The peer, then, chooses the router from the second set with
-the minimum hops attribute and sets it as a threshold. The selected router and
-all others whose hops attribute is larger than the threshold are classified as
-\emph{remote} router cluster. The remaining are classified as \emph{near}. From
-the near class, the peer chooses the one with maximum hops attribute as its edge
-router, and registers it along with all near clusters into the DHT of the
-P2P overlay. As new peers join the network, those that share the same edge
-router or any of the members of the near router clusters, would form a close
-peer cluster. As Edge routers can provide more valuable information than other
-members of the near set, T2MC was designed to prioritize interaction of peers
-and edge gateways.
+
+T2MC \cite{SLCGZ2008} uses traceroute logs to detect the AS boundaries and
+cluster close by peers with each other to reduce the redundant multiple message
+passes between the AS boundaries. T2MC uses a customized k-mean classification
+algorithm with k = 2 to perform the classification, and exploits the stable
+structure of the internet routers to guide clustering. Even though traceroute
+provides detailed information about the network structure, use of traceroute
+creates overhead to the overall network structure. For this same reason, it is
+not unusual for network administrators to disable this support on their network
+routers, which may affect the performance of the T2MC algorithm.
+
+
+%T2MC \cite{SLCGZ2008} uses trace-route logs to detect different autonomous
+%systems and cluster close by peers, thus reducing redundant traffic that crosses
+%autonomous system boundaries. T2MC uses a customized k-mean classification
+%algorithm with $k=2$ to perform the classification, and exploits the stable
+%structure of the Internet routers to guide clustering. The peer chooses the
+%minimum and maximum Latency results from the trace-route to initialize the
+%centroids of two sets. Then the peer calculates, for all hops along its
+%trace-routed path, the peer calculates the absolute distance to these centroids
+%of both sets and assigns the routers to that centroid with which it has the
+%smaller absolute distance. After that, the mean and variance values are
+%calculated and if the variance is larger than a predefined threshold then the
+%algorithm sets the two latency mean values as new centroids for the two sets and
+%loops again. Ultimately peer will end up with two sets having the minimum
+%intra-set variance. The peer, then, chooses the router from the second set with
+%the minimum hops attribute and sets it as a threshold. The selected router and
+%all others whose hops attribute is larger than the threshold are classified as
+%\emph{remote} router cluster. The remaining are classified as \emph{near}. From
+%the near class, the peer chooses the one with maximum hops attribute as its edge
+%router, and registers it along with all near clusters into the DHT of the
+%P2P overlay. As new peers join the network, those that share the same edge
+%router or any of the members of the near router clusters, would form a close
+%peer cluster. As Edge routers can provide more valuable information than other
+%members of the near set, T2MC was designed to prioritize interaction of peers
+%and edge gateways.
 
 %
 % TODO: SOME DISCUSSION
