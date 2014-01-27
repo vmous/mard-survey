@@ -25,19 +25,20 @@ categorised based the previous work done by \cite{CDHR2002,CDCR2002,RSS2002}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Global Soft-State}
 
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.8]{img/algorithms/global_softstate}
-\caption{(left) Position of $p$ in the space of $3$ landmarks. (right) Position
-of $p$ on the map.}
-\label{fig:global_softstate}
-\end{figure*}
+% \begin{figure*}
+% \centering
+%   \includegraphics[scale=0.8]{img/algorithms/global_softstate}
+% \caption{(left) Position of $p$ in the space of $3$ landmarks. (right) Position
+% of $p$ on the map.}
+% \label{fig:global_softstate}
+% \end{figure*}
 
 \textit{Global Soft-State} \cite{XTZ2003} builds a global map to help
 choose shorter routing paths, combining the landmark binning method and small
 scale distance probes to reveal the proximity properties of the underlying
-network to the overlay. Figure \ref{fig:global_softstate} presents the landmark
-space and the mapping of the position of the nodes. This global view of the
+network to the overlay. %Figure \ref{fig:global_softstate} presents the landmark
+%space and the mapping of the position of the nodes.
+This global view of the
 state is made available to all nodes in order to help them find the best way to
 route their messages. \textit{Global Soft-State} operates in two main stages,
 generation and use of the proximity information. For generating the proximity
@@ -961,20 +962,20 @@ high
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{SAT-Match: Self-Adaptive Topology Matching}
 
-\begin{figure}[ht]
-\centering
-\subfigure[Example physical topology of nodes.] {
-  \includegraphics[scale=0.6]{img/algorithms/SAT_match}
-  \label{figure:sat_match:before}
-}\qquad\qquad
-\subfigure[(left) A jumps to B in order to match the logical topology to the
-physical. (right) State of the logical topology after the jump.] {
-  \includegraphics[scale=0.6]{img/algorithms/SAT_match2}
-  \label{figure:sat_match:after}
-}
-\caption{The SAT-Match algorithm.}
-\label{figure:sat_match}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \subfigure[Example physical topology of nodes.] {
+%   \includegraphics[scale=0.6]{img/algorithms/SAT_match}
+%   \label{figure:sat_match:before}
+% }\qquad\qquad
+% \subfigure[(left) A jumps to B in order to match the logical topology to the
+% physical. (right) State of the logical topology after the jump.] {
+%   \includegraphics[scale=0.6]{img/algorithms/SAT_match2}
+%   \label{figure:sat_match:after}
+% }
+% \caption{The SAT-Match algorithm.}
+% \label{figure:sat_match}
+% \end{figure}
 
 \emph{SAT-Match} \cite{RGJZ2004}. Even though no theoretical proof is
 given, valid results are obtained and demonstrated through experimentations.
@@ -1008,8 +1009,9 @@ over a predefined threshold the jump is performed, otherwise the second selected
 candidate is picked and the same computations are performed. If again, the
 threshold is not met, then no jump is ultimately done. In case of a jump, this
 is performed as a combination of \emph{leave} and \emph{join} operations, in the
-CAN context. Figure~\ref{figure:sat_match} demonstrates the selective jump on an
-example topology.
+CAN context.
+% Figure~\ref{figure:sat_match} demonstrates the selective jump on an
+% example topology.
 
 %
 %\paragraph{}
@@ -1058,31 +1060,6 @@ high &
 medium &
 % The self-adaptation nature of the algorithm and the selective jump mechanisms
 % scale much better than, for example, Mithos.
-medium
-\end{tabular}
-\end{center}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph*{ \bf Delay Aware P2P System}
-A new \emph{Delay Aware P2P System (DAPS)} is introduced in \cite{ZL2005}. Its
-main goal is to reduce the time $L$ of a look-up request by dividing the routing
-tables of peers into several sectors in increasing delay. The source node
-emitting the query message defines a delay boundary or the pruning factor $L_t$
-in the paper's context. Request messages will be forwarded only to nodes whose
-delay less than or equal to $L_t$. With the clustered routing tables and the
-loose organisation the overlay network of \emph{DAPS} is between structured and
-unstructured.
-
-% TODO: MAYBE REVIEW THE EVALUATION
-\begin{center}
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
-%
-low &
-%
-low &
-%
 medium
 \end{tabular}
 \end{center}
@@ -1137,21 +1114,30 @@ their implementation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic layout} \label{section:geographic_layout}
+
+\begin{figure}[ht]
+\centering
+  \includegraphics[scale=0.4]{img/pdf/geographic-layout.pdf}
+\caption{Successive nodes in the overlay circle can be chosen to be from the
+same or near autonomous systems.}
+\label{figure:geographic-layout}
+\end{figure}
+
 Inside geographic layout category fall those kind of methods which practically
-position physically close by nodes together in the application space as well.
-This is done by adjusting and maintaining the routing tables of all involved
-peers accordingly by exploiting proximity information that describe the overall
-geographic positioning of the peer nodes. Landmark servers and RTT measurements
-are two popular methods, which can also be used in conjunction, to discover
-physically close by peers over the network. However, as discussed in Section
-\ref{sec:landmark_binning}, these methods do not always give reliable estimates
-for the node positions over the internet. The landmark servers are not
-self-organizing and have maintenance overheads. To serve a P2P network with
-millions of peers, multiple landmark servers distributed over the whole world is
-required, which is hard to manage. The RTT measurements also can measure the
-delay between peers, but it is a greedy method, which can result non-optimal
-overlay topologies especially if close by nodes have low bandwidth connections
-among themselves.
+position physically close by nodes together in the application space as well
+(check Figure~\ref{figure:geographic-layout}). This is done by adjusting and
+maintaining the routing tables of all involved peers accordingly by exploiting
+proximity information that describe the overall geographic positioning of the
+peer nodes. Landmark servers and RTT measurements are two popular methods, which
+can also be used in conjunction, to discover physically close by peers over the
+network. However, as discussed in Section~\ref{sec:landmark_binning}, these
+methods do not always give reliable estimates for the node positions over the
+internet. The landmark servers are not self-organizing and have maintenance
+overheads. To serve a P2P network with millions of peers, multiple landmark
+servers distributed over the whole world is required, which is hard to manage.
+The RTT measurements also can measure the delay between peers, but it is a
+greedy method, which can result in non-optimal overlay topologies especially if
+close by nodes have low bandwidth connections among themselves.
 
 Even though managing the overlay structure based on the geographic layout of the
 nodes improves the query efficiency of the system, on the other hand, it tends
@@ -1181,21 +1167,30 @@ that close by nodes are more likely to suffer collective failures.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Proximity Routing}
+
+\begin{figure}[ht]
+\centering
+  \includegraphics[scale=0.4]{img/pdf/proximity-routing.pdf}
+\caption{Proximity routing takes proximity info into account during the
+routing process.}
+\label{figure:proximity-routing}
+\end{figure}
+
 Proximity routing does not require routing tables to be built using any
 knowledge about network proximity. On the other hand it exploits such knowledge
-in order to choose the best next hop during routing a message. This approach
-tries to balance between choosing the node that will further progress the
-routing towards the destination and choosing the closest entry in the routing
-table, in terms of network proximity. As this is very difficult to be achieved,
-the system might end up using a greedy approach that selects low latency paths
-over the overlay, which maps to suboptimal longer paths on the physical
-topology. Thus, in general, proximity neighbour selection is considered as a
-superior method to proximity routing, however, joint uses of these two protocols
-are also possible. Moreover, they are considered relatively less effective than
-geographical layout when applied to CAN(-like) implementations. Moreover, the
-technique has been incorporated into a version of Chord causing an increase on
-the overhead of node joins and the size as well as maintenance cost of finger
-tables.
+in order to choose the best next hop during routing a message as can be seen in
+Figure~\ref{figure:proximity-routing}. This approach tries to balance between
+choosing the node that will further progress the routing towards the destination
+and choosing the closest entry in the routing table, in terms of network
+proximity. As this is very difficult to be achieved, the system might end up
+using a greedy approach that selects low latency paths over the overlay, which
+maps to suboptimal longer paths on the physical topology. Thus, in general,
+proximity neighbour selection is considered as a superior method to proximity
+routing, however, joint uses of these two protocols are also possible. Moreover,
+they are considered relatively less effective than geographical layout when
+applied to CAN(-like) implementations. Moreover, the technique has been
+incorporated into a version of Chord causing an increase on the overhead of node
+joins and the size as well as maintenance cost of finger tables.
 
 %
 %\cite{dabek_cfs_2001} proposes a server selection scheme for the Chord DHT, on
@@ -1209,13 +1204,22 @@ tables.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Proximity neighbour selection}
+
+\begin{figure}[ht]
+\centering
+  \includegraphics[scale=0.4]{img/pdf/proximity-neighbour-selection.pdf}
+\caption{Proximity neighbour selection dictates that proximity is taken into
+acount during routing table maintenance.}
+\label{figure:proximity-neighbour-selection}
+\end{figure}
+
 \emph{Proximity Neighbour Selection} constructs the routing tables using
-proximity knowledge. The proximity information used in this method is different
-than the landmark based systems described in
-Section~\ref{section:geographic_layout}, as time-to-live values between nodes,
-or directly node ID prefixes are used to detect proximity. Tapestry, Pastry, and
-CAN successfully implemented the proximity into their algorithms by using this
-approach. The routing protocol in Pastry is based on longest node ID prefix
-matching, while CAN uses RTT values to detect close by nodes.
-\cite{CDCR2002a} reports that proximity neighbour selection as an
-effective proximity based method.
+proximity knowledge (see Figure~\ref{figure:proximity-neighbour-selection}). The
+proximity information used in this method is different from the the
+landmark-based systems described in Section~\ref{section:geographic_layout}.
+Here time-to-live values between nodes, or directly node ID prefixes are used to
+detect proximity. Tapestry, Pastry, and CAN successfully implemented the
+proximity into their algorithms by using this approach. The routing protocol in
+Pastry is based on longest node ID prefix matching, while CAN uses RTT values to
+detect close by nodes. \cite{CDCR2002a} reports that proximity neighbour
+selection as an effective proximity based method.

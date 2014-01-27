@@ -2,6 +2,7 @@ ALGORITHM			EFFICIENCY	OVERHEAD	SCALABILITY
 IterativeDeepening		low		low		medium
 DirectedBFS			medium		medium		medium
 LocalIndices			high		medium		medium
+DAPS				low		low		medium
 Gia				low		low		medium
 DCMP				medium		low		high
 UniformReplication		low		low		medium

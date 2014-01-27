@@ -20,6 +20,7 @@
     IterativeDeepening,
     DirectedBFS,
     LocalIndices,
+    DAPS,
     Gia,
     DCMP,
     UniformReplication,
@@ -61,7 +62,8 @@
   title=\emph{Efficiency} Pictorial Comparison of Unstructured Approaches.
 ]
 
-\addplot[black,fill=green] table[x=EFFICIENCY,y=ALGORITHM]
+\addplot[black,fill=gray!20, postaction={pattern=north east lines}]
+table[x=EFFICIENCY,y=ALGORITHM]
 {unstructured-plot.dat};
 
 \end{axis}
@@ -83,6 +85,7 @@
     IterativeDeepening,
     DirectedBFS,
     LocalIndices,
+    DAPS,
     Gia,
     DCMP,
     UniformReplication,
@@ -124,7 +127,8 @@
   title=\emph{Overhead} Pictorial Comparison of Unstructured Approaches.
 ]
 
-\addplot[black,fill=red] table[x=OVERHEAD,y=ALGORITHM]
+\addplot[black,fill=gray!20, postaction={pattern=crosshatch}]
+table[x=OVERHEAD,y=ALGORITHM]
 {unstructured-plot.dat};
 
 \end{axis}
@@ -146,6 +150,7 @@
     IterativeDeepening,
     DirectedBFS,
     LocalIndices,
+    DAPS,
     Gia,
     DCMP,
     UniformReplication,
@@ -187,7 +192,8 @@
   title=\emph{Scalability} Pictorial Comparison of Unstructured Approaches.
 ]
 
-\addplot[black,fill=blue] table[x=SCALABILITY,y=ALGORITHM]
+\addplot[black,fill=gray!50, postaction={pattern=crosshatch dots}]
+table[x=SCALABILITY,y=ALGORITHM]
 {unstructured-plot.dat};
 
 \end{axis}

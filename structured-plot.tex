@@ -32,8 +32,7 @@
     IPBC,
     Cone,
     DynaMo,
-    SATMatch,
-    DelayAwareP2PSystem
+    SATMatch
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -46,7 +45,8 @@
   title=\emph{Efficiency} Pictorial Comparison of Structured Approaches.
 ]
 
-\addplot[black,fill=green] table[x=EFFICIENCY,y=ALGORITHM]
+\addplot[black,fill=gray!20, postaction={pattern=north east lines}]
+table[x=EFFICIENCY,y=ALGORITHM]
 {structured-plot.dat};
 
 \end{axis}
@@ -80,8 +80,7 @@
     IPBC,
     Cone,
     DynaMo,
-    SATMatch,
-    DelayAwareP2PSystem
+    SATMatch
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -94,7 +93,8 @@
   title=\emph{Overhead} Pictorial Comparison of Structured Approaches.
 ]
 
-\addplot[black,fill=red] table[x=OVERHEAD,y=ALGORITHM]
+\addplot[black,fill=gray!20, postaction={pattern=crosshatch}]
+table[x=OVERHEAD,y=ALGORITHM]
 {structured-plot.dat};
 
 \end{axis}
@@ -128,8 +128,7 @@
     IPBC,
     Cone,
     DynaMo,
-    SATMatch,
-    DelayAwareP2PSystem
+    SATMatch
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -142,7 +141,8 @@
   title=\emph{Scalability} Pictorial Comparison of Structured Approaches.
 ]
 
-\addplot[black,fill=blue] table[x=SCALABILITY,y=ALGORITHM]
+\addplot[black,fill=gray!50, postaction={pattern=crosshatch dots}]
+table[x=SCALABILITY,y=ALGORITHM]
 {structured-plot.dat};
 
 \end{axis}

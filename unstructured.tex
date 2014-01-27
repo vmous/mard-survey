@@ -37,30 +37,31 @@ topology.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Improving search in peer-to-peer networks}
 
-\begin{figure}[ht]
-\centering
-\subfigure[Iterative deepening with three levels.] {
-  \includegraphics[scale=0.4]{img/algorithms/iterative_deepening}
-  \label{figure:dbfs:iterdeep}
-}\qquad\qquad
-\subfigure[Directed BFS.] {
-  \includegraphics[scale=0.4]{img/algorithms/directed_bfs}
-  \label{figure:dbfs:dbfs}
-}\qquad\qquad
-\subfigure[Local indices with radius size equal to $2$.] {
-  \includegraphics[scale=0.4]{img/algorithms/local_indices}
-  \label{figure:dbfs:localindx}
-}
-\caption{Improving search in P2P networks}
-\label{figure:dbfs}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \subfigure[Iterative deepening with three levels.] {
+%   \includegraphics[scale=0.4]{img/algorithms/iterative_deepening}
+%   \label{figure:dbfs:iterdeep}
+% }\qquad\qquad
+% \subfigure[Directed BFS.] {
+%   \includegraphics[scale=0.4]{img/algorithms/directed_bfs}
+%   \label{figure:dbfs:dbfs}
+% }\qquad\qquad
+% \subfigure[Local indices with radius size equal to $2$.] {
+%   \includegraphics[scale=0.4]{img/algorithms/local_indices}
+%   \label{figure:dbfs:localindx}
+% }
+% \caption{Improving search in P2P networks}
+% \label{figure:dbfs}
+% \end{figure}
 
 \cite{YG-M2002} proposes an easy to implement and practical solution to the
 inefficiency of Gnutella's ``blind flooding'' approach. The paper introduces
 three different forwarding methods, namely \emph{iterative deepening},
 \emph{directed BFS}, and \emph{local indices}.
 
-In iterative deepening (see Figure~\ref{figure:dbfs:iterdeep}), the search is
+In iterative deepening, %(see Figure~\ref{figure:dbfs:iterdeep})
+the search is
 performed on a BFS tree with multiple preset depths. The depth limit is
 iteratively increased by the source node for each query, based on the quality of
 the results. The source node may issue a new request with increased depth limit
@@ -71,13 +72,14 @@ tree. Its major drawback is the delay between successive iterations, as the
 source node needs to examine the results at each iteration before deciding to
 quit or resume the query.
 
-The directed BFS, as shown in Figure~\ref{figure:dbfs:dbfs}, tries to avoid this
-delay by forwarding the query messages only to a selected set of neighbours, in
-which the selection criteria varies from the number of results received
-previously, distance in terms of hops, bandwidth, or the query load of the
-neighbour.
+The directed BFS%, as shown in Figure~\ref{figure:dbfs:dbfs},
+tries to avoid this delay by forwarding the query messages only to a selected
+set of neighbours, in which the selection criteria varies from the number of
+results received previously, distance in terms of hops, bandwidth, or the query
+load of the neighbour.
 
-In local indices, as shown in Figure~\ref{figure:dbfs:localindx}, each node
+In local indices%, as shown in Figure~\ref{figure:dbfs:localindx},
+each node
 indexes data within a radius of $r$ hops and uses this local index to answer
 queries on behalf of them without generating additional traffic. Local indices
 greatly reduce the aggregate bandwidth usage of the network and improves query
@@ -129,6 +131,31 @@ medium &
 % the scalability is constrained by the indices update in a highly dynamic
 % environment (high churn)
 medium \\
+\end{tabular}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph*{ \bf Delay Aware P2P System}
+A new \emph{Delay Aware P2P System (DAPS)} is introduced in \cite{ZL2005}. Its
+main goal is to reduce the time of a look-up request by dividing the routing
+tables of peers into several sectors of increasing delay. The source node
+emitting the query message defines a delay boundary or the \emph{pruning
+factor} in the paper's context. Request messages are then forwarded only to
+nodes whose delay is less than or equal that boundary. With the clustered
+routing tables and the loose organisation of DAPS' overlay network it is
+considered by is between structured and unstructured.
+
+% TODO: MAYBE REVIEW THE EVALUATION
+\begin{center}
+\begin{tabular}{ccc}
+\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
+\hline
+%
+low &
+%
+low &
+%
+medium
 \end{tabular}
 \end{center}
 
@@ -426,23 +453,23 @@ medium \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Narada}
 
-\begin{figure}[ht]
-\centering
-\subfigure[Underlying network with edge costs.] {
-  \includegraphics[scale=0.4]{img/algorithms/narada}
-  \label{figure:narada:underlying}
-}\qquad\qquad
-\subfigure[Peer A sends a message to the rest using regular broadcast.] {
-  \includegraphics[scale=0.4]{img/algorithms/narada2}
-  \label{figure:narada:regu}
-}\qquad\qquad
-\subfigure[Peer A sends a message to the rest using end system multicast.] {
-  \includegraphics[scale=0.4]{img/algorithms/narada3}
-  \label{figure:narada:multicast}
-}
-\caption{A visualisation of the Narada protocol.}
-\label{figure:narada}
-\end{figure}
+% \begin{figure}[ht]
+% \centering
+% \subfigure[Underlying network with edge costs.] {
+%   \includegraphics[scale=0.4]{img/algorithms/narada}
+%   \label{figure:narada:underlying}
+% }\qquad\qquad
+% \subfigure[Peer A sends a message to the rest using regular broadcast.] {
+%   \includegraphics[scale=0.4]{img/algorithms/narada2}
+%   \label{figure:narada:regu}
+% }\qquad\qquad
+% \subfigure[Peer A sends a message to the rest using end system multicast.] {
+%   \includegraphics[scale=0.4]{img/algorithms/narada3}
+%   \label{figure:narada:multicast}
+% }
+% \caption{A visualisation of the Narada protocol.}
+% \label{figure:narada}
+% \end{figure}
 
 \emph{Narada} \cite{CRZ2000,CRSZ2001,CRSZ2002} is a generic
 protocol for creating self-adapting overlay networks, that can achieve
@@ -466,8 +493,9 @@ tried to encounter it by building a richer connected graph, called a
 \emph{mesh}, and building per source minimum spanning trees\footnote{
   ENarada \cite{LYL2008} used Gossip protocol for the
 construction
-}
-as shown in Figure~\ref{figure:narada}. They also keep the graph and the trees
+}.
+%as shown in Figure~\ref{figure:narada}.
+They also keep the graph and the trees
 dynamically updated while nodes continue to join and leave the network.
 Moreover, the protocol tries to ease the physical link stress, the overall
 resource usage and the relative delay among end systems. Unfortunately, the most
@@ -1406,17 +1434,18 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Landmark Binning (LM)}\label{sec:landmark_binning}
-\begin{figure*}
-\centering
-  \includegraphics[scale=0.4]{img/algorithms/landmark_binning}
-\caption{Example 2D coordinate overlay and a sample routing path from node D to
-(x,y).}
-\label{fig:landmark_binning}
-\end{figure*}
+% \begin{figure*}
+% \centering
+%   \includegraphics[scale=0.4]{img/algorithms/landmark_binning}
+% \caption{Example 2D coordinate overlay and a sample routing path from node D to
+% (x,y).}
+% \label{fig:landmark_binning}
+% \end{figure*}
 
 Landmark Binning \cite{RHMKS2002} is an approach to partition close
 by nodes into bins based on their distance to well known anchor nodes across the
-Internet, as shown in Figure~\ref{fig:landmark_binning}. In order to detect
+Internet.%, as shown in Figure~\ref{fig:landmark_binning}.
+In order to detect
 locality, nodes use network latency (i.e. RTT) as a measurement technique. The
 network latency, even though not always accurate, is selected in this work due
 to its non-intrusive, transparent and easy to apply behaviour. In order for the
@@ -1625,42 +1654,49 @@ positive and negative aspects of their implementation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Topology adaptation}
-Researchers initially started considering alternatives for services who
-implement one-to-many communication schemes, like IP multicast, on the
-application layer (i.e. Narada). Application level multicast protocols
-are generic protocols that can be applied to both P2P file sharing systems, as
-well as content distribution networks. Application layer multicast, however, is
-not as efficient as the one enabled by IP and still struggles to ease the
-difficulties imposed by the topology mismatch problem.
+\begin{figure}[ht]
+\centering
+\subfigure[Ineffictient overlay topology.] {
+  \includegraphics[scale=0.4]{img/pdf/topology-adaptation-before.pdf}
+  \label{figure:topology-adaptation:before}
+}\qquad\qquad
+\subfigure[Efficient overlay topology after adaptation.] {
+  \includegraphics[scale=0.4]{img/pdf/topology-adaptation-after.pdf}
+  \label{figure:topology-adaptation:after}
+}
+\caption{A simple example of how an overlay topology can be adapted.}
+\label{figure:topology-adaptation}
+\end{figure}
 
 The topology adaptation based protocols modify the topology of the P2P network
-using various techniques. The two commonly used approaches that have been
-investigated in this section are creating \emph{spanning tree}s using connection
-graphs, and creating \emph{clusters} of physically close nodes.
+using various techniques. The two commonly used approaches that can
+back such feature and were investigated in this section are creating
+\emph{spanning tree}s using connection graphs, and creating \emph{clusters} of
+physically close nodes.
 
-Narada and subsequent algorithms like AOTO, LTM, SBO, try to the problem by
-building a richer connected graph and forming minimum spanning trees over this
-graph that can efficiently route messages among peers. Even though spanning
-trees provide efficient query performance, the construction and the update costs
-of the spanning tree, especially in dynamic environments with many nodes joining
-and leaving the network, cause large traffic overhead to the corresponding
-network \cite{CRZ2000,CRSZ2001,CRSZ2002}. Thus, the original Narada algorithm is
-designed for small groups therefore it is not scalable. Its followers try to
-solve the scalability problem by introducing various methods including forming
-minimum spanning trees for the two-hop neighbours ($N^2$) of each node,
-partitioning the graph into two random groups where each group is responsible of
-different tasks, or performing local optimizations dynamically on the overlay
-graph. The advantage of building minimum spanning trees is that they maintain
-the connectivity on the network in an efficient manner, while still preserving
-the overall search scope. However, building and maintaining a minimum spanning
-tree creates additional overhead for the network.
+Narada and subsequent algorithms like AOTO, LTM, SBO, try to solve the problem
+by building a richer connected graph and forming minimum spanning trees over
+this graph that can efficiently route messages among peers. Even though spanning
+trees provide efficient query performance, their maintenance costs can be
+proven a real blocker. That is why the original Narada algorithm did not have
+any real topology adaptation mechanism meaning that it was designed for small
+groups (therefore not scalable). Its followers try to overcome these obstacles
+with clever tricks like forming minimum spanning trees for the two-hop
+neighbours ($N^2$) of each node, partitioning the graph into two random groups
+where each group is responsible of different tasks, or performing local
+optimizations dynamically on the overlay graph. The advantage of building
+minimum spanning trees is that they maintain the connectivity on the network in
+an efficient manner, while still preserving the overall search scope. However,
+their construction and the update costs, especially in dynamic, high-churn
+environments, cause large additional traffic overhead to the underlying
+network \cite{CRZ2000,CRSZ2001,CRSZ2002}.
 
 The cluster based approaches, on the other hand, select to link physically
 closer nodes with each other. T2MC, for example, uses traceroute logs and DDNO
 uses domain names to cluster close by nodes. Unfortunatelly, commonly used
 methods for proximity detection across Internet do not always return
 reliable results, therefore mapping accuracy is not guaranteed. Moreover,
-traceroute for example, is a heavy weight utility to be frequently used on the
+traceroute, is a heavy-weight utility to be frequently used on the
 network, let alone the fact that many network equipment vendors do not allow
 traceroute calls at all. The most problematic aspect of clusterting, though, is
 its nature per se. Limited connectivity among the various local domains can
@@ -1669,7 +1705,17 @@ time the P2P end-user experiences. Of course, techniques that try to round up
 such edges and balance the efficiency of the clustering approach with improved
 connectivity, have also been proposed, like DDNO, which attempts to address this
 limitation by forcing half of each node's connections to be with other, randomly
-selected, nodes over the network
+selected, nodes over the network.
+
+Concluding, topology adaptation ultimatelly targets on the reduction of the
+average cost of the paths from one node to another. This way someone can deduce
+that the overlay network is better fit on top of the physical, underlying one.
+This deduction is fair in the general case but not always. For example an
+adaptive algorithm can exchange a slow edge in the overlay with a faster one
+thus reducing the average latency of the network communication. The pitfall here
+is that this new virtual link can traverse a fast AS-to-AS link meaning that
+even though is reduced message round-trip-time, it has more cost in terms of
+communication network economics and management.
 
 % These approaches include creating spanning trees using
 %connection graphs, creating cluster of physically close nodes, or using latency
@@ -1695,26 +1741,62 @@ selected, nodes over the network
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Forwarding optimisation}
-In the first realisation of the Gnutella protocol, each query request received
-by a peer was then forwarded to all of its neighbours thus generating
-unnecessary traffic over the network. Forwarding-optimisation-based approaches,
-propose intelligent neighbour selection for a message's next hop across the
-routing path, in order to replace that inefficient \emph{blind flooding} scheme
-of Gnutella's. The selection criteria vary depending on the algorithm, but they
-mainly use one or multiple statistical metrics that span from some obvious ones,
-like the latency of the link between the nodes or the exposure of specific
-features such as high processing bandwidth, high capacity, or low latency, to
-more sophisticated alternatives that may even take into account application
-level requirements such as the reliability of the neighbour.
-These appoaches have the advantage of enhancing the search responsiveness but on
-the other hand suffer from the drastic reduction of the search scope thus
-limiting the scalability of the whole network. This, in practice reduces the
-aggregate resource usage of the P2P network and improves the overall performance
-of the system. On the other hand, the algorithms do not offer a real solution to
-the topology mismatch problem. Thus, none can guarantee that overlay and
-underlying topologies are aligned with each other let alone quantify the
-mismatch and try to alleviate. Broadcast-based methods can be used in
-conjunction with other approaches to improve the quality of the P2P systems.
+
+\begin{figure}[ht]
+\centering
+\subfigure[Typical blind flooding.] {
+\includegraphics[scale=0.25]{img/pdf/forwarding-optimisation-before.pdf}
+  \label{figure:forwarding-optimisation:before}
+}\qquad\qquad
+\subfigure[A node can decide where to forward the messages.] {
+  \includegraphics[scale=0.25]{img/pdf/forwarding-optimisation-after.pdf}
+  \label{figure:forwarding-optimisation:after}
+}
+\caption{Forwarding optimisation in constraining message flooding.}
+\label{figure:forwarding-optimisation}
+\end{figure}
+
+% Researchers initially started considering alternatives for services who
+% implement one-to-many communication schemes, like IP multicast, on the
+% application layer (i.e. Narada). Application level multicast protocols
+% are generic protocols that can be applied to both P2P file sharing systems,
+% as well as content distribution networks. Application layer multicast, however,
+% is not as efficient as the one enabled by IP and still struggles to ease the
+% difficulties imposed by the topology mismatch problem.
+
+Forwarding optimisation can reduce the emitted messages flooding the overlay and
+as a concequence the overall burden, network resources have to handle. In the
+first realisation of the Gnutella protocol, each query request received by a
+peer, was then forwarded to all of its neighbours. This was the source of
+unecessary, sometimes redundant traffic. Forwarding-optimisation-based
+approaches, propose intelligent forwarding link selection for a message's next
+hop across the routing path. The selection criteria vary depending on the
+algorithm, but they mainly use one or more statistical heuristics. These can
+span from some obvious ones, like the latency of the link between the nodes or
+the exposure of specific features, such as high processing bandwidth, high
+capacity, or low latency, to more sophisticated alternatives that may even take
+into account application level requirements such as the reliability or
+friendship. Figure~\ref{figure:forwarding-optimisation} shows a simple example
+of how forwarding optimisation can work.
+Subfigure~\ref{figure:forwarding-optimisation:before} shows an algorithm that
+floods the entire network for search of an object the existence of which is
+denoted by black nodes. Alternativelly, a node can decide to forward its
+messages not to every output link but to a specific or subset of its output
+links. In
+Subfigure~\ref{figure:forwarding-optimisation:after}, the node in the middle,
+does not flood its neighbours. Instead it picks one of them. The dashed line on
+the right, shows that, for this routing process, the algorithm has rendered two
+potential forwarding paths as inefficient (e.g., the target nodes show
+overloading signs). These appoaches have the advantage of enhancing the search
+responsiveness and reducing the aggregate resource usage of the physical
+network. On the other hand, they suffer from drastic reduction of the search
+scope (in Subfigure~\ref{figure:forwarding-optimisation:after} the object on the
+far right is not reached) thus limiting the scalability of the whole network.
+Moreover they don't actually solve the topology mismatch problem since they
+don't give any guarantees that overlay and underlying topologies are aligned
+with each other let alone quantify the mismatch and try to alleviate. Like all
+other approaches, forwarding based methods are commonly applied in conjunction
+with other to improve the quality of the P2P systems.
 
 %Expanding the search scope, on the other hand, is no easy task
 %because the overhead of forming multicast trees is proportional to the
@@ -1725,6 +1807,21 @@ conjunction with other approaches to improve the quality of the P2P systems.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Caching and replication}
+
+\begin{figure}[ht]
+\centering
+\subfigure[Indexing can reduce the cost of the last hop.] {
+\includegraphics[scale=0.3]{img/pdf/replication-index.pdf}
+  \label{figure:replication:index}
+}\qquad\qquad
+\subfigure[Data replication allong the path of a successful query.] {
+  \includegraphics[scale=0.3]{img/pdf/replication-data.pdf}
+  \label{figure:replication:data}
+}
+\caption{Index and data replication strategies.}
+\label{figure:replication}
+\end{figure}
+
 Caching is a widely used technique to exploit locality and minimise redundant
 transfer of data, initially and successfully adopted by web and file server
 application environments. Since peers in a P2P system also operate as
@@ -1739,12 +1836,15 @@ on the source of the query, the TTL value set for the messages, the current
 interconnection of peers and the high volatility of the environment. So, in
 order to develop a successful caching system for a P2P architecture, these
 parameters also have to be considered. P2P caching/replication can be applied
-on two different levels, namely caching indices or pointers to data or caching
-the data itself. Successfull implementations have already been developed in
-some commercial P2P systems, like KazaA, which uses caching of indices on its
-super-peer level. Unfortunatelly, even though the state of the art in P2P
-algorithms using caching methods reduce the resource usage of the network, they
-also fail to consistently address the probelem of the topology mismatch.
+on two different levels, namely caching indices or pointers to data (see
+Subfigure~\ref{figure:replication:index}) or caching
+the data itself (see
+Subfigure~\ref{figure:replication:data}). Successfull implementations have
+already been developed in some commercial P2P systems, like KazaA, which uses
+caching of indices on its super-peer level. Unfortunatelly, even though the
+state of the art in P2P algorithms using caching methods reduce the resource
+usage of the network, they also fail to consistently address typical problems
+of a topologicaly mismatched environment such as duplication of messages.
 
 %\subsection{Cache Based}
 %
@@ -1769,27 +1869,45 @@ also fail to consistently address the probelem of the topology mismatch.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Landmarking}\label{sec:landmark}
+
+\begin{figure}[ht]
+\centering
+  \includegraphics[scale=0.4]{img/pdf/landmarking.pdf}
+\caption{Landmark binning during node bootstrap.}
+\label{figure:landmarking}
+\end{figure}
+
 In landmark-based algorithms, nodes use network delay (e.g. RTT) as a
 distance measurement method to position themselves with respect to ``a priori''
 known servers (the landmark servers) on the Internet. Landmark servers are used
 by nodes to estimate their positions based on the intutive assumption that nodes
 with similar distances to a set of landmarks, are physically close to each
-other, as well, over the network. The landmark based protocol has two important
-drawbacks. Firstly the network delay is not a reliable distance estimation
-method. For example, based on the load on the network the delay to certain nodes
-or networks can change from time to time, which will eventually affect the
-distance measurements and wrong measurements will lead to wrong estimated
-positions for the nodes, or incorrect and non optimal clusterings of the nodes.
-The second drawback of using landmark servers is the cost of installing and
-maintaining this kind of infrastructure across the whole Internet and for all
-the different autonomous system domains. As popular P2P file sharing
-applications usually have millions of peers connected at any time, it is not
-false to assume that the network costs of maintaining these landmark servers
-will be quite high. A possible solution to the scalability problem of the static
-landmark servers is to use ordinary nodes as dynamic landmarks once they
-estimate their own positions. Even though this approach scales much better than
-static landmark servers, still the measurement accuracy problem affects the
-overall performance of the system. Moreover,it can be characterised as a rather
-coarse-grained approximation, therefore not particularly well suited for
-detecting the correct positions of nodes within close distance to each other.
+other, as well, over the network. In Figure~\ref{figure:landmarking} the newlly
+arriving peer, measures its distance to an array of landmark point denoted as
+$Ln$ and and makes a sorted list of the peers, say in increasing order. Then in
+order to choose the already participating peers with which to connect to,
+compares its list to the list of the potential neighbour. Peers with similar
+measured distances to the these landmark point are very likely to be close to
+each other in the physical level as well.
+
+Landmark based protocols has four important drawbacks. Firstly the network
+delay is not a reliable distance estimation method. For example, based on the
+load on the network the delay to certain nodes or networks can change from time
+to time, which will eventually affect the distance measurements and wrong
+measurements will lead to wrong estimated positions for the nodes, or incorrect
+and non optimal clusterings of the nodes. Secondly, relying on predefined nodes
+make the whole paradigm not fully distributed and the landmark system prone to
+become a single point of failure. Moreover, the third drawback of using
+landmark servers is the cost of installing and maintaining this kind of
+infrastructure across the whole Internet and for all the different autonomous
+system domains. As popular P2P file sharing applications usually have millions
+of peers connected at any time, it is not false to assume that the network costs
+of maintaining these landmark servers will be quite high. A possible solution to
+the scalability problem of the static landmark servers is to use ordinary nodes
+as dynamic landmarks once they estimate their own positions. Even though this
+approach scales much better than static landmark servers, still the measurement
+accuracy problem affects the overall performance of the system. Moreover,it can
+be characterised as a rather coarse-grained approximation, therefore not
+particularly well suited for detecting the correct positions of nodes within
+close distance to each other.
 
