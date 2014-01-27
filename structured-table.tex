@@ -39,7 +39,7 @@
 \textbf{Topology Adaptation} &
 \textbf{Landmarking} &
 \textbf{Proximity Routing} &
-\textbf{Proximity Neighbour Selection} &
+\textbf{Proximity Neighbor Selection} &
 \textbf{Geographic Layout} &
 \textbf{Caching / Replication} &
 \textbf{Highlights} &
@@ -56,7 +56,7 @@
 \textbf{Topology Adaptation} &
 \textbf{Landmarking} &
 \textbf{Proximity Routing} &
-\textbf{Proximity Neighbour Selection} &
+\textbf{Proximity Neighbor Selection} &
 \textbf{Geographic Layout} &
 \textbf{Caching / Replication} &
 \textbf{Highlights} &
@@ -90,7 +90,7 @@ Subscription-notification system to dynamically adapt to network changes.
 + Greatly reduces routing latency to far away nodes.\\
 -- Host state maintenance.\\
 -- Unable to identify nodes that are close to routers/gateways.\\
--- Its static nature sacrifices the self-organising attribute of DHTs.
+-- Its static nature sacrifices the self-organizing attribute of DHTs.
 \end{tabular}
 \\
 \hline
@@ -149,7 +149,7 @@ Binning &
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-% Replacing XOR metric with a function that minimises the underlying cost.\\
+% Replacing XOR metric with a function that minimizes the underlying cost.\\
 % Clustering (MaxMind geolocation technology).
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -180,12 +180,12 @@ Additional RTT information.
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-Clusterting using traceroute logs.
+Clustering using trace-route logs.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
-+ Prioritise interaction of peers and edge gateways.\\
++ Prioritize interaction of peers and edge gateways.\\
 -- Extended overhead.\\
--- Traceroute is sometimes disabled by ISPs.
+-- Trace-route is sometimes disabled by ISPs.
 \end{tabular}
 \\
 \hline
@@ -203,7 +203,7 @@ Maintenance of a proximity list.
 \begin{tabular}[l]{m{5cm}}
 + Dynamic maintenance of the proximity list.\\
 + Reduces routing costs.\\
-+ Can constrain constly jumps in and out of network partitions.\\
++ Can constrain costly jumps in and out of network partitions.\\
 + Maintenance cost kept to a minimal (node join/leave heartbeat for lists)
 \end{tabular}
 \\
@@ -217,11 +217,11 @@ Maintenance of a proximity list.
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-Exploits IPv6's anycast mechanism.
+Exploits IPv6's any-cast mechanism.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
-+ Releaved from the bootstrapping process.\\
-+ Easy to implement (just the additional neighbourhood table).
++ Relieved from the bootstrapping process.\\
++ Easy to implement (just the additional neighborhood table).
 \end{tabular}
 \\
 \hline
@@ -240,7 +240,7 @@ Exploits IPv6's hierarchical features.
 + Reduces inter-domain traffic between ISPs.\\
 + Easily portable to other DHTs.\\
 -- It cannot distinguish between close by domains in order to identify the best
-next hop when an interdomain step must be taken.
+next hop when an inter-domain step must be taken.
 \end{tabular}
 \\
 \hline
@@ -295,8 +295,9 @@ IP address prefixes (16 bit for IPv4) to detect proximity.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Prefix is stored in the DHT so the proximity identification becomes as easy as to query the prefix.\\
-+ DHT maintenance mechanisms for both volunteer or falure departures of peers.\\
--- Performance/accuracy tradeoff in choosing the prefix length to be used.
++ DHT maintenance mechanisms for both volunteer or failure departures of
+peers.\\
+-- Performance/accuracy trade-off in choosing the prefix length to be used.
 \end{tabular}
 \\
 \hline
@@ -329,7 +330,7 @@ Group concept for dividing nodes according to a common Chord id prefix.
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
 Random Landmarking (RLM).\\
-Closest Neighbour Prefix Assignment (CPNA).\\
+Closest Neighbor Prefix Assignment (CPNA).\\
 Making last hop as local as possible.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -380,7 +381,7 @@ Stretch reduction scheme.
 % 
 % \hline
 % \textbf{Self-Adaptive Topology Matching} &
-% \textbf{Proximity neighbour selection} Uses lightweight probing and
+% \textbf{Proximity neighbor selection} Uses lightweight probing and
 % selective jumps to optimize the topology & CAN &  Better than Mithos \\
 
 % \hline
@@ -388,7 +389,8 @@ Stretch reduction scheme.
 
 % \hline
 % \textbf{VERSION OF CHORD - DHT-PNS} &
-% \textbf{Proximity neighbour selection} Uses Proximity Neighbour Selection and the Vivaldi
+% \textbf{Proximity neighbor selection} Uses Proximity Neighbor Selection and
+the Vivaldi
 % system & Chord  &  \\
 
 % \hline
@@ -402,7 +404,8 @@ Stretch reduction scheme.
 
 % \hline
 % \textbf{IP-Based Clustering} &
-% \textbf{Proximity neighbour selection} Proximity neighbour selection based on longest common
+% \textbf{Proximity neighbor selection} Proximity neighbor selection based on
+longest common
 % prefix of IP addresses &    &  \\
 
 % \hline
@@ -412,12 +415,14 @@ Stretch reduction scheme.
 
 % \hline
 % \textbf{Proximity in Kademlia} &
-% \textbf{Proximity routing} Applies  proximity neighbour selection (PNS) and proximity route selection (PRS)
+% \textbf{Proximity routing} Applies  proximity neighbor selection (PNS) and
+proximity route selection (PRS)
 % to Kademlia & Kademlia &   \\
 
 % \hline
 % \textbf{Cone} &
-% \textbf{Proximity neighbour selection} Uses proximity neighbour selection (PNS) & Chord  & Better than Chord \\
+% \textbf{Proximity neighbor selection} Uses proximity neighbor selection (PNS)
+& Chord  & Better than Chord \\
 
 % \hline
 % \textbf{DynaMO} &  &  &  \\

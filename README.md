@@ -1,2 +1,1 @@
-# Alleviating the Topology Mismatch Problem in Unstructured and Structured Overlay Networks: A Survey
-
+# Alleviating Topology Mismatch in Distributed Overlay Networks: A Survey

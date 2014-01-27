@@ -28,7 +28,7 @@ many P2P researchers over the past several years.
 Circa 2000, the first P2P file-sharing systems introduced the \emph{servent}
 concept \cite{gnutella}, a \emph{portmanteau} that blends the notions of server
 and client to denote the twofold role of a node participating in the P2P
-network. Such serverless systems have proven to be able to achieve outstanding
+network. Such server-less systems have proven to be able to achieve outstanding
 aggregate resource capacities as more and more participants join the system
 without requiring additional expenditure for infrastructure. While certain
 undesirable features such as 
@@ -49,29 +49,28 @@ main architectures have emerged, namely
   \item \emph{decentralized structured}.
 \end{inparaenum}
 
-Designers of \emph{centralized} architectures
-(seeFigure~\ref{figure:p2p-archs:centralised}) were the first to recognise that
-requests for resources (e.g. CPU cycles or popular content) need
-not be sent to a dedicated server but instead could be handled by
-the many hosts that already posess the resources. The downside of this approach
-is that it requires a centralized searching facility which becomes a single
-point of failure, a scalability bottleneck, and a target of malicious attacks
-(e.g., \emph{Denial-of-Service (DoS) attacks}).
+Designers of \emph{centralized} architectures (see
+Figure~\ref{figure:p2p-archs:centralized}) were the first to recognize that
+requests for resources (e.g. CPU cycles or popular content) need not be sent to
+a dedicated server but instead could be handled by the many hosts that already
+posses the resources. The downside of this approach is that it requires a
+centralized searching facility which becomes a single point of failure, a
+scalability bottleneck, and a target of malicious attacks (e.g.,
+\emph{Denial-of-Service (DoS) attacks}).
 
 The most successful incarnation of the centralized approach is the file-sharing
-application \emph{Napster}. % TODO find citation for Napster again \cite{}
-Napster maintained a \emph{central index server} based on file lists provided by
-participating peers. The central index server was queried by users and it
-returned pointers to the actual content. Thus, by centralizing search while
-distributing downloads, Napster achieved a highly functional design that, at its
-height, attracted 26 million users sharing approximately 80 million
-songs~\cite{jmm_naptopusage_2001}. Napster's centralized nature was ultimately
-what brought it down after Recording Industry Association of America (RIAA) 
-filed a lawsuit for copyright infringement of the intellectual property of
-artists whose music was distributed by the Napster application. RIAA was able to
-point to the centralized indexing component of Napster as the entity responsible
-for illegal song-trading.
-
+application \emph{Napster}\cite{napster}. Napster maintained a \emph{central
+index server} based on file lists provided by participating peers. The central
+index server was queried by users and it returned pointers to the actual
+content. Thus, by centralizing search while distributing downloads,  Napster
+achieved a highly functional design that, at its height, attrated 26 million
+users sharing approximately 80 million songs\cite{jmm_naptopusage_2001}.
+Napter's  centralized nature was what ultimately brought it down after Recording
+Industry Association of America (RIAA) filed a lawsuit for copyright infringemnt
+of the intellectual property of artists whose music was distributed by the
+Napster application. RIAA was able to point to the centralized indexing
+component of Napster as the entity resposible for illegal song-trading.
+                                       
 The centralized approach was quickly replaced by architectures that distribute
 both search and resource provision capabilities (see
 Figure~\ref{figure:p2p-archs:unstructured-full}). In these \emph{decentralized}
@@ -82,8 +81,9 @@ support inherent heterogeneity of peers, are highly resilient to peer failures,
 and incur low maintenance overhead at handling the dynamics of peer
 participation \cite{stutzbach_churn_2006}. In the literature, they are also
 known as \emph{broadcast-based} systems, because they use message flooding among
-peers to propagate search queries. A well-known example of the fully dentralized
-unstructured approach is Gnutella, in its first realisation (v.0.4)
+peers to propagate search queries. A well-known example of the fully
+decentralized
+unstructured approach is Gnutella, in its first realization (v.0.4)
 \cite{gnutellav04}.
 
 A key disadvantage of the unstructured approach is that message flooding burdens
@@ -92,7 +92,7 @@ that do not have the resource of interest and thus wasting bandwidth.  To save
 on bandwidth, unstructured networks typically limit how long a query travels
 within the overlay (via a time-to-live (TTL) parameter). When a query is
 received by a node, it decreases the TTL by one unit. If the TTL has not reached
-zero, the node forwards the query to its neighbours.  Otherwise, it drops the
+zero, the node forwards the query to its neighbors.  Otherwise, it drops the
 query. While this approach prevents queries from visiting the entire network, it
 does not guarantee that the resource of interest, (e.g., a rare recording 
 of a musical group from the 1930s) will be found.
@@ -114,7 +114,7 @@ locate rare resources efficiently remain.
 To fully address the disadvantages of decentralized unstructured approaches,
 \emph{decentralized structured} schemes have been proposed (see
 Figure~\ref{figure:p2p-archs:structured}). The key goal of these systems is to
-provide a self-organising infrastructure for large-scale P2P applications
+provide a self-organizing infrastructure for large-scale P2P applications
 \cite{ratnasamy_can_2001,stoica_chord_2001,antony_pastry_2001,zhao_tapestry_2001,maymounkov_kademlia_2002,rgrk_bamboo_2004}.
 They implement a \emph{Distributed Hash Table (DHT)} that maps objects to nodes
 through a deterministic mechanism. The DHT provides a guaranteed bound on the
@@ -133,24 +133,28 @@ Network~\cite{maymounkov_kademlia_2002}, some flavors of
 BitTorrent~\cite{c_bittorrent_2003}, and many more.  Moreover, DHTs have sparked
 a flurry of research activity and development for a large range of applications:
 from distributed search engines to event notification infrastructures to
-cloud-based platforms.We cite several examples in the Introduction.
+cloud-based platforms. We cite several examples in Section~\ref{section:intro}.
 
-% TODO: Change these pictures to match look-n-feel
 \begin{figure}[ht]
 \centering
-\subfigure[Centralised (SETI@Home or Napster).] {
-  \includegraphics[scale=0.25]{img/pdf/centralised.pdf}
-  \label{figure:p2p-archs:centralised}
+\subfigure[Centralized (SETI@Home or Napster). Peers query the centralized
+entity (dotted lines) and then establish the connection to the data source.] {
+  \includegraphics[scale=0.25]{img/pdf/centralized.pdf}
+  \label{figure:p2p-archs:centralized}
 }\qquad\qquad
-\subfigure[Fully unstructured (Gnutella v.0.4).] {
+\subfigure[Fully unstructured (Gnutella v.0.4). Data is distributed randomly,
+the topology is also random and all participants are equal.] {
   \includegraphics[scale=0.25]{img/pdf/unstructured-full.pdf}
-  \label{figure:p2p-archs:unstructred-full}
+  \label{figure:p2p-archs:unstructured-full}
 }\qquad\qquad
-\subfigure[Hierarchical unstructured (Gnutella v.0.6 or FastTrack).] {
+\subfigure[Hierarchical unstructured (Gnutella v.0.6 or FastTrack). Certain
+peers (bigger circles) shoulder specific responsibilities (e.g., data
+indexing).] {
   \includegraphics[scale=0.25]{img/pdf/unstructured-hierarchical.pdf}
   \label{figure:p2p-archs:unstructured-hierarchical}
 }\qquad\qquad
-\subfigure[Structured (Chord and Kademlia).] {
+\subfigure[Structured (Chord and Kademlia). Peers and data are placed into the
+overlay in a deterministic manner.] {
   \includegraphics[scale=0.25]{img/pdf/structured.pdf}
   \label{figure:p2p-archs:structured}
 }
@@ -168,9 +172,9 @@ cloud-based platforms.We cite several examples in the Introduction.
 %Law describes the node degree while the Small World describes characteristics
 %of path length and clustering coefficient. The clustering coefficient for a
 %node $\upsilon$ in a graph $G = \left( V, E \right)$ is defined as the ratio of
-%the existing connections between $\upsilon$'s neighbouring nodes to $\gamma
-%\times \left( \gamma - 1 \right)$, where $\gamma$ is the number of neighbouring
-%nodes of $\upsilon$. High cluster coefficient means that neighbouring nodes of
+%the existing connections between $\upsilon$'s neighboring nodes to $\gamma
+%\times \left( \gamma - 1 \right)$, where $\gamma$ is the number of neighboring
+%nodes of $\upsilon$. High cluster coefficient means that neighboring nodes of
 %any node $\upsilon$ likely connect one another.} \cite{faloutsos_powerlaw_1999,
 %saroiu_measurefileshare_2002} offer a more promising approach. Particularly:
 %\begin{itemize}
@@ -287,9 +291,11 @@ more efficient.
 \end{figure}
 
 Ideally, an overlay network should be constructed to achieve an optimal 
-mapping among the overlay paths and the underlying IP network links to avoid
-inefficient states. The problem of constructing an optimal overlay is referred
-to as the \emph{topology mismatch problem}, and is formally defined as follows:
+mapping among the overlay paths and the underlying network links to avoid
+inefficient states were redundant physical resources are utilised for the
+operation of a link on the overlay. The problem of constructing an optimal
+overlay is referred to as the \emph{topology mismatch problem}, and is formally
+defined as follows:
 \begin{definition}
 Let $V = \{v_1, ..., v_n\}$ be a set of points denoting the network nodes,
 $\{v_i, v_j\} \in E$ be the set of unicast distances between nodes $v_i$ and
@@ -335,10 +341,10 @@ overlay typically corresponds to multiple physical links in the
 underlying layer. Additionally, a link in the underlying network often lies
 on several overlay paths causing increase of the traffic on the
 link, known as the link's \emph{stress}~\cite{CRSZ2002}. Even in the case
-of an approach that provides mechanisms to a newcoming node to detect close-by
-peers at join time, the stochastic behaviour with which peers join and leave
+of an approach that provides mechanisms to a new-coming node to detect close-by
+peers at join time, the stochastic behavior with which peers join and leave
 the overlay network, called the network's churn, further undermines the effort
-for maintaing the best position in the network throughout the life-time of a
+for maintaining the best position in the network throughout the life-time of a
 peer.
 
 The topology mismatch problem is exacerbated by the extremely large amounts of
@@ -346,7 +352,7 @@ traffic generated by highly popular P2P applications (refer to the discussion
 made in Section~\ref{section:intro}). Thus, solving the topology mismatch
 problem is a fundamental challenge in contributing to the overall efficiency of
 the Internet. Unfortunately, topology mismatch is known to be an NP-Hard problem
-\cite{NPBOOK,chawathe_scattercast_2000}. Adding to the complexity of the problem
+\cite{NPBOOK,C2000}. Adding to the complexity of the problem
 is the fact that end-to-end latencies demonstrate \emph{triangle inequality
 violations (TIVs)} which are a consequence of the Internet's structure and
 routing policies and thus will remain a property of the Internet for the
@@ -360,18 +366,18 @@ this survey is to gather and organize the extensive knowledge that has been
 produced. We hope to assist the reader to understand the different approaches
 that have been proposed to tackle the topology mismatch problem. In order to do
 so, we dedicate a discussion subsection after the presentation of the algorithms
-for both unstructred and structured architectures. This section offers:
+for both unstructured and structured architectures. This section offers:
 \begin{inparaenum}[\itshape i\upshape)]
   \item further discussion that can help the reader identify, through
-a taxonomy, the pluses and minuses in the preceeding material,
-  \item a comprehensive tabular organisation of the key-point information, and
+a taxonomy, the pluses and minuses in the preceding material,
+  \item a comprehensive tabular organization of the key-point information, and
   \item an attempt to give a pictorial comparison of the relative performance of
 the algorithms.
 \end{inparaenum}
 
 In discussion we offer the reader a deeper insight for the observations that
-pushed research toward some direction. Thus, we try to categorise these
-approaches so that we can organise directions making them comprehensible
+pushed research toward some direction. Thus, we try to categorize these
+approaches so that we can organize directions making them comprehensible
 and helping the reader build critical thinking on the advantages and
 disadvantages of each approach.
 
@@ -380,7 +386,8 @@ helpful tool both as a companion during reading the survey and a reference for
 future use.
 
 Pictorial comparison consists of bar charts that give a relative feeling of the
-perfomance of the various algorithms, discussed in the corresponding section, in
+performance of the various algorithms, discussed in the corresponding section,
+in
 terms of \emph{efficiency}, \emph{overhead} and \emph{scalability}; three
 important characteristics for every distributed algorithm. For all we used a
 coarse grained, three level, gradation to denote how well the algorithms do,
@@ -388,34 +395,34 @@ namely \emph{low}, \emph{medium} and \emph{high}. Each category has its own
 interpretation of the above literal values. Efficiency means how well the
 algorithm performs its search and topology adaptation functions, without
 effecting other characteristics of the networks (e.g. BitTorrent's optimal
-dowload performace). To name few, we assume that efficieny is
+download performance). To name few, we assume that efficiency is
 negatively effected when an algorithm reduces the search scope. Moreover, the
-minimum-spanning-tree-based tecniques have slow convergence speed in topology
+minimum-spanning-tree-based techniques have slow convergence speed in topology
 adaptation or the high clustering impacts load balancing and constrains search
 scope (or at least increases search satisfaction time), all reducing overall
 efficiency. With overhead we track the cost to compute and communicate peer
 join, message forwarding and topology maintenance. For example when exchanging
-cost tables only along neighbours the traffic generated can be considered
-trivial. Also duplicates minimisation is a plus and lazy or heart-beat-based
+cost tables only along neighbors the traffic generated can be considered
+trivial. Also duplicates minimization is a plus and lazy or heart-beat-based
 overlay control mechanisms impose different amount of stress to the network.
-Nevertheless, caching/replication helps reducing the averall overhead by
-constraining the query from spreading too much. Minimum-spanning-tree-based
-approaches's low convergence speed we mentioned above for efficiency means
-additional computational and communicational overhead. % TODO: We check
-% complexity in the asymptotic sence, using \emph{Big O} notation % in order to
+Nevertheless, caching/replication helps reducing the overall overhead by
+constraining the query from spreading too much. Low convergence speed of
+minimum-spanning-tree-based approaches, we mentioned above for efficiency,
+results also in additional computational and communicational overhead.
+% TODO: We check
+% complexity in the asymptotic sense, using \emph{Big O} notation % in order to
 % check how the algorithm responds t. We take into account topology % creation and
 % topology maintenance...
 % TODO: HELP NEEDED!
-With scalability we check the systems behaviour with respect to the number of
+With scalability we check the systems behavior with respect to the number of
 participating peers. Low, medium and high scalability can be generally
-considered in the order of hundrends, tenths of thousands and millions,
-respectivelly. Fully distributed aproaches is a plus (no system-centric entities
-involved, no need for global knowledge) and topology adaptation streanghtens
+considered in the order of hundreds, tenths of thousands and millions,
+respectively. Fully distributed approaches is a plus (no system-centric entities
+involved, no need for global knowledge) and topology adaptation strengthens
 scalability in highly dynamic environments. Reduced search scope, on the other
-side, penaltises the scalability since the more peers comming in the network the
-more potentially unsatisfied queries there will be. Furthermore, clock
-synchonisation is a limiting factor to scalability of a distributed systems.
-Again to name a few.
+hand, penalizes the scalability since the more peers coming in the network the
+more potentially unsatisfied queries will there be. Furthermore, clock
+synchronization is a limiting factor to scalability of a distributed system.
 
 %
 % TODO: SOME DISCUSSION FROM \cite{XTZ2003) CONTRADICTS TO THE
