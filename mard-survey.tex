@@ -20,6 +20,7 @@
 %\usepackage{tikz}
 \usepackage{pgfplots}
 \usetikzlibrary{patterns}
+\usepackage{url}
 
 % definitions
 \newtheorem{theorem}{Theorem}[section]
@@ -29,6 +30,9 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newdef{definition}[theorem]{Definition}
 \newdef{remark}[theorem]{Remark}
+
+\newcommand{\p}{\emph{P2P}}
+
 
 %\newtheorem{theorem}{Theorem}[section]
 %\newtheorem{definition}[theorem]{Definition}
@@ -46,43 +50,43 @@
 
 \markboth{}{}{}
 
-\title{Alleviating Topology Mismatch in Distributed Overlay Networks: A Survey}
-% TODO: We added here "P2P". I'm not sure, because for example Narada is not P2P
-% TODO: I deleted "P2P"
+\title{Alleviating the Topology Mismatch Problem in Distributed Overlay Networks}
 
 \author{
 VASSILIS S. MOUSTAKAS$^1$, H\"USEYIN AKCAN$^2$, MEMA ROUSSOPOULOS$^1$ and ALEX
 DELIS$^1$\\
-$^1$\emph{National and Kapodistrian University of Athens}, \emph{Athens},
-\emph{Greece}\\
+$^1$\emph{University of Athens}, \emph{Athens}, \emph{Greece}\\
 $^2$\emph{Izmir University of Economics}, \emph{Izmir}, \emph{Turkey}
 }
 
 \begin{abstract}
-Peer-to-peer (P2P) systems have enjoyed immense attention and have been
-widely deployed on the Internet for well over a decade.  P2P systems 
-are implemented via
-an overlay network abstraction on top of the best-effort IP infrastructure
-of the Internet. These systems offer a plethora
-of desirable features to distributed applications that are built on top of them
-including anonymity, high availability and robustness, load balancing,
-quality of service, scalability, and others.  Unfortunately, weaknesses of
-early deployments of P2P systems prevented applications from leveraging 
-these features.  One major weakness, identified early on, is the topology
+Peer-to-peer (\p) systems have enjoyed immense attention and have been
+widely deployed on the Internet for well over a decade.  
+They are implemented via an overlay network abstraction on top 
+of the best-effort IP infrastructure of the Internet. 
+\p\ systems offer a plethora of desirable features to 
+distributed applications that are built on top of them including
+anonymity, high availability and robustness, 
+load balancing, quality of service, scalability, and others.  
+Unfortunately, weaknesses of early deployments of \p\ systems prevented 
+applications from leveraging these features.  
+One major weakness, identified early on, is the topology
 mismatch problem between the overlay network and the underlying IP topology.
 This mismatch can impose an extraordinary amount of unnecessary stress on
 network resources and can adversely affect the scalability of applications
-built on top of P2P systems.  
+built atop \p\ systems.  
 In this paper, we survey over a decade's worth of research efforts
 aimed at alleviating the topology mismatch problem, in both unstructured
-and structured P2P systems.   
+and structured \p\ systems.   
 We provide a fine-grained categorization of the
 proposed solutions and discuss the advantages, disadvantages, and novelties
-introduced by each solution.  Finally, we provide an analysis and pictorial 
-comparisons 
-of the proposed solutions in an attempt to provide a quick one-stop-shop
-reference for anyone interested in the topic, from researchers and students,
-to system architects and developers.
+introduced by each solution.  
+Finally, we provide an analysis as well as pictorial comparisons 
+of the proposed solutions since we aim to offer a comprehensive 
+reference for system architects, developers, and researchers in the field.
+% in an attempt to provide a comprehensive quick one-stop-shop
+% reference for anyone interested in the topic, from researchers and students,
+% to system architects and developers.
 
 \end{abstract}
 
@@ -97,8 +101,8 @@ topology awareness}
 \begin{document}
 
 \begin{bottomstuff}
-Authors' addresses: Department of Informatics and Telecommunications, National
-and Kapodistrian University of Athens, Athens, Greece. Department of Software
+Authors' addresses: Deprt. of Informatics and Telecommunications,
+University of Athens, Athens, Greece. Deprt. of Software
 Engineering, Izmir University of Economics, Izmir, Turkey.\\
 emails: \{b.moystakas,mema,ad\}@di.uoa.gr, huseyin.akcan@ieu.edu.tr
 \end{bottomstuff}

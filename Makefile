@@ -27,7 +27,7 @@ install:
 #pdf:
 #	gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=$(FILE).pdf $(FILE).ps -c quit
 
-bib: $(FILE).tex
+b: $(FILE).tex
 	bibtex $(FILE)
 
 s: $(FILE).tex
