@@ -2,24 +2,44 @@
 \section{Conclusion}
 \label{section:conclusion}
 
-Peer-to-peer architecture has been in the center of research attention in the
-last decade. Especially the decentralized unstructured genre exploits the
-advantages of loose coupling and self organization of computing nodes to form
-application-layer networks on top of the physical, best-effort infrastructure of
-the Internet that exhibit interesting properties. Scalability problems arouse
-quickly, though, because of the inefficient construction of this overlay that
-was built with no concern for the underlying physical network that causes a
-great deal of redundant traffic. The problem was identified by the research
-community as the topology mismatch problem between the overlay and the
-corresponding underlying physical network and a great deal of effort has been
-set towards alleviating it. Some fruits of this effort have been gathered and
-presented in this survey. Measurement of link cost through latency or RTT and
-deletion of inefficient established connections are the key concepts of almost
-all approaches. Others, manage to address the problem through hierarchical peer
-clustering (e.g. best IP matching). Additionally, some protocols focus on
-specific problems that furtherly arise, such as overlay partitioning, search
-scope reduction or convergence speed, to name just a few. Another desire is to
-form a protocol that could be applied to both decentralized unstructured and
-decentralized structured networks. Unfortunately no approach has equally
-addressed these problems in order to form a robust solution. So the field seems
-to be, still, fertile for any, new, clever idea.
+Computer systems design is typically about juggling a set of tradeoffs (e.g.,
+choosing higher accuracy at the cost of increased system overhead.)  
+In surveying more than
+a decade's worth of research efforts aimed at solving the topology mismatch
+problem in both unstructured and structured P2P networks, we find this
+tussle-of-tradeoffs property to hold.  With regards to the three criteria 
+we used (efficiency,
+overhead, and scalability), we find that none of the proposed solutions 
+is superior to the others on all three fronts.  This is not surprising.
+Nonetheless, by presenting 1) an
+analysis of each of the solutions, including what distinguishes it from the
+others and its advantages and disadvantages and 
+2) a pictorial
+comparison of how each solution fares compared with the others with regards
+to efficiency, overhead, and scalability, we hope to have provided P2P
+developers and researchers 
+with enough perspective so that depending on the needs of their particular
+application, they are able to select
+amongst these surveyed solutions or propose a new solution of their own.
+
+
+%Peer-to-peer architecture has been in the center of research attention in the
+%advantages of loose coupling and self organization of computing nodes to form
+%application-layer networks on top of the physical, best-effort infrastructure of
+%the Internet that exhibit interesting properties. Scalability problems arouse
+%quickly, though, because of the inefficient construction of this overlay that
+%was built with no concern for the underlying physical network that causes a
+%great deal of redundant traffic. The problem was identified by the research
+%community as the topology mismatch problem between the overlay and the
+%corresponding underlying physical network and a great deal of effort has been
+%set towards alleviating it. Some fruits of this effort have been gathered and
+%presented in this survey. Measurement of link cost through latency or RTT and
+%deletion of inefficient established connections are the key concepts of almost
+%all approaches. Others, manage to address the problem through hierarchical peer
+%clustering (e.g. best IP matching). Additionally, some protocols focus on
+%specific problems that furtherly arise, such as overlay partitioning, search
+%scope reduction or convergence speed, to name just a few. Another desire is to
+%form a protocol that could be applied to both decentralized unstructured and
+%decentralized structured networks. Unfortunately no approach has equally
+%addressed these problems in order to form a robust solution. So the field seems
+%to be, still, fertile for any, new, clever idea.

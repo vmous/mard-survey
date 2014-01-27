@@ -35,7 +35,7 @@ undesirable features such as
 free-riding~\cite{saroiu_measurefileshare_2002,adar_gnutellafreeriders_2000,hughes_gnutellafreeride_2005},
 the distribution of illegal content and other \emph{socio-technical}
 issues \cite{hughes_socp2p_2008}, have arisen, peer-to-peer systems have
-continued to gain popularity mainly because they have successfully supported
+continued to gain popularity throughout the years primarily because they have successfully supported
 popular applications (i.e. file-sharing) amongst vast numbers of participating
 users.
 
@@ -53,7 +53,7 @@ Designers of \emph{centralized} architectures (see
 Figure~\ref{figure:p2p-archs:centralized}) were the first to recognize that
 requests for resources (e.g. CPU cycles or popular content) need not be sent to
 a dedicated server but instead could be handled by the many hosts that already
-posses the resources. The downside of this approach is that it requires a
+posess the resources. The downside of this approach is that it requires a
 centralized searching facility which becomes a single point of failure, a
 scalability bottleneck, and a target of malicious attacks (e.g.,
 \emph{Denial-of-Service (DoS) attacks}).
@@ -63,7 +63,7 @@ application \emph{Napster}\cite{napster}. Napster maintained a \emph{central
 index server} based on file lists provided by participating peers. The central
 index server was queried by users and it returned pointers to the actual
 content. Thus, by centralizing search while distributing downloads,  Napster
-achieved a highly functional design that, at its height, attrated 26 million
+achieved a highly functional design that, at its height, attracted 26 million
 users sharing approximately 80 million songs\cite{jmm_naptopusage_2001}.
 Napter's  centralized nature was what ultimately brought it down after Recording
 Industry Association of America (RIAA) filed a lawsuit for copyright infringemnt
@@ -109,7 +109,7 @@ Gnutella v.0.6/Limewire~\cite{gnutella}, KaZaA~\cite{kazaa} and
 Skype~\cite{skype}. While the hierarchical approach relieves network pressure as
 search queries are flooded over a much smaller subset of peers (the
 ultra/super-peers), the disadvantages of reduced search scope and inability to
-locate rare resources efficiently remain.
+locate rare resources remain.
 
 To fully address the disadvantages of decentralized unstructured approaches,
 \emph{decentralized structured} schemes have been proposed (see
@@ -118,8 +118,8 @@ provide a self-organizing infrastructure for large-scale P2P applications
 \cite{ratnasamy_can_2001,stoica_chord_2001,antony_pastry_2001,zhao_tapestry_2001,maymounkov_kademlia_2002,rgrk_bamboo_2004}.
 They implement a \emph{Distributed Hash Table (DHT)} that maps objects to nodes
 through a deterministic mechanism. The DHT provides a guaranteed bound on the
-number of overlay routing hops that have to be taken to locate a resource, even
-in the case when only a single copy exists in the system.  This means
+number of overlay routing hops that have to be crossed to locate a resource, even
+in the case when only a single copy exists in the system.  This requires
 $O \left( log n \right)$ hops, compared to unstructured networks that require
 $O \left( n \right)$ to reliably locate any object. Unfortunately this
 efficiency does not come without cost. Structured overlays can only support
@@ -153,7 +153,7 @@ indexing).] {
   \includegraphics[scale=0.25]{img/pdf/unstructured-hierarchical.pdf}
   \label{figure:p2p-archs:unstructured-hierarchical}
 }\qquad\qquad
-\subfigure[Structured (Chord and Kademlia). Peers and data are placed into the
+\subfigure[Structured (Chord and Kademlia). Peers and data are placed in the
 overlay in a deterministic manner.] {
   \includegraphics[scale=0.25]{img/pdf/structured.pdf}
   \label{figure:p2p-archs:structured}
@@ -245,14 +245,15 @@ overlay in a deterministic manner.] {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 One of the major issues that defines the efficiency of an overlay network is the
-mapping of the overlay structure to the underlying infrastructure. Remember, in
+mapping of the overlay structure to the underlying infrastructure. Recall,, in
 Figure~\ref{figure:overlay} nodes $A$ and $B$ are on the same local network,
 while $C$ and $D$ are in different networks. The top layer represents the
 overlay interconnection formed by these nodes at a higher level. Link
 connections there, can change as needed by the running environment, without any
-particular constraint by the underlying physical topology. Let's have a closer
-look with the help of a simple example. Assume nodes $A$, $B$, $C$ and $D$ are
-connected through the physical network shown in Figure~\ref{figure:phys}, where
+particular constraint by the underlying physical topology. Consider the following
+example. 
+Assume nodes $A$, $B$, $C$ and $D$ are
+connected via the physical network shown in Figure~\ref{figure:phys}, where
 the network costs are given in milliseconds, and peer $A$ sends a message to
 peer $D$.
 
@@ -263,9 +264,10 @@ peer $D$.
 \label{figure:phys}
 \end{figure}
 
-If these peers participate in an overlay network according to one of the setups
-of Figure~\ref{figure:overlay-confs}, then users will experience different
-performances. In the overlay depicted in Figure~\ref{figure:overlay-1}, the
+Depending on the configuration of the overlay,
+peers will experience different performance.
+For example, in the overlay depicted in
+Figure~\ref{figure:overlay-1}, the
 message will traverse the following sequence of links in the physical layer
 (marked with their costs): $3 \rightarrow 7 \rightarrow 1 \rightarrow 2
 \rightarrow 2 \rightarrow 1 \rightarrow 7 \rightarrow 8 \rightarrow 5
@@ -291,9 +293,9 @@ more efficient.
 \end{figure}
 
 Ideally, an overlay network should be constructed to achieve an optimal 
-mapping among the overlay paths and the underlying network links to avoid
-inefficient states were redundant physical resources are utilised for the
-operation of a link on the overlay. The problem of constructing an optimal
+mapping between the overlay paths and the underlying network links to avoid
+inefficient states where redundant physical resources are utilised for the
+operation of the same link in the overlay. The problem of constructing an optimal
 overlay is referred to as the \emph{topology mismatch problem}, and is formally
 defined as follows:
 \begin{definition}
@@ -310,7 +312,7 @@ considered far from scalable \cite{ritter_gnucantscale_2001} because every peer
 chooses its neighbors in the overlay without any knowledge of the underlying
 network, resulting in a mismatch between the two topologies. Queries may be
 flooded over multiple paths merging in one peer while one of the paths would
-have been enough. Moreover, peers may forward the same message to each other
+suffice.  Moreover, peers may forward the same message to each other
 before they receive the query messages from each other.
 \cite{matei_mapgnutella_2002} showed that, even when 95\% of any two nodes are
 less than 7 hops away from each other, a \emph{flooding-based} algorithm, like
@@ -321,8 +323,8 @@ Similar problems are observed in decentralized structured schemes as well.
 Typically, node IDs are assigned \emph{randomly}, resulting in excellent load
 balancing, scalability, and robustness for the overlay. Unfortunately, this
 randomness has a negative impact on the \emph{routing locality} of the network.
-This means that even though the target node can be reached with logarithmic
-overlay hops, the distance traveled in the underlying network, during the
+This means that even though the target node can be reached with a logarithmic
+number of overlay hops, the distance traveled in the underlying network, during the
 overlay routing process, can be far from optimal.  The ratio of the actual IP
 network distance a query travels to reach an object of interest (via overlay
 routing) to the minimal IP network distance to that object (i.e. through IP) is
@@ -369,60 +371,75 @@ so, we dedicate a discussion subsection after the presentation of the algorithms
 for both unstructured and structured architectures. This section offers:
 \begin{inparaenum}[\itshape i\upshape)]
   \item further discussion that can help the reader identify, through
-a taxonomy, the pluses and minuses in the preceding material,
+a taxonomy, the pluses and minuses  of the presented algorithms,
   \item a comprehensive tabular organization of the key-point information, and
   \item an attempt to give a pictorial comparison of the relative performance of
 the algorithms.
 \end{inparaenum}
 
-In discussion we offer the reader a deeper insight for the observations that
+We hope to offer the reader a deeper insight for the observations that
 pushed research toward some direction. Thus, we try to categorize these
 approaches so that we can organize directions making them comprehensible
 and helping the reader build critical thinking on the advantages and
 disadvantages of each approach.
 
-Tables provide a one-stop-shop overview for the algorithms so that can be a
-helpful tool both as a companion during reading the survey and a reference for
+Tables provide a one-stop-shop overview of the algorithms and serve as a 
+tool both as a companion to the reader while reading the survey and a reference for
 future use.
 
 Pictorial comparison consists of bar charts that give a relative feeling of the
 performance of the various algorithms, discussed in the corresponding section,
 in
 terms of \emph{efficiency}, \emph{overhead} and \emph{scalability}; three
-important characteristics for every distributed algorithm. For all we used a
-coarse grained, three level, gradation to denote how well the algorithms do,
-namely \emph{low}, \emph{medium} and \emph{high}. Each category has its own
+important characteristics for every distributed algorithm. For each of these
+criteria, we use a
+coarse-grained, three-level, gradation to denote how well the algorithms do,
+namely \emph{low}, \emph{medium} and \emph{high}. Each criterion has its own
 interpretation of the above literal values. Efficiency means how well the
 algorithm performs its search and topology adaptation functions, without
-effecting other characteristics of the networks (e.g. BitTorrent's optimal
-download performance). To name few, we assume that efficiency is
-negatively effected when an algorithm reduces the search scope. Moreover, the
-minimum-spanning-tree-based techniques have slow convergence speed in topology
-adaptation or the high clustering impacts load balancing and constrains search
-scope (or at least increases search satisfaction time), all reducing overall
-efficiency. With overhead we track the cost to compute and communicate peer
-join, message forwarding and topology maintenance. For example when exchanging
-cost tables only along neighbors the traffic generated can be considered
-trivial. Also duplicates minimization is a plus and lazy or heart-beat-based
-overlay control mechanisms impose different amount of stress to the network.
-Nevertheless, caching/replication helps reducing the overall overhead by
-constraining the query from spreading too much. Low convergence speed of
-minimum-spanning-tree-based approaches, we mentioned above for efficiency,
-results also in additional computational and communicational overhead.
+affecting other characteristics of the networks (e.g. BitTorrent's optimal
+download performance). We assume that efficiency is
+negatively effected when an algorithm reduces the search scope. 
+%Moreover, the
+
+%minimum-spanning-tree-based techniques have slow convergence speed in topology
+
+%adaptation or the high clustering impacts load balancing and constrains search
+
+%scope (or at least increases search satisfaction time), all reducing overall
+
+%efficiency. 
+For the overhead criterion, we track the cost to compute and communicate peer
+join, message forwarding, and topology maintenance. For example, when exchanging
+route tables only amongst neighbors, we consider the traffic generated to
+be low.
+%Also duplicates minimization is a plus and lazy or heart-beat-based
+%overlay control mechanisms impose different amount of stress to the network.
+%Nevertheless, caching/replication helps reducing the overall overhead by
+%constraining the query from spreading too much. Low convergence speed of
+%minimum-spanning-tree-based approaches, we mentioned above for efficiency,
+%results also in additional computational and communicational overhead.
 % TODO: We check
 % complexity in the asymptotic sense, using \emph{Big O} notation % in order to
 % check how the algorithm responds t. We take into account topology % creation and
 % topology maintenance...
 % TODO: HELP NEEDED!
-With scalability we check the systems behavior with respect to the number of
-participating peers. Low, medium and high scalability can be generally
-considered in the order of hundreds, tenths of thousands and millions,
-respectively. Fully distributed approaches is a plus (no system-centric entities
-involved, no need for global knowledge) and topology adaptation strengthens
-scalability in highly dynamic environments. Reduced search scope, on the other
-hand, penalizes the scalability since the more peers coming in the network the
-more potentially unsatisfied queries will there be. Furthermore, clock
-synchronization is a limiting factor to scalability of a distributed system.
+For the scalability criterion, we consider system behavior with respect to the number of
+participating peers. We consider systems with low, medium, and high scalability 
+to mean they can support 
+hundreds, tenths of thousands, and millions of nodes,
+respectively. 
+%Fully distributed approaches is a plus (no system-centric entities
+
+%involved, no need for global knowledge) and topology adaptation strengthens
+
+%scalability in highly dynamic environments. Reduced search scope, on the other
+
+%hand, penalizes the scalability since the more peers coming in the network the
+
+%more potentially unsatisfied queries will there be. Furthermore, clock
+
+%synchronization is a limiting factor to scalability of a distributed system.
 
 %
 % TODO: SOME DISCUSSION FROM \cite{XTZ2003) CONTRADICTS TO THE

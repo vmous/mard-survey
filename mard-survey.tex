@@ -59,29 +59,31 @@ $^2$\emph{Izmir University of Economics}, \emph{Izmir}, \emph{Turkey}
 }
 
 \begin{abstract}
-Peer-to-peer (P2P) systems is a rapidly growing application architecture. The
-overlay network abstraction on top of a best-effort infrastructure provides a
-powerful tool to realize a plethora of ever-wanted exotic features like
-anonymity, high availability and robustness, load balancing, quality-of-service
-(QoS) at the application layer and many more. Unfortunately weaknesses of early
-effectuations constrained applications from unleashing the full potential of the
-paradigm. One of them is the topology mismatch problem between the overlay and
-the physical underlying network, a problem that imposes a huge amount of
-unnecessary stress to the network resources and, thus, impede applications from
-scaling. In this survey we investigate on the recent research developments
-towards the alleviation of this problem, in both unstructured and structured
-overlay architectures. We visit the various algorithms available in the
-literature, focusing on the presentation of how each of them tries to tackle the
-problem. Additionally, we provide a finer grained categorization of the
-approaches based on the generic type of methodology they use in order to
-accomplish this goal.
-% TODO: Review this after the comparison sections are fixed.
-Finally we discuss the advantages, disadvantages and novelties introduced by the
-algorithms and offer pictorial comparisons for them in order to further
-strengthen and organize understanding of the information and knowledge cited, in
-an attempt to make this survey a one-stop-shop reference for anyone interested
-in the topic, from researchers and students, to system architects and
-developers.
+Peer-to-peer (P2P) systems have enjoyed immense attention and have been
+widely deployed on the Internet for well over a decade.  P2P systems 
+are implemented via
+an overlay network abstraction on top of the best-effort IP infrastructure
+of the Internet. These systems offer a plethora
+of desirable features to distributed applications that are built on top of them
+including anonymity, high availability and robustness, load balancing,
+quality of service, scalability, and others.  Unfortunately, weaknesses of
+early deployments of P2P systems prevented applications from leveraging 
+these features.  One major weakness, identified early on, is the topology
+mismatch problem between the overlay network and the underlying IP topology.
+This mismatch can impose an extraordinary amount of unnecessary stress on
+network resources and can adversely affect the scalability of applications
+built on top of P2P systems.  
+In this paper, we survey over a decade's worth of research efforts
+aimed at alleviating the topology mismatch problem, in both unstructured
+and structured P2P systems.   
+We provide a fine-grained categorization of the
+proposed solutions and discuss the advantages, disadvantages, and novelties
+introduced by each solution.  Finally, we provide an analysis and pictorial 
+comparisons 
+of the proposed solutions in an attempt to provide a quick one-stop-shop
+reference for anyone interested in the topic, from researchers and students,
+to system architects and developers.
+
 \end{abstract}
 
 \category{A.1}{General Literature}{Introductory and Survey}
