@@ -2,10 +2,10 @@
 \section{Conclusion}
 \label{section:conclusion}
 
-Research and development around application systems that follow the 
-\p\ architectural paradigm, have flourished in the last ten years or so.
+Research and development on application systems that follow the 
+\p\ architectural paradigm, have flourished over the last decade.
 By and large, such systems exploit the loose-coupling and self-organization 
-of participating nodes, to shape substrates upon which diverse applications 
+of participating nodes to shape substrates upon which diverse applications 
 can run; the latter offer services including, but not limited to, 
 distributed naming, 
 Internet telephony and video conferencing, 
@@ -14,21 +14,33 @@ content and file sharing,
 web crawling and caching, 
 event notification and subscribing/publishing.
 These services are provided atop the 
-best-effort infrastructure of today's Internet 
-and they have to effectively deal with an array of key quality attributes that
-they may need or have to offer, such as node availability, robustness,
-scalability, load-sharing, quality-of-service and user anonymity.
-The difficulty to handle such features effectively, emanates from the fact that
-peer nodes operate at the edge of the Internet and no adequate attention to the
-structure of the physical network is paid during application-level network
-formation. The deviation of the structure of the overlay network from the
-optimal, according to the underlying physical structure, constitutes what is
-termed topology mismatch and the problem is known as the topology mismatch
+best-effort infrastructure of today's Internet;
+services have to comply with an array of key requirements and 
+offer quality attributes that include node availability, robustness,
+scalability, load-sharing, quality-of-service and user anonymity. 
+%%AD rephrased below as above - too long sentence it was!
+% and they have to effectively deal with an array of key quality attributes that
+% they may need or have to offer node availability, robustness,
+% scalability, load-sharing, quality-of-service and user anonymity.
+%%
+The difficulty to handle such characteristics effectively, 
+emanates from the fact that
+peers  operate at the edge of the Internet and no 
+adequate attention is paid to the structure of the physical network 
+during application-level network design. 
+The deviation of the logical distributed overlay formation from the 
+physical network yields suboptimal use of the underlying 
+infrastructure and is known as the topology mismatch
 problem.
+%%AD rephrased what is below as above..
+% The deviation of the structure of the overlay network from the
+% optimal, according to the underlying physical structure, constitutes what is
+% termed topology mismatch and the problem is known as the topology mismatch
+% problem.
 
 Development of \p--systems and applications
 typically involve juggling a set of tradeoffs (e.g.,
-choosing higher accuracy at the cost of increased system overhead.).
+choosing higher accuracy at the cost of increased system overhead).
 % Computer systems design is typically about juggling a set of tradeoffs (e.g.,
 % choosing higher accuracy at the cost of increased system overhead.)  
 In surveying more than
@@ -42,13 +54,20 @@ Nonetheless, by
 \begin{inparaenum}[\itshape i\upshape)]
   \item presenting an analysis of each of the solutions,
 including what distinguishes it from the
-others and its advantages and disadvantages and
+others and its pros and cons and
   \item offering a pictorial
-comparison of how each solution fares compared with the others with regards
-to efficiency, overhead, and scalability,
+comparison of how each solution fares in regards to others as far as
+efficiency, overhead, and scalability are concerned,
 \end{inparaenum}
 we hope to have provided \p\
-developers and researchers with enough perspective so that depending
-on the particular problem in hand, they are able to make a
-correct choice amongst these surveyed here or, by firmly standing on
-the shoulders of giants, propose a new solution of their own.
+developers and researchers with enough insight and perspective;
+as they face specific problems, they will be readily able to 
+draw the best possible design decisions for their own application
+environments.
+%%AD sentence was too long - this "giant" thing to much ass-kissing... no.
+% when facing a specific problem, they would 
+% when they face a specific problem, th 
+% so that depending
+% on the particular problem in hand, they are able to make a
+% correct choice amongst these surveyed here or, by firmly standing on
+% the shoulders of giants, propose a new solution of their own.
