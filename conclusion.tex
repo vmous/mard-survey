@@ -2,33 +2,33 @@
 \section{Conclusion}
 \label{section:conclusion}
 
-Research and development for computer systems
-built using the \p\ paradigm have flourished  in the last decade.
+Research and development around application systems that follow the 
+\p\ architectural paradigm, have flourished in the last ten years or so.
 By and large, such systems exploit the loose-coupling and self-organization 
-of participating nodes to shape substrates upon which diverse applications 
-can run; the latter offer services including but not limited to 
+of participating nodes, to shape substrates upon which diverse applications 
+can run; the latter offer services including, but not limited to, 
 distributed naming, 
 Internet telephony and video conferencing, 
 storage and indexing, 
 content and file sharing, 
 web crawling and caching, 
-event notification and subscribe/publish.
+event notification and subscribing/publishing.
 These services are provided atop the 
 best-effort infrastructure of today's Internet 
-and they have to effectively deal with an array of key issues
-emanating from the fact that \p\ nodes 
-operate at the edge of the Internet; such critical issues include
-node availability, robustness, scalability, load-sharing,
-quality-of-service and user anonymity.
-The majority of such issues emerges as 
-application-level \p--networks are formed without paying 
-adequate attention to the design of the physical network beneath.
-The latter constitutes what is known as the
-topology mismatch problem between the \p-overlays and the physical networks.
-In addition, the development of \p--systems and applications
-typically involved juggling a set of tradeoffs (e.g.,
-choosing higher accuracy at the cost of increased system overhead.)
+and they have to effectively deal with an array of key quality attributes that
+they may need or have to offer, such as node availability, robustness,
+scalability, load-sharing, quality-of-service and user anonymity.
+The difficulty to handle such features effectively, emanates from the fact that
+peer nodes operate at the edge of the Internet and no adequate attention to the
+structure of the physical network is paid during application-level network
+formation. The deviation of the structure of the overlay network from the
+optimal, according to the underlying physical structure, constitutes what is
+termed topology mismatch and the problem is known as the topology mismatch
+problem.
 
+Development of \p--systems and applications
+typically involve juggling a set of tradeoffs (e.g.,
+choosing higher accuracy at the cost of increased system overhead.).
 % Computer systems design is typically about juggling a set of tradeoffs (e.g.,
 % choosing higher accuracy at the cost of increased system overhead.)  
 In surveying more than
@@ -39,12 +39,16 @@ With regards to the three criteria we used --efficiency,
 overhead, and scalability-- we find that none of the proposed solutions 
 is superior to the others on all three fronts.  This is not surprising.
 Nonetheless, by
-1)~presenting an analysis of each of the solutions, 
+\begin{inparaenum}[\itshape i\upshape)]
+  \item presenting an analysis of each of the solutions,
 including what distinguishes it from the
-others and its advantages and disadvantages and 
-2)~offering a pictorial
+others and its advantages and disadvantages and
+  \item offering a pictorial
 comparison of how each solution fares compared with the others with regards
-to efficiency, overhead, and scalability, we hope to have provided \p\
-researchers and developers with enough perspective so that depending 
-on the needs of their particular application, they are able to select
-amongst these surveyed solutions or propose a new solution of their own.
+to efficiency, overhead, and scalability,
+\end{inparaenum}
+we hope to have provided \p\
+developers and researchers with enough perspective so that depending
+on the particular problem in hand, they are able to make a
+correct choice amongst these surveyed here or, by firmly standing on
+the shoulders of giants, propose a new solution of their own.
