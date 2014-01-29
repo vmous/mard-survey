@@ -17,7 +17,7 @@
 
 In this section, we provide some background information on the types of
 \p\ architectures that have been implemented and deployed. We also
-describe and motivate more formally the topology mismatch problem, 
+describe and motivate more formally the topology mismatch problem 
 whose various aspects have been tackled over the past several years.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,20 +25,17 @@ whose various aspects have been tackled over the past several years.
 \subsection{Peer-to-Peer (\p) Overlay Architectures}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% VM: Don't know if we should start with this Gnutell specific material maybe
-% it needs to go to the respective paragraph of dece.unstructured bellow.
-Circa 2000, pioneering file-sharing \p-system,
-Gnutella~\cite{gnutellav04,gnutella} introduced the \emph{servent }concept, a
-\emph{portmanteau} that blends the notion of server
-and client to denote the dual role of a node participating in its network.
+Circa 2000, the first file-sharing \p-system introduced the \emph{servent}
+concept~\cite{gnutella}, a \emph{portmanteau} that blends the notions of server
+and client to denote the dual role of a node participating in \p-network. 
 Such server-less systems have proven to be able to achieve outstanding
-aggregate resource capacities, as more and more participants join the system,
-but without the additional expenditure for infrastructure.
+aggregate resource capacities as more and more participants join the system
+without requiring additional expenditure for infrastructure. 
 While certain undesirable features such as 
 free-riding~\cite{saroiu_measurefileshare_2002,adar_gnutellafreeriders_2000,hughes_gnutellafreeride_2005},
 the distribution of illegal content and other~\emph{socio-technical}
 issues \cite{hughes_socp2p_2008}, have arisen, \p\ systems have
-continued to gain popularity throughout the years, primarily 
+continued to gain popularity throughout the years primarily 
 because they have successfully supported popular applications 
 (i.e. file-sharing) amongst \emph{vast} numbers of participating users.
 %%
@@ -55,33 +52,28 @@ main architectures have emerged, namely
 Designers of \emph{centralized} architectures 
 (Figure~\ref{figure:p2p-archs:centralized}) were the first 
 to recognize that requests for resources 
-(e.g., CPU cycles or popular content) need not be fulfilled by
-a dedicated server. Instead, requests could be satisfied by
+(e.g., CPU cycles or popular content) need not be sent to
+a dedicated server. Instead, requests could be handled by 
 many hosts that already possessed the resources in question. 
-The downside of this approach was that it required a
-centralized search service, that was instantly rendered a single point of
-failure,  a scalability bottleneck, and a target of malicious acts including
-\emph{DoS attacks}.
+The downside of this approach was that it required 
+centralized search that became a single point of failure, a
+scalability bottleneck, and a target of malicious including \emph{DoS} attacks. 
 % \emph{Denial-of-Service (DoS) attacks}).
 
 {\sl Napster} was the most successful incarnation of the
-centralized approach, in file-sharing~\cite{napster}\footnote{Ofcourse, the
-SETI@home project is considered the pioneer, but on a different application
-domain \cite{seti}.}.
+centralized approach in file-sharing~\cite{napster}.
 It maintained a \emph{central index server} based on file-lists 
 that were peer-provided.
 Users would query the index server that would ultimately 
 yield pointers to the actual content.
-Thus, by centralizing search, while distributing downloads, {\sl Napster}
+Thus, by centralizing search while distributing downloads,  {\sl Napster}
 achieved a highly functional design that, at its height, attracted $26$ million
-users, sharing approximately $80$ million music
-files\cite{jmm_naptopusage_2001}.
+users sharing approximately $80$ million songs\cite{jmm_naptopusage_2001}.
 %%
-The central indexing, though, played a vital role in the demise of 
-{\sl Napter}. After \emph{Recording
-Industry Association of America} successfully argued in court
-copyright infringement of the artists' work, it was then easy to point to the
-indexing server and ultimately bring it down.
+The central indexing played a vital role in the demise of 
+{\sl Napter} as the \emph{Recording
+Industry Association of America} successfully argued in court 
+copyright infringement of the artists songs traded in the system. 
 %
 % Napter's  centralized nature was what ultimately brought it down after Recording
 % Industry Association of America (RIAA) filed a lawsuit for copyright infringement
@@ -94,7 +86,7 @@ capabilities (Figure~\ref{figure:p2p-archs:unstructred-full}) soon followed.
 In these \emph{decentralized} approaches, 
 resource placement within the overlay topology is random~\cite{YG-M2002};
 for this reason, such architectures are referred to as \emph{unstructured}. 
-Key properties of such \p\ systems are that they
+Key properties  of such \p\ systems are that they
 support inherent heterogeneity of peers, 
 are highly resilient to peer failures,
 and incur low maintenance overhead at handling 
@@ -110,19 +102,19 @@ A key disadvantage of the unstructured approach is that message flooding burdens
 the network since queries travel within the network randomly, visiting nodes
 that do not have the sought resource and thus wasting bandwidth.  
 To save on bandwidth, unstructured networks typically limit how long 
-a query travels within the overlay via the \emph{time-to-live} mechanism. 
-When a query is received by a node, it decreases its \emph{TTL} parameter by one
-unit. If the \emph{TTL} value has not reached zero, the node forwards the
-message to its neighbors; otherwise, it drops it.
+a query travels within the overlay via the \emph{time-to-live} parameter
+(\emph{TTL}). 
+When a query is received by a node, it decreases its \emph{TTL} by one unit. 
+If the \emph{TTL} has not reached zero, the node forwards the query 
+to its neighbors.  Otherwise, it drops the query. 
 While this approach prevents queries from visiting the entire network, it
 does not guarantee that the resource of interest, (e.g., a rare recording) 
 % of a musical group from the 1930s) 
-will, ultimately, be found.
+will be ultimately found.
 %%%
 \begin{figure}[ht]
 \centering
-\subfigure[Centralized ({\sl SETI@Home} or {\sl Napster}). Peers
-query the centralized 
+\subfigure[Centralized ({\sl SETI@Home} or {\sl Napster}). Peers query the centralized
 entity (dotted lines) and then establish the connection to the data source.] {
   \includegraphics[scale=0.20]{img/pdf/centralized.pdf}
   \label{figure:p2p-archs:centralized}
@@ -168,8 +160,8 @@ inability to locate rare resources remained.
 
 The \emph{decentralized structured schemes}
 (Figure~\ref{figure:p2p-archs:structured}) sought to address the 
-disadvantages of the, above mentioned, decentralized unstructured
-\p--approaches. Here, the main objective was to offer 
+disadvantages of the above decentralized unstructured \p--approaches.
+Here, the main objective was to offer 
 a self-organizing infrastructure for large-scale \p\ applications
 \cite{ratnasamy_can_2001,stoica_chord_2001,antony_pastry_2001,zhao_tapestry_2001,maymounkov_kademlia_2002,rgrk_bamboo_2004}.
 \emph{Decentralized structured schemes}
@@ -191,10 +183,10 @@ resource location queries such as keyword and partial matching searches.
 Several popular file-sharing
 \p\ applications have been based on \emph{DHT}s including
 {\sl Overnet}/{\sl eDonkey}~\cite{overnet}, 
-{\sl Kademlia}/{\sl Kad Network}~\cite{maymounkov_kademlia_2002}, and
+{\sl Kademlia}/{\sl Kad Network}~\cite{maymounkov_kademlia_2002},  and 
 some flavors of {\sl BitTorrent}~\cite{c_bittorrent_2003}.  
 Moreover, \emph{DHT}s sparked
-a flurry of research for many diverse of applications, ranging
+a flurry of research for many diverse of applications ranging
 from distributed search engines to event-notification and cloud-based
 platforms~\cite{kbc_oceanstore_2000,rkcd_scribe_2001,mgpj_cloudsnap_2011}.
 
@@ -301,7 +293,7 @@ in which costs are depicted in milliseconds.
 \label{figure:phys}
 \end{figure}
 %%
-When peer $A$ sends a message to its $D$ counterpart
+When peer $A$ sends a message its $D$ counterpart
 and depending on the overlay configuration, 
 nodes will experience different performance.
 For example, in the overlay depicted in
@@ -333,20 +325,10 @@ to the first and, thus, is more efficient.
 \label{figure:overlay-confs}
 \end{figure}
 
-%% VM The next part was previously at the end of this paragraph and didn't seem
-%% to fit right there. I moved it here since it is a theoretical optimality
-%% definition used by some authors we review and I think it can help the reader
-%% better understand what problem. Also I have rewritten it.
-%%
-The ratio of the physical distance (e.g., in hops) a query travels to
-reach its target via overlay routing, to the actual minimal network distance via
-IP routing, is termed in the literature as \emph{stretch} or \emph{Relative
-Delay Penalty (RDP)}~\cite{CRZ2000}.
-%%
 Ideally, an overlay should be constructed to achieve an \emph{optimal} 
 mapping between the overlay paths and the underlying network links to avoid
 inefficient states where redundant physical resources are utilized for the
-operation of the same link in the overlay.
+operation of the same link in the overlay. 
 The problem of constructing an optimal
 overlay is referred to as the \emph{topology mismatch problem}, and is formally
 defined as follows:
@@ -380,7 +362,14 @@ balancing, scalability, and robustness for the overlay. Unfortunately, this
 randomness has a negative impact on the \emph{routing locality} of the network.
 This means that even though the target node can be reached with a logarithmic
 number of overlay hops, the distance traveled in the underlying network, 
-during the overlay routing process, can be far from optimal.
+during the overlay routing process, can be far from optimal.  
+%%AD the above text is disconnected with what follows just below... 
+%%	- does it give a metric for the "optimality" we seek???
+The ratio of the actual \emph{IP} network distance a query travels to 
+reach an object of interest (via overlay routing) to 
+the minimal \emph{IP} network distance to that object 
+(i.e. through \emph{IP}) is known as \emph{stretch} 
+or \emph{Relative Delay Penalty (RDP)}~\cite{CRZ2000}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -392,7 +381,7 @@ message traverses before reaching its destination, but it is completely unaware
 of how the actual packets are switched at the underlying infrastructure along
 the overlay path. 
 In particular, a single logical point-to-point link on the
-overlay, typically corresponds to multiple physical links in the
+overlay typically corresponds to multiple physical links in the
 underlying layer. 
 Moreover, a link in the physical network often lies
 on several overlay paths inadvertently increasing the traffic on the
@@ -404,13 +393,14 @@ Even when an approach offers the best possible location
 when a node joins in, the churn is set to  
 continuously undermine the effort to maintain the best possible position
 of the  peer in the network.
+%%AD the paragraph below is ... LONG - rephrased as above...
+% Even in the case of an approach that provides mechanisms 
+% to a new-coming node to detect close-by peers at join time, 
+% the stochastic behavior with which peers join and leave
+% the overlay network, called the network's churn, 
+% further undermines the effort for maintaining 
+% the best position in the network throughout the life-time of a peer.
 
-%% VM: This section has a lot of information that I belieave are worth
-%% mentioning on the paper's conclusion section. We say for example why no
-%% approach we reviewed is best of all (cause it is an NP-Hard problem); or why
-%% virtual coordinate approaches will never be a reliable tool in today's
-%% Internet. Also it doesn't add much to the purpose of this section that is to
-%% say what motivated us to write the paper. If you also agree we can move it.
 The topology mismatch problem is exacerbated by the extremely large amounts of
 traffic generated by highly popular \p\ applications~\cite{byl-book}.
 Addressing this problem remains a fundamental challenge 
@@ -426,21 +416,18 @@ for the foreseeable future \cite{zheng_irprtt_2005}.
 \cite{cox_vivaldi_2004,wong_meridian_2005} and positioning \cite{ng_gnp_2001}
 systems and makes the construction of \emph{IP}-topology-aware 
 overlays difficult.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 Over the past several years, researchers have investigated an extensive
-array of heuristic solutions to the topology mismatch problem.
-%% VM: If we move the above though we have to mention why all solutions are
-%% heuristic.
+array of heuristic solutions to the topology mismatch problem. 
 The purpose of this survey is to gather and organize 
 this extensive body of produced knowledge. 
 We aspire to assist the reader in better understanding the 
-different approaches suggested and to accomplish this, we 
+different approaches suggested and to accomplish this we 
 present methods for both structured and unstructured distributed 
 overlay networks.
 We outline the respective algorithmic aspects and we categorize
-the surveyed material so that pros and cons of each method
+the surveyed approaches so that pros and cons of each method 
 can become apparent in their context.
 
 We employ both tabular and pictorial means to 
@@ -456,27 +443,24 @@ namely \emph{low}, \emph{medium} and \emph{high}.
 Each criterion has its own
 interpretation of the above literal values. 
 \emph{Efficiency} means how well the
-algorithm performs its search and topology adaptation functions (if any). There
-can be many criteria that effect this metric, either positivelly or negatively.
-For example, efficiency, is negatively effected every time an algorithm
-reduces the system's average query search scope, or when the method employed
-uses an unreliable metric to estimate physical proximity.
-For the \emph{overhead} criterion, we roughly assess the cost
+algorithm performs its search and topology adaptation functions, without
+affecting other characteristics of the networks 
+(e.g., BitTorrent's optimal download performance). 
+%%AD I am not sure what the above line says.. or connects. Something is 
+%%	missing...
+Efficiency is negatively effected every time an algorithm 
+reduces its search scope.
+For the \emph{overhead} criterion, we track the cost 
 to compute and communicate peer join, message forwarding, 
-and topology maintenance. As an example, algorithms that dictate only local
-exchange of routing information during topology adaptation, can be safelly
-considered to incur far less overhead, to the system, than those which
-require global knowledge.
-With \emph{scalability} we consider system behavior
-with respect to the number of participating peers. We consider systems with low,
-medium, and high scalability to mean they can drive hundreds, tenths of
-thousands, and millions of nodes, respectively.
-The heuristic nature of the solutions, inherently involve balancing trade-offs;
-so we pay extra attention how enhancing the above criteria may, in response,
-effect other aspects of the application. If, for example, tuning
-topology-awareness of the BitTorrent environment results in the degradation of
-the unrivaled optimal download performance of the vanilla-protocol, then this
-cannot be considered a successful answer to the problem.
+and topology maintenance. 
+For example, when exchanging route tables only amongst neighbors, 
+we consider the traffic generated to be low.
+%%AD Again I am not sure how the example above ties with the definition...
+For the \emph{scalability} criterion, we consider system behavior 
+with respect to the number of participating peers. 
+We consider systems with low, medium, and high scalability 
+to mean they can support hundreds, tenths of thousands, 
+and millions of nodes, respectively. 
 
 
 
