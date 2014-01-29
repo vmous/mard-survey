@@ -2273,87 +2273,145 @@ medium
 % and overloading landmark servers in high-churn systems is another scalability
 % concern.
 
-In this section, we introduced the topology mismatching problem from the
-perspective of unstructured P2P systems and we visited a series
-of algorithms that have been proposed in the literature to tackle its negative
-influence on performance. In surveying the above algorithms, we identify
-four main methodologies that are used either selectively or in combination
-by each algorithm.  
-These methodologies are:
+While surveying efforts to overcome the mismatch problem
+in the area of unstructured \p\ systems,
+we came to identify four key methodologies 
+utilized by the discussed approaches; these methodologies are:
+%%AD shorten below as above...
+% In this section, we introduced the topology mismatching problem from the
+% perspective of unstructured P2P systems and we visited a series
+% of algorithms that have been proposed in the literature to tackle its negative
+% influence on performance. In surveying the above algorithms, we identify
+% four main methodologies that are used either selectively or in combination
+% by each algorithm.  
+% These methodologies are:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{enumerate}[\itshape i\upshape)]
   \item topology adaptation
   \item forwarding optimization
   \item caching and replication, and
   \item landmarking
 \end{enumerate}
+Each surveyed approach uses either one or more of the
+aforementioned four methodologies. 
+Below, we discuss how the proposed protocols use 
+elements of the four methodologies and we offer 
+a summary qualitative comparison for all surveyed approaches 
+applicable for \emph{unstructured} \p \emph{systems}.
+%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Topology adaptation}
+\subsubsection{Topology Adaptation Methodology}
+
+Protocols based on topology adaptation 
+modify the topology of the \p\ network
+using various techniques. 
+The two most commonly used approaches to 
+topology adaptation are creating
+\emph{spanning tree}s using connection graphs 
+and creating \emph{clusters} of physically close nodes.
+
+\emph{Narada} and subsequent algorithms including 
+\emph{AOTO, LTM, SBO}, try to solve the problem
+by building a richer connected graph and forming 
+minimum spanning trees over
+this graph that can efficiently route messages among peers. 
+Even though spanning trees provide efficient query performance, 
+their maintenance costs have proven to be a significant limitation. 
+This is why the original \emph{Narada} proposal
+focused on small groups and thus, is not scalable.  
+%%
+The \emph{AOTO, LTM} and \emph{SBO} try to 
+% Algorithms like AOTO, LTM or SBO try to %%AD this "like" is colloquial 
+					  %%   try to avoid it if you can!
+overcome these obstacles with 
+ingeneous schemes
+% clever tricks %%AD this is a bit colloquial
+that entail forming minimum spanning trees
+for the $2$-hop neighbors ($N^2$) for each node, 
+%%AD u imply each has N neighbors above right???
+partitioning the graph into two
+random groups where each group is responsible for different tasks, 
+or performing local optimizations dynamically on the overlay graph. 
+%%AD what are these "optimizations" (in 2-3 words  - in sentence)
+The advantage of building minimum spanning trees is that 
+they maintain the connectivity on the network in
+an efficient manner while still preserving the overall search scope. 
+However, their construction and the update costs, 
+especially in dynamic, high-churn environments, 
+causes large additional traffic overhead on the underlying
+network~\cite{CRZ2000,CRSZ2001,CRSZ2002}.
+
+%%
+%%AD this figure HAS to be referenced in the text!!! 
+%%   ALSO - is this ANY different from Fig 4 of the paper??? 
+%%   WHY this Fig is being repeated here??? Grand Mystery!!!!
+%%	Perhaps we should put one fig similar but more sexy??? ;-)
 \begin{figure}[ht]
 \centering
 \subfigure[Inefficient overlay topology.] {
-  \includegraphics[scale=0.4]{img/pdf/topology-adaptation-before.pdf}
+  \includegraphics[scale=0.3]{img/pdf/topology-adaptation-before.pdf}
   \label{figure:topology-adaptation:before}
 }\qquad\qquad
 \subfigure[Efficient overlay topology after adaptation.] {
-  \includegraphics[scale=0.4]{img/pdf/topology-adaptation-after.pdf}
+  \includegraphics[scale=0.3]{img/pdf/topology-adaptation-after.pdf}
   \label{figure:topology-adaptation:after}
 }
-\caption{A simple example of how an overlay topology can be adapted.}
+\caption{A simplified example on how overlay topology adaptation may improve matters.}
+% A simple example of how an overlay topology can be adapted.}
 \label{figure:topology-adaptation}
 \end{figure}
+%%
 
-The topology adaptation based protocols modify the topology of the P2P network
-using various techniques. The two most commonly used approaches to 
-topology adaptation are creating
-\emph{spanning tree}s using connection graphs, and creating \emph{clusters} of
-physically close nodes.
-
-Narada and subsequent algorithms like AOTO, LTM, SBO, try to solve the problem
-by building a richer connected graph and forming minimum spanning trees over
-this graph that can efficiently route messages among peers. Even though spanning
-trees provide efficient query performance, their maintenance costs have 
-proven to be a significant limitation. This is why the original Narada 
-algorithm 
-was intended for small
-groups and is thus, not scalable.  Algorithms like AOTO, LTM or SBO try to
-overcome these obstacles with clever tricks like forming minimum spanning trees
-for the two-hop neighbors ($N^2$) of each node, partitioning the graph into two
-random groups where each group is responsible for different tasks, or performing
-local optimizations dynamically on the overlay graph. The advantage of building
-minimum spanning trees is that they maintain the connectivity on the network in
-an efficient manner while still preserving the overall search scope. However,
-their construction and the update costs, especially in dynamic, high-churn
-environments, cause large additional traffic overhead on the underlying
-network \cite{CRZ2000,CRSZ2001,CRSZ2002}.
-
-The cluster-based approaches, on the other hand, link physically
-closer nodes to each other. T2MC, for example, uses trace-route logs and DDNO
-uses domain names to cluster nearby nodes. Unfortunately, commonly used
+The cluster-based approaches, on the other hand, 
+link physically-close nodes to each other. 
+\emph{T2MC}, for example, uses trace-route logs and 
+\emph{DDNO} exploits domain names to cluster nodes in proximity. 
+Unfortunately, commonly used
 methods for proximity detection across Internet do not always return
-reliable results and therefore mapping accuracy is not guaranteed. Moreover,
-trace-route 
-is a heavy-weight utility and many network equipment vendors do not allow
-trace-route calls at all. The most problematic aspect of clustering, though, is
-its nature per se. Limited connectivity among the various local domains can
+reliable results and therefore, mapping accuracy is not guaranteed. 
+Moreover, trace-route is a computing resource ``heavy-weigth'' utility 
+and so  a number of network equipment vendors do not allow
+trace-route calls at all. %%AD do you have a refeerence or two in here???
+%%
+The most problematic aspect of clustering, though, is
+its nature per se. 
+Limited connectivity among the various local domains can
 significantly shrink the search scope, negatively affecting the query response
-time that the P2P end-user experiences. Techniques, like DDNO, that try to 
-balance the efficiency of the clustering approach with improved
-connectivity have also been proposed.  Specifically, DDNO attempt to address this
-limitation by forcing half of each node's connections to be with other, randomly
-selected, nodes over the network.
+time that the \p\ user experiences. 
+% Techniques, like DDNO, that try to 
+Among others, \emph{DDNO} tries to 
+balance the efficiency of the clustering approach 
+with enhanced node connectivity. 
+In particular, \emph{DDNO} attemps to address this limitation
+by forcing half of each node's connections to be with other, randomly
+selected, nodes in the network.
+%%AD you mean the "logical network"? the p2p network???
 
-In brief, topology adaptation ultimately aims to reduce the 
-average cost of the paths from one node to another so that 
-the overlay network is better fit on top of the underlying IP network.
-This is fair in the general case but not always. For example an
-adaptive algorithm can exchange a slow edge in the overlay with a faster one
-thus reducing the average latency of the network communication. The pitfall here
-is that this new virtual link can traverse a fast AS-to-AS
+As a methodology, 
+topology adaptation ultimately aims to reduce the 
+average path traversing cost from one node to another.
+In doing so, topology adaptation  re-arranges the 
+overlay network so that it becomes a better fit 
+for the underlying \emph{IP} network
+as Figure~\ref{figure:topology-adaptation} depicts.
+Despite the fact that the above is a plausible proposition,
+it is not always advantageous.
+% This is fair in the general case but not always. 
+%%
+For example, an topology adaptive algorithm can exchange 
+a slow edge in the overlay with a faster one
+thus reducing the average latency of the network communication. 
+The pitfall here is that this new virtual link 
+can traverse a fast \emph{AS}--to--\emph{AS} 	
+			%%AD you mean Autonomous Systems here?? 
+		  	%%    What is this AS???
 link meaning that even though message
-round-trip-time is reduced, it has more cost in terms of communication network economics
-and management.
+round-trip-time is reduced, it has more cost 
+in terms of communication network economics and management.
+%%AD just check the above sentence for correctness..
+
 
 % These approaches include creating spanning trees using
 %connection graphs, creating cluster of physically close nodes, or using latency
@@ -2378,28 +2436,14 @@ and management.
 %  \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Forwarding optimization}
-
-\begin{figure}[ht]
-\centering
-\subfigure[Typical blind flooding.] {
-\includegraphics[scale=0.25]{img/pdf/forwarding-optimization-before.pdf}
-  \label{figure:forwarding-optimisation:before}
-}\qquad\qquad
-\subfigure[A node can decide where to forward the messages.] {
-  \includegraphics[scale=0.25]{img/pdf/forwarding-optimization-after.pdf}
-  \label{figure:forwarding-optimisation:after}
-}
-\caption{Forwarding optimization in constraining message flooding.}
-\label{figure:forwarding-optimisation}
-\end{figure}
+\subsubsection{Forwarding Optimization Methodology}
 
 % Researchers initially started considering alternatives for services who
 % implement one-to-many communication schemes, like IP multi-cast, on the
 % application layer (i.e. Narada). Application level multi-cast protocols
 % are generic protocols that can be applied to both P2P file sharing systems,
 % as well as content distribution networks. Application layer multi-cast,
-however,
+% however,
 % is not as efficient as the one enabled by IP and still struggles to ease the
 % difficulties imposed by the topology mismatch problem.
 
@@ -2409,34 +2453,77 @@ however,
 %peer, was then forwarded to all of its neighbors. This was the source of
 %unnecessary, sometimes redundant traffic. 
 
-Forwarding-optimization-based
-approaches, propose intelligent forwarding link selection for a message's next
-hop across the routing path. The selection criteria vary depending on the
-algorithm, but they mainly use one or more statistical heuristics. These can
-range from simple obvious ones, like the latency of the link between the nodes or
-the exposure of specific features, such as high processing bandwidth, high
-capacity, or low latency, to more sophisticated alternatives that may even take
-into account application level requirements such as the reliability or
-friendship. Figure~\ref{figure:forwarding-optimisation} shows a simple example
-of how forwarding optimization can work.
-Sub-figure~\ref{figure:forwarding-optimisation:before} shows an algorithm that
-floods the entire network for search of an object the existence of which is
-denoted by black nodes. Alternatively, a node can decide to forward its
-messages not to every output link but to a specific or subset of its output
-links. In Sub-figure~\ref{figure:forwarding-optimisation:after}, the node in the
-middle, does not flood its neighbors. Instead it picks one of them. The dashed
-line on the right, shows that, for this routing process, the algorithm has
+
+%%AD I think you will need to sprinkle some references of those surveyed 
+%%	in this subsubsection.. As opposed to what done above, 
+%%	this subsubsection has no reference in the text!!!!
+Approaches based on forwarding-optimization 
+propose intelligent forwarding link selection for a message's next
+hop across a routing path. 
+The selection criteria vary depending on the
+algorithm, but they mainly use one or more statistical heuristics. 
+These can range from simple and rather obvious ones, 
+including the latency of the link between the nodes or
+the exposure of specific features such as high processing bandwidth, high
+capacity, or low latency, 
+to more sophisticated alternatives that may even take
+into account application level requirements such as 
+the reliability or friendship. 
+
+Figure~\ref{figure:forwarding-optimisation} shows a simple example
+of how forwarding optimization may work.
+%%
+\begin{figure}[ht]
+\centering
+\subfigure[Typical blind flooding.] {
+\includegraphics[scale=0.20]{img/pdf/forwarding-optimization-before.pdf}
+  \label{figure:forwarding-optimisation:before}
+}\qquad\qquad
+\subfigure[A node can decide where to forward the messages.] {
+  \includegraphics[scale=0.20]{img/pdf/forwarding-optimization-after.pdf}
+  \label{figure:forwarding-optimisation:after}
+}
+\caption{Forwarding optimization in constraining message flooding.}
+\label{figure:forwarding-optimisation}
+\end{figure}
+%%
+Fig.~\ref{figure:forwarding-optimisation:before} 
+% Sub-figure~\ref{figure:forwarding-optimisation:before} 
+shows a protocol that simply floods the entire network 
+in search of object found in the nodes colored in black.
+% for search of an object the existence of which is
+% denoted by black nodes. 
+Alternatively, a node can decide to forward its
+messages not to every output link but to a specific 
+or subset of its outgoing links. 
+In Sub-figure~\ref{figure:forwarding-optimisation:after}, the node in the
+In Fig.~\ref{figure:forwarding-optimisation:after}, 
+the node in the middle, does not flood its neighbors as instead 
+in only picks one of them.
+The dashed line on the right, shows that, 
+for this routing process, the protocol has
 rendered two potential forwarding paths as inefficient (e.g., the target nodes
-show overloading signs). These approaches have the advantage of enhancing the
-search responsiveness and reducing the aggregate resource usage of the physical
-network. On the other hand, they suffer from drastic reduction of the search
-scope (in Sub-figure~\ref{figure:forwarding-optimisation:after} the object on
+show overloading signs). 
+On one hand, forward
+optimisation approaches have 
+the advantage of enhancing the
+search responsiveness and reducing the aggregate resource 
+usage of the physical network. On the other, 
+they suffer from drastic reduction of the search
+scope (in Fig.~\ref{figure:forwarding-optimisation:after} the object on
 the far right is not reached) thus limiting the scalability of the whole
-network. Moreover they do not actually address the problem of topology mismatch
-since they do not give any guarantees that overlay and underlying topologies are
-aligned with each other let alone quantify the mismatch and try to alleviate.
-Like all other approaches, forwarding based methods are commonly applied in
-conjunction with other methods to improve the quality of the P2P systems.
+network. 
+Moreover, they adress the problem of the mismatch in a limited manner
+% do not actually address the problem of topology mismatch
+since they do not provide any guarantees 
+that overlay and underlying topologies are
+aligned with each other let alone quantify the mismatch 
+and try to alleviate.
+% Like all other methodologies, 
+Forwarding based optimisations are commonly applied in
+conjunction with other methodologies to improve 
+the quality of the \p\ systems.
+
 
 %Expanding the search scope, on the other hand, is no easy task
 %because the overhead of forming multi-cast trees is proportional to the
@@ -2446,8 +2533,34 @@ conjunction with other methods to improve the quality of the P2P systems.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Caching and replication}
+\subsubsection{Caching and Replication Methodology}
 
+%%AD in this portion there is NOT much about replication... 
+%%	ALSO, references to surveyed works as missing.. (other than
+%%	KAzaa!) -  Sprinkle some around the text...
+Caching is widely used to exploit locality and minimize redundant
+transfer of data. Caching has with much success been successfully 
+adopted by web and file server application environments. 
+Since peers in a \p\ system also operate as servers,
+it is intuitively expected that \p\ file sharing systems can also benefit from
+caching in improving performance and reducing overall resource usage. 
+However, the design of caches in this context 
+is non-trivial compared to the web-based caching. 
+Due to the fact nodes play the double role of server and client,
+two important issues have to be considered at design time. 
+First, the lifetime of a query is short, as the nodes join 
+and leave frequently. Second, the result
+of a single query string is not always the same, as this depends on the
+source of the query, the \emph{TTL} value set for the messages, 
+the current interconnection of peers and the 
+high volatility of the environment. 
+Thus, to develop a successful caching system for a \p\ architecture, these
+parameters also have to be carefully considered. 
+\p\ caching/replication can be applied
+at two different levels, namely caching indices or pointers to data 
+(Fig.~\ref{figure:replication:index}) or caching the data itself 
+(Fig.~\ref{figure:replication:data}). 
+%%%
 \begin{figure}[ht]
 \centering
 \subfigure[Indexing can reduce the cost of the last hop.] {
@@ -2461,29 +2574,24 @@ conjunction with other methods to improve the quality of the P2P systems.
 \caption{Index and data replication strategies.}
 \label{figure:replication}
 \end{figure}
-
-Caching is a widely used technique to exploit locality and minimize redundant
-transfer of data, previously successfully adopted by web and file server
-application environments. Since peers in a P2P system also operate as servers,
-it is intuitively expected that P2P file sharing systems can also benefit from
-caching in improving performance and reducing overall resource usage. However,
-the design of caches in this context is non-trivial compared to the web-based
-caching. Due to the fact that each node can act as both a server and a client,
-two important issues have to be considered at design time. First, the lifetime
-of a query is short, as the nodes join and leave frequently. Second, the result
-of a single query string is not always the same, as it is dependent on the
-source of the query, the TTL value set for the messages, the current
-interconnection of peers and the high volatility of the environment. Thus,
-to develop a successful caching system for a P2P architecture, these
-parameters also have to be considered. P2P caching/replication can be applied
-at two different levels, namely caching indices or pointers to data (see
-Sub-figure~\ref{figure:replication:index}) or caching the data itself (see
-Sub-figure~\ref{figure:replication:data}). Successful implementations have
-already been developed in some commercial P2P systems, like KazaA, which uses
-caching of indices on its super-peer level. Unfortunately, even though the
-state of the art in P2P algorithms using caching methods reduce the resource
-usage of the network, they also fail to consistently address typical problems
-of a topologically mismatched environment such as duplication of messages.
+%%
+Successful implementations have
+already been developed in some commercial \p\ systems, like 
+\emph{KaZaA}, which uses
+caching of indices on its super-peer level. 
+%%%
+Even though the state of the art in \p\ protocols using caching methods
+helps reduce the burden of network resources, 
+their contribution in addressing the mismatch problem 
+remains limited.
+%%AD I am not sure what the following piece says....
+%%	tried to rephrase as above...
+% Unfortunately, even though the state of the art 
+% in \p\ protocols using caching methods reduce the resource
+% usage of the network, 
+% they also fail to consistently address typical problems
+% of a topologically mismatched environment such as duplication of messages.
+%%%%%%%%%%%%%%%%%%%%%%% 
 
 %\subsection{Cache Based}
 %
@@ -2509,6 +2617,22 @@ of a topologically mismatched environment such as duplication of messages.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Landmarking}\label{sec:landmark}
 
+In landmark-based algorithms, nodes use network delay (e.g., \emph{RTT}) as a
+distance measurement method to position themselves with respect to ``a priori''
+known servers on the Internet. 
+These landmark servers are used
+by nodes to estimate their positions based on the intuitive assumption that
+nodes
+with similar distances to a set of landmarks, are physically close to each
+other, as well, over the network. 
+In Figure~\ref{figure:landmarking} the newly
+arriving peer, measures its distance to an array of landmark point denoted as
+$Ln$ and and makes a sorted list of the peers, say in increasing order. Then in
+order to choose the already participating peers with which to connect to,
+compares its list to the list of the potential neighbor. Peers with similar
+measured distances to the these landmark points are likely to be close to
+each other as well.
+%%
 \begin{figure}[ht]
 \centering
   \includegraphics[scale=0.4]{img/pdf/landmarking.pdf}
@@ -2516,21 +2640,8 @@ of a topologically mismatched environment such as duplication of messages.
 \label{figure:landmarking}
 \end{figure}
 
-In landmark-based algorithms, nodes use network delay (e.g. RTT) as a
-distance measurement method to position themselves with respect to ``a priori''
-known servers (the landmark servers) on the Internet. Landmark servers are used
-by nodes to estimate their positions based on the intuitive assumption that
-nodes
-with similar distances to a set of landmarks, are physically close to each
-other, as well, over the network. In Figure~\ref{figure:landmarking} the newly
-arriving peer, measures its distance to an array of landmark point denoted as
-$Ln$ and and makes a sorted list of the peers, say in increasing order. Then in
-order to choose the already participating peers with which to connect to,
-compares its list to the list of the potential neighbor. Peers with similar
-measured distances to the these landmark points are likely to be close to
-each other as well.
 
-Landmark based protocols have four important drawbacks. First, the network
+Landmark based protocols have four important drawbacks: First, the network
 delay is not a reliable distance estimation method. For example, based on the
 load on the network, the delay to certain nodes or networks can change from time
 to time, which will eventually affect the distance measurements and wrong
@@ -2540,9 +2651,11 @@ make the whole paradigm not fully distributed and the landmark system prone to
 become a single point of failure. Third, using
 landmark servers requires costly installation and maintenance of landmark
 infrastructure across the whole Internet and for all the different autonomous
-system domains. As popular P2P file sharing applications usually have millions
+system domains. 
+As popular \p\ file sharing applications usually have millions
 of peers connected at any time, the network costs
-of maintaining these landmark servers will likely be quite high. A possible solution to
+of maintaining these landmark servers will likely be quite high. 
+A possible solution to
 the scalability problem of the static landmark servers is to use ordinary nodes
 as dynamic landmarks once they estimate their own positions. Even though this
 approach scales much better than static landmark servers, the measurement
@@ -2550,6 +2663,9 @@ accuracy problem affects the overall performance of the system. Moreover,it can
 be characterized as a rather coarse-grained approximation, therefore not
 particularly well suited for detecting the correct positions of nodes within
 close distance to each other.
+%%AD ok how about ay advantages?? Any referencess??? 
+%%	Also, a bit of a discussion is missing on hybrid approaches surveyed
+%%	for example which approaches use a combo of these methodologies???
 
 Table~\ref{unstructured:table} offers a summary overview of the algorithms
 we saw earlier in this section and for each algorithm, shows which of the
