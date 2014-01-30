@@ -13,5 +13,7 @@ DHTPNS			medium		medium		medium
 QuasiChord		medium		high		medium
 IPBC			low		low		medium
 Cone			medium		medium		medium
-DynaMo			medium		low		high
+%DynaMo			medium		low		high
+DynaMORLM		medium		medium		high
+DynaMOCNPA		medium		low		medium
 SATMatch		high		medium		medium

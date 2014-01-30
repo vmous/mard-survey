@@ -73,7 +73,7 @@
 \endlastfoot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % data
-\textbf{Global Soft-State} &
+\textbf{Global Soft-State \cite{XTZ2003}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -81,21 +81,21 @@
 {\large \CheckedBox} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-Hybrid landmark binning.\\
-Probing scheme for proximity detection.\\
-Strategic injection of proximity info around the network.\\
+Hybrid landmark binning and probing scheme for proximity detection.\\
+Strategic injection of proximity information across the network.\\
 Subscription-notification system to dynamically adapt to network changes.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Greatly reduces routing latency to far away nodes.\\
--- Host state maintenance.\\
+-- Potential maintenance costs are high.\\
+-- Little knowledge about neigboring regions.\\
 -- Unable to identify nodes that are close to routers/gateways.\\
--- Its static nature sacrifices the self-organizing attribute of DHTs.
+-- Static nature due to the use of landmarks.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Mithos} &
+\textbf{Mithos \cite{WR2003}} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -107,12 +107,15 @@ Directed incremental probing.\\
 Synthetic coordinates.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
++ Distance measurement is done on the overlay level.\\
 -- Does not effectively manage dynamic peer arrival and leave.
+-- Centralized implementation of the its spring relaxation technique.
+implementation
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{LAPTOP} &
+\textbf{LAPTOP \cite{WLH2007}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -130,18 +133,18 @@ Tree-based hierarchy.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Landmark Binning} &
-{\large \Square} &
-{\large \CheckedBox} &
-{\large \Square} &
-{\large \Square} &
-{\large \CheckedBox} &
-{\large \Square} &
-Binning &
-\\
-\hline
+% \textbf{Landmark Binning} &
+% {\large \Square} &
+% {\large \CheckedBox} &
+% {\large \Square} &
+% {\large \Square} &
+% {\large \CheckedBox} &
+% {\large \Square} &
+% Binning &
+% \\
+% \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Proximity in Kademlia} &
+\textbf{\cite{KLKP2008}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -149,16 +152,18 @@ Binning &
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-% Replacing XOR metric with a function that minimizes the underlying cost.\\
-% Clustering (MaxMind geolocation technology).
+Replacing XOR metric with a function that minimizes the underlying cost.\\
+Clustering (MaxMind geolocation technology).
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
-+ Proximity routing works in Kademlia to improve connection locality.
++ Proximity routing works in Kademlia to improve connection locality.\\
+-- Using virtual coordinates renders the approach rigid in high churn environments.
+environments.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{CHOP6} &
+\textbf{CHOP6 \cite{MT2007}} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -169,10 +174,15 @@ Binning &
 Ipv6 format exploitation.\\
 Additional RTT information.
 \end{tabular} &
+\begin{tabular}[l]{m{5cm}}
++ Relatively straightforward integration of IPv6 global routing prefix into ID space.\\
+-- Coarse-grained.\\
+-- IPv6 is still not widely applied and supported.
+\end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{T2MC} &
+\textbf{T2MC \cite{SLCGZ2008}} &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
@@ -184,13 +194,13 @@ Clustering using trace-route logs.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Prioritize interaction of peers and edge gateways.\\
--- Extended overhead.\\
--- Trace-route is sometimes disabled by ISPs.
+-- Coarse-grained.\\
+-- Trace-route extends overhead and is sometimes disabled by ISPs.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{PChord} &
+\textbf{PChord \cite{HLYW2005}} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -201,32 +211,32 @@ Clustering using trace-route logs.
 Maintenance of a proximity list.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
-+ Dynamic maintenance of the proximity list.\\
-+ Reduces routing costs.\\
 + Can constrain costly jumps in and out of network partitions.\\
-+ Maintenance cost kept to a minimal (node join/leave heartbeat for lists)
++ Maintenance cost kept to a minimal (node join/leave heartbeat for lists).\\
+-- Rigid in high churn environments.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{AChord} &
+\textbf{AChord \cite{DK2006}} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-{\large \Square} &
+{\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
 Exploits IPv6's any-cast mechanism.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
-+ Relieved from the bootstrapping process.\\
-+ Easy to implement (just the additional neighborhood table).
++ Delegates proximity calculation during bootstrap to the anycast mechanism.\\
++ Easy to implement (just the additional neighborhood table).\\
+-- No adaptation after node bootstrap.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Chord6} &
+\textbf{Chord6 \cite{XZHL2005}} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -239,13 +249,13 @@ Exploits IPv6's hierarchical features.
 \begin{tabular}[l]{m{5cm}}
 + Reduces inter-domain traffic between ISPs.\\
 + Easily portable to other DHTs.\\
--- Cannot distinguish between nearby domains to identify the best
-next hop when an inter-domain step must be taken.
+-- Cannot distinguish between nearby domains.
+-- Not adaptable after id assignment
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{DHT-PNS} &
+\textbf{DHT-PNS \cite{DLTZZ2006}} &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
@@ -257,13 +267,13 @@ Grouping through synthetic coordinates.\\
 Partitioning using a concentric cycle clustering scheme.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
--- It assumes uniform node distribution which is not always the case in a synthetic coordinate system.\\
--- Clustering nodes might be a single point of failure.
++ Good convergence speed and optimizing performance.
+-- It assumes uniform node distribution which is not always the case.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Quasi-Chord} &
+\textbf{Quasi-Chord \cite{SZ2008}} &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -283,7 +293,7 @@ Two finger tables (clockwise, anti-clockwise)
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{IPBC} &
+\textbf{IPBC \cite{KM2007}} &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
@@ -302,7 +312,7 @@ peers.\\
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Cone} &
+\textbf{Cone \cite{HY2007}} &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -321,12 +331,12 @@ Group concept for dividing nodes according to a common Chord id prefix.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{DynaMo} &
+\textbf{DynaMo \cite{WZS2004}} &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \CheckedBox} &
-{\large \Square} &
+{\large \CheckedBox} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
 Random Landmarking (RLM).\\
@@ -337,14 +347,14 @@ Making last hop as local as possible.
 + Developed with mobile, ad-hoc networks in mind.\\
 + Evenly distributed IDs.\\
 + Dynamic landmarking is a fully distributed approach.\\
--- RLM imposes extra network stress especially to landmark nodes.\\
+-- RLM may impose extra overhead to landmark nodes.\\
 -- CPNA is a coarse-grained proximity approach.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{SAT-Match} &
-{\large \Square} &
+\textbf{SAT-Match \cite{RGJZ2004}} &
+{\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -360,6 +370,7 @@ Stretch reduction scheme.
 + Can coexist with other approaches (like landmarking).\\
 + Works sufficiently for large scopes as well as environments with high churn.\\
 + Compared to Mithos, scales much better.\\
+-- Needs synchronization within zones for every probing/jump for each node.\\
 -- Contention situation in selective jump phase.\\
 -- Probing phase incurs unnecessary traffic.
 \end{tabular}
@@ -390,7 +401,7 @@ Stretch reduction scheme.
 % \hline
 % \textbf{VERSION OF CHORD - DHT-PNS} &
 % \textbf{Proximity neighbor selection} Uses Proximity Neighbor Selection and
-the Vivaldi
+% the Vivaldi
 % system & Chord  &  \\
 
 % \hline
@@ -405,7 +416,7 @@ the Vivaldi
 % \hline
 % \textbf{IP-Based Clustering} &
 % \textbf{Proximity neighbor selection} Proximity neighbor selection based on
-longest common
+% longest common
 % prefix of IP addresses &    &  \\
 
 % \hline
@@ -416,13 +427,13 @@ longest common
 % \hline
 % \textbf{Proximity in Kademlia} &
 % \textbf{Proximity routing} Applies  proximity neighbor selection (PNS) and
-proximity route selection (PRS)
+% proximity route selection (PRS)
 % to Kademlia & Kademlia &   \\
 
 % \hline
 % \textbf{Cone} &
 % \textbf{Proximity neighbor selection} Uses proximity neighbor selection (PNS)
-& Chord  & Better than Chord \\
+% & Chord  & Better than Chord \\
 
 % \hline
 % \textbf{DynaMO} &  &  &  \\
