@@ -61,10 +61,11 @@ maps. To dynamically adapt to changing network conditions, a node subscribes to
 relevant \emph{soft states} that utilize a notification system in order to
 initialize any necessary neighbor re-selection.
 
-Maintaining several host states at different layers, makes any content migration
-costly. Additionally, the method does not make any continuing effort to remap
-the overlay structure after a node successfully joins in order to adapt its
-state to any condition change. Although this approach greatly reduces the
+Maintainece of several host states at different layers, renders any content
+migration a costly process. Additionally, the method does not make any
+continuing effort to remap
+the overlay structure after nodes successfully join resulting into poor
+adaptation to changing conditions. Although this approach greatly reduces the
 routing latency to far nodes, it is unable to dynamically identify nodes that
 are close to routers and gateways in order to construct the secondary overlay.
 Nevertheless, static recognition of such nodes is currently done based on BGP
@@ -141,12 +142,11 @@ low
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Mithos}
 \emph{Mithos} \cite{WR2003} is a P2P protocol which incorporates directed
-incremental probing to find near optimal node placement, and is classified by
-its authors as an integration of geographic layout and proximity routing overlay
-optimization methods.
+incremental probing to find near optimal node placement, and is an integration
+of geographic layout and proximity routing overlay optimization methods.
 
-The bootstrap phase of Mithos starts with a subset of existing members as the
-first set of candidates, and while the iteratively closest nodes are detected by
+The bootstrap phase of \emph{Mithos} starts with a subset of existing members as
+the first set of candidates, and while the iteratively closest nodes are detected by
 probing the neighborhood, the candidate neighbor list is updated. To
 avoid a local minima, Mithos probes all the neighbors within a two-hop distance
 from the current minimum before concluding the process.
@@ -1237,3 +1237,33 @@ proximity neighbor selection into their algorithms. The routing protocol in
 Pastry is based on longest node ID prefix matching, while CAN uses RTT values to
 detect nearby nodes. \cite{CDCR2002a} reports that proximity neighbor
 selection is an effective proximity based method.
+
+
+% \item Proximity Neighbor Selection\\
+%Finally, the third approach, constructs the routing tables using proximity
+%knowledge. Tapestry and Pastry's mechanisms of routing table
+%maintenance try to minimize the distance to nodes appearing in a peer's routing
+%table. Since routing is based on longest node ID prefix match, messages
+%are gradually forwarded to nearby nodes at each routing step.
+%\cite{castro_proximityp2p_2002} argues on how Pastry exploits proximity
+%neighbor selection in order to create a scheme that is (more) location-aware
+%compared to the other well-known DHTs (CAN, Chord).
+%
+%\end{itemize}
+%
+%{\sethlcolor{yellow}\hl{
+%HA: Possible criteria: based on which protocol (eg Gnutella, CAN etc), peer
+%selection (topology selection, cluster, cache etc), supports dynamic update,
+%runtimes}}
+%%\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Forwarding} &
+%\textbf{Cache} & \textbf{Overlay optimization} & \textbf{Proximity information}
+%& \textbf{Base protocol} & \textbf{Dynamic update} & \textbf{Runtime} \\
+%
+%
+%{\sethlcolor{yellow}\hl{
+%HA: Possible criteria2: Overlay optimization structure, base protocol (eg
+%Gnutella, CAN etc), dynamic update, runtimes, scalability}}
+%
+%{\sethlcolor{yellow}\hl{
+%HA: maybe add also the year of publication, and see if there is a pattern in
+%terms of the method and the year??}}

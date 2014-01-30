@@ -63,7 +63,7 @@
 \endlastfoot
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % data
-\textbf{Improving search in peer-to-peer networks} &
+\textbf{\cite{YG-M2002}} &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
@@ -79,12 +79,12 @@ Local Indices (LI).
 + LI reduces aggregate bandwidth usage and improves query efficiency.\\
 -- ID needs evaluation time between iterations.\\
 -- DBFS uses heuristics so it depends on their efficient choice.\\
--- LI add index update overhead which might be heavy and might not work at all in systems with high churn.
+-- LI add index update overhead which might be heavy process especially in high-churn systems.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Delay Aware P2P System} &
+\textbf{DAPS \cite{ZL2005}} &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
@@ -94,11 +94,11 @@ Clustered routing tables based on delay.\\
 Pruning flood, an iterative deepening and multiple BFS approach with a pruning
 boundary.
 \end{tabular} &
-+ Authors claim it is a system between structured and unstructured.
++ It is a system between structured and unstructured.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Gia} &
+\textbf{Gia \cite{CRBLS2003}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
@@ -109,12 +109,11 @@ Random Walks (RW).
 \begin{tabular}[l]{m{5cm}}
 + RWs issue one copy of the query thus not flooding the whole network.\\
 -- RWs can reduce search scope.\\
--- Gia does not actually consider the underlying network.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{DCMP} &
+\textbf{DCMP \cite{ZKB2008}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -125,12 +124,11 @@ Cycle detection.
 \begin{tabular}[l]{m{5cm}}
 + Drastically reduces duplicate messages.\\
 -- Cannot detect cycles in distance bigger than the TTL value of the IC message.\\
--- DCMP does not consider the underline network.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Replication Strategies in Unstructured Peer-to-Peer Networks} &
+\textbf{\cite{CS2002}} &
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -158,7 +156,7 @@ Square root replication allocation.
 % \\
 % \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Narada} &
+\textbf{Narada \cite{CRZ2000}} &
 {\large \Square} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -174,7 +172,7 @@ Minimum spanning trees.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{AOTO} &
+\textbf{AOTO \cite{LZXN2003}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -194,7 +192,25 @@ no shrinked search scope.\\
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{LTM} &
+\textbf{ACE \cite{LZXN2004}} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{m{3cm}}
+Minimum spanning trees.\\
+1-hop proximity heuristic.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
++ No flooding.\\
++ Less overhead compared to AOTO since computation is done within a certain diameter from the source peer.
+-- Slow convergence speed.\\
+-- Enhanced topology optimization comes to the expence of higher communication/computation overhead.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{LTM \cite{LLXNZ2004}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -212,7 +228,7 @@ Delayed low productive connection cutting.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{SBO} &
+\textbf{SBO \cite{LXN2004}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -228,7 +244,7 @@ Red/white bipartite overlay.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{THANCS} &
+\textbf{THANCS \cite{LNXE2005}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -247,7 +263,7 @@ Piggybacking neighbor distance in queries
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{HAND} &
+\textbf{HAND \cite{CLZHC2006}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -266,7 +282,7 @@ Triple-hop adjustment.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{APS} &
+\textbf{APS \cite{BFLZ2003}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -281,7 +297,7 @@ machine learning adaptive mechanism.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{ITA} &
+\textbf{ITA \cite{PRFM2009}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -300,7 +316,7 @@ replication, dynamic querying).
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{EGOIST} &
+\textbf{EGOIST \cite{SLLBBR2008}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -314,7 +330,7 @@ Selfish shortest path routing
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{BNS} &
+\textbf{BNS \cite{BCCMSBZ2006}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \CheckedBox} &
@@ -333,7 +349,7 @@ Caching.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Ono} &
+\textbf{Ono \cite{CB2008}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -351,7 +367,7 @@ Landmarking based on existing CDN infrastructure (CDN redirection measurements).
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Locality-Awareness in BitTorrent-like P2P Applications} &
+\textbf{\cite{LCLX2009}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -367,13 +383,13 @@ mechanisms and on next-chunk picking.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{TopBT} &
+\textbf{TopBT \cite{RTLCGZ2010}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-Peer selection metric that tacks both downloading speed and network topology
+Peer selection metric that takes both downloading speed and network topology
 into account.\\
 Applied in multiple places of the BitTorrent protocol (bootstrap, connection
 establishment/replacement, unchocking).
@@ -386,7 +402,7 @@ establishment/replacement, unchocking).
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{UTAPS} &
+\textbf{UTAPS \cite{LCY2008}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -397,12 +413,12 @@ Network tomography to construct a picture for the underlying network.
 \begin{tabular}[l]{m{5cm}}
 + Reduced ISP burden.\\
 + Better downloading speeds.\\
--- not thoroughly evaluated.
+-- Small, laboratory-scale evaluation setup.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{An Effective Network-Aware Peer Selection Algorithm in BitTorrent} &
+\textbf{\cite{QLZG2009}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -413,12 +429,12 @@ Cluster peers in a swarm into local, intra- and inter-ISP.
 \begin{tabular}[l]{m{5cm}}
 + Reduced ISP burden.\\
 + Better downloading speeds.\\
--- Not thoroughly evaluated.
+-- Similarly to UTAPS, the evaluation setup was small scale.
 \end{tabular}
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{PROP} &
+\textbf{PROP \cite{QCYCZ2007}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -443,7 +459,7 @@ Neighbor exchange between peers.
 % \\
 % \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{DDNO} &
+\textbf{DDNO \cite{Z-YK2005}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -459,7 +475,7 @@ Domain name topology detection (Split-Hash and dnMatch).
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{CTAG} &
+\textbf{CTAG \cite{ZL2006}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -473,7 +489,7 @@ Clustering based on longest matching IP segment.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Landmark Binning} &
+\textbf{Landmark Binning \cite{RHMKS2002}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -493,7 +509,7 @@ Landmark binning.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{mOverlay} &
+\textbf{mOverlay \cite{ZZZSZ2004}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -509,21 +525,6 @@ Dynamic landmarks.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 %\begin{tabular}[l]{@{}}
@@ -543,7 +544,7 @@ Dynamic landmarks.
 %\hline
 %\textbf{Gia} & \textbf{Broadcast based} Replaces
 %Gnutella flooding with random walk, and introduces KaZaA style super-nodes.
-Uses
+%Uses
 %dynamic topology adaptation protocol &
 % Gnutella &  Better than Gnutella  \\
 

@@ -15,28 +15,22 @@ and anonymity.
 
 The peer-to-peer paradigm gave impetus to two ``killer'' applications:
 file-sharing and Internet telephony.
-The {\sl Napster} file-sharing was widely acknowledged as the 
-``fastest growing Internet application ever'' in $2001$ when
-$26$ million users shared $80$ million songs.
-% File-sharing, originally introduced by
-% {\sl Napster} (Section~\ref{section:background}), was widely
-% acknowledged by $2001$ as the ``fastest growing Internet application ever" 
-% with $26$ million users sharing $80$ million songs.
-% % at the height of its popularity. 
+The {\sl Napster} file-sharing system was widely acknowledged as the 
+``fastest growing Internet application ever'' in $2001$ when it topped
+$26$ million users sharing over $80$ million songs.
 Other file-sharing applications followed suit, 
 including {\sl Gnutella} and {\sl Limewire} enjoying $3$ 
-million concurrently-connected peers as well as 
-{\sl BitTorrent} connecting over $150$ million users by the end of $2006$.
+million concurrently-connected peers, as well as 
+{\sl BitTorrent} connecting over $150$ million monthly users by January $2012$~\cite{bittorrentusers}.
 \p\ telephony saw explosive growth with the advent of {\sl Skype}.
 Since its introduction in $2003$,
 {\sl Skype} has become extremely popular with more than $650$ million users 
-in $2011$~\cite{skypetotalusers}; on March $5$th, $2012$,  
-the astonishing figure of $35$ million concurrently-online users  
+in $2011$~\cite{skypetotalusers} while on January $21$st, $2013$,
+the astonishing figure of $50$ million concurrently-online users
 was reported~\cite{skypesymusers}.
 %%
-In addition, a startling number of diverse and successful
-applications have been built based on a \p\ architecture. 
-Some of them include:
+Apart from the above, though, a startling number of diverse and successful
+applications have been built based on \p\ architectures. Some of them include:
 distributed search engines~\cite{yaci}, 
 distributed data-storage systems~\cite{kbc_oceanstore_2000,bdet_fsdfs_2000,dkkms_cfs_2001,dr_pastutility_2001,abc_farsite_2002,mmfc_ivy_2002,arla,agebh_dks_2003},
 Web caches, archives and publishing systems~\cite{ird_squirrel_2002,bags_youserv_2002,wrc_publius_2000,wm_tangler_2001},
@@ -46,13 +40,31 @@ naming services~\cite{cmm_chorddns_2002},
 censor-resistant stores~\cite{cswh_freenet_2001} and
 lately, even cloud-based platforms~\cite{mgpj_cloudsnap_2011}.
 
+
+% TODO SOME EXTRA REFERENCES IF NEEDED FOR THE USE OF OVERLAYS IN GENERAL
+%
+% IF ULTIMATELY DELETED CHECK TO REMOVE THE REFERENCES INCLUDED SINCE MOST
+% PROBABLY ARE NOT USED ELSEWHERE.
+%
+%find citation for Narada & Adobe's Real Time Media Flow Protocol (RTMFP)
+%\cite{} that provide quality-of-service (QoS) guarantees. \emph{IP
+%multicast}, as well as other proposals such as \emph{IntServ} and
+%\emph{DiffServ} \cite{cisco_diffserv_2005}, have still not seen wide deployment
+%largely due to the fact they require support from the IP
+%infrastructure. On the other hand, an overlay network can be deployed on
+%end-systems running the overlay protocol software, without the cooperation of ISPs.
+%Academic research includes
+%\cite{chu_esm_2000,jannotti_overcast_2000,kwon_tag_2002} among others.
+
+
 \p\ systems are implemented using \emph{overlay networks}. 
 An overlay network, is a virtual system of nodes and logical links
-created above an existing network; overlays provide
-added value to the underlying layer by, for instance, offering QoS
-content-distribution over the best effort Internet. 
-Overlay nodes communicate through \emph{virtual connections} each 
-of which may correspond to a path of possibly many physical links 
+created above an existing network; overlays provide an abstraction that
+enables the implementaion of efficient, fully distributed, application-layer
+services such as routing messages to destinations that are not known in advance
+or offering QoS guarantees (i.e., in content-distribution) over best effort
+infrastructures. Overlay nodes communicate through \emph{virtual connections}
+each of which may correspond to a path of possibly many physical links 
 in the underlying network.
 Figure~\ref{figure:overlay} illustrates a simple four-node overlay constructed
 over a wide-area network.
@@ -74,17 +86,10 @@ If the application running on the nodes, generates heavy traffic along
 the overlay path, it would be beneficial to
 construct the overlay topology in a way that the number of 
 underlying IP links between these two nodes is minimized.
-% If the traffic patterns of the application
-% are such that traffic flows heavily over the overlay link 
-% between the two nodes,
-% then it is beneficial to construct the overlay 
-% topology such that the number of
-% underlying IP links between these two nodes is minimized.
-%%
 Should the overlay network be constructed so that
 it does not match the underlying topology well, 
 the inherent \emph{topology mismatch} gives two
-significant problems: first, the performance of the application per se, can be
+significant problems. First, the performance of the application per se, can be
 adversely affected since traffic must flow over a larger,
 redundant, number of physical hops resulting in poor user experience 
 entailing noticeable latencies or jittering. 
@@ -126,11 +131,9 @@ their particular application.
 %%
 The rest of the paper is organized as follows: 
 Section~\ref{section:background} provides background on
-overlay architectures including centralized, decentralized
-unstructured and decentralized-structured \p\ systems. 
+overlay architectures including centralized, decentralized-unstructured and
+decentralized-structured \p\ systems.
 We also formally define the problem of topology mismatch 
-% between an overlay and its underlying
-% physical network 
 and offer the rationale behind our 
 evaluation of the techniques discussed in this paper. 
 Sections~\ref{section:unstructured} and~\ref{section:structured}

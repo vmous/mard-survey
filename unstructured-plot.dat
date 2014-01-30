@@ -3,13 +3,13 @@ IterativeDeepening		low		low		medium
 DirectedBFS			medium		medium		medium
 LocalIndices			high		medium		medium
 DAPS				low		low		medium
-Gia				low		low		medium
+Gia				medium		low		medium
 DCMP				medium		low		high
 UniformReplication		low		low		medium
 ProportionalReplication		low		medium		low
 SqrtReplication			medium		medium		medium
 %Markatos02			-		-		-
-Narada				low		high		low
+Narada				medium		high		low
 AOTO				medium		high		medium
 ACE				medium		medium		medium
 LTM				medium		medium		medium
@@ -21,7 +21,7 @@ ITA				medium		low		medium
 EGOIST				high		high		low
 BNS				high		low		medium
 Ono				high		medium		low
-LiuEtAl				medium		low		high
+LiuEtAl				medium		low		medium
 TopBT				medium		low		high
 UTAPS				medium		medium		medium
 QinEtAl				medium		medium		medium

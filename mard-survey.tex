@@ -61,15 +61,15 @@ $^2$\emph{Izmir University of Economics}, \emph{Izmir}, \emph{Turkey}
 
 \begin{abstract}
 \emph{Peer-to-peer} (\p) systems have enjoyed immense attention and have been
-widely deployed on the Internet for well over a decade.  %% no commas here
+widely deployed on the Internet for well over a decade.
 They are implemented via an overlay network abstraction, on top 
-of the best-effort IP infrastructure of the Internet. 
-\p\ systems offer a plethora of desirable features to 
+of the Internet's best-effort IP infrastructure. 
+\p\ systems support a plethora of desirable features to
 distributed applications that are built on top of them including
 anonymity, high availability and robustness, 
 load balancing, quality of service, scalability, to name just a few.
 Unfortunately, inherent weaknesses of early deployments of \p\ systems, prevented 
-applications from leveraging these features.
+applications from leveraging the full potential of the paradigm.
 One major weakness, identified early on, is the \emph{topology mismatch problem}
 between the overlay network and the underlying IP topology.
 This mismatch can impose an extraordinary amount of unnecessary stress on
@@ -91,7 +91,7 @@ reference for developers, system architects and researchers in the field.
 
 \terms{Topology mismatch}
 
-\keywords{Distributed systems, peer-to-peer architectures, overlay network,
+\keywords{Distributed systems, peer-to-peer architectures, p2p, overlay network,
 topology awareness}
 
 \begin{document}
@@ -108,35 +108,6 @@ emails: \{vsmoustakas,mema,ad\}@di.uoa.gr, huseyin.akcan@ieu.edu.tr
 \input{intro}
 \input{background}
 
-% \item Proximity Neighbor Selection\\
-%Finally, the third approach, constructs the routing tables using proximity
-%knowledge. Tapestry and Pastry's mechanisms of routing table
-%maintenance try to minimize the distance to nodes appearing in a peer's routing
-%table. Since routing is based on longest node ID prefix match, messages 
-%are gradually forwarded to nearby nodes at each routing step.
-%\cite{castro_proximityp2p_2002} argues on how Pastry exploits proximity
-%neighbor selection in order to create a scheme that is (more) location-aware
-%compared to the other well-known DHTs (CAN, Chord).
-%
-%\end{itemize}
-%
-%{\sethlcolor{yellow}\hl{
-%HA: Possible criteria: based on which protocol (eg Gnutella, CAN etc), peer
-%selection (topology selection, cluster, cache etc), supports dynamic update,
-%runtimes}}
-%%\textbf{Algorithm} & \textbf{Overlay structure} & \textbf{Forwarding} &
-%\textbf{Cache} & \textbf{Overlay optimization} & \textbf{Proximity information}
-%& \textbf{Base protocol} & \textbf{Dynamic update} & \textbf{Runtime} \\
-%
-%
-%{\sethlcolor{yellow}\hl{
-%HA: Possible criteria2: Overlay optimization structure, base protocol (eg
-%Gnutella, CAN etc), dynamic update, runtimes, scalability}}
-%
-%{\sethlcolor{yellow}\hl{
-%HA: maybe add also the year of publication, and see if there is a pattern in
-%terms of the method and the year??}}
-
 \input{unstructured}
 
 \input{structured}
@@ -144,6 +115,9 @@ emails: \{vsmoustakas,mema,ad\}@di.uoa.gr, huseyin.akcan@ieu.edu.tr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % TODO: SOME INFORMATION ON ISP-ASSISTED TOPOLOGY AWARENESS
+%
+% IN CASE REVIEWERS POINT OUT THAT WE SHOULD ADD THOSE AS WELL.
+%
 %       ATTENTION: NEEDS REWORDING
 %
 % P4P [16],instead, aimed to provide a general framework for P2P
