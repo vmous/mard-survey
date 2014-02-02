@@ -1994,14 +1994,15 @@ utilized by the discussed approaches; they are:
   \item topology adaptation
   \item forwarding optimization
   \item caching and replication, and
-  \item landmarking
+  \item landmarking.
 \end{enumerate}
 %
 A key characteristic shared by many of the presented techniques 
 is that they do not strictly adhere to a single methodology.
-As discussed approaches attempt to address the inherently challenging problem 
+As approaches attempt to address the challenging problem 
 of topology mismatch, they resort to heuristics and so, 
-they do not often furnish ``pure'' solutions (i.e., solutions that exclusively belong to 
+they do not often furnish ``pure'' approaches 
+(i.e., solutions that exclusively belong to 
 one of the $4$ aforementioned methodologies). 
 %%AD rephrased as above..
 % An important aspect of many implementations, is that since the above
@@ -2010,7 +2011,8 @@ one of the $4$ aforementioned methodologies).
 % Thus, many of the algorithms we surveyed are actually combinations of multiple
 % such methodologies, in an attempt to refine the results of using just a single one.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-For instance, \emph{mOverlay} combines topology adaptation with landmark binning 
+For instance, \emph{mOverlay} combines topology adaptation 
+with landmark binning 
 while \emph{Gia} weaves together $3$ methodologies:  topology adaptation, 
 forwarding optimization and caching. 
 This combination inevitably leads to feature/performance trade-offs: for example, 
@@ -2073,11 +2075,14 @@ not always return
 reliable results and therefore, mapping accuracy is not guaranteed. Specifically
 for traceroute, its overhead is not negligible and routers or firewalls in a
 network may have already been configured to disable traceroute response from
-the start. The most problematic aspect of clustering, though, is
+the start. 
+The most problematic aspect of clustering, though, is
 its nature per se. 
 Limited connectivity among the various local domains can
 significantly shrink the search scope, negatively affecting the query response
-time that the \p\ user experiences. Among others, \emph{DDNO} tries to 
+time that the \p\ user experiences. 
+%%
+Among others, \emph{DDNO} tries to 
 balance the efficiency of the clustering approach 
 with enhanced node connectivity by forcing half of each node's connections to be
 with other, randomly selected, nodes.
@@ -2097,7 +2102,7 @@ thus reducing the average latency of the network communication.
 The pitfall here is that this new virtual link
 can traverse a fast \emph{AS}--to--\emph{AS} link meaning that even though
 message round-trip-time is reduced, it has actually additional cost in terms of
-inter-ISP communication accounting and management.
+inter-\emph{ISP} communication accounting and management.
 %%
 \begin{figure}[ht]
 \centering
