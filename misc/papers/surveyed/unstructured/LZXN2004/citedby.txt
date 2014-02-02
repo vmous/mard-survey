@@ -1,0 +1,43 @@
+##############
+LZXN2004 - A Distributed Approach to Solving Overlay Mismatching Problem
+##############
+
+Ranking factors in peer-to-peer overlay networks
+WNET2007
+
+Charge-based flooding algorithm for detecting multimedia objects in peer-to-peer overlay networks
+WETK2005
+
+CBF: Look-up protocol for distributed multimedia objects in peer-to-peer overlay networks
+http://www.worldscientific.com/doi/abs/10.1142/S0219265905001459
+XXX
+
+Topology awareness of overlay P2P networks
+http://onlinelibrary.wiley.com/doi/10.1002/cpe.1089/abstract
+XXX
+
+Dubious feedback: fair or not?
+HL2006
+
+A superpeer-based two-layer P2P overlay network with the CBF strategy
+WHT2007_a
+
+Efficient peer-to-peer overlay construction
+NL2004
+
+Resource management and organization in CROWN grid
+HWL2006
+
+Search and index in locality-based clustering overlay
+HZNZ2005
+
+A scheme for P2P optimization in access networks
+http://dl.acm.org/citation.cfm?id=1738441
+XXX
+
+Locality support for mobile P2P networks
+CCK2007
+
+Efficient Gnutella-like P2P Overlay Construction
+http://link.springer.com/chapter/10.1007/978-3-540-30141-7_23
+XXX

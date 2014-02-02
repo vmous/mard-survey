@@ -1,0 +1,10 @@
+##############
+CB2008 - Taming the Torrent: a Practical Approach to Reducing Cross-ISP Traffic in Peer-to-Peer Systems
+##############
+
+A survey of research on the application-layer traffic optimization problem and the need for layer cooperation
+GHRTM2009
+
+Quantifying operational cost-savings through ALTO-guidance for P2P live streaming
+http://link.springer.com/chapter/10.1007/978-3-642-15485-0_3
+XXX

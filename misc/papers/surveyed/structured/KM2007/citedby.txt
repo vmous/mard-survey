@@ -1,0 +1,9 @@
+##############
+KM2007 - IP-based Clustering for Peer-to-Peer Overlays
+##############
+
+USING AUTONOMOUS SYSTEM TOPOLOGICAL INFORMATION IN A WEB SERVER PERFORMANCE PREDICTION
+http://www.tandfonline.com/doi/abs/10.1080/01969720802257980#.Uap_Gc5yCCg
+
+SOLARE: Self-Organizing Latency-Aware Resource Ensemble
+EWF2011

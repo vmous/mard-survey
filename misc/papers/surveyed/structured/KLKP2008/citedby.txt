@@ -1,0 +1,48 @@
+##############
+KLKP2008 - Embracing the Peer Next Door: Proximity in Kademlia
+##############
+
+Towards benchmarking of structured peer-to-peer overlays for network virtual environments
+KGKLS2008
+
+Underlay awareness in P2P systems: Techniques and challenges
+AKGPS2009
+
+Monitoring and management of structured peer-to-peer systems
+GSRKS2009
+
+Sub-second lookups on a large-scale Kademlia-based overlays
+JOK2011
+
+Impact of Self-Organization in P2P Overlays on Underlay Utilization 
+POAKS2009
+
+R/kademlia: Recursive and topology-aware overlay routing
+H2010
+
+Peer-Assisted Video-on-Demand: Cost Reduction and Performance Enhancement for Users, Overlay Providers, and Network Operators
+P2011
+
+The social impact of P2P systems
+GPR2010
+
+MashCache: Taming Flash Crowds by Using Their Good Features
+HAYK2012
+
+Proximity neighbor selection using IP prefix matching in Kademlia-based Distributed Hash Table 
+SP2010
+
+A PLATFORM FOR CREATING EFFICIENT, ROBUST, AND RESILIENT PEER-TO-PEER SYSTEMS
+Z2010
+
+PeerfactSim.KOM: A P2P System Simulator - Experiences and Lessons Learned
+G2011
+
+Practical Approach to Integrating Network Coordinates with Distributed Hash Tables
+KAKH2011
+
+Lookup Analyzer for BitTorrent Mainline DHT (Look@ MLKademlia)
+D2008
+
+Removing the Blinders: Using Information to Mitigate Adversaries in Adaptive Overlays
+ZKR2011

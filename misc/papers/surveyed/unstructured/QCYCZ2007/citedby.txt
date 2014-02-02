@@ -1,0 +1,16 @@
+##############
+QCYCZ2007 - Towards Location-aware Topology in both Unstructured and Structured P2P Systems
+##############
+
+Resolving the topology mismatch problem in unstructured peer-to-peer networks
+HLH2009
+
+A Near-Optimal Algorithm Attacking the Topology Mismatch Problem in Unstructured Peer-to-Peer Networks
+HLY2010
+
+T2MC: a peer-to-peer mismatch reduction technique by traceroute and 2-means classification algorithm
+SLCGZ2008
+
+A hierarchical overlay with cluster-based reputation tree for dynamic peer-to-peer systems
+HK2012
+

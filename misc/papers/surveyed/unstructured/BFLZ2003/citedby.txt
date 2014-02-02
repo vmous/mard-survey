@@ -1,0 +1,21 @@
+##############
+BFLZ2003 - Adaptive Peer Selection
+##############
+
+Minimizing file download time in stochastic peer-to-peer networks
+CE2008
+
+Analysis on greedy-search based service location in P2P service grid
+ZLZXY2003
+
+Efficient hierarchical content distribution using P2P technology
+JLLL2008
+
+Path-diversity P2P overlay retransmission for reliable IP-multicast
+ZZLZ2009
+
+A novel peer selection algorithm to reduce BitTorrent-like P2P traffic between networks
+RH2009
+
+Analysis of random time-based switching for file sharing in peer-to-peer networks
+L2010

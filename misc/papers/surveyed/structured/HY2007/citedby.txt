@@ -1,0 +1,15 @@
+##############
+HY2007 - Cone: A Topology-Aware Structured P2P System with Proximity Neighbor Selection
+##############
+
+SLUP: A Semantic-Based and Location-Aware Unstructured P2P Network 
+SLLT2008
+
+Optimized Range Queries for Large Scale Networks 
+HRAMSB2012
+
+Topology-aware kademlia based on distributed clustering in self-organizing mode
+XSL2010
+
+Network locality positioning system in P2P networks 
+WW2010

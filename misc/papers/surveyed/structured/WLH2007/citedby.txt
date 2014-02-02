@@ -1,0 +1,16 @@
+##############
+WLH2007 - A location-aware peer-to-peer overlay network
+##############
+
+A Topology-Aware Application Layer Multicast Protocol 
+BMD2010
+
+A configuration method for structured P2P overlay network considering delay variations
+KN2009
+
+Scale-free Overlay Structures for Unstructured Peer-to-Peer Networks
+QY2008
+
+Providing Movement Information to Applications in Wireless IPv6 and Mobile IPv6 Terminals
+KSH2007
+

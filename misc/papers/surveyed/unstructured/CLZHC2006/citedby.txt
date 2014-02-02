@@ -1,0 +1,10 @@
+##############
+CLZHC2006 - HAND: An Overlay Optimization Algorithm in Peer-to-Peer Systems
+##############
+
+A fully distributed lagrangean solution for a peer-to-peer overlay network design problem
+http://joc.journal.informs.org/content/23/1/90.short
+XXX
+
+
+

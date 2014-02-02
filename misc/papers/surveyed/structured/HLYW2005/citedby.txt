@@ -1,0 +1,62 @@
+##############
+HLYW2005 - PChord: Improvement on Chord to Achieve Better Routing Efficiency by Exploiting Proximity
+##############
+
+AChord: Topology-Aware Chord in Anycast-Enabled Networks
+DK2006
+
+Topology-aware peer-to-peer overlay network for Ad-hoc
+WJLM2009
+
+Cone: A Topology-Aware Structured P2P System with Proximity Neighbor Selection
+HY2007
+
+Realization of Topology Awareness in Peer-to-Peer Wireless Network
+WJ2009_a
+
+Improving Chord Network Performance Using Geographic Coordinates
+FZ2009
+
+A topology-aware peer-to-peer protocol applicable to wireless network 
+WJ2009
+
+Research and Improvement Based on Chord Protocol 
+MWFLW2010
+
+Sharing of probabilistically correlated data in peer-to-peer networks
+SA2008
+
+A distributed algorithm to estimate node counts in self-organizing ring topologies
+LQJZ2009
+
+CNP: A Protocol for Reducing Maintenance Cost of Structured P2P
+ZCC2009
+
+Researches on secure proximity distance defending attack of finger table based on chord
+LQJZ2009-b
+
+Avoidance of churn rate through temporal centralization in Chord
+http://link.springer.com/article/10.1007/s12083-010-0080-4
+XXX
+
+EPDKS: An Efficient Proximity-based Distributed K-Ary Structured Overlay Networks
+http://www.actapress.com/Abstract.aspx?paperId=32019
+XXX
+
+A Physical Topology-Aware Chord Model based on ACO
+ZLHC2011
+
+TSP-Chord: An Improved Chord Model with Physical Topology Awareness
+HWL2012
+
+A Topology-Aware Improvement on Chord
+ZYW2009
+
+Topology-aware kademlia based on distributed clustering in self-organizing mode
+XSL2010
+
+An economic perspective of message-dropping attacks in peer-to-peer overlays
+HH2012
+
+TB_Chord: an improved routing algorithm to chord based on topology-aware and bi-dimensional lookup method
+LLZX2009

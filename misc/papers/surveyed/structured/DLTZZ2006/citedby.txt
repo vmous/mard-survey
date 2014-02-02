@@ -1,0 +1,11 @@
+##############
+DLTZZ2006 - Proximity Neighbor Selection in Structured P2P Network
+##############
+
+SAZL2007 - A Particle Swarm Optimization Algorithm for Neighbor Selection in Peer-to-Peer Networks
+
+DVN2009 - Building a low-latency, proximity-aware DHT-based P2P network
+
+AYXLP2007 - Multi-objective peer-to-peer neighbor-selection strategy using genetic algorithm
+
+LAX2008 - Peer-to-Peer Neighbor Selection Using Single and Multi-objective Population-Based Meta-heuristics

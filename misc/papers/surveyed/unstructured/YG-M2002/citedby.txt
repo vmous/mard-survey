@@ -1,0 +1,21 @@
+##############
+YG-M2002 - Improving Search in Peer-to-Peer Networks
+##############
+ 
+A trust based access control framework for P2P file-sharing systems
+THVW2005
+
+Dynamic layer management in superpeer architectures
+XZL2005
+
+Peer-to-peer architecture for content-based music retrieval on acoustic data
+Y2003
+
+An effective p2p search scheme to exploit file sharing heterogeneity
+WX2007
+
+An efficient interest-group based search mechanism in unstructured peer-to-peer networks
+YZZ2003
+
+Pins: Peer to peer interrogation and indexing systems
+VRL2004

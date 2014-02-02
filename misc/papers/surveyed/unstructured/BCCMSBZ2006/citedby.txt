@@ -1,0 +1,16 @@
+##############
+BCCMSBZ2006 - Improving Traffic Locality in BitTorrent via Biased Neighbor Selection
+##############
+
+Quantifying operational cost-savings through ALTO-guidance for P2P live streaming
+http://scholar.google.de/scholar?start=30&hl=en&as_sdt=2005&sciodt=0,5&as_ylo=2006&as_yhi=2013&cites=11087278535632400279&scipsc=
+XXX
+
+BGP-based locality promotion for P2P applications
+ROL2010
+
+A survey on content-centric technologies for the current Internet: CDN and P2P solutions
+P2012
+
+Understanding peer distribution in the global internet
+LWX2010

@@ -1,0 +1,21 @@
+##############
+DK2006 - AChord: Topology-Aware Chord in Anycast-Enabled Networks
+##############
+
+Topology-aware peer-to-peer overlay network for Ad-hoc
+WJLM2009
+
+Cone: A Topology-Aware Structured P2P System with Proximity Neighbor Selection 
+HY2007
+
+A topology-aware peer-to-peer protocol applicable to wireless network
+WJ2009
+
+TI-CHORD: An Improved Chord Model Based on Topology and Interest Layer
+DZ2010
+
+Topology-aware kademlia based on distributed clustering in self-organizing mode
+XSL2010
+
+TB_Chord: An Improved Routing Algorithm to Chord Based on Topology-Aware and Bi-Dimensional Lookup Method 
+LLZX2009

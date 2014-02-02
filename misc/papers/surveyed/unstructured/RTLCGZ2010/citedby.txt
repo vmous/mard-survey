@@ -1,0 +1,16 @@
+##############
+RTLCGZ2010 - TopBT: A Topology-Aware and Infrastructure-Independent BitTorrent Client
+##############
+
+SCAN: Scalable content routing for content-aware networking
+LCPKC2011
+
+Context-aware location in the internet of things
+ACCM2010
+
+Network aware P2P multimedia streaming: Capacity or locality?
+JK2011
+
+PreeN: improving steady-state performance of ISP-Friendly p2p applications
+SEK2012
+

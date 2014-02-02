@@ -1,0 +1,22 @@
+##############
+CS2002 - Replication Strategies in Unstructured Peer-to-Peer Networks
+##############
+
+An efficient and adaptive decentralized file replication algorithm in P2P file sharing systems
+S2010
+
+Q-peer: A decentralized qos registry architecture for web services
+LYSS2007
+
+On the cache-and-forward network architecture
+DLZPR2009
+
+Locality in structured peer-to-peer networks
+FJG2006
+
+A hybrid approach to replica management in data grids
+http://inderscience.metapress.com/content/bht39tx9rkhn5488/
+XXX
+
+IRM: integrated file replication and consistency maintenance in P2P systems
+S2010_a

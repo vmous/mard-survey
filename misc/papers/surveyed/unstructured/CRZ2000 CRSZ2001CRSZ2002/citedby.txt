@@ -1,0 +1,12 @@
+##############
+CRZ2000 - A Case for End System Multicast
+CRSZ2001 - Enabling Conferencing Applications on the Internet using an Overlay Muilticast Architecture
+CRSZ2002 - A Case for End System Multicast
+##############
+ 
+Meridian: A lightweight network location service without virtual coordinates
+WSS2005
+
+X-trace: A pervasive network tracing framework
+http://scholar.google.de/scholar?cites=8415137777900787640&as_sdt=2005&sciodt=0,5&hl=en
+XXX

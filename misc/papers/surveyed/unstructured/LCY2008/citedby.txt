@@ -1,0 +1,12 @@
+##############
+LCY2008 - UTAPS: An Underlying Topology-Aware Peer Selection Algorithm in BitTorrent
+##############
+
+On tradeoffs between cross-ISP P2P traffic and P2P streaming performance
+YX2011
+
+A Peer Selection Algorithm with Consideration of Both Network Topology Information and Node Capability in P2P Network
+GZTW2010
+
+Peer selection in mobile P2P systems over 3G cellular networks
+ZZTB2011

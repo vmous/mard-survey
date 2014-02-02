@@ -1,0 +1,6 @@
+##############
+SZ2008 - Quasi-Chord: Physical Topology Aware Structured P2P Network
+##############
+
+A content-based locality-aware collaborative P2P lookup algorithm
+YWM2012

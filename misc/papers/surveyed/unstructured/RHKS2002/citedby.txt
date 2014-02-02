@@ -1,0 +1,47 @@
+##############
+RHKS2002 - Topologically-Aware Overlay Construction and Server Selection
+##############
+
+Meridian: A lightweight network location service without virtual coordinates
+WSS2005
+
+A study of the performance potential of DHT-based overlays
+http://scholar.google.de/scholar?start=60&hl=en&as_sdt=2005&sciodt=0,5&cites=4213219512122087554&scipsc=
+XXX
+
+Overlay networks with linear capacity constraints
+ZL2008
+
+Clustering hosts in p2p and global computing platforms
+AC2003
+
+On the predictability of large transfer TCP throughput
+HDA2007
+
+Peer-to-peer file sharing based on network coding
+YY2008
+
+Locality in structured peer-to-peer networks
+FJG2006
+
+An efficient hybrid peer-to-peer system for distributed data sharing
+YY2010
+
+ClosestNode. com: an open access, scalable, shared geocast service for distributed systems
+WS2006
+
+A P2P-based intelligent resource discovery mechanism in Internet-based distributed systems
+S2009
+
+A next-generation service overlay architecture
+LSSM2009
+
+A structured P2P network based on the small world phenomenon
+XJ2009
+
+HP2P: A hybrid hierarchical P2P networks
+PDQCL2007
+
+Topology awareness of overlay P2P networks
+http://onlinelibrary.wiley.com/doi/10.1002/cpe.1089/abstract
+XXX

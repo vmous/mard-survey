@@ -1,0 +1,9 @@
+##############
+SLCGZ2008 - T2MC: A Peer-to-Peer Mismatch Reduction Technique by Traceroute and 2-Means Classification Algorithm
+##############
+
+An Effective Network-Aware Peer Selection Algorithm in BitTorrent
+QLZG2009
+
+A Secure and Hierarchical Architecture for P2PSIP Session Initiation
+ZGZY2012

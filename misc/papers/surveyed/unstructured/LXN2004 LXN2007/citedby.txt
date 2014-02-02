@@ -1,0 +1,47 @@
+##############
+LXN2004 - Building a Scalable Bipartite P2P Overlay Network
+LXN2007 - Building a Scalable Bipartite P2P Overlay Network
+##############
+
+Efficient and scalable consistency maintenance for heterogeneous peer-to-peer systems
+LXL2008
+
+DHT-assisted probabilistic exhaustive search in unstructured P2P networks
+LQHC2008
+
+Resolving the topology mismatch problem in unstructured peer-to-peer networks
+HLH2009
+
+Efficient peer-to-peer overlay construction
+NL2004
+
+Dubious feedback: fair or not?
+HL2006
+
+Trust decision making in structured P2P networks
+CLCFC2009
+
+SLUP: a semantic-based and location-aware unstructured P2P networks
+SLLT2008
+
+Collaborative search in large-scale unstructured peer-to-peer networks
+ZLCL2007
+
+A scheme for P2P optimization in access networks
+http://dl.acm.org/citation.cfm?id=1738441
+XXX
+
+Caching indices for efficient lookup in structured overlay networks
+DLHMS2006
+
+A vEB-tree-based architecture for interactive video on demand services in peer-to-peer networks
+LKT2010
+
+Trust and reputation algorithms for unstructured p2p networks
+CZY2009
+
+2MC-Match: A topology matching technique with 2-means clustering algorithm in P2P systems
+SLCGZ2008
+
+A Near-Optimal Algorithm Attacking the Topology Mismatch Problem in Unstructured Peer-to-Peer Networks
+HLY2010

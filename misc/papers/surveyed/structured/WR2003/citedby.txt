@@ -1,0 +1,51 @@
+##############
+WR2003 - Efficient Topology-Aware Overlay Network
+##############
+
+Vivaldi: A Decentralized Network Coordinate System
+DCKM2004
+
+The impact of DHT routing geometry on resilience and proximity
+GGGRSS2003
+
+Meridian: A lightweight network location service without virtual coordinates
+WSS2005
+
+PIC: Practical Internet coordinates for distance estimation
+CCRK2004
+
+Practical, distributed network coordinates
+CDKLM2004
+
+Incrementally improving lookup latency in distributed hash table systems
+ZGG2003
+
+Towards Network Triangle Inequality Violation Aware Distributed Systems
+WZN2008
+
+Impact of the inaccuracy of distance prediction algorithms on Internet applications-an analytical and comparative study
+ZTHFL2006
+
+Measurement based analysis, modeling, and synthesis of the internet delay space
+ZNNRDW2006
+
+Stable and accurate network coordinates
+LS2006
+
+equus: A provably robust and locality-aware peer-to-peer system
+LSW2006
+
+Estimating network proximity and latency
+SXBL2006
+
+Location awareness—improving distributed multimedia communication
+KHLS2008
+
+Recent advances in research on P2P networks
+ZCW2006
+
+ClosestNode.com: an open access, scalable, shared geocast service for distributed systems
+WS2006
+
+Approaching neighbor proximity and load balance for range query in P2P networks
+J2008

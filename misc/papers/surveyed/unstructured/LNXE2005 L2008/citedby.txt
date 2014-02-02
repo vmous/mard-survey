@@ -1,0 +1,27 @@
+##############
+LNXE2005 - Approaching Optimal Peer-to-Peer Overlays
+L2008 - A Two-Hop Solution to Solving Topology Mismatch
+##############
+
+A fully distributed lagrangean solution for a peer-to-peer overlay network design problem
+joc.journal.informs.org/content/23/1/90.short
+XXX
+
+Popularity Biased Hybrid Search in P2P Systems
+SH2006
+
+HAND: An overlay optimization algorithm in peer-to-peer systems
+CLZHC2006
+
+Resolving the topology mismatch problem in unstructured peer-to-peer networks
+HLH2009
+
+Peer-to-peer overlay topology control for mobile ad hoc networks
+MHZ2011
+
+Trust, a reputation and risk based trust management framework for large-scale, fully decentralized overlay networks
+TY2011
+
+A Near-Optimal Algorithm Attacking the Topology Mismatch Problem in Unstructured Peer-to-Peer Networks
+HLY2010
+

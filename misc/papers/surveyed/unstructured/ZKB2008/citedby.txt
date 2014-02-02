@@ -1,0 +1,20 @@
+##############
+ZKB2008 - DCMP: A Distributed Cycle Minimization Protocol for Peer-to-Peer Networks
+##############
+
+Shortcoming, problems and analytical comparison for flooding-based search techniques in unstructured P2P networks
+http://link.springer.com/article/10.1007/s12083-011-0101-y
+XXX
+
+A complex network model based on the Gnutella protocol
+QYZH2009
+
+HPC5: An efficient topology generation mechanism for Gnutella networks
+CSG2010
+
+QuickFlood: An Efficient Search Algorithm for Unstructured Peer-to-Peer Networks
+http://link.springer.com/chapter/10.1007/978-3-642-22185-9_8
+XXX
+
+An Efficient, Secure and User Privacy-Preserving Search Protocol for Peer-to-Peer Networks
+S2013

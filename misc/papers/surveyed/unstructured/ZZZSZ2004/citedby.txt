@@ -1,0 +1,55 @@
+##############
+ZZZSZ2004 - A construction of locality-aware overlay network: mOverlay and its performance
+##############
+
+A topology-aware hierarchical structured overlay network based on locality sensitive hashing scheme
+XJYL2007
+
+GTapestry: a locality-aware overlay network for high performance computing
+JLZLZ2006
+
+Rainbow: A Locality-aware Peer-to-Peer Overlay Multicast System
+CDL2006
+
+Resource discovery in locality-aware group-based semantic overlay of peer-to-peer networks
+SSHL2006
+
+Chord^2: A two-layer Chord for reducing maintenance overhead via heterogeneity
+JW2007
+
+Resolving the topology mismatch problem in unstructured peer-to-peer networks
+HLH2009
+
+A construction of peer-to-peer streaming system based on flexible locality-aware overlay networks
+LCC2008
+
+Locality support for mobile P2P networks
+CCK2007
+
+A study on reducing chunk scheduling delay for mesh-based p2p live streaming
+CXH2008
+
+Improving networks using group-based topologies
+LPBT2008
+
+A cognitive beamforming scheme for coexistence of incumbent and cognitive radios
+KKSS2009
+
+Resilient peer-to-peer streaming of scalable video over hierarchical multicast trees with backup parent pools
+STT2012
+
+Canicula: An improved hybrid overlay networks
+CDL2006_a
+
+On the self-organization of a hybrid peer-to-peer system
+JL2010
+
+Deploying P2P networks for large-scale live video-streaming service [peer-to-peer multimedia streaming]
+TLZZY2007
+
+A Service-Oriented Framework of Distributed QoS Measurement Based on Multi-Agent for Overlay Network
+YHCZ2009
+
+Flourishing in the internet: The huge success of live peer-to-peer media streaming
+QWLY2010
+

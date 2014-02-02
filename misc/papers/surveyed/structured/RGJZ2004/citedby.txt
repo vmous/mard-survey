@@ -1,0 +1,93 @@
+##############
+RGJZ2004 - SAT-Match: A Self-Adaptive Topology Matching Method to Achieve Low Lookup Latency in Structured P2P Overlay Networks
+##############
+
+Searching techniques in peer-to-peer networks
+LW2006
+
+SCOPE: Scalable consistency maintenance in structured P2P systems
+CRWZ2005
+
+Trust overlay networks for global reputation aggregation in P2P grid computing
+ZH2006
+
+PChord: improvement on Chord to achieve better routing efficiency by exploiting proximity
+HLWY2006
+
+Mobility churn in DHTs
+HK2005
+
+Towards location-aware topology in both unstructured and structured P2P systems
+QCYC2007
+
+Topology awareness of overlay P2P networks
+http://onlinelibrary.wiley.com/doi/10.1002/cpe.1089/abstract
+XXX
+
+IPR: Automated interaction process reconciliation
+DHLHL2005
+
+A generic approach to make structured peer-to-peer systems topology-awareness
+QWC2005
+
+Embedding network coordinates into the heart of distributed hash tables
+KAKH2009
+
+An utility-driven routing scheme for scaling multicast applications 
+WLPZ2010
+
+Adaptive trust management framework in P2P grid computing
+http://link.springer.com/article/10.1007/s11859-008-0107-3
+
+Combining resource and location awareness in dhts
+R-B2011
+
+A small-world DHT built on generalized network coordinates
+R-BS2010
+
+A Directed-Multicast Routing Approach with Path Replication in Content Addressable Network 
+SZZH2010
+
+A Decentralized Scheme for Network-Aware Reliable Overlay Construction
+ITK2006
+
+Efficient Search Using Hierarchical Clustering in Mobile Peer-to-Peer Networks
+LLHxxxx
+
+The design of topology-aware overlay networks for ubiquitous applications
+CHJL2009
+
+Node Swap: A Universal Mechanism to Make P2P Overlay Topology-awareness
+QYCxxxx
+
+A Hierarchical Approach to Resource Awareness in DHTs for Mobile Data Management
+R-BS2012
+
+A graph based evolutionary algorithm
+W2009
+
+Peer-exchange schemes to handle mismatch in peer-to-peer systems
+QCYCZ2009
+
+DHT based context information disseminating method in autonomic networks
+Hxxxx
+
+Practical Approach to Integrating Network Coordinates with Distributed Hash Tables
+KAKH2011
+
+Scaling Group Communication Services with Self-adaptive and Utility-driven Message Routing
+WLP2012
+
+The implementation of a novel P2P service redirection mechanism in passive optical networks
+http://www.opticsinfobase.org/abstract.cfm?URI=ACP-2010-798915
+XXX
+
+Qualifying Dissertation: Knowledge Management in Wireless Sensor Networks
+T2007
+
+An economic perspective of message-dropping attacks in peer-to-peer overlays
+HH2012
+
+Survey of resource-searching algorithms in structured P2P networks
+http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=5690711&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D5690711
+!!!

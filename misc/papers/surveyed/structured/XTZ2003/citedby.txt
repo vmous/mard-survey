@@ -1,0 +1,21 @@
+##############
+XTZ2003 - Building Topology-Aware Overlays Using Global Soft-State
+##############
+
+Location awareness—improving distributed multimedia communication
+KHLS2008
+
+Improving the lookup performance of Chord network by hashing landmark clusters
+YMS2006
+
+Efficient and scalable consistency maintenance for heterogeneous peer-to-peer systems
+LXL2008
+
+A distributed topology-aware overlays construction algorithm
+ZLW2008
+
+Churn-Resilient Protocol for Massive Data Dissemination in P2P Networks 
+LXHL2011
+
+Traceroute-based fast peer selection without offline database
+YB2006

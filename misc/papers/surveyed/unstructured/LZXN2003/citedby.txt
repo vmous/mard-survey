@@ -1,0 +1,16 @@
+##############
+LZXN2003 - AOTO: Adaptive Overlay Topology Optimization in Unstructured P2P Systems
+##############
+ 
+Constructing efficient peer-to-peer overlay topologies by adaptive connection establishment
+TZWC2006
+
+Content sharing among UPnP gateways on unstructured P2P network using dynamic overlay topology optimization
+KKKS2009
+
+Efficient peer-to-peer overlay construction
+NL2004
+
+Performance Analysis of the Superpeer-based Two-layer P2P Overlay Network with the CBF Strategy
+WHT2007
+

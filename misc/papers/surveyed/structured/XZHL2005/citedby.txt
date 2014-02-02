@@ -1,0 +1,37 @@
+##############
+XZHL2005 - Chord6: IPv6 Based Topology-Aware Chord
+##############
+
+LDHT: locality-aware distributed hash tables
+WCZSCDL2008
+
+AChord: topology-aware Chord in anycast-enabled networks
+DK2006
+
+LOADER: A Location-Aware Distributed Virtual Environment Architecture
+HS2008
+
+Cone: A Topology-Aware Structured P2P System with Proximity Neighbor Selection 
+HY2007
+
+Reduce chord routing latency issue in the context of IPv6
+XZPHL2006
+
+IP-based clustering for peer-to-peer overlays
+KM2007
+
+dCBR: A global view on network coordinates for more efficient peer-to-peer systems
+H2010
+
+A Physical Topology-Aware Chord Model based on ACO
+ZLHC2011
+
+TSP-Chord: An Improved Chord Model with Physical Topology Awareness
+HWL2012
+
+Topology-aware kademlia based on distributed clustering in self-organizing mode 
+XSL2010
+
+A Distributed Route Structure Based on IPv6 in P2P System 
+YYXD2008
+

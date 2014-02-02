@@ -1,0 +1,16 @@
+##############
+LLXNZ2004 - Location-Aware Topology Matching in P2P Systems
+##############
+
+DHT-assisted probabilistic exhaustive search in unstructured P2P networks
+LQHC2008
+
+A topology-aware hierarchical structured overlay network based on locality sensitive hashing scheme
+XJYL2007
+
+Constructing efficient peer-to-peer overlay topologies by adaptive connection establishment
+TZWC2006
+
+A survey on routing in wireless sensor networks
+http://www.tandfonline.com/doi/abs/10.1080/10020070612331343257#.Uccors5yCCg
+XXX

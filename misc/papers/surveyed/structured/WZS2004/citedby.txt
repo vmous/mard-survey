@@ -1,0 +1,10 @@
+##############
+WZS2004 - DynaMO: A Topology-Aware P2P Overlay Network for Dynamic, Mobile Ad-Hoc Environments
+##############
+
+Efficient service discovery mechanism for wireless sensor networks
+JLKY2008
+
+A Survey on Mobile Peer-to-Peer Technology
+DPR2007
+

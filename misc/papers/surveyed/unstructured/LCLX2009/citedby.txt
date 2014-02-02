@@ -1,0 +1,30 @@
+##############
+LCLX2009 - Locality-Awareness in BitTorrent-like P2P Applications
+##############
+
+Understanding peer distribution in the global internet
+LWX2010.pdf
+
+Network aware P2P multimedia streaming: Capacity or locality?
+JK2011
+
+On traffic locality and QoE in hybrid CDN-P2P networks
+RNMSCKS2011
+
+Traffic Locality in the eMule System
+SDSX2010
+
+Exploring peer-to-peer locality in multiple torrent environment
+WL2012
+
+PreeN: improving steady-state performance of ISP-Friendly p2p applications
+SEK2012
+
+Agiler: A p2p live streaming system with low playback lag
+HZW2010
+
+Adaptive Search Radius–Using hop count to reduce P2P traffic
+PVR2012
+
+Congestion Distance Based BitTorrent-Like P2P Traffic Optimization
+HSWH2012

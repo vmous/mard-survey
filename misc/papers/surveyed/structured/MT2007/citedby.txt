@@ -1,0 +1,9 @@
+##############
+MT2007 - CHOP6: A DHT Routing Mechanism Considering Proximity
+##############
+
+EPDKS: An Efficient Proximity-based Distributed K-Ary Structured Overlay Network
+http://www.actapress.com/Abstract.aspx?paperId=32019
+
+Proximity-Aware DHT for Efficient Lookup Service in Peer-to-Peer Applications
+F2011

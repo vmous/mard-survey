@@ -1,0 +1,19 @@
+##############
+ZL2006 - Solving Overlay Mismatching of Unstructured P2P Networks using Physical Locality Information
+##############
+
+Topology-aware peer-to-peer overlay network for Ad-hoc
+WJLM2009
+
+Realization of topology awareness in peer-to-peer wireless network
+WJ2009_a
+
+Performance prediction in a decentralized environment for peer-to-peer computing
+CBNE-B2011
+
+A topology-aware peer-to-peer protocol applicable to wireless network
+WJ2009
+
+An Efficient Search to Improve Neighbour Selection Mechanism in P2P Networks
+TT2009
+

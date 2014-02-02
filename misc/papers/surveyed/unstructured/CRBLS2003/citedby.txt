@@ -1,0 +1,19 @@
+##############
+CRBLS2003 - Making Gnutella-like P2P Systems Scalable
+##############
+ 
+On unbiased sampling for unstructured peer-to-peer networks
+SRDSW2009
+
+Random walks with lookahead on power law random graphs
+http://www.tandfonline.com/doi/abs/10.1080/15427951.2006.10129122?journalCode=uinm20#.UcbWYc5yCCg
+XXX
+
+A structured hierarchical P2P model based on a rigorous binary tree code algorithm
+LLZ2007
+
+Building heterogeneous peer-to-peer networks: protocol and analysis
+KT2008
+
+An effective p2p search scheme to exploit file sharing heterogeneity
+WX2007
