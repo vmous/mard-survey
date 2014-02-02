@@ -98,9 +98,12 @@ of Section~\ref{section:background}.
 % needs recalculation in every iteration step
 % extra delay imposed in a high churn environment that prohibits the algorithm
 % to start from the last level of nodes and results in a restart of the whole
-% process
+% process.
 low &
-% the process in not started from the beginning at each iteration step
+% the process in not started from the beginning at each iteration step. For
+% popular files this can substantially reduce overhead but for less popular
+% ones, its performance might be uncertain due to the repeated restart of
+% flooding
 low &
 % 
 medium \\
@@ -174,7 +177,7 @@ in unstructured \p\ file-sharing systems.
 At first, {\sl Gia} replaced {\sl Gnutella}'s blind flooding 
 with random walks.
 Although this adoption was 
-a step in the right direction~\cite{lv_randomwalks_2002},
+a step in the right direction \cite{LCCLS2002},
 issuing a single copy of the query within the network
 effectively reduces the search scope and may negatively affect 
 the success rate of the query in question.
@@ -200,9 +203,12 @@ Through message exchange, a peer can establish new connections
 or drop superseded ones in order to improve its satisfaction.
 Despite the fact that {\sl Gia}'s topology adaptation algorithm 
 that primarily focuses on the satisfaction of peers improves the network's 
-scalability, it falls short in addressing the mismatch problem
+scalability it falls short in addressing the mismatch problem
 as considerations for the underlying network are not handled in explicit
-terms.
+terms \cite{LXLNZ2005}. Moreover it reduces the search scope, exhibits poor
+performance in the worst case when matching data is not found quickly
+\cite{PR2004,HJ2004} and can potentially build  disconnected topoloagies
+\cite{MBL2006}.
 %
 In terms of the $3$ stated criteria, {\sl Gia}'s approach is as follows:
 \begin{center}
@@ -228,7 +234,7 @@ medium
 Another problem with topology unaware
 systems is the duplication of messages due to cycles in the network graph.
 Interestingly, such cycles appear even along the correct forwarding path.
-\cite{ZKB2008}~focuses on this exact deficiency of overlay networks and
+\cite{ZKB2008} focuses on this exact deficiency of overlay networks and
 introduces the \emph{Distributed Cycle Minimization Protocol
 (DCMP)}, a dynamic, fully distributed method that removes cycles;
 this is accomplished without sacrificing
@@ -244,7 +250,15 @@ namely, \emph{Information Collection Message (ICM)} and \emph{Cut Message (CM)}.
 imposed $TTL$ value (max set to $7$ for most cases). This inherently limits
 the protocol in detecting cycles that span for more than $TTL$ nodes.
 Even though cycle elimination does improve network performance, 
-it cannot  directly contribute in the solution of the topology mismatch problem.
+it cannot  directly contribute to the solution of the topology mismatch
+problem, while its perfomance in a high traffic and churn environments and its
+ability to retain important characteristics of a Gnutella-like topology (i.e.,
+like degree distribution, average peer distance, diameter e.t.c.) has been
+doubted \cite{SCG2009,CSG2010}. On the other hand, even though some of the overhead
+saved by the dublicate message reduction is spent to control the cycle cutting
+mechanism it is reported that still stays for example one to two orders of
+magnitude less than LTM due to its ``lazy'' broadcasting of control messages
+(as opposed to LTM's periodic approach) \cite{ZKB2008}.
 %
 %\begin{figure}
 %\centering
@@ -269,9 +283,6 @@ The expected \emph{DCMP} behavior as far as our $3$ criteria is:
 medium &
 % Duplicates are an important fraction of the redundant overhead imposed by
 % topology mismatch and thus DCMP minimizes this as possible.
-% The control overhead is also one to two orders of magnitude less than LTM due
-% to its ``lazy'' broadcasting of control messages (as opposed to LTM's periodic
-% approach) - \cite{ZKB2008}
 low &
 % fully distributed method
 high
@@ -284,28 +295,62 @@ high
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Replication Strategies in Unstructured Peer-to-Peer Networks}
 
-In~\cite{CS2002}, replication is used as a way to improve inefficient blind
-search. As the number of replicas and/or cached copies increases in the network,
-it would relatively easy to locate items even if search is random.
-To analyze the feasibility of such an approach, \cite{CS2002} investigates
-$3$ replication strategies: \emph{uniform}, \emph{proportional}, and
-\emph{square root allocation}. In the uniform model, the copies of items are
-uniformly spread over the network, while in the proportional, items are
-replicated based on their query rate, so that frequently queried items can be
-found more often.
-The square root is a compromise between uniform and proportional allocation
-models. The overall costs for both successful and unsuccessful
-searches are compared to ascertain the effectiveness of the $3$ suggested 
-approaches. Experimental outcomes indicate that the uniform allocation 
-minimizes the maximum search length and so it can reduce the time spent on
-unsuccessful searches. 
-The proportional strategy effectively decreases the search time 
-for popular items, but suffers when needing to locate the rare entities.
-When it comes to expected successful search size, it is the same for 
-for both uniform and proportional models and any approach in between 
-to always behave much better. The square root allocation  aims at minimizing the 
-expected search size for successful queries in \p\ networks.
-The table below outlines how the $3$ strategies fare:
+In \cite{CS2002} and \cite{LCCLS2002}, replication is used as a way to improve
+inefficient blind search. The observation is that as the number of replicas
+increases in the network, it would be relatively easy to locate items even if
+search is random.
+
+The work discusses $3$ approaches for replication allocation namely \emph{uniform},
+\emph{proportional}, and \emph{square-root replication}. In the uniform model,
+all objects are replicated without taking into account the query distribution,
+while in the proportional, objects are replicated analogously to their query
+rate, so that frequently queried items can be found more often. Experimental
+outcomes indicate that the uniform allocation minimizes the maximum search
+length and so it can reduce the time spent on unsuccessful searches. The
+proportional strategy effectively decreases the search time for popular items,
+but suffers when needing to locate the rare entities. When it comes to expected
+successful search size, it is the same for for both uniform and proportional
+models and any approach in between to always behave much better. Finally, the
+square-root model is an attempt to find the golden ratio between uniform and
+proportional allocation models. It suggests setting the number of object
+replicas to the square root of the searching rate for an object\footnote{An
+interesting application of the square-root principle has also been explored
+in the context of topology reconstruction, by ensuring node degree to be
+proportional to the square-root of its content popularity \cite{C2005}.}.
+Theory in \cite{CS2002} suggest that square-root minimizes the expected search size on
+successful queries, claim that is supported by simulations \cite{LCCLS2002}.  
+
+In \cite{LCCLS2002}, a \emph{k-walker} query algorithm is presented and shown
+that using it along side square-root allocation results in perfomance similar to
+Gnutella's query flooding method but incurring up to two
+orders of magnitude less network traffic. Also checks $3$ strategies for
+replica placement, namely \emph{owner replication} where an object is replicated
+at the requesting node, \emph{path replication} that caches the object along the
+path from the requesting to the providing node and \emph{random replication}
+where the replication is taking place randomly on visited nodes. Observations in
+this work are not directly applicable to structured DHTs, because it is assumed
+that the lookup time for an object depends only on the number of replicas and
+not the placement strategy \cite{RS2004}.
+
+%%
+%% SOME EXTRA DISCUSSION TAKEN FROM
+%% IRM: Integrated File Replication and Consistency Maintenance in P2P Systems
+%% 
+%% Lv et al. [21] and Cohen and
+%% Shenker [22] showed that replicating objects proportionally
+%% to their popularity achieves optimal load balance but has
+%% varied search latency, while uniform replication has the
+%% same average search latency for all files but causes load
+%% imbalance. Square-Root replication method replicating files
+%% proportionally to the square root of their popularity is such
+%% that both average search size and capacity utilization rate
+%% vary per object, but the variance in utilization is consider-
+%% ably smaller than with uniform replication, and the variance
+%% in average search size is considerably smaller than with
+%% proportional replication.
+%%
+
+The table below outlines how the $3$ allocation approaches fare:
 %%
 \begin{center}
 {\footnotesize
@@ -452,7 +497,7 @@ low
 % \subsubsection{Adaptive Overlay Topology Optimization (AOTO)}
 
 Along with {\sl Narada}, the \emph{Adaptive Overlay Topology 
-Optimization (AOTO)}~\cite{LZXN2003} is one of the first attempts to address the
+Optimization (AOTO)} \cite{LZXN2003} is one of the first attempts to address the
 topology mismatch problem. \emph{AOTO} is a distributed algorithm that seeks to
 optimize the usage of the underlying physical resources and operates in
 $2$ phases:
@@ -537,7 +582,7 @@ hand, $d_{SG} < d_{SH}$ then also $d_{GH}$ and then we have the following
 options. Either $d_{SH} < d_{GH}$ in which case link $SH$ is kept or
 $d_{SH} > d_{GH}$ in which case $S$ will keep probing other $G$'s direct
 neighbors.
-%%%
+%
 The above optimization is conducted within $1$-neighbor
 closure using as base, a peer and checking all its direct neighbors.
 Evidently the scope of such an operation could be extended.
@@ -572,7 +617,8 @@ at a greater computational overhead.
 \begin{tabular}{ccc}
 \emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
 \hline
-% compared to LTM it has slow convergence speed.
+% compared to LTM it has slow convergence speed because of the information
+% exchange among each peer and all its neighbours.
 medium &
 % A little bit better that AOTO since the computation here is done within a
 % certain diameter from the source peer
@@ -587,7 +633,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Location-aware Topology Matching (LTM)}
 
-\emph{Location-aware Topology Matching (LTM)}~\cite{LLXNZ2004} 
+\emph{Location-aware Topology Matching (LTM)} \cite{LLXNZ2004}
 seeks to optimize an overlay \p\ structure based on the physical topology.
 To achieve this, peers issue special messages called
 \textit{TTL-detector}s whose \emph{TTL} values are $0$ or $1$;
@@ -710,6 +756,9 @@ times caused by the problem identified as \emph{Revisit Not known (RN)}. RN is
 the situation when a node is visited some times as a relay stop before it is
 visited as an overlay peer, thus creating duplicate unnecessary messages to the
 network and delaying query responses.
+Even though this attempt is based on a simple and elegant solution it is
+reported to not guarantee performance in terms of average communication delay
+or search scope \cite{HLH2009}.
 %
 % TODO: SOME DISCUSSION
 %
@@ -722,6 +771,16 @@ network and delaying query responses.
 %overhead due to the optimization steps) by 85 and 80 percent, respectively.
 %Moreover LTM reduces the response time per query to 30 percent while SBO to 35
 %percent.
+%
+% THE LINES BELOW NEED REWORDING
+% ==============================
+% \cite{LXN2004} Based on the above discussions, we can see the major
+% advantages of using a bipartite overlay. First, the operation
+% overhead is reduced. In ACE, every peer is required to
+% probe the neighbor distance and compute the MST, whereas
+% in SBO, white peers do the probing and red peers do the
+% computing. Second, SBO extends ACE into two-hop
+% neighbors, without additional information exchange
 %
 %\cite{ni_mismatch_2004} shows SBO, achieves approximately 85 percent reduction
 % on traffic cost and about 60 percent reduction on query response time.
@@ -825,6 +884,9 @@ overlay networks. Also topology adaptation helps construct a well fit overlay
 network with restect to the underlying one (at least with respect to network
 distances). Morever will-cut list and distance cache (which stores already
 probed peers) minimize the unnecessary messages for the network maintenance.
+There are works in the literature though that critisize, through simulation
+results, the algorithm's average broadcast delay and overlay improvement
+guarantee \cite{HLY2010}.
 These characteristics are depicted to the $3$ evaluation criteria we use in this
 survey as follows:
 
@@ -919,8 +981,8 @@ features include connection link load, bandwidth, and past uploading experience.
 Subsequently, a Markov decision process is introduced as a mechanism to shape
 the policy for switching among the peers. The success of approach depends on
 how fast the introduced peer selection functions. Admittedly, \emph{APS} is slow 
-due to the learning process and its inherent complexity. As far as the $3$
-criteria is concerned, \emph{APS} has as follows:
+due its on-line learning process and inherent complexity \cite{ZZLZ2009}. As far
+as the $3$ criteria is concerned, \emph{APS} has as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -969,13 +1031,12 @@ local flood with $TTL=ttl$ where \emph{ttl} is system-defined.
 The main objective of the overlay construction phase is to yield a network that
 exhibits low clustering. In turn, this is a beneficial characteristic for
 random graphs as it can lead to a larger coverage of peers and at the same time
-helps reduce duplication of messages travelling around the network. This
+help reduce duplication of messages travelling around the network. This
 combination offers efficient lookups that pose minimal or no negative impact to
 other mechanisms possibly employed by the \p\ systems (e.g., 1-hop replication
-or dynamic querying mechanisms).
-A 50\% reduction in communication latency among peers by cutting off 
-some 20\% of the \emph{IP}-level traffic generated 
-in reported in~\cite{PRFM2009}.
+or dynamic querying mechanisms). Experimental results in the same paper suggest
+a 50\% reduction in communication latency among peers by cutting off some 20\%
+of the \emph{IP}-level traffic generated.
 %%
 \emph{ITA} places as follows in the context of the $3$ criteria:
 %
@@ -1066,11 +1127,14 @@ or through \p\ traffic shaping devices installed on \emph{ISP} edge routers.
 %%
 In~\cite{BCCMSBZ2006}, a combination of 
 biased neighbor selection along with bandwidth throttling
-and caching techniques for near-optimal lookup results is proposed.
-Unfortunately, \emph{BNS} deployment requires knowledge of 
-\emph{ISP} network mappings and awareness of possible changes 
-that occur in the infrastructure limiting its widespread adoption;
-the following table qualitatively depicts the expected behavior of \emph{BNS}:
+and caching techniques for near-optimal lookup results is proposed. On the other
+hand, the effectiveness of \emph{BNS} is arguable by other studies, whose
+experimental results suggest that most peers in a swarm reside in different ASs,
+thus a client in most of the cases does not have enough peers to leverage
+intra-AS connections \cite{RTLCGZ2010}. Moreover, \emph{BNS} deployment
+requires knowledge of \emph{ISP} network mappings and awareness of possible
+changes that occur in the infrastructure limiting its widespread adoption; the
+following table qualitatively depicts the expected behavior of \emph{BNS}:
 %%
 \begin{center}
 {\footnotesize
@@ -1094,7 +1158,7 @@ medium
 {\sl BitTorrent} traffic within individual \emph{ISP}s
 and enhances the downloading rates by favoring connections
 within the borders of a single autonomous system. Contrary to
-\emph{BSN}~\cite{BCCMSBZ2006},
+\emph{BNS}~\cite{BCCMSBZ2006},
 \emph{Oro} leads to improved performance 
 without requiring any explicit cooperation between 
 \emph{ISP} subscribers or any additional
@@ -1124,6 +1188,11 @@ To avoid the bootstrapping phase when the \emph{ratio map}
 is sufficiently fresh, 
 \emph{Oro} persists the map after the end of a BitTorrent session.
 %%
+Even though the results in the paper claim minimization of inter-ISP traffic
+cost while enhancing the, already, near optimal performance of BitTorrent
+download, similar to \cite{BCCMSBZ2006}, this ISP-friendly design of \emph{Ono}
+is questioned, especially on a Internet-scale-basis \cite{PMJKA2009,LCLX2009,CLYSR2011}.
+%%
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -1131,7 +1200,7 @@ is sufficiently fresh,
 \hline
 % Authors claim minimization of inter-ISP traffic cost while enhancing the,
 % already, near optimal performance of BitTorrent download.
-high &
+medium &
 % periodic DNS lookups and CDN redirection imposes medium control overhead to
 % the method.
 medium &
@@ -1180,6 +1249,8 @@ All methods target in exposing the locality of the basic functions of the
 BitTorrent protocol. Even though they do not restructure the network to map
 better to the underlying infrastructure they favour the intra-AS communication
 over inter-AS communication thus reducing the general cost of communication.
+Again, it is pointed out that there is a trade-off between reducing inter-domain
+traffic and fairness among peers in terms of the data the peers upload
 
 \begin{center}
 {\footnotesize
@@ -1204,12 +1275,9 @@ proximity awareness in the {\sl BitTorrent}
 without the need of any additional infrastructure. The key conjecture upon
 which \emph{TopBT} is built is that
 a good peer selection metric should take into account both the
-downloading speed and the network topology. 
-In this context, the approach suggests a metric that designates
-peers demonstrating high download rate, low reciprocal upload demand 
-and low routing hops.
-The metric is defined as the ratio of download to upload rate ${d}/{u}$
-divided by the either the link-level $l$ or the number of routing hops required $a$.
+downloading speed and the network topology. The metric proposed is defined as
+the ratio of download to upload rate ${d}/{u}$
+divided by either the link-level $l$ or the number of routing hops required $a$.
 This metric should guarantee selection of peers with high download rate, low
 reciprocal upload demand and decreased routing hops.
 The above \emph{TopBT}-metric is applied in various
@@ -1235,7 +1303,7 @@ different levels.
 %\emph{AS-hops}, using BGP dumps.
 %%
 Through experimentation on hundreds of {\it PlanetLab} and residential hosts,
-\emph{TopBT} offers more than 25\% traffic reduction and 15\% faster downloads
+\emph{TopBT} offers more than $25\%$ traffic reduction and $15\%$ faster downloads
 if compared with popular {\sl BitTorrent} implementations.
 In reference to the stated $3$ criteria, \emph{TopBT} fares as follows:
 \begin{center}
@@ -1439,7 +1507,7 @@ medium \\
 % Peer-to-Peer Networks}
 % TODO: to be reviewed
 
-% In \cite{hsiao_redblue_2009}, Hsiao et al, claim to construct topology-aware
+% In \cite{HLH2009}, Hsiao et al, claim to construct topology-aware
 % unstructured overlays that \emph{guarantee} performance qualities in terms of
 % \begin{inparaenum}[\itshape i\upshape)]
 %   \item the expected communication latency among any two overlay peers
@@ -1488,12 +1556,12 @@ half of the possible connections of a node are used to connect to local peers
 (called \emph{sibling} connections) and rest are used to randomly
 connect to the peers anywhere on the network (called \emph{random} connections).
 The former ensure the reduction of long distance traveling for messages, while
-the later secure the connectivity of the structure and prevent network
+the latter secure the connectivity of the structure and prevent network
 partitioning.
 %% VM NEW ATTEMPT TO EXPLAIN THE ALGORITHM
 Upon arrival the newcomer peer $n$ asks a \emph{host-cache} to establish its
 random connections. For establishing its sibling connections, the newcomer
-multicasts a specialized \emph{message} $l$, to locate the right candidate(s).
+multicasts a specialized message $l$, to locate the right candidate(s).
 Initially, the behaviour of this message, is modeled as a random walker,
 until $l$ reaches some peer $d$ capable to guide it through its next step.
 This capability is enabled through a \emph{ZoneCache}, a data structure that
@@ -1517,7 +1585,7 @@ names and determine domain locality respectively. In terms of the $3$ criteria,
 % satisfaction time). The algorithm tries to ease this problem by allowing some
 % connections to be random
 medium &
-% overhead of split-hash and dnMatch is of low cost (TODO: double check this).
+% overhead of split-hash and dnMatch is of low cost
 % Walker message is multicasted only when sibling connections must be
 % established.
 low &
@@ -1588,19 +1656,19 @@ medium
 % \label{fig:landmark_binning}
 % \end{figure*}
 
-\emph{Landmark Binning}~\cite{RHMKS2002} partitions close-by nodes 
+\emph{Landmark Binning}~\cite{RHKS2002} partitions close-by nodes
 into bins based on their distance from well known anchor nodes across the
 Internet.%, as shown in Figure~\ref{fig:landmark_binning}.
 To detect locality, peers mainly use network latency (i.e. \emph{RTT}).
 %  as a measurement technique. 
 Despite the fact that such delays are not always accurate,
-they are used in~\cite{RHMKS2002} for they are 
+they are used in~\cite{RHKS2002} for they are
 non-intrusive, transparent and easy to apply.
 %%
 For the binning to work, a few anchor servers with known
 physical locations need to be installed in strategic positions 
 across the the Internet. 
-It is conjectured~\cite{RHMKS2002} that $12$ such servers can prove
+It is conjectured~\cite{RHKS2002} that $12$ such servers can prove
 sufficient for the task.
 An arriving node measures its distance from these landmarks
 and unilaterally decides to join a specific bin based on its measurements.
@@ -1629,13 +1697,22 @@ The main disadvantage of the approach is that
 landmark servers must be installed and maintained throughout the world.
 Provided that a \p-system often may have a few million nodes 
 connected at any given point in time, landmark servers do 
-inherently play a pivotal role in the operation of the network.
-Although latency estimation does not drain network resources,
-the scale of the approach does call for an alternative design.
-In this respect, \cite{RHMKS2002} advocates the replacement of 
-each landmark server by a cluster of servers.
-However, this approach may not entirely avoid the creation of 
-excessive network traffic flow through its landmark server-clusters.
+inherently play a pivotal role in the operation of the network. Moreover,
+studies like \cite{GSG2002}, pin point the fact that end-host shoulder the
+latency measurments as the scheme's scalability bottlneck while others argue
+about the uneven distribution of nodes potentially resulting in load imbalance
+\cite{CDCR2002,M2003,ZZZSZ2004}, its coarse-graned nature that fails to
+effectively distinguish among realatively close nodes \cite{RGJZ2004} and the
+potentially increased maintenance cost \cite{XTZ2003}.
+
+
+
+% Although latency estimation does not drain network resources,
+% the scale of the approach does call for an alternative design.
+% In this respect, \cite{RHKS2002} advocates the replacement of
+% each landmark server by a cluster of servers.
+% However, this approach may not entirely avoid the creation of 
+% excessive network traffic flow through its landmark server-clusters.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1940,20 +2017,13 @@ inter-ISP communication accounting and management.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Forwarding Optimization Methodology}
-Approaches based on forwarding-optimization 
-propose intelligent forwarding link selection for a message's next
-hop across a routing path. 
-The selection criteria vary depending on the
-algorithm, but they mainly use one or more statistical heuristics. 
-These can range from simple connection speed, to exploiting specific peer
-attributes such as high processing capacity e.t.c. An example is \emph{Gia} that
-exploits the so called heterogeneity of peers as well as employs a token-based
-flow control mechanism to guide the messages towards peers that are more likelly
-to answer
-a query. More sophisticated alternatives also exist,
-taking into account application level requirements or exploiting machine
-learning techniques to adjust to overlay network routing, like the \emph{APS}
-algorithm.
+In unstructured systems there is no way to know where data are located. That is
+why early works like Gnutella \cite{gnutellav04} used blind flooding, a Breadth
+First Search approach with depth $d$, a system-maximum TTL value (in terms of
+hops) for messages. This is inefficient since it generates a large number of
+messages, a lot of them duplicates. Approaches based on
+\emph{forwarding-optimization} propose intelligent search mechanisms to try to
+make searching more efficient.
 
 Figure~\ref{figure:forwarding-optimisation} shows a simple example
 of how forwarding optimization may work.
@@ -1984,9 +2054,28 @@ in only picks one of them.
 The dashed line on the right, shows that, 
 for this routing process, the protocol has
 rendered two potential forwarding paths as inefficient (e.g., the target nodes
-show overloading signs). 
-On one hand, forward
-optimisation approaches have 
+show overloading signs).
+
+Many alternative schemes have been proposed for this category, some of which we
+have surveyed; iterative deepening, modified BFS, local indices \cite{YG-M2002},
+$k$-walker random walks \cite{LCCLS2002} or heterogeneity exploitation and
+token-based flow control mechanisms \cite{CRBLS2003}. More sophisticated
+alternatives also exist, taking into account application level requirements
+or even exploiting machine learning techniques to adjust overlay network
+routing \cite{BFLZ2003}.
+
+Forwarding-optimization schemes in unstructured \p\ systems can be classified
+as DFS- or BFS-based. Routing indices \cite{CG-M2002} for example is a
+DFS-based technique while all the aforementioned are BFS. Also they can
+be classified as deterministic or probabilistic (probabilistic, random or
+ranking-based query forwarding). Iterative deepening and local indices
+\cite{YG-M2002} are examples of deterministic approaches. Moreover, in the
+literature algorithms are also taxonomised as blind or informed depending on
+whether nodes keep some metadata to facilitate the search. For example,
+$k$-walker random walks or iterative deepening are considered blind searches
+while local indices informed.
+
+On one hand, forward-optimization approaches have 
 the advantage of enhancing the
 search responsiveness and reducing the aggregate resource 
 usage of the physical network. On the other, 
@@ -1994,7 +2083,7 @@ they suffer from drastic reduction of the search
 scope (in Fig.~\ref{figure:forwarding-optimisation:after} the object on
 the far right is not reached) thus limiting the scalability of the whole
 network. 
-Moreover, they adress the problem of the mismatch in a limited manner
+Moreover, they address the problem of the mismatch in a limited manner
 since they do not provide any guarantees 
 that overlay and underlying topologies are
 aligned with each other let alone quantify the mismatch 

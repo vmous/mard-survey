@@ -128,19 +128,21 @@ Cycle detection.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{\cite{CS2002}} &
+\textbf{\cite{CS2002} \& \cite{LCCLS2002}} &
 {\large \Square} &
-{\large \Square} &
+{\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
 Uniform replication.\\
 Proportional replication.\\
-Square root replication allocation.
+Square root replication allocation.\\
+\emph{k}-walker query scheme.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Uniform replication reduces time spend on unsuccessful searches.\\
 + Reduces search time for frequent queries.\\
+\emph{k}-walker quering scheme can reduce network traffic up to two orders of magnitude.\\
 -- Proportional replication struggles in locating rare objects.
 \end{tabular}
 \\
@@ -360,9 +362,11 @@ Landmarking based on existing CDN infrastructure (CDN redirection measurements).
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Needs no ISP cooperation.\\
-+ Needs no extra infrastructure.\\
 + Needs no network topology information.\\
--- Locality based approaches do not treat fair all peers.
+-- Deepends on feeds from major internet infrastructures and large deeployment
+of its client.\\
+-- ISP-friendly approaches do not seem to have a great impact on Internet-scale
+basis.
 \end{tabular}
 \\
 \hline
@@ -489,7 +493,7 @@ Clustering based on longest matching IP segment.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Landmark Binning \cite{RHMKS2002}} &
+\textbf{Landmark Binning \cite{RHKS2002}} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
@@ -520,6 +524,7 @@ Dynamic landmarks.
 \begin{tabular}[l]{m{5cm}}
 + Fully distributed.\\
 + It is independent of the overlay model.\\
++ Load balanced.\\
 -- Coarse-grained scheme.
 \end{tabular}
 \\

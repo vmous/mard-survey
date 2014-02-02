@@ -6,9 +6,9 @@ LAPTOP			medium		low		high
 ProximityInKademlia	medium		medium		medium
 CHOP6			low		low		medium
 T2MC			high		high		low
-PChord			medium		medium		high
+PChord			medium		medium		medium
 AChord			medium		medium		medium
-Chord6			low		low		medium
+Chord6			low		low		low
 DHTPNS			medium		medium		medium
 QuasiChord		medium		high		medium
 IPBC			low		low		medium

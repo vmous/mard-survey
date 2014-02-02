@@ -20,14 +20,14 @@ APS				high		high		low
 ITA				medium		low		medium
 EGOIST				high		high		low
 BNS				high		low		medium
-Ono				high		medium		low
+Ono				medium		medium		low
 LiuEtAl				medium		low		medium
 TopBT				medium		low		high
 UTAPS				medium		medium		medium
 QinEtAl				medium		medium		medium
 PROP-G				medium		low		medium
 PROP-O				medium		medium		medium
-%hsiao_redblue_2009		-		-		-
+%HsiaoEtAl			-		-		-
 DDNO				medium		low		medium
 CTAG				low		low		medium
 LB				medium		low		low
