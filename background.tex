@@ -405,35 +405,25 @@ namely \emph{low}, \emph{medium} and \emph{high}.
 Each criterion has its own
 interpretation of the above literal values. 
 \emph{Efficiency} means how well the
-algorithm performs its search and topology adaptation functions. We also take
-take into account how this might effect other characteristics of the networks
-under consideration\footnote{For example we don't actually want a topologically
-optimized BitTorrent swarm if this results in a degraded download performance,
-a characteristic that is the protocol's corner stone.}.
-%%VM Does the above sentence with the footnote now connect?
-%%
-%% PREVIOUS COMMENT AD I am not sure what the above line says.. or connects. Something is
-%%	missing...
+algorithm performs its search and topology adaptation functions. Our assessment
+also considers any negative effects that might come along with the application
+of the algorithm on intrinsic characteristics of the system (i.e., search scope
+coverage, download performance e.t.c).
+%% VM Reworked above definition for "efficiency".
 
-%% SOME ADDITIONAL EXAMPLES FOR EFFICIENCY IF WE WANT TO ADD THEM
-%minimum-spanning-tree-based techniques have slow convergence speed in topology
-%adaptation or the high clustering impacts load balancing and constrains search
-%scope (or at least increases search satisfaction time), all reducing overall
-%efficiency. 
-
-Moreover, efficiency is negatively effected every time an algorithm
-reduces its search scope.
 For the \emph{overhead} criterion, we evaluate the cost
-to compute and communicate peer join, message forwarding, 
-and topology maintenance. For example, when a protocol relies on peers
-exchanging routing tables with other peers within a 2-hop radius with each other
-, then we can be safelly deduce that it incurs lower overhead when compared to a
-protocol that requires global knowledge of the overlay network.
-%%VM Does the above sentence with the footnote now connect?
+of computing and communicating peer join, message forwarding, 
+and overlay topology maintenance. For instance, the overhead that an algorithm,
+which needs global knowledge of the overlay topology, imposes to the system is
+greater compared to a protocol that only relies on peers exchanging routing
+tables within a a 2-hop radius from each other.
+%%VM Reworked definition of overhead and explanatory sentence.
 %%
-%%PREVIOUS COMMENT AD Again I am not sure how the example above ties with the definition...
-For the \emph{scalability} criterion, we consider system behavior 
-with respect to the number of participating peers. 
-We consider systems with low, medium, and high scalability 
-to mean they can support hundreds, tenths of thousands, 
-and millions of nodes, respectively. 
+
+For the \emph{scalability} criterion, we consider system behavior with respect
+to the number of participating peers it can reliably support. We characterize
+protocols as being lowly, mediumly or highly scalable if the are proven to
+effectivelly support hundreds, tenths of thousands or millions of nodes,
+respectively.
+%%%VM Reworked definition.
+%%
