@@ -30,7 +30,7 @@ install:
 b: $(FILE).tex
 	bibtex $(FILE)
 
-s: $(FILE).tex
+l: $(FILE).tex
 	pdflatex $(FILE)
 
 p:
