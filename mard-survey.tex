@@ -232,7 +232,7 @@
 % quality.
 \usepackage{longtable}
 
-
+\usepackage{adjustbox}
 
 % *** SUBFIGURE PACKAGES ***
 %\ifCLASSOPTIONcompsoc
@@ -380,6 +380,14 @@
 
 
 \begin{document}
+
+\newcolumntype{R}[2]{%
+    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
+    l%
+    <{\egroup}%
+}
+\newcommand*\rot{\multicolumn{1}{R{45}{1em}}}% no optional argument here, please!
+
 %
 % paper title
 % Titles are generally capitalized except for words such as a, an, and, as,
@@ -405,7 +413,7 @@
         and~Alex Delis,~\IEEEmembership{Member,~IEEE}% <-this % stops a space
 \thanks{Vassilis Moustakas, Mema Roussopoulos and Alex Delis are with the Department
 of Informatics and Telecommunications, National and Kapodistrian University of Athens,
-GR15784, Athens, Greece (e-mail: vsmoustakas@gmail.com, mema@di.uoa.gr, ad@di.uoa.gr.}% <-this % stops a space
+GR15784, Athens, Greece (e-mails: {vsmoustakas,mema,ad}@di.uoa.gr.}% <-this % stops a space
 \thanks{H\"useyin Akcan is with the Department of Software Engineering,
 Izmir University of Economics, Izmir, Turkey (email: huseyin.akcan@ieu.edu.tr).}% <-this % stops a space
 \thanks{Manuscript received June 30, 2015; revised July 31, 2015.}}
@@ -491,7 +499,7 @@ reference for developers, system architects and researchers in the field.
 
 % Note that keywords are not normally used for peerreview papers.
 \begin{IEEEkeywords}
-Distributed systems, peer-to-peer architectures, p2p, overlay network,
+Distributed systems, peer-to-peer, overlay network, topology mismatch,
 topology awareness
 \end{IEEEkeywords}
 

@@ -1,22 +1,22 @@
 %\renewcommand\arraystretch{1.9}% (MyValue=1.0 is for standard)
 
-\onecolumn
+%\onecolumn
 
-\begin{landscape}
+%\begin{landscape}
 %\begin{figure}[h!]
 \hspace{-3ex}
 \begin{center}
 \footnotesize
 %\begin{tabular}{
+\renewcommand*{\arraystretch}{1.6}
 \begin{longtable}{
-|m{2cm}
-|m{1cm}
-|m{1cm}
-|m{1cm}
-|m{1cm}
-|m{3cm}
-|m{5cm}
-|
+m{2cm}
+m{0.35cm}
+m{0.35cm}
+m{0.35cm}
+m{0.35cm}
+m{3cm}
+m{5cm}
 }
 % |>{\columncolor[gray]{.7}}m{0.1\columnwidth}
 % |>{\columncolor[gray]{.9}}m{0.1\columnwidth}
@@ -27,32 +27,32 @@
 % |>{\columncolor[gray]{.9}}m{0.1\columnwidth}
 % |}
 \caption[Summary table for unstructured algorithms]{Summary table for unstructured algorithms.} \label{unstructured:table} \\
-\hline
+%\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % first head
-\rowcolor[gray]{.5}
-\textbf{Algorithm / Paper} &
-\textbf{Topology Adaptation} &
-\textbf{Forwarding Optimization} &
-\textbf{Caching / Replication} &
-\textbf{Landmarking} &
-\textbf{Highlights} &
-\textbf{Pros / Cons}\\
+%\rowcolor[gray]{.5}
+\rot{\textbf{Algorithm / Paper}} &
+\rot{\textbf{Topology Adaptation}} &
+\rot{\textbf{Forwarding Optimization}} &
+\rot{\textbf{Caching / Replication}} &
+\rot{\textbf{Landmarking}} &
+\rot{\textbf{Highlights}} &
+\rot{\textbf{Pros / Cons}}\\
 \hline
 \endfirsthead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % subsequent heads
 \multicolumn{7}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
-\hline
-\rowcolor[gray]{.5}
-\textbf{Algorithm / Paper} &
-\textbf{Topology Adaptation} &
-\textbf{Forwarding Optimization} &
-\textbf{Caching / Replication} &
-\textbf{Landmarking} &
-\textbf{Highlights} &
-\textbf{Pros / Cons}\\
+%\hline
+%\rowcolor[gray]{.5}
+\rot{\textbf{Algorithm / Paper}} &
+\rot{\textbf{Topology Adaptation}} &
+\rot{\textbf{Forwarding Optimization}} &
+\rot{\textbf{Caching / Replication}} &
+\rot{\textbf{Landmarking}} &
+\rot{\textbf{Highlights}} &
+\rot{\textbf{Pros / Cons}}\\
 \hline
 \endhead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -105,7 +105,7 @@ boundary.
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Random Walks (RW).
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -120,7 +120,7 @@ Random Walks (RW).
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Cycle detection.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -232,12 +232,12 @@ Delayed low productive connection cutting.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{SBO \cite{LXN2004}} &
+\textbf{SBO \cite{LXN2007}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Red/white bipartite overlay.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -272,7 +272,7 @@ Piggybacking neighbor distance in queries
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Triple-hop adjustment.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -291,7 +291,7 @@ Triple-hop adjustment.
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 machine learning adaptive mechanism.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -301,7 +301,7 @@ machine learning adaptive mechanism.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{ITA \cite{PRFM2009}} &
+\textbf{ITA \cite{PRFM2013}} &
 {\large \CheckedBox} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -325,10 +325,10 @@ replication, dynamic querying).
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Selfish shortest path routing
 \end{tabular} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 -- constructs a global view of the network
 \end{tabular}
 \\
@@ -378,7 +378,7 @@ basis.
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 AS hop count minimization on neighbor selection, on chocking/unchocking
 mechanisms and on next-chunk picking.
 \end{tabular} &
@@ -413,7 +413,7 @@ establishment/replacement, unchocking).
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Network tomography to construct a picture for the underlying network.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -429,7 +429,7 @@ Network tomography to construct a picture for the underlying network.
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Cluster peers in a swarm into local, intra- and inter-ISP.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -445,7 +445,7 @@ Cluster peers in a swarm into local, intra- and inter-ISP.
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Neighbor exchange between peers.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -470,7 +470,7 @@ Neighbor exchange between peers.
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Domain name topology detection (Split-Hash and dnMatch).
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -486,10 +486,10 @@ Domain name topology detection (Split-Hash and dnMatch).
 {\large \Square} &
 {\large \Square} &
 {\large \Square} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Clustering based on longest matching IP segment.
 \end{tabular} &
-\begin{tabular}{m{5cm}}
+\begin{tabular}[l]{m{5cm}}
 + Focuses on both construction and adaptation.
 \end{tabular}
 \\
@@ -500,7 +500,7 @@ Clustering based on longest matching IP segment.
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Landmark binning.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -520,7 +520,7 @@ Landmark binning.
 {\large \Square} &
 {\large \Square} &
 {\large \CheckedBox} &
-\begin{tabular}{m{3cm}}
+\begin{tabular}[l]{m{3cm}}
 Dynamic landmarks.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
@@ -641,6 +641,6 @@ Dynamic landmarks.
 \vspace{-2.5ex}
 \vspace{-2.5ex}
 %\end{figure}
-\end{landscape}
+%\end{landscape}
 
-\twocolumn
+%\twocolumn

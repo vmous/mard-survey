@@ -5,10 +5,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\pgfplotsset{width=7cm,compat=newest}
+\onecolumn
 
 %%%%%%%%%%%%%%%%%%% EFFICIENCY %%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-\begin{center}
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{landscape}
+%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -33,6 +37,7 @@
     %Cone,
     DynaMORLM,
     DynaMOCNPA,
+    3DO,
     SATMatch
   },
   every axis y label/.style=
@@ -52,12 +57,18 @@ table[x=EFFICIENCY,y=ALGORITHM]
 
 \end{axis}
 \end{tikzpicture}
-\end{center}
-\end{landscape}
+}
+\label{unstructured:plot:efficieny}
+\end{figure}
+%\end{center}
+%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% OVERHEAD %%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-\begin{center}
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{landscape}
+%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -82,6 +93,7 @@ table[x=EFFICIENCY,y=ALGORITHM]
     %Cone,
     DynaMORLM,
     DynaMOCNPA,
+    3DO,
     SATMatch
   },
   every axis y label/.style=
@@ -101,12 +113,18 @@ table[x=OVERHEAD,y=ALGORITHM]
 
 \end{axis}
 \end{tikzpicture}
-\end{center}
-\end{landscape}
+}
+\label{unstructured:plot:efficieny}
+\end{figure}
+%\end{center}
+%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% SCALABILITY %%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-\begin{center}
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{landscape}
+%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -131,6 +149,7 @@ table[x=OVERHEAD,y=ALGORITHM]
     %Cone,
     DynaMORLM,
     DynaMOCNPA,
+    3DO,
     SATMatch
   },
   every axis y label/.style=
@@ -150,5 +169,10 @@ table[x=SCALABILITY,y=ALGORITHM]
 
 \end{axis}
 \end{tikzpicture}
-\end{center}
-\end{landscape}
+}
+\label{unstructured:plot:efficieny}
+\end{figure}
+%\end{center}
+%\end{landscape}
+
+\twocolumn

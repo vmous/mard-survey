@@ -1315,6 +1315,58 @@ medium \\
 }
 \end{center}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Another work that targets mobile networks is \emph{3D Overlay}~\cite{AOS2014}. As the
+name suggests, the logical space of the network is a 3-dimensional space and
+the (transient) logical IDs (LIDs) are of the form of tuples of $M$-bit identifiers
+for each of the $x$, $y$ and $z$ axes. 
+When a peer wants to join the network it broadcasts a join request using
+expanded ring search. This ensures to locate peers that are physically adjacent
+to itself in the physical space. Peers in the network reply to the request
+sending their LID together with the list of their neighbours and the
+corresponding distances to them. Upon receiving the replies, the joining peer
+stores the information to its routing table thus forming an undirected connected
+graph of itself and both its $1$- and $2$-hop neighbours. Using hop distance
+obtained by the underlying (MANET) routing algorithm, builds a
+minimum spanning tree (MST) with itself as the root node and selects as direct
+neighbours the peers that are adjacent in the MST. Moreover, removes all the
+peers that were selected as directs during routing table construction but now
+found to be not adjacent in the MST. This ensures that neighboring peers on the
+overlay are also adjacent in the physical layer. Then the joining peer generates
+its LID which puts it in the 3 dimentional space. The LID computation is repeated
+as part of the update process that is required as a mechanism to maintain
+conectivity and adapt to new network states. Similarly to peer LIDs,
+keys of the files stored in the network are also generated within afformentioned
+3D space. The peer closest to the key of the file is responsible for it. Thus,
+for a peer to search for an object, it needs to generate the key for it and then
+forward the query. The neighbour to be forwarded the query, is
+selected from the routing table so that its LID and the key of the queried
+resource, brings closest the query in every part of the tuple.
+The interesting proporty of this algorithm is the construction of a multidimentional
+space that results in better load balance and finer grained information to ensure
+that each hop on the overlay during object location, is also a step closer physically
+toward the node that stores it. On the other hand, the use of TTL for its query messages
+renders the network not a pure DHT as it looses the ability that traditional
+DHTs have for zero false negative queries. Moreover, as the authors also admit, it
+does not adapt quickly to network changes and the evaluation was based on the assumption
+of low mobility scenarios. For the above reasons, 3DO exhibits the following performance
+with respect to the comparison criteria:
+
+\begin{center}
+{\footnotesize
+\begin{tabular}{ccc}
+\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
+\hline
+% 
+low &
+% 
+low &
+% 
+medium
+\end{tabular}
+}
+\end{center}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{SAT-Match: Self-Adaptive Topology Matching}
 % \begin{figure}[ht]

@@ -2,23 +2,23 @@
 
 \onecolumn
 
-\begin{landscape}
+%\begin{landscape}
 %\begin{figure}[h!]
 \hspace{-3ex}
 \begin{center}
 \footnotesize
 %\begin{tabular}{
+\renewcommand*{\arraystretch}{1.6}
 \begin{longtable}{
-|m{2cm}
-|m{1cm}
-|m{1cm}
-|m{1cm}
-|m{1cm}
-|m{1cm}
-|m{1cm}
-|m{3cm}
-|m{5cm}
-|
+m{2cm}
+m{0.35cm}
+m{0.35cm}
+m{0.35cm}
+m{0.35cm}
+m{0.35cm}
+m{0.35cm}
+m{3cm}
+m{5cm}
 }
 %|>{\columncolor[gray]{.7}}m{0.15\columnwidth}
 %|>{\columncolor[gray]{.9}}m{0.05in}
@@ -33,36 +33,36 @@
 %|
 %}
 \caption[Summary table for structured algorithms]{Summary table for structured algorithms.} \label{structured:table} \\
-\hline
+%\hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % first head
-\rowcolor[gray]{.5}
-\textbf{Algorithm / Paper} &
-\textbf{Topology Adaptation} &
-\textbf{Landmarking} &
-\textbf{Proximity Routing} &
-\textbf{Proximity Neighbor Selection} &
-\textbf{Geographic Layout} &
-\textbf{Caching / Replication} &
-\textbf{Highlights} &
-\textbf{Pros / Cons}\\
+%\rowcolor[gray]{.5}
+\rot{\textbf{Algorithm / Paper}} &
+\rot{\textbf{Topology Adaptation}} &
+\rot{\textbf{Landmarking}} &
+\rot{\textbf{Proximity Routing}} &
+\rot{\textbf{Proximity Neighbor Selection}} &
+\rot{\textbf{Geographic Layout}} &
+\rot{\textbf{Caching / Replication}} &
+\rot{\textbf{Highlights}} &
+\rot{\textbf{Pros / Cons}}\\
 \hline
 \endfirsthead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % subsequent heads
 \multicolumn{9}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
-\hline
-\rowcolor[gray]{.5}
-\textbf{Algorithm / Paper} &
-\textbf{Topology Adaptation} &
-\textbf{Landmarking} &
-\textbf{Proximity Routing} &
-\textbf{Proximity Neighbor Selection} &
-\textbf{Geographic Layout} &
-\textbf{Caching / Replication} &
-\textbf{Highlights} &
-\textbf{Pros / Cons}\\
+%\hline
+%\rowcolor[gray]{.5}
+\rot{\textbf{Algorithm / Paper}} &
+\rot{\textbf{Topology Adaptation}} &
+\rot{\textbf{Landmarking}} &
+\rot{\textbf{Proximity Routing}} &
+\rot{\textbf{Proximity Neighbor Selection}} &
+\rot{\textbf{Geographic Layout}} &
+\rot{\textbf{Caching / Replication}} &
+\rot{\textbf{Highlights}} &
+\rot{\textbf{Pros / Cons}}\\
 \hline
 \endhead
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -355,6 +355,25 @@ Making last hop as local as possible.
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{3DO \cite{AOS2014}} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \CheckedBox} &
+\begin{tabular}[l]{m{3cm}}
+3 dimentional space.\\
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
++ Fine granularity of peer and object embedding (eight octants).\\
++ Load balance.\\
+-- DHT with false negative queries.\\
+-- Slow adaptation to network changes.
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textbf{SAT-Match \cite{RGJZ2004}} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -454,11 +473,12 @@ Stretch reduction scheme.
 
 % \hline
 \end{longtable}
+%\end{tabular}
 \end{center}
 \vspace{-2.5ex}
 \vspace{-2.5ex}
 %\label{fig:struct_compare_table}
 %\end{figure}
-\end{landscape}
+%\end{landscape}
 
 \twocolumn

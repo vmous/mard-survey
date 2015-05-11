@@ -5,10 +5,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\pgfplotsset{width=7cm,compat=newest}
+\onecolumn
 
 %%%%%%%%%%%%%%%%%%% EFFICIENCY %%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-\begin{center}
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{landscape}
+%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -68,12 +72,18 @@ table[x=EFFICIENCY,y=ALGORITHM]
 
 \end{axis}
 \end{tikzpicture}
-\end{center}
-\end{landscape}
+}
+\label{unstructured:plot:efficieny}
+\end{figure}
+%\end{center}
+%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% OVERHEAD %%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-\begin{center}
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{landscape}
+%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -133,12 +143,18 @@ table[x=OVERHEAD,y=ALGORITHM]
 
 \end{axis}
 \end{tikzpicture}
-\end{center}
-\end{landscape}
+}
+\label{unstructured:plot:overhead}
+\end{figure}
+%\end{center}
+%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% SCALABILITY %%%%%%%%%%%%%%%%%%%
-\begin{landscape}
-\begin{center}
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+%\begin{landscape}
+%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -198,5 +214,10 @@ table[x=SCALABILITY,y=ALGORITHM]
 
 \end{axis}
 \end{tikzpicture}
-\end{center}
-\end{landscape}
+}
+\label{unstructured:plot:scalability}
+\end{figure}
+%\end{center}
+%\end{landscape}
+
+\twocolumn

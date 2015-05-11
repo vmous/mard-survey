@@ -718,7 +718,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Scalable Bipartite Overlay (SBO)}
 
-The \emph{Scalable Bipartite Overlay (SBO)}~\cite{LXN2004,LXN2007} 
+The \emph{Scalable Bipartite Overlay (SBO)}~\cite{LXN2007} 
 reduces the overhead of creating
 and maintaining a minimum spanning tree 
 by randomly dividing the nodes into
@@ -764,7 +764,7 @@ or search scope \cite{HLH2009}.
 %
 % THE LINES BELOW NEED REWORDING
 % ==============================
-% \cite{LXN2004} Based on the above discussions, we can see the major
+% \cite{LXN2007} Based on the above discussions, we can see the major
 % advantages of using a bipartite overlay. First, the operation
 % overhead is reduced. In ACE, every peer is required to
 % probe the neighbor distance and compute the MST, whereas
@@ -1006,14 +1006,17 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The \emph{Innocuous Topology Aware Overlay Construction (ITA)}
-approach~\cite{PRFM2009} seeks to offer both an overlay formation approach and
+approach~\cite{PRFM2013} seeks to offer both an overlay formation approach and
 an effective way to carry out searching. When constructing the overlay,
 \emph{ITA} exploits the notion of \emph{short} and \emph{long} connections.
 Should $N$ be the number of network peers,  $\alpha \leq 1 $ a system-wide magic
 number and $x$ an $\alpha$-related latency threshold, the bootstrapping peer
 randomly selects $\alpha \ast N$ ``close'' (latency below $x$) and 
 $\left( 1 - \alpha \right) \ast N$ distant (latency above $x$) nodes
-as its neighbors.
+as its neighbors. Of course, the bootstrapping peer is not able check all the
+peers in the network to find the global best for the above sets. Authors
+prove that latency measurements against $30/ \alpha$ randomly selected peers
+result to a good estimation. 
 %%QUE how do they select all these magic constants???
 %%ANS This α constant seems to be the percentage of close neighbors selected by
 % a peer out of its total degree. Can't find the criterion with which it is
@@ -1039,8 +1042,8 @@ help reduce duplication of messages travelling around the network. This
 combination offers efficient lookups that pose minimal or no negative impact to
 other mechanisms possibly employed by the \p\ systems (e.g., $1$-hop replication
 or dynamic querying mechanisms). Experimental results in the same paper suggest
-a $50$\% reduction in communication latency among peers by cutting off some $20$\%
-of the \emph{IP}-level traffic generated.
+a $50$\% reduction in communication latency among peers by cutting off up to 
+$25$\% of the \emph{IP}-level traffic generated.
 %%
 Regarding the $3$ criteria, \emph{ITA} is placed as follows:
 %
@@ -1963,7 +1966,7 @@ its overall approach as well as its underlying used methodologies have to be con
 
 Below, we outline how the proposed protocols use elements of the four
 methodologies and we offer a summary qualitative comparison for all surveyed
-approaches applicable for \emph{unstructured} \p \emph{systems}.
+approaches applicable for \emph{unstructured}~\p~\emph{systems}.
 Moreover, Table~\ref{unstructured:table} offers a summary overview for each effort;
 in particular, the Table shows which of the aforementioned methodologies 
 every effort incorporates, the highlights of the effort as well as 
