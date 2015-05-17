@@ -5,14 +5,14 @@ This section offers description and analysis of algorithms proposed
 to address the topology mismatch problem in structured \p\ networks. 
 The categorization of the approaches is based on how different
 levels of proximity information is gathered as well as  
-the way peer routing tables are maintained and used in an effort make hops in
-overlays as efficient as possible. 
+the way peer routing tables are maintained and used in an effort to make 
+overlays as efficient as possible in terms of hops traversed.
 %%AD what does it really mean this below???
 %%VM it means that this split into i) geographic layout, ii) proximity routing
 %%   and iii) proximity neighbour selection types of algorithms are terms
 %%   coined in those papers
-The categorization is based on previous work found in the
-literature~\cite{CDHR2002,CDCR2002,RSS2002}.
+Our categirization is based on previous work 
+found in~\cite{CDHR2002,CDCR2002,RSS2002}.
 
 \subsection{Algorithms for Structured Architectures}
 
@@ -72,7 +72,7 @@ Moreover, to refine measurements
 additional inner-bin measurements are needed~\cite{WZS2004}.
 Also, improvements within a region can be minimal as there exists
 limited knowledge about neighboring zones.
-
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% COMM Removed most of the paragraph below which 
@@ -141,7 +141,7 @@ limited knowledge about neighboring zones.
 %bors. In Proximity routing, physical topology is not consid-
 %ered when constructing the overlay.
 %
-In terms of our $3$ criteria, the approach fares as follows:
+In terms of our $3$ stated criteria, the approach fares as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -185,39 +185,52 @@ low
 close also in terms of the underlying layer by integrating proximity layout
 and proximity routing overlay optimizations.
 
-During bootstrap, an incoming peer, say J, starts with a set of
-candidates to establish links with and iteratively
-probes for minimizing distances, based on a given metric (i.e., network delay)
-and concluding when no further refinement can be achieved. To tackle the local
+During bootstrap, an incoming peer $J$ obtains from a bootstrap node a set of
+candidate peers to establish links with. 
+Subsequently, the node works iteratively to identify peers that minimize
+a given metric (i.e., network delay).
+The process stops when no additional peers complying with the above metric 
+can be found. 
+% 
+% and iteratively
+% probes for minimizing distances, based on a given metric (i.e., network delay)
+% and concluding when no further refinement can be achieved. 
+To tackle the local
 minima problem that such a gradient descent method suffers from, Mithos probes
-all neighbours within a two-hop radius, from the currrent node that minimize
-the distance, before concluding the process.
+nodes within a $2$-hop radius from the current node that helps minimize
+the distance before concluding the process.
 
-Next, the incomming peer is assigned a synthetic \emph{ID} that
-represents the state of minimum distance from its close--by neighbourhood as
-this was identified during the iterative neighbor selection phase described
-above. The benefit of these synthetic coordinates is that distance computations
+$J$ is then assigned a synthetic \emph{ID} that
+represents the state of minimum distance from its close-by $2$-$d$ neighbourhood as
+this was discovered during the aforementioned phase. % iterative selection phase.
+The benefit of adopting synthetic coordinates is that distance computations
 among nodes can be done in the \emph{ID} space without requiring physical
-measurements. The actual link establishment with the peers, that will be J's
-neighbours, is happening next. With peer J dividing the plane into four regions,
-the \emph{quadrant-based} mechanism Mithos employs, suggests that the node
-establishes a link to the closest neighbor in each quadrant of the plane. The
-previous steps
-do not provide any knowledge as to which nodes these would be, thus J has to
-identify them. It does so, by starting from a known node in the neighbourhood
+measurements. 
+Mithos proceeds then to designate $J$'s closest neighbours as 
+previous steps do not reveal with certainty which these nodes are.
+%%
+Using Mithos \emph{quadrant-based} mechanism,
+$J$  divides the $2$--$d$ space of neighbours in four regions and 
+subsequently, establishes a link 
+to the closest neighbor in each quadrant of the plane. 
+% With peer $J$ dividing the plane into four regions,
+% the \emph{quadrant-based} mechanism Mithos employs, suggests that the node
+% establishes a link to the closest neighbor in each quadrant of the plane. 
+%%
+It does so, by starting from a known node in the neighbourhood
 and scanning towards all quadrant borders ~\cite{KK2000,R2002}. 
 
-One major limitation of \emph{Mithos} is that the protocol cannot effectively
-handle dynamic arrivals and departures from the network. 
-\cite{CCRK2004}~argues about extensive probing to determine 
+A noted Mithos limitation is that the protocol cannot effectively
+handle dynamic arrivals and departures from the network~\cite{RGJZ2004}. 
+\cite{CCRK2004}~points out extensive probing for Mithos to determine 
 distances and less accurate proximity results compared to other
-virtual coordinate systems. The latter has been also attributed
-by~\cite{WSS2005} to the iterative neighbor selection process which that is 
+virtual coordinate systems. The last issue  has been also attributed
+by~\cite{WSS2005} to the iterative neighbor selection process that is 
 reportedly prone to premature termination at local minima.
 %%
 \cite{cox_vivaldi_2004} argues that elements of the protocol's
 synthetic ID generation require a centralized implementation 
-affecting \emph{Mithos}' scalability.
+affecting Mithos' scalability.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In regard to the $3$ criteria, \emph{Mithos} stands as follows:
 \begin{center}
@@ -256,16 +269,15 @@ It is theoretically shown that
 \emph{LAPTOP} routing path length is bounded by $O(log_d(N))$ and node
 joining and leaving in the overlay network is bounded by
 $O(d*log_d(N))$ hops in a balanced overlay tree with $N$ representing the
-number of nodes and $d$ the maximum degree of each node. 
+number of nodes and $d$ the maximum degree of each node (i.e., number of links). 
 \emph{LAPTOP} adopts the geographical layout approach  
 and constructs its layout in a self-organizing and 
 efficient fashion. 
 The physical distances are estimated
 with round trip times to a few existing nodes in the overlay network.
 %%
-Each node is assigned a dot-formatted address (e.g., 1.3.4). 
-Each octet ranges from
-$1$ to $d$.
+Each node is assigned a dot-formatted address (e.g., 1.3.4) with
+each octet ranging from $1$ to $d$.
 The assignment process is done by appending a unique octet 
 to the address of the parent of each node, while
 the root node is assigned address $1$.
@@ -298,12 +310,12 @@ longest-prefix \emph{IP} matching scheme.
 At each forwarding hop, a message travels up the tree 
 until the first common ancestor of both source and destination nodes 
 is reached and then, the message starts descending towards its target. 
-During tree traversals, special entries in the routing tables,
+During tree traversals, special entries in the routing tables
 are maintained to increase routing efficiency and achieve finer--load balance.
 These special entries constitute the \emph{routing cache} which enables a node
 to forward a message to a better 
-longest-prefix match than that of its direct ancestor yielding
-a larger, quicker and more cost--effective step through the overlay towards
+longest-prefix match than that of its direct ancestor;
+this yields a quicker and more cost--effective step through the overlay towards
 the destination. 
 To improve scalability, the number of child nodes and the
 size of the routing cache are limited. 
@@ -404,7 +416,7 @@ high
 
 In order to optimize the underlying network use,
 \cite{KLKP2008} introduces proximity
-controls over the \emph{vanilla Kademlia} 
+controls over the \emph{vanilla Kademlia}~\cite{maymounkov_kademlia_2002} 
 protocol's random \emph{ID} assignment.
 % The work in this paper
 % can also be considered as a more generic study of incorporating proximity into
@@ -413,21 +425,20 @@ In its quest to improve routing performance, the overlay uses
 a cost ``yardstick'' (i.e., metric) provided by the underlying network.
 % The overlay tier improves its routing performance using a cost--metric that is
 % provided by the underlying tier. 
-Such cost information can be acquired by
+Such cost information can be acquired by:
 \begin{inparaenum}[\itshape i\upshape)]
   \item measuring previous lookups,
-  \item exchanging or jointly-computing measurements with 
-	others, or 
+  \item exchanging or jointly-computing measurements with others, or 
   \item using a local database to look--up information.
 \end{inparaenum}
 
-\cite{KLKP2008} exploits $2$ routing techniques: 
+\cite{KLKP2008} exploits two routing techniques: 
 \emph{proximity routing selection (PRS)} and 
 \emph{proximity neighbor selection (PNS)}.
 %%
 In \emph{PRS}, the goal is to choose the best next hop while routing a message.
-\emph{Plain old Kademlia} (\emph{POK}) always selects the closest--node 
-with respect to the \emph{XOR} metric.
+\emph{Kademlia} always selects the closest--node 
+with respect to the \emph{XOR} metric~\cite{maymounkov_kademlia_2002}.
 With \emph{PRS} in place however, \emph{Kademlia} may also choose 
 the node that exhibits the smallest routing cost; in this way, 
 it balances a trade-off between the logical overlay and 
@@ -457,7 +468,7 @@ with the least routing cost in the routing table.
 \emph{Kademlia} proximity injection improves 
 locality of connections among peers.
 To enhance traffic locality, the use of 
-{\sl MaxMind GeoIP} database~\footnote{\url{http://www.maxmind.com}} 
+{\sl MaxMind GeoIP} database\footnote{\url{http://www.maxmind.com}} 
 is suggested to form clusters of nearby peers.
 To this end, Vivaldi coordinates~\cite{cox_vivaldi_2004} could be 
 also used as an alternative for morphing locality. 
@@ -465,7 +476,7 @@ also used as an alternative for morphing locality.
 when combined with \emph{PRS}/\emph{PNS} helps contain 
 $40\%$ of messages within an \emph{ISP} and allows only a $6\%$ 
 to go through the backbone.
-The behavior of the proposal with respect to the stated criteria is deemed as follows:
+The behavior of \cite{KLKP2008} with respect to the stated criteria is deemed as follows:
 %%
 \begin{center}
 {\footnotesize
@@ -495,26 +506,34 @@ medium
 %% either in terms of explicit RTT or implicit RTT (taking regional/national
 %% hops as a proxy of proximity - international RTT > regional RTT > national RTT)
 
-\emph{CHOP6} \cite{MT2007} is another Chord-variant DHT; it exploits
-the {\sl IPv6} address format, and if available \emph{RTT} information, to 
+\emph{CHOP6} \cite{MT2007} is a Chord-variant DHT that exploits
+{\sl IPv6} address format as well as available \emph{RTT} information to 
 enable proximity estimation among peers during message routing.
-
+%%
 Similar to \emph{Chord}~\cite{stoica_chord_2001}, 
-\emph{CHOP6} uses a finger table but each entry now holds hold k>1 candidate
-nodes. The next hop for a message is selected to be the one closest to the
-destination among those k candidate nodes. This proximity is determined either
-by exploiting RTT measurements or, if there is no such yet (i.e. a new peer), by
-estimating distance on overlay's ID space. When joining the network, each node
-receives a $64$-bit \emph{ID}. It comprises of a random part and a IPv6 prefix
-part. The random part is obtained by hashing the node's IP address and port
-number and is used to preserve the uniformity of
-node assignment. The IPv6 prefix is based on IPv6's global routing prefix.
-Because IANA  assigns address blocks to regions (RIRs) which are further
-distributed on a national level (NIRs), examining the upper $32$-bits
-of an IPv6 address someone can estimate the country or the region to which the
-node is connected. Thus, CHOP6's IPv6 prefix ID is used for proximity estimation
-if no RTT information is available during routing. 
+\emph{CHOP6} uses a finger table with each entry now holding $k$$>$$1$ candidate
+nodes. 
+The next hop for a message is selected to be the one closest to the
+destination among those $k$ candidate peers. 
+This proximity is determined either
+by exploiting RTT measurements or, if there is no such information yet 
+(i.e., a new peer appears), by
+estimating distance on the overlay's ID space. 
 
+When joining the network, each node
+receives a $64$-bit \emph{ID}. 
+It comprises of a random part and the IPv6 prefix which 
+is obtained by hashing the node's IP address and port
+number; this combination is deployed in an effort  
+to preserve the uniformity of node assignment. 
+The prefix in question is based on IPv6's global routing prefix.
+As IANA\footnote{\url{http://www.iana.org/}}  
+assigns address blocks to regions (RIRs) which are further
+distributed at national level (NIRs), the first $32$-bits of the address
+can estimate the region or the country the node is connected in. 
+Thus, CHOP6's IPv6 prefix ID is used for proximity estimation
+if no RTT information is available during routing. 
+%%
 %
 %\paragraph{}
 % There are three cases in which a node chooses the next hop according to
@@ -561,35 +580,60 @@ medium
 %%
 %% VM Added some extra lines and restructured the text
 \emph{T2MC}'s~\cite{SLCGZ2008} objective is to diminish the redundant multiple
-messages that may unnecessarily cross \emph{AS}-boundaries as these are the
-links that cost more to ISPs thus minimizing the effects of the topology
-mismatch problem. To achieve that, each node exploits the stable structure of
-the Internet routers to help solve a clustering problem. Uses traceroute
-logs to detect inter-\emph{AS} boundaries and clusters other peers to near-by and
-far-away peers by applying a customized $k$-mean classification
-algorithm with $k = 2$ to perform the classification.
-Specifically when joining the network, the peer randomly picks an IP and uses
-traceroute. Skipping the details of the algorithm, it picks the routers with
-minimum and maximum latencies in the above traceroute path as initial centroids
-for the ``near'' and ``remote'' sets respectively and after some iterations it
-ends up with two sets having the minimum intra-set latency variance. The
-router with the minimum hops in the ``remote'' set is set up as the hop
-threshold and anything above that is classified as the ``remote'' router cluster
-for that peer. Similarly, the router with the maximum hops in the ``near'' set
-is important because it denotes an edge gateway. Peers that share the same
-edge gateway or other members of the ``near'' router cluster are considered
-close-by.
+messages that may unnecessarily cross autonomous system (\emph{AS}) boundaries.
+The latter represent links that are the costliest to ISPs and hence, 
+mininizing topology mismatches  greatly affects pertinent operational expenditure.
+%%
+To achieve that, each node exploits the stable structure of
+the Internet routers to help solve a clustering problem. 
+The algorithm uses {\sl traceroute}-logs to detect inter-\emph{AS} boundaries 
+and clusters peers to either nearby or 
+far-away groups by applying a customized $k$-mean classification ($k=2$).
+%%
+When joining the network, the peer randomly picks an IP and uses
+traceroute and selects the routers with
+minimum and maximum latencies in the above {\sl traceroute} path 
+as initial centroids for the ``nearby'' and ``far-away'' sets respectively.
+Following an iterative procedure, the node comes up with the two sets 
+demostrating minimum intra-set latency variance.
+At this stage, routers in the ``far-away'' set are not considered critical.
+%%
+%%AD skipping the details???? JUST CHECK
+% Skipping the details of the algorithm, it picks the routers with
+% minimum and maximum latencies in the above traceroute path as initial centroids
+% for the ``near'' and ``remote'' sets respectively and after some iterations it
+% ends up with two sets having the minimum intra-set latency variance. 
+%%
+% The router from the ``far-away'' set that presents the closest distance 
+% from the peer in terms of hops, is designated as beacon.
+% Any node portaying dinstance longer that the above is classified 
+% as 
+% 
+% to the peer, in terms of hops, is designated as a beacon.
+% Any node whose distance is measured to be longer that the distance 
+% between 
+% 
+% The router with the minimum hops in the ``remote'' set is set up as the hop
+% threshold and anything above that is classified as the ``remote'' router cluster
+% for that peer. 
+% Similarly, 
+In contrast, the router from the ``near'' set
+having the maximum number of hops 
+from the just-joining peer is key as it denotes an edge--gateway. 
+Peers that share the same edge--gateway or other members in the ``nearby'' 
+router cluster are considered intra-\emph{AS} neighbors.
+%%AD the final phrase for this is missing! So what??? What is achieved? 1 sentence.
 
 Even though {\sl traceroute}
 provides detailed information about the network structure, 
-it extensive use may create overhead on the overall network structure. 
-In this respect, it is often the case that administrators 
-disable {\sl traceroute} support on their routers.
-The latter may affect \emph{T2MC}'s performance.
+its extensive use may create overhead on the overall network structure. 
+In this respect, administrators frequently
+disable {\sl traceroute} support on their routers this 
+undoubtly affects \emph{T2MC}'s operation.
 %%
 Although overall experimental results have been encouraging, 
 \emph{T2MC} is considered rather coarse-grained as it only
-as it classifies neighbours into two groups \cite{QLZG2009}.
+classifies neighbours into two groups \cite{QLZG2009}.
 %
 %T2MC \cite{SLCGZ2008} uses trace-route logs to detect different autonomous
 %systems and cluster close by peers, thus reducing redundant traffic that crosses
@@ -631,6 +675,7 @@ as it classifies neighbours into two groups \cite{QLZG2009}.
 \emph{T2MC} fares as follows:
 %%
 \begin{center}
+{\footnotesize
 \begin{tabular}{ccc}
 \emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
 \hline
@@ -648,14 +693,16 @@ high &
 % directly available to the application layer.
 low
 \end{tabular}
+}
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{PChord}
 \emph{PChord} \cite{HLYW2005} is based on the \emph{Chord DHT} and adds
-proximity into its routing mechanism. To achieve that, the standard finger table
-is augmented with a \emph{proximity list} which is a structure that contains
-nodes in the network that are close-by, in terms of RTT, with the node at hand.
+proximity into its routing mechanism. 
+To achieve that, the standard finger table
+is augmented with a \emph{proximity list} that contains
+nodes in the network found close-by in terms of RTT.
 %in this way, the next hop can be decided based on both progress
 %towards the key and the physical proximity of the candidate nodes.
 %%AD
@@ -668,16 +715,18 @@ nodes in the network that are close-by, in terms of RTT, with the node at hand.
 %% that the next hop should be the closest one which in many cases can be
 %% a competing requirement with the best progress to the key requirement I
 %% just described. 
-In this way, the next hop during routing can be decided based on both the
+In this respect, the next hop during routing can be decided based on both the
 direction towards the search key and minimizing the cost of that hop.
 
-At join time, this list in empty, but during the node's lifetime it is created
-and modified in a heuristic fashion. During routing, the next hop is chosen
-as the closest node to the target key from both the finger and the proximity
-lists. This means that the next hop defined in the finger list can only be
-substituted by a better hop (closest to the key and in less physical distance)
-with PChord resulting to equal or even more efficient routing than the pure
-vanilla Chord.
+When a peer joins the network, its proximity list is empty.
+This list is maintained in a heuristic fashion during the node's lifetime.
+While a node attempts routing, the next hop is selected
+as the closest node to the target key 
+from \emph{both} its finger table and proximity list. 
+An initial choice for the next hop made out of the finger list 
+can be substituted by a shorter one from the proximity list if  
+it is both closer to the key and in less physical distance.
+This yields an equal or even more efficient routing than traditional Chord.
 %% VM
 %% Removed the text below that was a rephrasing of one of my own a little
 %% bit more below. Hope it is way more clear now.
@@ -692,13 +741,14 @@ vanilla Chord.
 % Chord, since each hop in \emph{PChord} is larger or 
 % at least equal in the key space.
 
-Unfortunatelly the overlay maintenance cost is a little bit more than
-\emph{Chord} additional heart-beat messages are required for
-connection verification of the proximity list. Fortunately, these nodes
-are already close-by so the additional cost is kept to a minimum but
-it has been reported to exhibit slow convergence speed 
+Unfortunatelly the overlay maintenance cost is somewhat higher than
+\emph{Chord} as additional heart-beat messages are required for
+connection verification for the entries of the proximity list. 
+Fortunately, such entries represent nodes 
+already close-by so the additional cost is kept to a minimum.
+However, \emph{PChord} has been reported to exhibit slow convergence speed 
 and inefficiency in high-churn environments~\cite{DK2006}.
-
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% VM:
@@ -752,35 +802,32 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{AChord}
-\emph{AChord} \cite{DK2006} uses the {\sl IPv6} any-cast mechanism to
+\emph{AChord} \cite{DK2006} exploits IPv6's \emph{anycast} mechanism to
 relieve the protocol from complex joining procedures,
 harness network proximity and achieve high routing efficiency. 
-Any-cast delivers a message coming from the outside of 
-an any-cast group to the physically closest node in
-that group~\cite{M2002}. Thus, \emph{AChord} organizes all nodes participating
-in the overlay network into an any-cast group. Any joining node comes (from
-outside) and is automatically forwarded to the physically nearest node for
-bootstrapping; this avoids the need to explicitly maintain participants
+When sending a message to an IPv6 anycast group, 
+the originator accomplishes this delivery by interacting with
+the physically closest node in that group~\cite{M2002}.
+Thus, \emph{AChord} organizes all nodes participating
+in the overlay network into a single anycast group. 
+An arriving peer is automatically forwarded to the physically 
+nearest node for
+bootstrapping; this curtails the need to explicitly maintain participants
 and the effort of locating the physically nearest. 
 %%
 
-The \emph{ID} of an incoming 
-node is computed based on the \emph{ID} of the bootstrap node 
-and the bootstrap's predecessor in a way that the constructed 
-\emph{ID} is positioned between the aforementioned two. 
+The \emph{ID} of an incoming node is computed based on 
+both the identifier of the bootstrap node 
+and the bootstrap's predecessor;
+this is  done in a way that the \emph{ID} of the 
+incoming peer is positioned \emph{between} the two identifiers mentioned above. 
 After joining, a \emph{finger} table is created ala \emph{Chord}. 
 Moreover, an \emph{adjacency table} maintains 
-information about the closest--known peers. 
-
-The routing decision is made by using both the adjacency and finger tables
-based on the closest node to the target key in the key space (same as
-Chord).
-%%AD how are these 2 combined???
-% VM:
-% Check above.
-% This AChord algo looks pretty similar to PChord.
-% If you agree I would suggest we merge the two.
-
+information about the $k$ closest--known peers. 
+%%
+The routing decision takes place in a way reminiscent to \emph{Chord}
+and uses both adjacency and finger tables.
+%%
 \emph{AChord} behavior has as follows:
 \begin{center}
 {\footnotesize
@@ -805,28 +852,32 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Chord6}
 \emph{Chord6}~\cite{XZHL2005} is another \emph{Chord}-variant that
-exploits {\sl IPv6}'s  hierarchical features in order to create 
+uses IPv6's  hierarchical features to create 
 a substrate that reduces inter-domain traffic among service providers. 
 The key difference between
 \emph{Chord6} and \emph{Chord} lies on the identifier definition. 
-Therefore, the approach can be easily portable to other 
+The adopted approach is deemed as easily portable to other 
 \emph{DHT}s including \emph{CAN}, \emph{Pastry} and \emph{Tapestry}. 
+%%
 \emph{Chord6}'s identifier contains two parts: 
 the higher bits are obtained by hashing the
-node's {\sl IPv6} address prefix of specific length, 
-while the remaining lower bits are the hash-value 
-of the rest of the {\sl IPv6} address. 
-As a result of this assignment, nodes in a domain are mapped 
+node's IPv6 address prefix (of specific length), 
+while the remaining lower bits of the identifier 
+is the hash-value of the remaining of the IPv6 address. 
+%%
+As a result, nodes in a domain are mapped 
 onto a continuous key space on the overlay network;
 the latter avoids unnecessary message--forwarding across different
 service providers and helps minimize overall routing cost.
 
-\emph{Chord6} does reduce the average system path length to be
-logarithmically proportional to the number of available domains 
-instead of the number of participating peers. 
-However, due to the large number of Internet
+\emph{Chord6} does reduce the average 
+length of hops traversed
+% system path length 
+to be logarithmically proportional to the number 
+of available domains instead of the number of participating peers. 
+Due however to the large number of Internet
 domains and the possibility of occasionally having only 
-small number of peers within each domain,
+a small number of peers within each domain,
 \cite{DK2006} challenges the approach's scalability and efficiency.
 %%
 Overall, the approach fares as follows:
@@ -863,7 +914,7 @@ low
 % \subsubsection{DHT-PNS}
 A proximity neighbor selection scheme functioning atop 
 the \emph{Chord DHT} is introduced in~\cite{DLTZZ2006}.
-Its key objective here has been to group physically-close nodes as 
+Its key objective was to group physically-close nodes as 
 neighbors in the \emph{DHT} table while exploiting proximity information.
 To detect proximity, virtual network coordinates for 
 peers are used with the help of the Vivaldi protocol~\cite{cox_vivaldi_2004}. 
@@ -879,28 +930,35 @@ sequence number of the annulus starting from $\chi = 1$
 for the center cycle. 
 In this way, 
 \cite{DLTZZ2006} prove that each sector
-occupies the same area as does the center cycle. 
-Assuming uniform node distribution, this characteristic,
-favors a more load--balanced clustering operation. 
+This characteristic favors a more load--balanced clustering operation
+should we assume uniform node distribution.
 Every sector in this $2d$ space is mapped to 
 a unique \emph{region} in the \emph{DHT} space forming a
 multi-layer node identifier space.  
-Consequently, nodes belonging to the same
-sector, are mapped to the same region as well, preserving their proximity
-relationship. Individual elements are uniquely mapped to the identifier--space,
+Consequently, nodes from the same
+sector are mapped to the same region as well, 
+preserving their proximity relationship. 
+
+Individual elements are uniquely mapped to the identifier--space,
 allowing logarithmic lookup operations with high 
-probability on \emph{Chord}. Also that way a node can obtain its \emph{DHT}
-key and its region key, in a fully distributed manner, just by applying a
-consistent hash function. The node can then communicate with the region's
-master node called \emph{Cluster Node (CN)} which is responsible for clustering 
-the nodes belonging in the same sector or region with that of the node at hand. 
-It registers to its corresponding region and publishes its information, through
-the special peer \emph{CN} and can also ask the latter for other
-nodes that have previously joined the region to add them into its
-neighbor set for future routing table optimization.
+probability on \emph{Chord}. 
+To this end, 
+a node can obtain its \emph{DHT} key and its region key, 
+in a fully distributed manner, just by applying a consistent hash function. 
+The node can then communicate with the region's
+master node called \emph{Cluster Node (CN)} which 
+is responsible for clustering 
+the nodes belonging in the same sector or 
+region with that of the node at hand. 
+%%
+The node registers to its corresponding region  and publishes
+its information, through the special peer \emph{CN};
+the peer can also ask \emph{CN} for other
+nodes that have previously joined the region to enhance 
+the peer's neighbor set for future routing table optimization.
 %
-If no other nodes are on that region, the search is expanded to neighbouring
-regions.
+If no other nodes are found within the region, 
+the search is expanded to neighbouring regions.
 %
 %% VM rephrase the one bellow as above in a super compact form
 %%AD the one below is not a parse-able sentence!!! What does it say???
@@ -916,12 +974,12 @@ regions.
 %%%%%		... rather cryptic - does need work and better connection 
 %%%%%		with the 1st paragraph...
 %%
-Unfortunately, even though scaling appeared promising, only limited 
+Even though scaling appeared promising, only limited 
 simulations were carried out with configurations involving up to 2,048 nodes.
 Moreover the approach assumes uniform node distribution which
 is not always the case, especially in a synthetic coordinate system.
 %%
-\emph{Chord DHT} fares as follows in reference to the $3$ criteria:
+\emph{Chord DHT} fares as follows in reference to the stated $3$ criteria:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -1033,20 +1091,27 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{IP-based Clustering (IPBC)}
-Proximity neighbor selection algorithms often use probing to detect proximity. 
+\emph{Proximity neighbor selection} algorithms often 
+use probing to detect proximity. 
 However, such methods suffer by imprecisions often due to network overload.
-{\sl IP}-based clustering (IPBC)~\cite{KM2007} uses {\sl IP} address prefixes
-($16$ bit for {\sl IPv4}) to detect proximity.
-Such proximity information (IP addresses of network participants) can be
-easily stored in the DHT itself.
+IP-based clustering or \emph{IPBC}~\cite{KM2007} uses IP address prefixes
+($16$~bits for IPv4) to detect proximity.
+Such proximity information 
+% (IP addresses of network participants) 
+can be easily stored in the DHT itself.
 
-Each peer in the overlay has a unique ID and and an IP address to
-characterize it. To publish itself it hashes a fixed-length prefix
-its IP to obtain a key and stores its ID and IP in the DHT itself. 
+Each peer in the overlay has a unique \emph{ID} and and an IP address to
+characterize it. 
+To publish itself, the peer hashes a fixed-length prefix of 
+its IP to obtain a key and stores the resulting \emph{ID} and IP 
+in the DHT. 
 Newly joining nodes with the same {\sl IP} prefix 
-can, thus, query the \emph{DHT} and readily identify all neighbors with the
-same prefix. Nodes periodically update their entries in the \emph{DHT} 
+can, thus, query the \emph{DHT} and readily identify all 
+neighbors with the same prefix. 
+Nodes periodically update their entries in the \emph{DHT} 
 by removing those who leave or have timed-out.
+%%
+
 The overhead of the algorithm is very low as proximity detection requires only
 a comparison of prefixes. On the other hand, the efficiency of the proximity
 is caught into a vicious cycle with the storage space needed for \emph{DHT} 
@@ -1081,7 +1146,7 @@ environments.~\cite{EWF2011}.
 % expiration time, and thus ultimately removed by the DHT maintenance
 %mechanisms.
 %
-The suggested approach fares as follows:
+The suggested \emph{IPBC} approach fares as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -1192,31 +1257,36 @@ To adapt to mobile ad-hoc networks, \emph{DynaMO} strives
 to maintain an evenly--distributed overlay \emph{ID}-space 
 so that hot-spots are avoided. 
 %%
-Although based on the \emph{Pastry} overlay and 
+Although based on \emph{Pastry} and 
 its well understood built-in locality heuristics~\cite{CDCR2002a},
-\emph{DynaMO}'s own mechanisms are \emph{DHT}-independent and 
-so, they can be applied to other \emph{DHT}s.
+\emph{DynaMO}'s own mechanisms are {DHT}-independent and 
+so, they can be applied to other overlays.
 \emph{DynaMO}'s approach may be viewed as bottom-up. 
+
 An incoming node computes physical information about its neighborhood
 and uses the outcome to unilaterally assign itself an \emph{ID}.
-The proposal is based the fact that with every new overlay routing-hop
+The approach suggests that for every new overlay routing-hop 
 the physical distance between nodes is likely to increase
 resulting in a dominating
 last routing step~\cite{antony_pastry_2001,CDCR2002a}.
-To identify this step, two techniques are used: 
+To identify this dominating step, two techniques are used: 
 \emph{Random LandMarking (RLM)} and 
 \emph{Closest Neighbor Prefix Assignment (CNPA)}.
 In \emph{RLM}, a set of peers are chosen to be responsible 
 for a set of landmark keys. These keys have to be chosen in a way that they
-equally divide the overlay space (i.e. in a 16 base an appropriate split
-would be 000..0, 100..0, 200..00, ... , F00..00).
-An new-coming peer then computes distances from those landmarks,
+equally divide the overlay space (i.e., in a $16$--base an appropriate split
+would be $000..0$, $100..0$, $200..00$, ... , $F00..00$).
+%
+
+A new-coming peer then computes distances from those landmarks,
 sorts them, and assigns itself an \emph{ID} on this 
 landmark ordering as follows:
-the peer adopts as \emph{ID} having a prefix from its closest
-landmark; the length is 
-$l_{prefix}=|log_b k|$, where $b$ is the \emph{ID} base 
+the peer adopts sets the prefix of its \emph{ID} to be equal to that 
+of its closest landmark.
+The length of this prefix is 
+$l_{prefix}=|log_b k|$, where $b$ is the \emph{ID}--base 
 and $k$ the number of landmarks. 
+%%
 The remaining of bits of the peer-\emph{ID} are assigned either 
 randomly or computed with additional proximity optimizations.
 In this way, two desirable features are attained:
@@ -1231,15 +1301,16 @@ last routing step.
 
 \emph{CNPA} is proposed for network setups for which a lightweight
 bootstrap phase is required.
-It delegates to \emph{Pastry} the task to identify the physically
-close--node with which an incoming peer gets bootstrapped. 
-The new-comer assumes the bootstrapping nodes's \emph{ID} prefix 
-and fills the remaining of its key using the techniques of \emph{RLM}.
-
+It delegates the task of identifying the physically
+close--node to \emph{Pastry}; this node is used by the 
+incoming peer to get bootstrapped.
+The new-comer takes the bootstrapping nodes's \emph{ID} prefix 
+and fills the remaining bits of its key using the \emph{RLM} technique.
+%%
 \emph{RLM} gets evaluated as presenting good proximity in a load-balanced 
 environments. Moreover, it is adaptable to high-churn settings.
 Unfortunately, \emph{RLM} bootstrap overhead is substantial and can 
-effect the set of landmarks.
+effect the set of landmarks~\cite{WZS2004}.
 \emph{CNPA} on the other hand, incurs less overhead but this come 
 at the expense of being more coarse-grained as it is based on prefixes
 to determine proximity during.
@@ -1316,42 +1387,73 @@ medium \\
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Another work that targets mobile networks is \emph{3D Overlay}~\cite{AOS2014}. As the
-name suggests, the logical space of the network is a 3-dimensional space and
-the (transient) logical IDs (LIDs) are of the form of tuples of $M$-bit identifiers
-for each of the $x$, $y$ and $z$ axes. 
-When a peer wants to join the network it broadcasts a join request using
-expanded ring search. This ensures to locate peers that are physically adjacent
-to itself in the physical space. Peers in the network reply to the request
-sending their LID together with the list of their neighbours and the
-corresponding distances to them. Upon receiving the replies, the joining peer
-stores the information to its routing table thus forming an undirected connected
-graph of itself and both its $1$- and $2$-hop neighbours. Using hop distance
-obtained by the underlying (MANET) routing algorithm, builds a
-minimum spanning tree (MST) with itself as the root node and selects as direct
-neighbours the peers that are adjacent in the MST. Moreover, removes all the
-peers that were selected as directs during routing table construction but now
-found to be not adjacent in the MST. This ensures that neighboring peers on the
-overlay are also adjacent in the physical layer. Then the joining peer generates
-its LID which puts it in the 3 dimentional space. The LID computation is repeated
-as part of the update process that is required as a mechanism to maintain
-conectivity and adapt to new network states. Similarly to peer LIDs,
-keys of the files stored in the network are also generated within afformentioned
-3D space. The peer closest to the key of the file is responsible for it. Thus,
-for a peer to search for an object, it needs to generate the key for it and then
-forward the query. The neighbour to be forwarded the query, is
-selected from the routing table so that its LID and the key of the queried
-resource, brings closest the query in every part of the tuple.
-The interesting proporty of this algorithm is the construction of a multidimentional
-space that results in better load balance and finer grained information to ensure
-that each hop on the overlay during object location, is also a step closer physically
-toward the node that stores it. On the other hand, the use of TTL for its query messages
-renders the network not a pure DHT as it looses the ability that traditional
-DHTs have for zero false negative queries. Moreover, as the authors also admit, it
-does not adapt quickly to network changes and the evaluation was based on the assumption
-of low mobility scenarios. For the above reasons, 3DO exhibits the following performance
-with respect to the comparison criteria:
+\emph{3D Overlay (3DO)}~\cite{AOS2014} targets mobile networks.
+As the name suggests, the logical space of the network is 
+a $3$--$d$ space and the used ``transient'' (continually changing) 
+logical \emph{ID}s (\emph{LID}s) consist of $3$ axes, $x$, $y$ and $z$ 
+in the form of a tuple;
+each such axis value is represented by an $M$-bit identifier.
+%%
+A newlly-arriving peer broadcasts a join request using
+an TTL-based expanding ring search. 
+This helps locate peers that are physically adjacent.
+Responding peers send in 
+their \emph{LID}s along with a list of their neighbors 
+and their corresponding distances from those neightbors. 
+%%
+Once the joining peer receives the above responses,
+it stores requisite information in its own routing table 
+and so, it generates an undirected connected
+graph of itself with both its $1$- and $2$-hop neighbours. 
+%%
+Starting off this graph and with the help of hop 
+distances obtained from the underlying MANET,
+the incoming peer builds a minimum spanning tree (MST)
+with itself as the root node; 
+in this tree, the nodes adjacent to the root become the
+direct neighbors of the peer.
+%%
+In addition, the entries of the initial routing table 
+that do not correspond to above direct neighbors are
+eliminated.
 
+The procedure above ascertains that close peers on the
+overlay are also adjacent at the physical layer. 
+%%
+At this stage, a peer can generate its \emph{LID}
+that automatically places it in the $3$-$d$ network space.
+Updates in the peer's connectivity infromation 
+reflecting continual changes in the mobile network,
+trigger updates on the composition of \emph{LID} itself.
+
+%%AD work on what the following says.. 
+%%VM I wrote the following paragraph as 
+\emph{3DO} stores objects in the same $3$-$d$ space. For each
+file $f$, a key $k$ of the form of an $x$, $y$ and $z$ tuple
+is hashed out of the file's unique ID~(e.g., filename).
+The node whose \emph{LID} is closer to $k$ stores the
+file itself.
+%%
+To retrieve the file, the requesting node calculates $f$'s $k$
+and issues a query message. The message is a associated with a TTL
+value. Each peer forwards that query to the node,
+in its routing table, that is closest to $k$ up until the peer
+that stores the file is reached or the query's lifetime expires.
+
+\emph{3DO} focuses on
+the creation of a $3$-$d$ space that yields improved load balancing 
+and uses fine--grained information to ensure
+that each hop on the overlay during object location, 
+is also closer physically to the sought object.
+%%
+In contrast, the use of TTL in query messages
+renders the network not--a--pure DHT as it abolishes 
+the zero false--negative queries that traditional DHTs maintain.
+\cite{AOS2014} also concedes that the approach
+does not rapidly adapt to network changes and so
+its evaluation was solely based on low mobility scenarios. 
+For the above reasons, \emph{3DO} exhibits the following behavior:
+%%
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -1389,8 +1491,9 @@ adaptively changes the overlay network to ease the topology mismatch problem.
 It consists of a \emph{probing phase} in which a peer queries nearby nodes 
 for distances and a \emph{jumping phase} in which the peer decides 
 to change its neighborhood in order to reduce average neighbor distances. 
-This process is performed unilaterally
-until no additional optimization is needed but it achieves optimization within a
+This process is performed iteratively
+until no additional optimization is required; 
+yet, the methods achieves optimization within a
 sufficiently large scope.
 %% VM This is used in other papers. Maybe we can put somewhere in the
 % definition of Topology Mismatch Problem in the intro/background.
@@ -1408,10 +1511,11 @@ latency and $\bar{L_p}$ is the average physical link latency.
 % latency while the $\bar{L_p}$ is the average physical link latency, and uses it
 % a way to quantify the \emph{topology match degree} of the constructed overlay.
 
-The \emph{probing phase} starts when the new-comer joins the \emph{DHT} 
-using the standard mechanism of the algorithm at hand. 
-The peer starts probing the neighborhood with 
-messages of small \emph{TTL=k}~\cite{jiang_lightflood_2008}. 
+% The \emph{probing phase} starts when the new-comer joins the \emph{DHT} 
+% using the standard mechanism of the algorithm at hand. 
+When a peer joins the \emph{DHT}, it starts 
+its \emph{probing phase} by contacting the neighborhood with 
+messages having small \emph{TTL=k}~\cite{jiang_lightflood_2008}. 
 Recipients return information to the source and forward the message 
 if not expired. 
 After discovering its \emph{TTL}-$k$ neighborhood, 
@@ -1419,29 +1523,21 @@ the source measures \emph{RTT}-times, sorts them
 and picks the two nodes with the smallest \emph{RTT}s.
 
 During the \emph{jumping phase}, the source node calculates the 
-stretch change to all its own direct neighbours and to the direct neighbours
+stretch change to all its direct neighbours and to the direct neighbours
 of the first peer that was selected in the probing phase, as if
-the jump has been performed. Using heuristics the node decides if the stretch
-reduction is enough to perform the actual jump, otherwise it selects the
-second peer from the probing phase and repeats the computation. If again, the
+the jump has been performed. 
+Using heuristics, the node determines if the stretch
+reduction is sufficient to perform the actual jump; 
+otherwise, it selects the second peer from the probing phase 
+and repeats the computation. If again, the
 threshold is not met, then no jump is ultimately carried out.
-%%AD is this done only 2 times?? Or is it done recursively??
-%%VM no it stops
-%% Quoting from the paper
-% Our experiments
-% show that targeting the two zones associated with the two
-% closest nodes is most effective. This is because adaptive
-% and iterative local optimizations will quickly or eventually
-% group the physically close nodes in the same overlay zone.
-% If a node outside a zone finds a close node in the zone, the
-% rest of the nodes will be likely to be or eventually to be close
-% to it.
+
 Experimentation shows that \emph{SAT-Match} 
 attains a $27\%$ stretch reduction over 
 a landmark-enhanced \emph{CAN}-alternative.
-Based on this result, it is conjured that \emph{SAT-Match} 
+This result shows that \emph{SAT-Match} 
 may perform better than landmark binning in terms of the matching degree
-of the logical to the physical networks. 
+of the logical to the physical networks.
 \emph{SAT-Match} behaves as follows with respect to the stated $3$ criteria:
 %%
 % Figure~\ref{figure:sat_match} demonstrates the selective jump on an
@@ -1533,48 +1629,39 @@ medium
 % the node to the network, so that nodes within the same network domains are
 % selected as peers, or neighbors, during the overlay topology construction.
 
-This section outlined
-% gathered together  some of the most distinctive 
-representative research that attempts 
-to address the issue of inefficient network resource utilization 
-as this is created by the network topology mismatch
-in structured \p-systems.
-Depending on the salient features the surveyed techniques seek to explore,
-\cite{CDHR2002,CDCR2002,RSS2002} categorize the solutions based on:
-%%AD the categorization is due to 3 above citations??? Us?? ;-)
-%% VM: As mentioned in the intro this categorization is due to the 3 above
-% citations
-%
-% A categorization of the methods used for achieving their goals is the
-% following based on previous work from
-% \cite{CDHR2002,CDCR2002,RSS2002}:
+So far in this section, we have discussed research efforts 
+trying to address the issue of inefficient network resource utilization 
+manifested by network--topology mismatches in structured \p-systems.
+Based on the salient feature of outlined techniques
+\cite{CDHR2002,CDCR2002,RSS2002}, we classify furnished solutions 
+using the following aspects:
 \begin{enumerate}[\itshape i\upshape)]
   \item geographic-layout,
   \item proximity routing, and 
   \item proximity neighbor selection,
 \end{enumerate}
 
-%%COM-VM Added the following to mention the hybrid/combo methodologies
-Similarly to unstructured approaches, most of the approaches 
+%%VM Added the following to mention the hybrid/combo methodologies
+Similarly to unstructured approaches, most of the methods
 reviewed in this section entail features from multiple of the above categories. 
 For example, \cite{KLKP2008}~uses both proximity routing 
-and proximity neighbor selection to achieve topology adaptation 
-or \emph{LAPTOP} combines geographic--layout with
-replication strategies to refine its results. 
+and proximity neighbor selection to achieve topology adaptation,
+while \emph{LAPTOP} combines geographic--layout with
+replication strategies to refine its results.
 %%%
 The heuristic nature of the suggested solutions opens them up 
-to trade-offs which in most cases are 
+to trade-offs which, in most cases, are 
 highly affected by the application domain and the implementation itself.
 
 Table~\ref{structured:table} offers a quick overview of how the surveyed 
-approaches behave.  
+approaches behave.
 The topics of topology adaptation, landmarking and caching/replication
 are not further elaborated as they have been discussed 
 in Section~\ref{section:unstructured}.
-In a similar fashion to Table~\ref{unstructured:table}, we offer 
-key properties of every approach 
-that differentiate it from competitors and
-highlight each algorithm's pros and cons.
+In a similar fashion to Table~\ref{unstructured:table}, 
+we outline key properties of each surveyed approach 
+that helps diffferentiate techniques from competitors.
+We also highlight pros and cons for all proposals discussed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic-layout} \label{section:geographic_layout}
@@ -1592,14 +1679,14 @@ highlight each algorithm's pros and cons.
 This category consists of methods that try to map the overlay id space on to
 the physical one, as depicted in Figure~\ref{figure:geographic-layout}.
 Routing tables of involved peers, are adjusted and maintained by exploiting
-proximity information that describe the overall (geographic) positioning of
-the participants, in contrast to proximity routing and proximity neighbour
-selection where decisions are taken based on and effecting a peer's nearby
-environment.
+proximity information that describes the overall (geographic) positioning of
+the participants. This comes in contrast to proximity routing and proximity neighbour
+selection (discussed later on) where decisions are taken based on and effecting
+a peer's nearby environment.
 
 \begin{figure}[ht]
 \centering
-  \includegraphics[scale=0.4]{img/pdf/geographic-layout.pdf}
+  \includegraphics[scale=0.36]{img/pdf/geographic-layout.pdf}
 \caption{Successive nodes in the overlay circle can be chosen to be from the
 same or near autonomous systems (\emph{AS}).}
 \label{figure:geographic-layout}
@@ -1615,21 +1702,21 @@ However, as already discussed, these
 methods do not always yield reliable estimates for node positions over the
 Internet. 
 Landmark servers are not self-organizing and present maintenance
-overheads. Moreover, to serve a \p--network with millions of peers, multiple
+overhead. Moreover, to serve a \p--network with potentially millions of peers, multiple
 such servers are required to be distributed over the world, which is a difficult
 proposition per se.
 \emph{RTT}s can measure the delay between peers, but their use constitutes a
-greedy method that can result in non-optimal overlay topologies;
+greedy method that can result in sub-optimal overlay topologies;
 the latter is especially true if nearby 
 nodes happen to be connected through low bandwidth connections.
 
 On one hand, approaches based on \emph{geographic layout} improve the query
 efficiency of the system in general and are especially effective when applied
-to CAN(-like) implementations. Unfortunatelly, in the same time, undermine the
-uniform distribution of peer identifiers which in turn tend to create 
-hot-spots and limited node resilience to failures. Such resilience appears to
-suffer as nearby nodes are more likely to suffer collective
-failures~\cite{HY2007}.
+to CAN-like implementations. On the other hand, they inherently undermine the
+uniform distribution of peer identifiers. This is an important downside as it
+creates hot-spots that hurt system scalability. Moreover, as nearby nodes
+are more likely to suffer collective failures~\cite{HY2007}, it adversely affects
+system availability.
 %% VM reworded the above paragraph, please check it out.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1669,9 +1756,9 @@ failures~\cite{HY2007}.
 
 %% VM Rewrote above as below
 This category of approaches use physical proximity knowledge to decide the best
-next hop during routing. As shown in Figure~\ref{figure:proximity-routing}
+next hop during routing. As shown in Figure~\ref{figure:proximity-routing},
 maintenance of routing tables themselves is a separate process based only on the
-system's DHT construction mechanism and overlay id distribution.
+system's DHT construction mechanism and overlay ID distribution.
 
 \begin{figure}[ht]
 \centering
@@ -1686,7 +1773,7 @@ the tenets of this category such as \emph{Mithos} and
 \emph{PChord} as well as others that function along with 
 proximity neighbor selection such as \emph{DynaMO}.
 %%
-When \emph{PR} based algorithms route messages, they try to balance between
+When \emph{PR}--based algorithms route messages, they try to balance between
 choosing the node that will further progress the routing towards the
 destination and picking the closest entry in the routing table
 in terms of network proximity. 
@@ -1695,11 +1782,11 @@ in terms of network proximity.
 %%	in order for the contrast here to be valid..
 %%
 %% VM Is the above now better with the rewording of the section's opening paragraph?
-In the degenerated case that the system ends up using a greedy approach that
-selects only the lowest latency paths on the overlay, can, ultimately, result in
-more hops to reach the destination thus yielding suboptimal, longer paths on
-the physical topology as well. PR is also less less effective than geographical
-layout when applied to CAN(-like) implementations.
+In the degenerate case, a system could use a greedy approach to select
+only the lowest latency candidate peers during forwarding. That would to
+longer, sub--optimal, paths to the destinations; thus imposing
+extra stress to network resources. PR is also less
+effective than geographical layout when applied to CAN--like implementations.
 %%AD re-work carefully this segment...
 %% VM how is it now?
 
@@ -1723,7 +1810,7 @@ layout when applied to CAN(-like) implementations.
 
 % \emph{Proximity Neighbor Selection (PNS)} 
 Algorithms in this category use proximity data during routing table construction
-and maintenance as shown in Figure~\ref{figure:proximity-neighbour-selection}.
+and maintenance along the lines of Figure~\ref{figure:proximity-neighbour-selection}.
 %%
 \begin{figure}[ht]
 \centering
@@ -1733,9 +1820,9 @@ account during routing table maintenance.}
 \label{figure:proximity-neighbour-selection}
 \end{figure}
 %%
-The proximity information used here is different from that of 
+The proximity information used is different from that of 
 landmark-based systems described in Section~\ref{section:geographic_layout};
-here, \emph{TTL} values between nodes (i.e., \emph{SAT-Match}) or 
+here, \emph{RTT} values between nodes (i.e., \emph{SAT-Match}) or 
 \emph{IP} address prefixes (i.e., \emph{DynaMO}) % or \emph{Cone}) %%VM removing Cone from paper
 are predominantly used to detect proximity. 
 \cite{freedman_iploc_2005} states that $97\%$ of prefixes larger
@@ -1744,14 +1831,15 @@ However, using a smaller number of bits creates less precise results
 and a larger number of bits may increase the burden in the network
 and simultaneously reduce the possible number of neighbors. 
 %%
-Moreover, \cite{HLYW2005} argue that such approaches can
+Moreover, \cite{HLYW2005} argue that prefix--based approaches can
 destroy the uniform distribution in the key space and do not work in
 one-dimensional key space where the mapping is restricted to 
 operate at the overlay.
+
 Therefore, a careful selection is required in terms of
 performance/accuracy trade-off. 
 \emph{Tapestry}, \emph{Pastry}, and \emph{CAN} successfully incorporated
-proximity neighbor selection into their algorithms. 
+proximity neighbor selection into their methods. 
 The routing protocol in \emph{Pastry} is based on longest node 
 \emph{ID} prefix matching, while \emph{CAN} uses \emph{RTT} values to
 detect nearby nodes. \cite{CDCR2002a} reports that proximity neighbor
@@ -1759,8 +1847,8 @@ selection is an effective proximity based method.
 %%AD perhaps the ending of the previous segment should be used here...
 %% VM: added below
 In general, proximity neighbor selection is considered 
-as a superior method to proximity routing, however, joint uses of the 
-approaches are possible.
+superior to proximity routing, however, simultaneous use of both
+are also possible.
 
 % \item Proximity Neighbor Selection\\
 %Finally, the third approach, constructs the routing tables using proximity

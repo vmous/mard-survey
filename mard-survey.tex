@@ -374,6 +374,8 @@
 \usetikzlibrary{patterns}
 \usepackage{supertabular}
 
+\usepackage{comment}
+
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -411,12 +413,13 @@
         H\"useyin Akcan,
         Mema Roussopoulos,
         and~Alex Delis,~\IEEEmembership{Member,~IEEE}% <-this % stops a space
-\thanks{Vassilis Moustakas, Mema Roussopoulos and Alex Delis are with the Department
-of Informatics and Telecommunications, National and Kapodistrian University of Athens,
-GR15784, Athens, Greece (e-mails: {vsmoustakas,mema,ad}@di.uoa.gr.}% <-this % stops a space
+\thanks{Vassilis Moustakas, Mema Roussopoulos and Alex Delis are 
+	with the Department of Informatics and Telecommunications, 
+	\emph{University of Athens},
+GR15784, Athens, Greece, e-mails: \emph{\{vsmoustakas,mema,ad\}@di.uoa.gr}}% <-this % stops a space
 \thanks{H\"useyin Akcan is with the Department of Software Engineering,
-Izmir University of Economics, Izmir, Turkey (email: huseyin.akcan@ieu.edu.tr).}% <-this % stops a space
-\thanks{Manuscript received June 30, 2015; revised July 31, 2015.}}
+\emph{Izmir University of Economics}, 35330 Balcova, Izmir, Turkey, email: \emph{huseyin.akcan@ieu.edu.tr}}% <-this % stops a space
+\thanks{Manuscript received April 30, 2015; revised April 30, 2015.}}
 
 % note the % following the last \IEEEmembership and also \thanks - 
 % these prevent an unwanted space from occurring between the last author name
@@ -469,43 +472,7 @@ Izmir University of Economics, Izmir, Turkey (email: huseyin.akcan@ieu.edu.tr).}
 % make the title area
 \maketitle
 
-% As a general rule, do not put math, special symbols or citations
-% in the abstract or keywords.
-\begin{abstract}
-\emph{Peer-to-peer} (\p) systems have enjoyed immense attention and have been
-widely deployed on the Internet for well ov, er a decade.
-They are implemented via an overlay network abstraction, on top 
-of the Internet's best-effort IP infrastructure. 
-\p\ systems support a plethora of desirable features to
-distributed applications that are built on top of them including
-anonymity, high availability and robustness, 
-load balancing, quality of service, scalability, to name just a few.
-Unfortunately, inherent weaknesses of early deployments of \p\ systems, prevented 
-applications from leveraging the full potential of the paradigm.
-One major weakness, identified early on, is the \emph{topology mismatch problem}
-between the overlay network and the underlying IP topology.
-This mismatch can impose an extraordinary amount of unnecessary stress on
-network resources and can adversely affect the scalability and efficiency of
-applications built atop.
-In this paper, we survey over a decade's worth of research efforts
-aimed at alleviating the topology mismatch problem, in both unstructured
-and structured \p\ systems.   
-We provide a fine-grained categorization of the suggested solutions
-by discussing their novelty, advantages and weaknesses.
-Finally, we offer an analysis as well as pictorial comparisons 
-of the reviewed approaches, since we aim to offer a comprehensive
-reference for developers, system architects and researchers in the field.
-\end{abstract}
-
-% Note that keywords are not normally used for peerreview papers.
-\begin{IEEEkeywords}
-Distributed systems, peer-to-peer, overlay network, topology mismatch,
-topology awareness
-\end{IEEEkeywords}
-
-
-
-
+\input{abstract}
 
 
 % For peer review papers, you can put extra information on the cover

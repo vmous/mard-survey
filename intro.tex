@@ -25,10 +25,11 @@ million concurrently-connected peers, as well as
 \p\ telephony saw explosive growth with the advent of {\sl Skype}.
 Since its introduction in $2003$,
 {\sl Skype} has become extremely popular with more than $650$ million users 
-in $2011$~\cite{skypetotalusers}, an astonishing $50$+ million concurrently-online
-users~\cite{skypesymusers} and slowly but steadily replacing traditional
-carrier traffic for services like telephony services, which was recently estimated to
-have reached 214 billion minutes for year 2013~\cite{skypetraffic}.
+in $2011$~\cite{skypetotalusers} and an astonishing 
+$50$+ million concurrently-online users~\cite{skypesymusers}.
+Moreover, it has consistently eroded  the traffic handled by 
+traditional telephony carriers by slicing away a staggering 
+$214$ billion minutes of pertinent traffic in $2013$ alone~\cite{skypetraffic}.
 
 %%
 Apart from the above, a startling number of diverse and successful
@@ -43,7 +44,7 @@ censor-resistant stores~\cite{cswh_freenet_2001} and
 lately, even cloud-based platforms~\cite{mgpj_cloudsnap_2011}.
 
 \p\ systems are implemented using \emph{overlay networks}. 
-An overlay network, is a virtual system of nodes and logical links
+An overlay network, is a virtual system of nodes featuring logical interconnects (or links)
 created above an existing network; overlays provide an abstraction that
 enables the implementation of efficient, fully distributed, application-layer
 services such as routing messages to destinations that are not known in advance
@@ -56,7 +57,7 @@ over a wide-area network.
 %%
 \begin{figure}[ht]
 \centering
-  \includegraphics[scale=0.53]{img/pdf/under-over-lay.pdf}
+  \includegraphics[scale=0.45]{img/pdf/under-over-lay.pdf}
 \caption{An example overlay network.}
 \label{figure:overlay}
 \end{figure}
@@ -74,13 +75,14 @@ underlying IP links between these two nodes is minimized.
 Should the overlay network be constructed so that
 it does not match the underlying topology well, 
 the inherent \emph{topology mismatch} gives two
-significant problems. First, the performance of the application per se, can be
+major problems. 
+First, the performance of the application per se, can be
 adversely affected since traffic must flow over a larger,
 redundant, number of physical hops resulting in poor user experience 
 entailing noticeable latencies or jittering. 
 %%
 Second, other applications running
-on the underlying network infrastructure are also adversely affected.
+on the underlying network infrastructure may be adversely affected as well.
 Studies have shown that highly popular \p\ applications contribute 
 the largest portion of the overall 
 Internet traffic~\cite{seroiu_analysiscds_2002,sen_analyzep2ptraffic_2004,krp_ispfear_2005}, with some reporting that more than $60$\% of this traffic 
@@ -103,7 +105,8 @@ underlying IP topology.
 For over a decade, researchers have extensively investigated  
 various aspects of the topology mismatch problem.
 The main objective of this paper is to offer a comprehensive 
-survey of the work done in this and provide a
+survey of the work carried out in the area
+and provide a
 taxonomy of the proposed solutions. We point out synergies, as well as
 similarities and differences in the published approaches. 
 Ultimately, our goal is to help readers sift through 
