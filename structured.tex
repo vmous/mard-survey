@@ -1387,21 +1387,22 @@ medium \\
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\emph{3D Overlay (3DO)}~\cite{AOS2014} targets mobile networks.
-As the name suggests, the logical space of the network is 
+\emph{3D Overlay (3DO)}~\cite{AOS2014} seeks to address the 
+network mismatch problem  for peers operating in mobile networks.
+As its name suggests, the network logical space is 
 a $3$--$d$ space and the used ``transient'' (continually changing) 
 logical \emph{ID}s (\emph{LID}s) consist of $3$ axes, $x$, $y$ and $z$ 
 in the form of a tuple;
 each such axis value is represented by an $M$-bit identifier.
 %%
 A newlly-arriving peer broadcasts a join request using
-an TTL-based expanding ring search. 
-This helps locate peers that are physically adjacent.
+an \emph{TTL}-based expanding ring search helping locate 
+peers that are physically adjacent.
 Responding peers send in 
 their \emph{LID}s along with a list of their neighbors 
 and their corresponding distances from those neightbors. 
 %%
-Once the joining peer receives the above responses,
+Once a joining peer receives the above responses,
 it stores requisite information in its own routing table 
 and so, it generates an undirected connected
 graph of itself with both its $1$- and $2$-hop neighbours. 
@@ -1410,14 +1411,14 @@ Starting off this graph and with the help of hop
 distances obtained from the underlying MANET,
 the incoming peer builds a minimum spanning tree (MST)
 with itself as the root node; 
-in this tree, the nodes adjacent to the root become the
+in this MST, the nodes adjacent to the root become the
 direct neighbors of the peer.
 %%
-In addition, the entries of the initial routing table 
+Moreover, the entries of the initial routing table 
 that do not correspond to above direct neighbors are
 eliminated.
 
-The procedure above ascertains that close peers on the
+The above procedure ascertains that close peers on the
 overlay are also adjacent at the physical layer. 
 %%
 At this stage, a peer can generate its \emph{LID}
@@ -1426,33 +1427,34 @@ Updates in the peer's connectivity infromation
 reflecting continual changes in the mobile network,
 trigger updates on the composition of \emph{LID} itself.
 
-%%AD work on what the following says.. 
-%%VM I wrote the following paragraph as 
 \emph{3DO} stores objects in the same $3$-$d$ space. For each
 file $f$, a key $k$ of the form of an $x$, $y$ and $z$ tuple
-is hashed out of the file's unique ID~(e.g., filename).
+is hashed out of the file's unique \emph{ID}~(e.g., filename).
 The node whose \emph{LID} is closer to $k$ stores the
 file itself.
 %%
 To retrieve the file, the requesting node calculates $f$'s $k$
-and issues a query message. The message is a associated with a TTL
-value. Each peer forwards that query to the node,
-in its routing table, that is closest to $k$ up until the peer
-that stores the file is reached or the query's lifetime expires.
+and issues a query message. 
+The message is a associated with a \emph{TTL} value. 
+Each peer forwards that query to the node,
+in its routing table, that is closest to $k$ until either the peer
+that stores the file is located or the query's lifetime expires.
 
 \emph{3DO} focuses on
-the creation of a $3$-$d$ space that yields improved load balancing 
-and uses fine--grained information to ensure
+the creation of a $3$-$d$ space whose stated objective is to
+yield improved load balancing 
+and exploit fine--grained information to ensure
 that each hop on the overlay during object location, 
 is also closer physically to the sought object.
 %%
-In contrast, the use of TTL in query messages
+However, the use of \emph{TTL} in query messages
 renders the network not--a--pure DHT as it abolishes 
 the zero false--negative queries that traditional DHTs maintain.
 \cite{AOS2014} also concedes that the approach
 does not rapidly adapt to network changes and so
 its evaluation was solely based on low mobility scenarios. 
-For the above reasons, \emph{3DO} exhibits the following behavior:
+For the above reasons, \emph{3DO} exhibits the following behavior 
+in conjunction with our three stated criteria:
 %%
 \begin{center}
 {\footnotesize
@@ -1502,15 +1504,7 @@ the \emph{topology match degree} of the constructed overlay;
 stretch is defined as: 
 $S = \bar{L_l}/\bar{L_p}$ where $\bar{L_l}$ is the average logical link
 latency and $\bar{L_p}$ is the average physical link latency.
-%%AD what are the indexes: l and p -- p for peer and l for new peer???
-%% VM: no l for logical and p for physical
-%%AD rephrased what is below as above... 
 % 
-% The paper defines \emph{stretch}
-% $S = \bar{L_l}/\bar{L_p}$, where $\bar{L_l}$ is the average logical link
-% latency while the $\bar{L_p}$ is the average physical link latency, and uses it
-% a way to quantify the \emph{topology match degree} of the constructed overlay.
-
 % The \emph{probing phase} starts when the new-comer joins the \emph{DHT} 
 % using the standard mechanism of the algorithm at hand. 
 When a peer joins the \emph{DHT}, it starts 
@@ -1629,19 +1623,19 @@ medium
 % the node to the network, so that nodes within the same network domains are
 % selected as peers, or neighbors, during the overlay topology construction.
 
-So far in this section, we have discussed research efforts 
+In this section, we have discussed research efforts 
 trying to address the issue of inefficient network resource utilization 
-manifested by network--topology mismatches in structured \p-systems.
+manifested by network--topology mismatches in \emph{structured} \p-systems.
 Based on the salient feature of outlined techniques
 \cite{CDHR2002,CDCR2002,RSS2002}, we classify furnished solutions 
-using the following aspects:
+based on the following aspects:
 \begin{enumerate}[\itshape i\upshape)]
   \item geographic-layout,
   \item proximity routing, and 
   \item proximity neighbor selection,
 \end{enumerate}
-
-%%VM Added the following to mention the hybrid/combo methodologies
+%%
+%%COM Added the following to mention the hybrid/combo methodologies
 Similarly to unstructured approaches, most of the methods
 reviewed in this section entail features from multiple of the above categories. 
 For example, \cite{KLKP2008}~uses both proximity routing 
@@ -1653,8 +1647,8 @@ The heuristic nature of the suggested solutions opens them up
 to trade-offs which, in most cases, are 
 highly affected by the application domain and the implementation itself.
 
-Table~\ref{structured:table} offers a quick overview of how the surveyed 
-approaches behave.
+Table~\ref{structured:table} offers a comparative view 
+on how our surveyed approaches behave.
 The topics of topology adaptation, landmarking and caching/replication
 are not further elaborated as they have been discussed 
 in Section~\ref{section:unstructured}.
@@ -1662,6 +1656,11 @@ In a similar fashion to Table~\ref{unstructured:table},
 we outline key properties of each surveyed approach 
 that helps diffferentiate techniques from competitors.
 We also highlight pros and cons for all proposals discussed.
+
+%%AD Connection???  to the groups???
+In what follows, we place the surveyed structured \p2p-methods in 
+the three categories mentioned above and which are formulated based 
+on utilized proximity and geographic aspects.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic-layout} \label{section:geographic_layout}
@@ -1686,7 +1685,7 @@ a peer's nearby environment.
 
 \begin{figure}[ht]
 \centering
-  \includegraphics[scale=0.36]{img/pdf/geographic-layout.pdf}
+  \includegraphics[scale=0.44]{img/pdf/geographic-layout.pdf}
 \caption{Successive nodes in the overlay circle can be chosen to be from the
 same or near autonomous systems (\emph{AS}).}
 \label{figure:geographic-layout}
@@ -1702,9 +1701,11 @@ However, as already discussed, these
 methods do not always yield reliable estimates for node positions over the
 Internet. 
 Landmark servers are not self-organizing and present maintenance
-overhead. Moreover, to serve a \p--network with potentially millions of peers, multiple
-such servers are required to be distributed over the world, which is a difficult
-proposition per se.
+overhead. Moreover, to serve a structured \p--network with potentially 
+tens of thousands or more 
+% millions 
+peers, multiple such servers are required to be distributed over the world, 
+which is a difficult proposition per se.
 \emph{RTT}s can measure the delay between peers, but their use constitutes a
 greedy method that can result in sub-optimal overlay topologies;
 the latter is especially true if nearby 
@@ -1712,12 +1713,13 @@ nodes happen to be connected through low bandwidth connections.
 
 On one hand, approaches based on \emph{geographic layout} improve the query
 efficiency of the system in general and are especially effective when applied
-to CAN-like implementations. On the other hand, they inherently undermine the
+to \emph{CAN}-like implementations. On the other hand, they inherently undermine the
 uniform distribution of peer identifiers. This is an important downside as it
-creates hot-spots that hurt system scalability. Moreover, as nearby nodes
-are more likely to suffer collective failures~\cite{HY2007}, it adversely affects
-system availability.
-%% VM reworded the above paragraph, please check it out.
+creates hot-spots that hurt system scalability. 
+Moreover, it adversely affects system availability as nearby nodes
+are more likely to suffer collective failures~\cite{HY2007}.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1762,7 +1764,7 @@ system's DHT construction mechanism and overlay ID distribution.
 
 \begin{figure}[ht]
 \centering
-  \includegraphics[scale=0.4]{img/pdf/proximity-routing.pdf}
+  \includegraphics[scale=0.48]{img/pdf/proximity-routing.pdf}
 \caption{Proximity routing takes proximity information into account during the
 routing process.}
 \label{figure:proximity-routing}
@@ -1812,9 +1814,9 @@ effective than geographical layout when applied to CAN--like implementations.
 Algorithms in this category use proximity data during routing table construction
 and maintenance along the lines of Figure~\ref{figure:proximity-neighbour-selection}.
 %%
-\begin{figure}[ht]
+\begin{figure}[hbft]
 \centering
-  \includegraphics[scale=0.4]{img/pdf/proximity-neighbor-selection.pdf}
+  \includegraphics[scale=0.48]{img/pdf/proximity-neighbor-selection.pdf}
 \caption{Proximity neighbor selection dictates that proximity is taken into
 account during routing table maintenance.}
 \label{figure:proximity-neighbour-selection}
