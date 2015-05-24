@@ -1396,7 +1396,7 @@ in the form of a tuple;
 each such axis value is represented by an $M$-bit identifier.
 %%
 A newlly-arriving peer broadcasts a join request using
-an \emph{TTL}-based expanding ring search helping locate 
+a \emph{TTL}-based expanding ring search helping locate 
 peers that are physically adjacent.
 Responding peers send in 
 their \emph{LID}s along with a list of their neighbors 
@@ -1647,20 +1647,22 @@ The heuristic nature of the suggested solutions opens them up
 to trade-offs which, in most cases, are 
 highly affected by the application domain and the implementation itself.
 
-Table~\ref{structured:table} offers a comparative view 
-on how our surveyed approaches behave.
-The topics of topology adaptation, landmarking and caching/replication
-are not further elaborated as they have been discussed 
-in Section~\ref{section:unstructured}.
-In a similar fashion to Table~\ref{unstructured:table}, 
-we outline key properties of each surveyed approach 
-that helps diffferentiate techniques from competitors.
-We also highlight pros and cons for all proposals discussed.
-
 %%AD Connection???  to the groups???
-In what follows, we place the surveyed structured \p2p-methods in 
+%%VM I like it. I put one similar to the unstructured part
+In what follows, we place the surveyed structured \p-methods in 
 the three categories mentioned above and which are formulated based 
 on utilized proximity and geographic aspects.
+With Table~\ref{structured:table}, we offer a comparative view
+of the algorithms in a similar fashion to Table~\ref{unstructured:table}, 
+to outline the key properties of each surveyed approach 
+that helps differentiate techniques from
+competitors~\footnote{The topics of topology adaptation, landmarking and
+caching/replication are not further elaborated as they have been discussed 
+in Section~\ref{section:unstructured}.}.
+Finally, Figures~\ref{structured:plot:efficiency}, \ref{structured:plot:overhead}
+and \ref{structured:plot:scalability} help with the pictorial comparison
+of the algorithms' bahavior with respect to the three effectiveness
+criteria we defined in Subsection~\ref{background:motivation}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic-layout} \label{section:geographic_layout}
