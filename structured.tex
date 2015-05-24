@@ -9,9 +9,9 @@ the way peer routing tables are maintained and used in an effort to make
 overlays as efficient as possible in terms of hops traversed.
 %%AD what does it really mean this below???
 %%VM it means that this split into i) geographic layout, ii) proximity routing
-%%   and iii) proximity neighbour selection types of algorithms are terms
+%%   and iii) proximity neighbor selection types of algorithms are terms
 %%   coined in those papers
-Our categirization is based on previous work 
+Our categorization is based on previous work 
 found in~\cite{CDHR2002,CDCR2002,RSS2002}.
 
 \subsection{Algorithms for Structured Architectures}
@@ -181,7 +181,7 @@ low
 
 %%AD what is GNP??? How did it "land" here???
 
-\emph{Mithos}~\cite{WR2003} ensures that neighbouring nodes in the overlay are
+\emph{Mithos}~\cite{WR2003} ensures that neighboring nodes in the overlay are
 close also in terms of the underlying layer by integrating proximity layout
 and proximity routing overlay optimizations.
 
@@ -201,23 +201,23 @@ nodes within a $2$-hop radius from the current node that helps minimize
 the distance before concluding the process.
 
 $J$ is then assigned a synthetic \emph{ID} that
-represents the state of minimum distance from its close-by $2$-$d$ neighbourhood as
+represents the state of minimum distance from its close-by $2$-$d$ neighborhood as
 this was discovered during the aforementioned phase. % iterative selection phase.
 The benefit of adopting synthetic coordinates is that distance computations
 among nodes can be done in the \emph{ID} space without requiring physical
 measurements. 
-Mithos proceeds then to designate $J$'s closest neighbours as 
+Mithos proceeds then to designate $J$'s closest neighbors as 
 previous steps do not reveal with certainty which these nodes are.
 %%
 Using Mithos \emph{quadrant-based} mechanism,
-$J$  divides the $2$--$d$ space of neighbours in four regions and 
+$J$  divides the $2$--$d$ space of neighbors in four regions and 
 subsequently, establishes a link 
 to the closest neighbor in each quadrant of the plane. 
 % With peer $J$ dividing the plane into four regions,
 % the \emph{quadrant-based} mechanism Mithos employs, suggests that the node
 % establishes a link to the closest neighbor in each quadrant of the plane. 
 %%
-It does so, by starting from a known node in the neighbourhood
+It does so, by starting from a known node in the neighborhood
 and scanning towards all quadrant borders ~\cite{KK2000,R2002}. 
 
 A noted Mithos limitation is that the protocol cannot effectively
@@ -293,7 +293,7 @@ the root node is assigned address $1$.
 % \item Any node can have children with level lower than theirs, except an
 %  $L_{max}$ node which can only have $L_{max}$ level children and only in the
 % case when its parent has reached its maximum degree.
-% \item Each node is assigned a dot-formated address (e.g 1.3.4). Each octet
+% \item Each node is assigned a dot-formatted address (e.g 1.3.4). Each octet
 % ranges from
 % $1$ to $d$, where $d$ is the maximum degree of the nodes. The assignment
 % process
@@ -582,7 +582,7 @@ medium
 \emph{T2MC}'s~\cite{SLCGZ2008} objective is to diminish the redundant multiple
 messages that may unnecessarily cross autonomous system (\emph{AS}) boundaries.
 The latter represent links that are the costliest to ISPs and hence, 
-mininizing topology mismatches  greatly affects pertinent operational expenditure.
+minimizing topology mismatches  greatly affects pertinent operational expenditure.
 %%
 To achieve that, each node exploits the stable structure of
 the Internet routers to help solve a clustering problem. 
@@ -595,7 +595,7 @@ traceroute and selects the routers with
 minimum and maximum latencies in the above {\sl traceroute} path 
 as initial centroids for the ``nearby'' and ``far-away'' sets respectively.
 Following an iterative procedure, the node comes up with the two sets 
-demostrating minimum intra-set latency variance.
+demonstrating minimum intra-set latency variance.
 At this stage, routers in the ``far-away'' set are not considered critical.
 %%
 %%AD skipping the details???? JUST CHECK
@@ -606,7 +606,7 @@ At this stage, routers in the ``far-away'' set are not considered critical.
 %%
 % The router from the ``far-away'' set that presents the closest distance 
 % from the peer in terms of hops, is designated as beacon.
-% Any node portaying dinstance longer that the above is classified 
+% Any node portraying distance longer that the above is classified 
 % as 
 % 
 % to the peer, in terms of hops, is designated as a beacon.
@@ -633,7 +633,7 @@ undoubtly affects \emph{T2MC}'s operation.
 %%
 Although overall experimental results have been encouraging, 
 \emph{T2MC} is considered rather coarse-grained as it only
-classifies neighbours into two groups \cite{QLZG2009}.
+classifies neighbors into two groups \cite{QLZG2009}.
 %
 %T2MC \cite{SLCGZ2008} uses trace-route logs to detect different autonomous
 %systems and cluster close by peers, thus reducing redundant traffic that crosses
@@ -741,7 +741,7 @@ This yields an equal or even more efficient routing than traditional Chord.
 % Chord, since each hop in \emph{PChord} is larger or 
 % at least equal in the key space.
 
-Unfortunatelly the overlay maintenance cost is somewhat higher than
+Unfortunately the overlay maintenance cost is somewhat higher than
 \emph{Chord} as additional heart-beat messages are required for
 connection verification for the entries of the proximity list. 
 Fortunately, such entries represent nodes 
@@ -754,7 +754,7 @@ and inefficiency in high-churn environments~\cite{DK2006}.
 %% VM:
 %% Removed this whole chuck since most of it sounded like
 %% repetition of the rest of the text below after all.
-%% Please review and remove if you aggree.
+%% Please review and remove if you agree.
 %%
 % Passing through proximity links, in the underlying network, 
 % means reduced routing cost. 
@@ -958,7 +958,7 @@ nodes that have previously joined the region to enhance
 the peer's neighbor set for future routing table optimization.
 %
 If no other nodes are found within the region, 
-the search is expanded to neighbouring regions.
+the search is expanded to neighboring regions.
 %
 %% VM rephrase the one bellow as above in a super compact form
 %%AD the one below is not a parse-able sentence!!! What does it say???
@@ -1184,7 +1184,7 @@ medium
 % both being the prefix and the suffix of the Chord-ID itself, respectively.
 % In escence, the \emph{gid} denotes the relevant (based on a Chord-ID prefix) group to
 % which the node belongs to while the \emph{lid} indicates the local identifier
-% within that group. The Cone topology can be visualised as another ring on top
+% within that group. The Cone topology can be visualized as another ring on top
 % of Chord whose nodes are the groups and each group is each such Cone-node is a
 % ring with the nodes of that group.
 % 
@@ -1395,17 +1395,17 @@ logical \emph{ID}s (\emph{LID}s) consist of $3$ axes, $x$, $y$ and $z$
 in the form of a tuple;
 each such axis value is represented by an $M$-bit identifier.
 %%
-A newlly-arriving peer broadcasts a join request using
+A newly-arriving peer broadcasts a join request using
 a \emph{TTL}-based expanding ring search helping locate 
 peers that are physically adjacent.
 Responding peers send in 
 their \emph{LID}s along with a list of their neighbors 
-and their corresponding distances from those neightbors. 
+and their corresponding distances from those neighbors. 
 %%
 Once a joining peer receives the above responses,
 it stores requisite information in its own routing table 
 and so, it generates an undirected connected
-graph of itself with both its $1$- and $2$-hop neighbours. 
+graph of itself with both its $1$- and $2$-hop neighbors. 
 %%
 Starting off this graph and with the help of hop 
 distances obtained from the underlying MANET,
@@ -1423,7 +1423,7 @@ overlay are also adjacent at the physical layer.
 %%
 At this stage, a peer can generate its \emph{LID}
 that automatically places it in the $3$-$d$ network space.
-Updates in the peer's connectivity infromation 
+Updates in the peer's connectivity information 
 reflecting continual changes in the mobile network,
 trigger updates on the composition of \emph{LID} itself.
 
@@ -1517,7 +1517,7 @@ the source measures \emph{RTT}-times, sorts them
 and picks the two nodes with the smallest \emph{RTT}s.
 
 During the \emph{jumping phase}, the source node calculates the 
-stretch change to all its direct neighbours and to the direct neighbours
+stretch change to all its direct neighbors and to the direct neighbors
 of the first peer that was selected in the probing phase, as if
 the jump has been performed. 
 Using heuristics, the node determines if the stretch
@@ -1647,22 +1647,23 @@ The heuristic nature of the suggested solutions opens them up
 to trade-offs which, in most cases, are 
 highly affected by the application domain and the implementation itself.
 
-%%AD Connection???  to the groups???
-%%VM I like it. I put one similar to the unstructured part
-In what follows, we place the surveyed structured \p-methods in 
-the three categories mentioned above and which are formulated based 
-on utilized proximity and geographic aspects.
-With Table~\ref{structured:table}, we offer a comparative view
-of the algorithms in a similar fashion to Table~\ref{unstructured:table}, 
-to outline the key properties of each surveyed approach 
-that helps differentiate techniques from
-competitors~\footnote{The topics of topology adaptation, landmarking and
-caching/replication are not further elaborated as they have been discussed 
-in Section~\ref{section:unstructured}.}.
+In what follows, we place the surveyed \emph{structured} \p-methods in 
+the three above categories formulated based on 
+utilized proximity and geographic aspects.
+Table~\ref{structured:table} offers a comparative view
+of the algorithms in a way reminiscent to that used in Table~\ref{unstructured:table}.
+Table~\ref{structured:table} outlines key properties for all surveyed approach 
+that helps differentiate and better position competing techniques.
+Clearly, we do not further elaborate topics that we have included and discussed 
+at length in Section~\ref{section:unstructured}; these aspects entail 
+topology adaptation, landmarking, and caching/replication.
 Finally, Figures~\ref{structured:plot:efficiency}, \ref{structured:plot:overhead}
 and \ref{structured:plot:scalability} help with the pictorial comparison
 of the algorithms' bahavior with respect to the three effectiveness
-criteria we defined in Subsection~\ref{background:motivation}.
+criteria we defined in subsection~\ref{background:motivation}.
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic-layout} \label{section:geographic_layout}
@@ -1681,7 +1682,7 @@ This category consists of methods that try to map the overlay id space on to
 the physical one, as depicted in Figure~\ref{figure:geographic-layout}.
 Routing tables of involved peers, are adjusted and maintained by exploiting
 proximity information that describes the overall (geographic) positioning of
-the participants. This comes in contrast to proximity routing and proximity neighbour
+the participants. This comes in contrast to proximity routing and proximity neighbor
 selection (discussed later on) where decisions are taken based on and effecting
 a peer's nearby environment.
 
@@ -1697,6 +1698,11 @@ A number of the reviewed algorithms including
 \emph{Global Soft-State},
 \emph{Mithos} and \emph{LAPTOP} resort to clustering close-by nodes in
 order to reduce the network's average delay.
+%%
+\input{structured-table}
+%%
+\input{structured-plot}
+%%
 Landmark servers and \emph{RTT} measurements are two popular methods, which
 can also be used in conjunction, to discover peers in physical proximity.
 However, as already discussed, these
@@ -1712,6 +1718,7 @@ which is a difficult proposition per se.
 greedy method that can result in sub-optimal overlay topologies;
 the latter is especially true if nearby 
 nodes happen to be connected through low bandwidth connections.
+
 
 On one hand, approaches based on \emph{geographic layout} improve the query
 efficiency of the system in general and are especially effective when applied
@@ -1885,6 +1892,4 @@ are also possible.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{structured-table}
 
-\input{structured-plot}

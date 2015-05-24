@@ -147,7 +147,7 @@ To achieve that, they implement a \emph{Distributed Hash Table (DHT)} that maps
 objects to nodes through a deterministic mechanism. \emph{DHT}s provide a
 guaranteed bound on the number of overlay routing hops that have to be
 ``traveled'' to locate a resource, even in the case when only a \emph{single}
-copy exists whithin the system. This requires
+copy exists within the system. This requires
 $O$($log(n)$) hops, compared to the unstructured networks that require
 $O(n)$ to reliably locate any object. Unfortunately this efficiency does not
 come without cost. Structured overlays can only support exact-match queries 
@@ -327,7 +327,7 @@ Queries are flooded over multiple paths in an effort
 to reach the node(s) having the sought content. 
 In addition, 
 pairs of nodes may simultaneously forward the same query to each other
-in a superflous mode of operation in 
+in a superfluous mode of operation in 
 this opportunistic and without coordination environment.
 %%
 \cite{matei_mapgnutella_2002} showed that, even when $95$\% of any two nodes 
@@ -427,7 +427,7 @@ tables within a a 2-hop radius from each other.
 For the \emph{scalability} criterion, we consider system behavior with respect
 to the number of participating peers it can reliably support. We characterize
 protocols as being lowly, mediumly or highly scalable if the are proven to
-effectivelly support hundreds, tenths of thousands or millions of nodes,
+effectively support hundreds, tenths of thousands or millions of nodes,
 respectively.
 %%%VM Reworked definition.
 %%

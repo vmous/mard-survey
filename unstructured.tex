@@ -148,7 +148,7 @@ In terms of the $3$ performance criteria, {\sl DAPS} stands as follows:
 % routing table.
 % Also in a high churn environment a lot of time could be spend probing for
 % distances, resorting routing tables and creating sectors. Moreover it just
-% prunes distant neighbout
+% prunes distant neighbor
 low &
 % Sorting routing table entries is done locally so it is not affecting.
 low &
@@ -510,7 +510,7 @@ table is received.
 %\paragraph*{Selective Flooding (SF)}
 %
 % TODO: I DON'T REMEMBER WHY THE FOLLOWING IS MENTIONING LTM WHICH IS ANOTHER
-%       ALGORITM. MAYBE THIS CAN BE USED AS A PART OF DISCUSSION AND/OR
+%       ALGORITHM. MAYBE THIS CAN BE USED AS A PART OF DISCUSSION AND/OR
 %       COMPARISON OF AOTO AND LTM
 % TODO: EDIT: LTM SEEMS A MISTAKE HERE BETTER NOT USE IT FOR DISCUSSION (THIS
 %             IS AOTO)
@@ -1147,7 +1147,7 @@ biased neighbor selection along with bandwidth throttling
 and caching techniques for near-optimal lookup results is proposed. 
 The effectiveness of \emph{BNS} is debated 
 in~\cite{RTLCGZ2010} where experimental results suggest that 
-most peers in a swarm reside in different authonomous systems (\emph{AS}s).
+most peers in a swarm reside in different autonomous systems (\emph{AS}s).
 Consequently, clients frequently do not have enough peers to leverage
 intra-\emph{AS} connections \cite{RTLCGZ2010}.
 Moreover, \emph{BNS} deployment
@@ -1251,7 +1251,7 @@ the seeding state;  this  \emph{intermediate-level} approach favors
 least distance and is in contrast to the original {\sl BitTorrent} 
 implementation which favors uploading speed.
 %%
-The last technique operates at a \emph{microscopic-level} by chosing to pick
+The last technique operates at a \emph{microscopic-level} by choosing to pick
 the next chunk to download based on a locality-first policy; this picks first
 the chunk that is closer, as opposed to {\sl BitTorrent}'s rare-first chunk
 picking policy.
@@ -1964,17 +1964,19 @@ If a technique is to be evaluated for a specific application domain,
 its overall approach as well as its underlying used methodologies have to be considered.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Below, we outline how the proposed protocols use elements of the above four
-methodologies. Then we offer a summary qualitative comparison for all surveyed
+In what follows, we outline how the surveyed protocols 
+use elements of the above four methodologies. 
+We then  offer a summary qualitative comparison for all surveyed
 approaches applicable for \emph{unstructured}~\p~\emph{systems}.
-Specifically, Table~\ref{unstructured:table} summarises, for each
+Specifically, Table~\ref{unstructured:table} summarizes, for each
 effort, the methodologies it incorporates, its special highlights as well as 
-a rough estimation of the pros and cons in its implementation. Last but
-not least, with Figures~\ref{unstructured:plot:efficiency}, \ref{unstructured:plot:overhead}
-and \ref{unstructured:plot:scalability} we pictorially compare the
-algorithms in terms of \emph{efficiency}, \emph{overhead} and \emph{scalability}
-respectively; criteria we defined in Subsection~\ref{background:motivation}
-and which we used to evaluate the effectiveness of the each surveyed algorithm.
+a rough estimation of the pros and cons in its implementation. 
+Last but not least, Figures~\ref{unstructured:plot:efficiency}, \ref{unstructured:plot:overhead}
+and \ref{unstructured:plot:scalability} pictorially compare the
+surveyed techniques in terms of \emph{efficiency}, \emph{overhead} and \emph{scalability};
+we defined these three criteria in Subsection~\ref{background:motivation}
+and we collectively used them as a yardstick to qualitatively 
+evaluate the presented approaches.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Topology Adaptation Methodology}
@@ -2215,7 +2217,7 @@ for this purpose.
 For example, in Figure~\ref{figure:landmarking}, the newly
 arriving peer, measures its distance to an array of landmark points denoted as
 $L_n$. Then it creates an ordered list of the landmarks based on its measured
-distances uses that information to select its neighbours. Specifically,
+distances uses that information to select its neighbors. Specifically,
 the landmark--servers are used by nodes to estimate 
 their positions based on the intuitive assumption that peers
 with similar distances to a set of landmarks, are physically close to each
