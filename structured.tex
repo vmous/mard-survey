@@ -141,7 +141,7 @@ limited knowledge about neighboring zones.
 %bors. In Proximity routing, physical topology is not consid-
 %ered when constructing the overlay.
 %
-In terms of our $3$ stated criteria, the approach fares as follows:
+In terms of our three stated criteria, the approach fares as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -232,7 +232,7 @@ reportedly prone to premature termination at local minima.
 synthetic ID generation require a centralized implementation 
 affecting Mithos' scalability.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In regard to the $3$ criteria, \emph{Mithos} stands as follows:
+In regard to the three criteria, \emph{Mithos} stands as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -369,7 +369,7 @@ a parent is responsible for the monitor of its own children.
 %that portion of the coordinate space associated with its landmark ordering.
 %Even though this scheme can
 %
-\emph{LAPTOP}'s behavior for the $3$ criteria stands as follows:
+\emph{LAPTOP}'s behavior for the three criteria stands as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -554,7 +554,7 @@ if no RTT information is available during routing.
 % and $p+q+r+\ldots \leq 1$
 %\end{itemize}
 %
-With respect to the $3$ qualitative criteria, \emph{CHOP6} stands as follows:
+With respect to the three qualitative criteria, \emph{CHOP6} stands as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -581,8 +581,8 @@ medium
 %% VM Added some extra lines and restructured the text
 \emph{T2MC}'s~\cite{SLCGZ2008} objective is to diminish the redundant multiple
 messages that may unnecessarily cross autonomous system (\emph{AS}) boundaries.
-The latter represent links that are the costliest to ISPs and hence, 
-minimizing topology mismatches  greatly affects pertinent operational expenditure.
+Inter-\emph{AS} links are the costliest to ISPs and hence, 
+minimizing topology mismatches greatly affects pertinent operational expenditure.
 %%
 To achieve that, each node exploits the stable structure of
 the Internet routers to help solve a clustering problem. 
@@ -828,7 +828,7 @@ information about the $k$ closest--known peers.
 The routing decision takes place in a way reminiscent to \emph{Chord}
 and uses both adjacency and finger tables.
 %%
-\emph{AChord} behavior has as follows:
+\emph{AChord} behaves as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -929,8 +929,8 @@ $2\chi-1$ \emph{sectors}, where $\chi$ denotes the
 sequence number of the annulus starting from $\chi = 1$ 
 for the center cycle. 
 In this way, 
-\cite{DLTZZ2006} prove that each sector
-This characteristic favors a more load--balanced clustering operation
+\cite{DLTZZ2006} prove that for each sector
+this characteristic favors a more load--balanced clustering operation
 should we assume uniform node distribution.
 Every sector in this $2d$ space is mapped to 
 a unique \emph{region} in the \emph{DHT} space forming a
@@ -979,7 +979,7 @@ simulations were carried out with configurations involving up to 2,048 nodes.
 Moreover the approach assumes uniform node distribution which
 is not always the case, especially in a synthetic coordinate system.
 %%
-\emph{Chord DHT} fares as follows in reference to the stated $3$ criteria:
+\emph{Chord DHT} fares as follows in reference to the stated three criteria:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -1007,7 +1007,7 @@ first, each host acquires its coordinates in
 a geometric space using the \emph{Global Network Position (GNP)} protocol
 \cite{ng_gnp_2001} and a set of landmarks.
 Second, using the \emph{Cantor} space--filling curve, 
-the $2$-dimensional is converted to $1$-dimensional space. 
+the $2$-dimensional space is converted to $1$-dimensional space. 
 The latter is employed in the third and final stage to build 
 the \emph{Quasi-Chord} circle according to the host's \emph{Cantor} value. 
 Physical proximity is thus denoted by \emph{Cantor} value proximity. 
@@ -1068,7 +1068,7 @@ ascending order.
 % scalability of the algorithm.
 %
 %%
-\emph{Quasi-Chord} qualitative behavior has as follows:
+\emph{Quasi-Chord}'s qualitative behavior is as follows:
 \begin{center}
 {\footnotesize
 \begin{tabular}{ccc}
@@ -1100,7 +1100,7 @@ Such proximity information
 % (IP addresses of network participants) 
 can be easily stored in the DHT itself.
 
-Each peer in the overlay has a unique \emph{ID} and and an IP address to
+Each peer in the overlay has a unique \emph{ID} and an IP address to
 characterize it. 
 To publish itself, the peer hashes a fixed-length prefix of 
 its IP to obtain a key and stores the resulting \emph{ID} and IP 
@@ -1281,7 +1281,7 @@ would be $000..0$, $100..0$, $200..00$, ... , $F00..00$).
 A new-coming peer then computes distances from those landmarks,
 sorts them, and assigns itself an \emph{ID} on this 
 landmark ordering as follows:
-the peer adopts sets the prefix of its \emph{ID} to be equal to that 
+the peer sets the prefix of its \emph{ID} to be equal to that 
 of its closest landmark.
 The length of this prefix is 
 $l_{prefix}=|log_b k|$, where $b$ is the \emph{ID}--base 
@@ -1311,9 +1311,9 @@ and fills the remaining bits of its key using the \emph{RLM} technique.
 environments. Moreover, it is adaptable to high-churn settings.
 Unfortunately, \emph{RLM} bootstrap overhead is substantial and can 
 effect the set of landmarks~\cite{WZS2004}.
-\emph{CNPA} on the other hand, incurs less overhead but this come 
+\emph{CNPA} on the other hand, incurs less overhead but this comes 
 at the expense of being more coarse-grained as it is based on prefixes
-to determine proximity during.
+to determine proximity during bootstrap.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \emph{RLM} achieves good proximity evaluation in a load balanced and adaptable to
 % high churn environments fashion. Unfortunately it comes with more bootstrap
@@ -1343,7 +1343,7 @@ to determine proximity during.
 % the CPNA scheme) in order to balance the distribution of regions in the
 % overlay.
 %
-\emph{DynoMO}'s elements fare as follows regarding our $3$ criteria:
+\emph{DynoMO}'s elements fare as follows regarding our three criteria:
 \begin{center}
 {\footnotesize
 \begin{tabular}{rccc}
@@ -1435,7 +1435,7 @@ file itself.
 %%
 To retrieve the file, the requesting node calculates $f$'s $k$
 and issues a query message. 
-The message is a associated with a \emph{TTL} value. 
+The message is associated with a \emph{TTL} value. 
 Each peer forwards that query to the node,
 in its routing table, that is closest to $k$ until either the peer
 that stores the file is located or the query's lifetime expires.
@@ -1532,7 +1532,7 @@ a landmark-enhanced \emph{CAN}-alternative.
 This result shows that \emph{SAT-Match} 
 may perform better than landmark binning in terms of the matching degree
 of the logical to the physical networks.
-\emph{SAT-Match} behaves as follows with respect to the stated $3$ criteria:
+\emph{SAT-Match} behaves as follows with respect to the stated three criteria:
 %%
 % Figure~\ref{figure:sat_match} demonstrates the selective jump on an
 % example topology.
@@ -1659,11 +1659,8 @@ at length in Section~\ref{section:unstructured}; these aspects entail
 topology adaptation, landmarking, and caching/replication.
 Finally, Figures~\ref{structured:plot:efficiency}, \ref{structured:plot:overhead}
 and \ref{structured:plot:scalability} help with the pictorial comparison
-of the algorithms' bahavior with respect to the three effectiveness
+of the algorithms' behavior with respect to the three effectiveness
 criteria we defined in subsection~\ref{background:motivation}.
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic-layout} \label{section:geographic_layout}
@@ -1680,12 +1677,6 @@ criteria we defined in subsection~\ref{background:motivation}.
 %% VM: I reworded the above as below.
 This category consists of methods that try to map the overlay id space on to
 the physical one, as depicted in Figure~\ref{figure:geographic-layout}.
-Routing tables of involved peers, are adjusted and maintained by exploiting
-proximity information that describes the overall (geographic) positioning of
-the participants. This comes in contrast to proximity routing and proximity neighbor
-selection (discussed later on) where decisions are taken based on and effecting
-a peer's nearby environment.
-
 \begin{figure}[ht]
 \centering
   \includegraphics[scale=0.44]{img/pdf/geographic-layout.pdf}
@@ -1693,16 +1684,16 @@ a peer's nearby environment.
 same or near autonomous systems (\emph{AS}).}
 \label{figure:geographic-layout}
 \end{figure}
-%%
+Routing tables of involved peers, are adjusted and maintained by exploiting
+proximity information that describes the overall (geographic) positioning of
+the participants. This comes in contrast to proximity routing and proximity neighbor
+selection (discussed later on) where decisions are taken based on and effecting
+a peer's nearby environment.
+
 A number of the reviewed algorithms including 
 \emph{Global Soft-State},
 \emph{Mithos} and \emph{LAPTOP} resort to clustering close-by nodes in
 order to reduce the network's average delay.
-%%
-\input{structured-table}
-%%
-\input{structured-plot}
-%%
 Landmark servers and \emph{RTT} measurements are two popular methods, which
 can also be used in conjunction, to discover peers in physical proximity.
 However, as already discussed, these
@@ -1719,7 +1710,6 @@ greedy method that can result in sub-optimal overlay topologies;
 the latter is especially true if nearby 
 nodes happen to be connected through low bandwidth connections.
 
-
 On one hand, approaches based on \emph{geographic layout} improve the query
 efficiency of the system in general and are especially effective when applied
 to \emph{CAN}-like implementations. On the other hand, they inherently undermine the
@@ -1727,8 +1717,6 @@ uniform distribution of peer identifiers. This is an important downside as it
 creates hot-spots that hurt system scalability. 
 Moreover, it adversely affects system availability as nearby nodes
 are more likely to suffer collective failures~\cite{HY2007}.
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1893,3 +1881,8 @@ are also possible.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%
+\input{structured-table}
+%%
+\input{structured-plot}
+%%

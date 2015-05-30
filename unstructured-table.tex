@@ -115,6 +115,24 @@ Random Walks (RW).
 \\
 \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{LTM \cite{LLXNZ2004}} &
+{\large \CheckedBox} &
+{\large \Square} &
+{\large \Square} &
+{\large \Square} &
+\begin{tabular}[l]{m{3cm}}
+TTL detector (2-hop distance).\\
+Delayed low productive connection cutting.
+\end{tabular} &
+\begin{tabular}[l]{m{5cm}}
++ Compared to AOTO, ACE and SBO achieves faster convergence speed.\\
+-- Creates more overhead than AOTO, ACE and SBO.\\
+-- Needs synchronization of peer clocks.\\
+-- Does not consider shortcuts created by powerful peers when choosing to disable connections (only uses delay metric).
+\end{tabular}
+\\
+\hline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textbf{DCMP \cite{ZKB2008}} &
 {\large \CheckedBox} &
 {\large \Square} &
@@ -210,24 +228,6 @@ Minimum spanning trees.\\
 + Less overhead compared to AOTO since computation is done within a certain diameter from the source peer.
 -- Slow convergence speed.\\
 -- Enhanced topology optimization comes to the expence of higher communication/computation overhead.
-\end{tabular}
-\\
-\hline
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{LTM \cite{LLXNZ2004}} &
-{\large \CheckedBox} &
-{\large \Square} &
-{\large \Square} &
-{\large \Square} &
-\begin{tabular}[l]{m{3cm}}
-TTL detector (2-hop distance).\\
-Delayed low productive connection cutting.
-\end{tabular} &
-\begin{tabular}[l]{m{5cm}}
-+ Compared to AOTO, ACE and SBO achieves faster convergence speed.\\
--- Creates more overhead than AOTO, ACE and SBO.\\
--- Needs synchronization of peer clocks.\\
--- Does not consider shortcuts created by powerful peers when choosing to disable connections (only uses delay metric).
 \end{tabular}
 \\
 \hline
@@ -365,7 +365,7 @@ Landmarking based on existing CDN infrastructure (CDN redirection measurements).
 \begin{tabular}[l]{m{5cm}}
 + Needs no ISP cooperation.\\
 + Needs no network topology information.\\
--- Deepends on feeds from major internet infrastructures and large deeployment
+-- Depends on feeds from major internet infrastructures and large deeployment
 of its client.\\
 -- ISP-friendly approaches do not seem to have a great impact on Internet-scale
 basis.
@@ -435,7 +435,7 @@ Cluster peers in a swarm into local, intra- and inter-ISP.
 \begin{tabular}[l]{m{5cm}}
 + Reduced ISP burden.\\
 + Better downloading speeds.\\
--- Similarly to UTAPS, the evaluation setup was small scale.
+-- Similarly to UTAPS, small scale evaluation setup.
 \end{tabular}
 \\
 \hline

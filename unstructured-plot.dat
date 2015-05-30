@@ -4,6 +4,7 @@ DirectedBFS			medium		medium		medium
 LocalIndices			high		medium		medium
 DAPS				low		low		medium
 Gia				medium		low		medium
+LTM				medium		medium		medium
 DCMP				medium		low		high
 UniformReplication		low		low		medium
 ProportionalReplication		low		medium		low
@@ -12,7 +13,6 @@ SqrtReplication			medium		medium		medium
 Narada				medium		high		low
 AOTO				medium		high		medium
 ACE				medium		medium		medium
-LTM				medium		medium		medium
 SBO				high		medium		medium
 THANCS				medium		low		high
 HAND				medium		low		high
