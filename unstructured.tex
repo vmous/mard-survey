@@ -50,7 +50,7 @@ that will trigger the nodes at the last visited depth level to resume the
 search thus avoiding restart of the entire search process and consequently 
 reducing the load on the nodes of the upper levels of the tree. 
 Its major drawback is the delay between successive iterations, as the
-source-node has to examine the results at each attempt before deciding to
+source-node has to examine the results with each attempt before deciding to
 either quit or ``unfreeze'' the query.
 
 The \emph{directed BFS}
@@ -126,14 +126,14 @@ was introduced in~\cite{ZL2005}.
 {\sl DAPS}  seeks to attain reduced look-up times by dividing 
 peer routing tables into several sectors of increasing delay. 
 The source node that issues the query designates the delay 
-boundary it may tolerate, providing so a \emph{pruning factor}.
+boundary it may tolerate, by providing a \emph{pruning factor}.
 In this context, user requests are forwarded only to 
 nodes whose expected delay is less than or equal to the indicated boundary. 
 {\sl DAPS} primarily focuses on user ``experience'' and deploys an
 end-to-end delay monitoring mechanism that may enable
 the clustering of routing tables. 
-In a dynamic environment, the formation 
-of very accurate such routing tables might be however an elusive goal.
+In a dynamic environment, the formation of such 
+accurate routing tables may be an elusive goal.
 %With the clustered
 %routing tables and the loose organization of DAPS' overlay network it is
 %considered by is be tween structured and unstructured.
@@ -187,11 +187,11 @@ By using a topology adaptation algorithm,
 short proximity to peers with high performance features.
 This topology adaptation algorithm is based on the metric 
 each node maintains about its satisfaction --ranging between $0$ and $1$--
-for the neighbors it finds itself associated with. 
-Through message exchange, a peer can establish new connections 
-or drop superseded ones in order to improve its satisfaction.
+for the neighbors with which it finds itself associated. 
+Through message exchanges, a peer can establish new connections 
+or drop superseded ones to improve its satisfaction.
 Despite the fact that {\sl Gia}'s topology adaptation algorithm 
-that primarily focuses on the satisfaction of peers improves the network's
+improves the network's
 scalability, it falls short in addressing the mismatch problem
 as considerations for the underlying network are not handled in explicit
 terms \cite{LXLNZ2005}. Moreover it reduces the search scope, exhibits poor
@@ -335,13 +335,11 @@ imposed \emph{TTL} value (max set to $7$ for most cases). This inherently limits
 the protocol in detecting cycles that span for more than \emph{TTL} nodes.
 Even though cycle elimination does improve network performance, 
 it cannot  directly contribute to the solution of the topology mismatch
-problem, while its performance in a high traffic and churn environments and its
+problem, while its performance in high-traffic and churn environments and its
 ability to retain important characteristics of a {\sl Gnutella}-like topology (i.e.,
-like degree distribution, average peer distance, diameter e.t.c.) has been
+degree distribution, average peer distance, diameter e.t.c.) has been
 doubted~\cite{CSG2010}. 
-On the other hand, even though some of the overhead
-saved by the duplicate message reduction is spent to control the cycle cutting
-mechanism, it is reported that it does a lot better in that area
+On the other hand, overhead is greatly reduced 
 due to its ``lazy'' broadcasting of control messages, as opposed to, for example,
 LTM's periodic approach \cite{ZKB2008}.
 %
@@ -387,7 +385,7 @@ In \cite{CS2002} and \cite{LCCLS2002}, replication is used as a way to improve
 inefficient blind search. The observation is that as the number of replicas
 increases in the network, it would be relatively easy to locate items even if
 search is random. Concretely, three three approaches for replication allocation
-are discussed: \emph{uniform}, \emph{proportional}, and
+are proposed: \emph{uniform}, \emph{proportional}, and
 \emph{square-root replication}.
 
 In the uniform model, all objects are replicated without taking into account
@@ -397,21 +395,22 @@ rate, so that frequently queried items can be found more often. Experimental
 outcomes indicate that the uniform allocation minimizes the maximum search
 length and so it can reduce the time spent on unsuccessful searches. The
 proportional strategy effectively decreases the search time for popular items,
-but suffers when needing to locate the rare entities. When it comes to expected
-successful search size, it is the same for for both uniform and proportional
-models and any approach in between to always behave much better. Finally, the
-square-root model is an attempt to find the golden ratio between uniform and
-proportional allocation models. It suggests setting the number of object
+but suffers when needing to locate rare items. For allocation ratio ``between''
+1 and the ratio of the query rates, the authors
+prove that the average performance on successful queries is always better
+than in uniform and proportional models. Finally, with the
+square-root model they attempt to find the golden ratio in ``between'', by
+suggesting to set the number of object
 replicas to the square root of the searching rate for an object\footnote{An
 interesting application of the square-root principle has also been explored
 in the context of topology reconstruction, by ensuring node degree to be
 proportional to the square-root of its content popularity \cite{C2005}.}.
 Theory in \cite{CS2002} suggest that square-root minimizes the expected search size on
-successful queries, claim that is supported by simulations \cite{LCCLS2002}.  
+successful queries, a claim that is supported by simulations \cite{LCCLS2002}.  
 
-In \cite{LCCLS2002}, a \emph{k-walker} query algorithm is presented and shown
+Lv et al.~\cite{LCCLS2002}, present a \emph{k-walker} query algorithm and show
 that using it along side square-root allocation results in performance similar to
-{\sl Gnutella}'s query flooding method but incurring up to two
+{\sl Gnutella}'s query flooding method but incurs up to two
 orders of magnitude less network traffic. Also checks three strategies for
 replica placement, namely \emph{owner replication} where an object is replicated
 at the requesting node, \emph{path replication} that caches the object along the
@@ -553,8 +552,8 @@ Despite the fact the {\sl Narada} was not designed as \p\ system per se,
 it was the first (along with \emph{Scattercast} \cite{C2000}) to consider the
 feasibility of overlay-based, application-layer services over the Internet while
 taking into account bandwidth and latency properties of the underlying physical
-infrastructure. In the context of this work, the inefficiency caused by the
-topology mismatch is attempted to be tackled by building a highly connected
+infrastructure. To overcome the inefficiency caused by 
+topology mismatch, Narada builds a highly connected
 graph, termed \emph{mesh},
 with each source featuring its own minimum spanning tree. A gossip-protocol was
 deployed for the creation of these spanning trees~\cite{LYL2008}.
@@ -592,8 +591,8 @@ optimize the usage of the underlying physical resources and operates in
 $2$ phases:
 \emph{Selective Flooding} and \emph{Active Topology}.
 In \emph{Selective Flooding}, a minimum spanning tree is built for each peer and
-its immediate neighbors so that queries do not flood the entire network and at
-the same time preventing their search scope from shrinking. This way some
+its immediate neighbors so that queries do not flood the entire network 
+while preventing their search scope from shrinking. This way some
 neighbors become non--flooding. During \emph{Active Topology}, each peer
 replaces independently such non--flooding neighbors, with closer nodes as an attempt
 to revise the overlay links so that they can reflect more closely the physical
@@ -664,10 +663,10 @@ and so a minimal overlay topology can be formed. Based on the obtained
 created. Finally, neighbors located physically far away 
 are replaced by physically-closer counterparts. 
 In particular, a peer $S$ iteratively probes the distance $d$ between
-itself and every of its non-flooding neighbor nodes $G$ as well as
+itself and each of its non-flooding neighbor nodes $G$ as well as
 the distance between $S$ and $G$'s neighbors designated as $H$.
 If $d_{SG} > d_{SH}$, then link $SG$ is replaced by link $SH$. If, on the other
-hand, $d_{SG} < d_{SH}$ then also $d_{GH}$ and then we have the following
+hand, $d_{SG} < d_{SH}$ then we have the following
 options. Either $d_{SH} < d_{GH}$ in which case link $SH$ is kept or
 $d_{SH} > d_{GH}$ in which case $S$ will keep probing other $G$'s direct
 neighbors.
@@ -743,7 +742,7 @@ Having information on all their $2$-hop neighbors
 red-peers create minimum spanning trees for the neighbors in question and
 assign efficient $2$-hop forwarding paths. This process can render a white-peer
 $E$ non--forwarding neighbor of the red-peer $P$. Direct neighbor
-replacement is a process conducted by $E$ in order to replace $P$ with a
+replacement is a process conducted by $E$ to replace $P$ with a
 $P' \in N^2(P)$ as its new neighbor. This adaptation tackles the
 topology mismatch problem by reducing message duplication and shorten response
 times caused by the problem identified as \emph{Revisit Not known (RN)}. RN is
@@ -840,7 +839,7 @@ the following $2$ cases are identified:
 	If either $d_{SQ}$ or $d_{SP}$ is the longest, then the longest
   	link will be placed in a \emph{will-cut} list\footnote{A peer will not send or
   	forward queries to connections in its will-cut list but will preserve them
-  	for some time in order not to effect ongoing response messages travelling the
+  	for some time in order not to affect ongoing response messages traveling the
   	inverse path.}. 
 	If $d_{PQ}$ is the longest, then nothing is done by $S$; being
   	fully distributed, neighbor comparison and selection process, will have the
@@ -915,7 +914,7 @@ high
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The \emph{Hops Adaptive Neighbor Discovery (HAND)} algorithm~\cite{CLZHC2006}
 uses a fully-distributed triple--hop adjustment strategy, applied to a network
-graph $G$ in order to create an optimal graph $G^{*}$, free of the implications
+graph $G$ to create an optimal graph $G^{*}$, free of the implications
 of topology mismatch. This optimality is attained if all peer hop 
 sequences $(v_1, v_2, \ldots, v_k)$ of $G$ exist in $G^{*}$ and are in the same
 order. The latter indicates that in practice triple sequences $(v_1, v_2, v_3)$
@@ -1018,14 +1017,14 @@ number and $x$ an $\alpha$-related latency threshold, the bootstrapping peer
 randomly selects $\alpha \ast N$ ``close'' (latency below $x$) and 
 $\left( 1 - \alpha \right) \ast N$ distant (latency above $x$) nodes
 as its neighbors. Of course, the bootstrapping peer is not able to check all the
-peers in the network to find the global best for the above sets. Authors
+peers in the network to find the global best for the above sets. The authors
 prove that latency measurements against $30/ \alpha$ randomly selected peers
 result to a good estimation. 
 %%QUE how do they select all these magic constants???
 %%ANS This α constant seems to be the percentage of close neighbors selected by
 % a peer out of its total degree. Can't find the criterion with which it is
 % chosen though. Maybe we can ask... Mema :)
-Searching occurs in $2$ phases: in the initial, the querying node
+Searching occurs in two phases: first, the querying node
 floods its distant neighborhood  with \emph{TTL=1}.
 Subsequently, peers receiving a query over a ``long link'' commence a 
 local flood with \emph{TTL=ttl} where \emph{ttl} is system-defined.
@@ -1042,7 +1041,7 @@ local flood with \emph{TTL=ttl} where \emph{ttl} is system-defined.
 The main objective of the overlay construction phase is to yield a network that
 exhibits low clustering. In turn, this is a beneficial characteristic for
 random graphs as it can lead to a larger coverage of peers and at the same time
-help reduce duplication of messages travelling around the network. This
+help reduce duplication of messages traveling around the network. This
 combination offers efficient lookups that pose minimal or no negative impact to
 other mechanisms possibly employed by the \p\ systems (e.g., $1$-hop replication
 or dynamic querying mechanisms). Experimental results in the same paper suggest
@@ -1077,7 +1076,7 @@ peer continuously updates its neighbors so as to minimize the sum of distances
 to all destinations under shortest-path routing. 
 A newly arriving peer, randomly connects to an already participating 
 node through a bootstrap server. Once connected, the peer starts receiving
-information throughout the link-state mechanism and thus, after some time, 
+information via a link-state mechanism and thus, after some time, 
 it has a complete picture of the overlay graph. 
 Then, the peer estimates the delay to all other nodes to
 determine its potential neighbors and ultimately connects 
@@ -1247,7 +1246,7 @@ their hop-count distance from the requesting peer and
 sends out the top-$k$ list of nodes (e.g., $k$=$50$).
 %%
 The second technique, applied in an \emph{intermediate-level}, manipulates
-{\sl BitTorrent}'s chocking/unchocking mechanism. A peer unchockes its $4$
+{\sl BitTorrent}'s chocking/unchocking mechanism. A peer unchokes its $4$
 closest, in terms of 
 autonomous system hop-count, interested neighbors. 
 The same applies also when the peer turns to 
@@ -1317,7 +1316,7 @@ to connect to the swarm,
 \emph{TopBT}'s key features are that it does not rely on any Internet infrastructures
 (ISPs or CDNs) whatsoever and it cooperates with already deployed BitTorrent clients.
 It also supports both link-hop and \emph{AS}-hop metrics to identify proximity in
-different levels in order to reduce overall traffic while preserving downloading
+different levels to reduce overall traffic while preserving downloading
 performance.
 %
 %A peer that runs the TopBT protocol evaluates its neighbors by periodically
@@ -1332,7 +1331,7 @@ performance.
 %%
 Through experimentation on hundreds of {\it PlanetLab} and residential hosts,
 \emph{TopBT} offers more than $25\%$ traffic reduction and $15\%$ faster downloads
-if compared with popular {\sl BitTorrent} implementations.
+compared to popular {\sl BitTorrent} implementations.
 In reference to the stated three criteria, \emph{TopBT} fares as follows:
 \begin{center}
 {\footnotesize
@@ -1363,7 +1362,7 @@ The \emph{Underlying Topology-Aware Peer Selection (UTAPS)}~\cite{LCY2008}
 presents an enhanced peer selection strategy. 
 \emph{UTAPS} operates in two stages: in the first,
 it collects information to develop a picture of the underlying topology 
-and in the second, it proceeds to make the peer selection based on 
+and in the second, it makes its peer selection based on 
 this knowledge. In the first stage, \emph{UTAPS} employs
 network tomography, a technique that probes from a large network's 
 endpoints to infer its internal characteristics~\cite{chny_tomography_2002}. 
@@ -1372,12 +1371,12 @@ Upon arrival of a new peer, the tracker trace-routes
 it to obtain some basic knowledge 
 including \emph{IP} address, routers involved, \emph{RTT} and number of 
 hops traversed.
-The more the peers in the swarm the better 
+The more the peers in the swarm, the better 
 picture a tracker has for the underlying infrastructure.  
 The tracker provides this information to the newcomer in the form
 of the bootstrapping peer list. 
 These newly joined peers traceroute the tracker
-peer list themselves and return back to the tracker in order to further enhance
+peer list themselves and return back to the tracker to further enhance
 the tracker's view of the infrastructure.
 %%
 In the second stage, \emph{UTAPS} employs a set of heuristics
@@ -1428,14 +1427,14 @@ For peer selection, \cite{QLZG2009} proposes a biased approach
 where the tracker returns $c$ close peers 
 and $d\;=\;N-c$ distant peers, where $N$ is the length of the returned list. 
 In choosing $c$, the tracker employs an iterative search process
-first in the peer's local neighborhood. If not sufficient number of 
-peers are available there, the tracker goes to intra-\emph{ISP} 
+first in the peer's local neighborhood. If there is not a sufficient number of 
+peers available, the tracker goes to intra-\emph{ISP} 
 and subsequently, if needed, to the inter-\emph{ISP} cluster. 
 %%
 Experimentation in a controlled environment indicates up to
 5\% faster downloading times as well as up to 22\% reduction of 
 the total cross-\emph{ISP} traffic.
-This clustering approach fares as follows in regard 
+This clustering approach fares as follows with regards 
 to the three criteria:
 %%
 \begin{center}
@@ -1464,7 +1463,7 @@ medium
 In~\cite{QCYCZ2007}, two 
 \emph{Peer-exchange Routing Optimization Protocols (PROPs)} 
 are introduced to help adjust the neighborhood graph of an overlay network
-while aiming at reducing the network's overall link latency.
+while reducing the network's overall link latency.
 \emph{PROPs} are weaved around the concept of
 ``exchange'' of neighbors among peers; 
 this is carried out so that participant node can collectively 
@@ -1472,7 +1471,7 @@ benefit from the attained reduction in network delays.
 %%
 This ``collaboration'', is what differentiates this approach 
 from others by allowing two peers to optimize
-their neighborhood environment, than simply letting each node to ``selfishly''
+their neighborhood environment, in contrast with simply allowing each node to ``selfishly''
 choose its own strategy. 
 %%
 %%COMM--VM ADDING SOME OPERATIONAL DETAILS BELOW.
@@ -1497,10 +1496,10 @@ nodes exchanging positions so the topology and connectivity of the overlay is
 not affected by the operation of the algorithm. The optimized version
 \emph{PROP-O} permits peers to exchange selected sets of their neighbors. It is
 not allowed to exchange neighbors along the path of the nodes that perform the
-exchange in order to ensure that in the end of the process the peers will remain
+exchange to ensure that in the end of the process the peers will remain
 connected. Additionally, the algorithm needs to preserve the characteristics of
-the network (i.e., the graph remains connected, preserve the degree of the
-nodes), so the exchange always involves equal number of neighbors.
+the network (i.e., the graph remains connected and the degree of the
+nodes is unchanged), so the exchange always involves equal number of neighbors.
 %%
 The following table depicts the \emph{PROP}s behavior 
 regarding the stated criteria:
@@ -1974,7 +1973,7 @@ We then  offer a summary qualitative comparison for all surveyed
 approaches applicable for \emph{unstructured}~\p~\emph{systems}.
 Specifically, Table~\ref{unstructured:table} summarizes, for each
 effort, the methodologies it incorporates, its special highlights as well as 
-a rough estimation of the pros and cons in its implementation. 
+a brief presentation of the pros and cons in its implementation. 
 Last but not least, Figures~\ref{unstructured:plot:efficiency}, \ref{unstructured:plot:overhead}
 and \ref{unstructured:plot:scalability} pictorially compare the
 surveyed techniques in terms of \emph{efficiency}, \emph{overhead} and \emph{scalability};
@@ -2041,7 +2040,7 @@ overlay network so that it becomes a better fit
 for the underlying \emph{IP} network
 as Figure~\ref{figure:topology-adaptation} depicts.
 Despite the fact that the above is a plausible proposition,
-it is not always advantageous though. For example, a topology adaptive
+it is not always advantageous. For example, a topology adaptive
 algorithm can exchange a slow edge in the overlay with a faster one
 thus reducing the average latency of the network communication.
 The pitfall here is that this new virtual link
@@ -2100,8 +2099,8 @@ Alternatively, a node can decide to forward its
 messages not to every output link but to a specific 
 or subset of its outgoing links.
 In Fig.~\ref{figure:forwarding-optimisation:after}, 
-the node in the middle, does not flood its neighbors as instead 
-it only picks one of them.
+the node in the middle, does not flood its neighbors; instead 
+it picks only one of them.
 The dashed line on the right, shows that, 
 for this routing process, the protocol has
 rendered two potential forwarding paths as inefficient (e.g., the target nodes

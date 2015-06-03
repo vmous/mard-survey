@@ -110,7 +110,7 @@ Synthetic coordinates.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Distance measurement is done on the overlay level.\\
--- Does not effectively manage dynamic peer arrival and leave.\\
+-- Does not effectively manage dynamic peer arrivals and departures.\\
 -- Centralized implementation of the its spring relaxation technique.
 implementation
 \end{tabular}
@@ -196,7 +196,7 @@ Clustering using trace-route logs.
 \begin{tabular}[l]{m{5cm}}
 + Prioritize interaction of peers and edge gateways.\\
 -- Coarse-grained.\\
--- Trace-route extends overhead and is sometimes disabled by ISPs.
+-- Trace-route adds overhead and is sometimes disabled by ISPs.
 \end{tabular}
 \\
 \hline
@@ -213,8 +213,8 @@ Maintenance of a proximity list.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Can constrain costly jumps in and out of network partitions.\\
-+ Maintenance cost kept to a minimal (node join/leave heartbeat for lists).\\
--- Rigid in high churn environments.
++ Maintenance cost kept to a minimum (node join/leave heartbeat for lists).\\
+-- Rigid in high-churn environments.
 \end{tabular}
 \\
 \hline
@@ -227,7 +227,7 @@ Maintenance of a proximity list.
 {\large \Square} &
 {\large \Square} &
 \begin{tabular}[l]{m{3cm}}
-Exploits IPv6's any-cast mechanism.
+Exploits IPv6's anycast mechanism.
 \end{tabular} &
 \begin{tabular}[l]{m{5cm}}
 + Delegates proximity calculation during bootstrap to the anycast mechanism.\\

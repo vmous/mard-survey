@@ -50,10 +50,10 @@ a target of malicious behavior such as \emph{DoS} attacks.
 centralized approach in file-sharing~\cite{napster}.
 It maintained a \emph{central index server} based on file-lists 
 that were peer-provided.
-Users would query the index server that would ultimately 
-yield pointers to the actual content.
+Users would query the index server that would provide 
+pointers to the actual content.
 Thus, by centralizing search while distributing downloads,  {\sl Napster}
-achieved a highly functional design that, at its height, attracted $26$ million
+achieved a highly efficient design that, at its height, attracted $26$ million
 users sharing approximately $80$ million songs\cite{jmm_naptopusage_2001}.
 %%
 The central indexing component played a vital role in the demise of 
@@ -67,9 +67,9 @@ capabilities (Figure~\ref{figure:p2p-archs:unstructred-full}) soon followed.
 In these \emph{decentralized} approaches, 
 resource placement within the overlay topology is random~\cite{YG-M2002};
 for this reason, such architectures are referred to as \emph{unstructured}. 
-Key properties of such \p\ systems are that they support inherent heterogeneity
+Key properties of such \p\ systems are that they support the inherent heterogeneity
 of peers, are highly resilient to peer failures, and incur low maintenance
-overhead at handling the dynamics of peer participation
+overhead while handling the dynamics of peer participation
 \cite{stutzbach_churn_2006}. 
 Unstructured systems are also known as 
 \emph{broadcast-based} systems for they use message flooding among %% it is FOR!
@@ -140,10 +140,10 @@ inability to locate rare resources.
 \emph{Decentralized structured schemes} were introduced as an answer to the above
 problems of decentralized unstructured \p--approaches
 (Figure~\ref{figure:p2p-archs:structured}).
-Here, the main objective was to offer 
+Here, the main objective is to offer 
 a self-organizing infrastructure for large-scale \p\ applications
 \cite{ratnasamy_can_2001,stoica_chord_2001,antony_pastry_2001,zhao_tapestry_2001,maymounkov_kademlia_2002,rgrk_bamboo_2004}.
-To achieve that, they implement a \emph{Distributed Hash Table (DHT)} that maps
+To achieve this, they implement a \emph{Distributed Hash Table (DHT)} that maps
 objects to nodes through a deterministic mechanism. \emph{DHT}s provide a
 guaranteed bound on the number of overlay routing hops that have to be
 ``traveled'' to locate a resource, even in the case when only a \emph{single}
@@ -160,7 +160,7 @@ including {\sl Overnet}/{\sl eDonkey}~\cite{overnet},
 {\sl Kademlia}/{\sl Kad Network}~\cite{maymounkov_kademlia_2002},  and 
 some flavors of {\sl BitTorrent}~\cite{c_bittorrent_2003}.  
 Moreover, \emph{DHT}s sparked
-a flurry of research for many, diverse, applications ranging
+a flurry of research for many diverse applications, ranging
 from distributed search engines to event-notification and cloud-based
 platforms~\cite{kbc_oceanstore_2000,rkcd_scribe_2001,mgpj_cloudsnap_2011}.
 
@@ -256,7 +256,7 @@ Link connections there, can change as needed by
 the running environment, without any
 particular constraint by the underlying physical topology. 
 %%
-For instance, assume nodes $A$, $B$, $C$ and $D$ being 
+For instance, assume nodes $A$, $B$, $C$ and $D$ are 
 connected via the physical network shown in Figure~\ref{figure:phys}
 in which costs are depicted in milliseconds. 
 %%
@@ -267,8 +267,8 @@ in which costs are depicted in milliseconds.
 \label{figure:phys}
 \end{figure}
 %%
-When peer $A$ sends a message its $D$ counterpart
-and depending on the overlay configuration, 
+When peer $A$ sends a message to peer $D$, 
+depending on the overlay configuration, 
 nodes will experience different performance.
 For example, in the overlay depicted in
 Figure~\ref{figure:overlay-1}, the
@@ -318,13 +318,14 @@ problem is to construct a minimal spanning tree, where node degree is
 restricted to a constant ($k\geq 2$) by the bandwidth of each node $v_i$.
 \end{definition}
 
-Early overlay protocol implementations did not pay much attention to map
-optimally to the underlying network topology. {\sl Gnutella}, for example, is
+Early overlay protocol implementations gave litte attention to the 
+topology mismatch problem.
+{\sl Gnutella}, for example, is
 considered far from scalable~\cite{ritter_gnucantscale_2001} for every peer
 chooses its neighbors without any knowledge of the underlying
 network, resulting in mismatches. 
 Queries are flooded over multiple paths in an effort 
-to reach the node(s) having the sought content. 
+to reach nodes that have the sought content. 
 In addition, 
 pairs of nodes may simultaneously forward the same query to each other
 in a superfluous mode of operation in 
@@ -365,8 +366,8 @@ There is also the stochastic phenomenon during which peers
 depart and others arrive in the network, known 
 as \emph{churn}~\cite{stutzbach_churn_2006}.
 Even when an approach offers the best possible location
-when a node joins in, the churn is set to  
-continuously undermine the effort to maintain the best possible position
+when a node joins, churn   
+continuously undermines the effort to maintain the best possible position
 of the  peer in the network.
 
 The topology mismatch problem is exacerbated by the extremely large amounts of
@@ -418,12 +419,12 @@ coverage, download performance etc.).
 For the \emph{overhead} criterion, we evaluate the cost
 of computing and communicating peer join, message forwarding, 
 and overlay topology maintenance. For instance, the overhead that an algorithm,
-which needs global knowledge of the overlay topology, imposes to the system is
+which needs global knowledge of the overlay topology, imposes on the system is
 greater compared to a protocol that only relies on peers exchanging routing
 tables within a 2-hop radius from each other.
 
 For the \emph{scalability} criterion, we consider system behavior with respect
 to the number of participating peers it can reliably support. We characterize
 protocols as being lowly, mediumly or highly scalable if they are proven to
-effectively support hundreds, tenths of thousands or millions of nodes,
+effectively support hundreds, tenths of thousands, or millions of nodes,
 respectively.

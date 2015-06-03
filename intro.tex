@@ -48,7 +48,7 @@ An overlay network, is a virtual system of nodes featuring logical interconnects
 created above an existing network; overlays provide an abstraction that
 enables the implementation of efficient, fully distributed, application-layer
 services such as routing messages to destinations that are not known in advance
-or offering QoS guarantees (i.e., in content-distribution) over best effort
+or offering QoS guarantees (i.e., in content-distribution) over best-effort
 infrastructures. Overlay nodes communicate through \emph{virtual connections}
 each of which may correspond to a path of possibly many physical links 
 in the underlying network.
@@ -74,12 +74,12 @@ construct the overlay topology in a way that the number of
 underlying IP links between these two nodes is minimized.
 Should the overlay network be constructed so that
 it does not match the underlying topology well, 
-the inherent \emph{topology mismatch} gives two
+the inherent \emph{topology mismatch} creates two
 major problems. 
 First, the performance of the application per se, can be
 adversely affected since traffic must flow over a larger,
 redundant, number of physical hops resulting in poor user experience 
-entailing noticeable latencies or jittering. 
+entailing noticeable latencies or jitter. 
 %%
 Second, other applications running
 on the underlying network infrastructure may be adversely affected as well.
@@ -89,7 +89,7 @@ Internet traffic~\cite{seroiu_analysiscds_2002,sen_analyzep2ptraffic_2004,krp_is
 to be \p-related~\cite{cachelogic,ipoque2009};
 it was also projected that this traffic would reach
 $7$~\emph{Exabytes}-per-month by $2018$~\cite{CVNI2014}! 
-Evidently, this constitutes a major burden for 
+This constitutes a major burden for 
 Internet Service Providers (ISPs) who must route 
 all of this traffic to destinations at the edge of the Internet. 
 If the \p\ overlay topology is poorly designed, 
@@ -99,8 +99,8 @@ substantially increase as traffic might have to flow
 while trying to travel from the source to its destination node
 in the overlay.
 Hence, it is critical that \p\ networks be laid out 
-in ways that their topology matches, as closely as possible, the 
-underlying IP topology.
+in ways that their topology matches the underlying IP topology as 
+closely as possible.
 
 For over a decade, researchers have extensively investigated  
 various aspects of the topology mismatch problem.
@@ -120,15 +120,15 @@ select, amongst the different approaches, the one that is most suitable for
 their particular application.
 %%
 The rest of the paper is organized as follows: 
-Section~\ref{section:background} provides background on
+In Section~\ref{section:background}, we provide background on
 overlay architectures including centralized, decentralized-unstructured and
 decentralized-structured \p\ systems.
 We also formally define the problem of topology mismatch 
 and offer the rationale behind our 
 evaluation of the techniques discussed in this paper. 
-Work in the area was inspired mostly due to the volatile and fully
+Work in the area was inspired mostly by the volatile and fully
 distributed nature of the decentrilized overlays so we skip
 centralized systems and in Sections~\ref{section:unstructured} and~\ref{section:structured}
 we outline the surveyed research efforts
 for unstructured and structured \p\ overlays, respectively.
-Conclusions can be found in Section~\ref{section:conclusion}.
+We conclude in Section~\ref{section:conclusion}.
