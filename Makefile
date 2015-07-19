@@ -11,14 +11,17 @@ all: $(FILE).tex
 	pdflatex $(FILE)
 	okular $(FILE).pdf &
 
-clean:
-	rm -f $(FILE).ps $(FILE).pdf $(FILE).log $(FILE).dvi $(FILE).bbl $(FILE).blg $(FILE).aux
-
-update: $(FILE).tex
+u: $(FILE).tex
 	pdflatex $(FILE)
 	bibtex $(FILE)
 	pdflatex $(FILE)
 	pdflatex $(FILE)
+
+pack:
+	tar czvf ../$(shell date "+%Y%m%d:%H:%M")_$(FILE).tar.gz . --exclude=".git" --exclude=".gitignore" --exclude="misc/papers" --exclude="README.md"
+
+clean:
+	rm -f $(FILE).ps $(FILE).pdf $(FILE).log $(FILE).dvi $(FILE).bbl $(FILE).blg $(FILE).aux $(FILE).spl
 
 install:
 	scp $(FILE).ps  $(TARGET)
@@ -36,4 +39,3 @@ l: $(FILE).tex
 p:
 	lpr -P$(PRINTER) $(FILE).ps; 
 	lpq -P$(PRINTER)
-

@@ -1,4 +1,5 @@
 *.aux
+*.spl
 *.bbl
 *.blg
 *.kilepr
