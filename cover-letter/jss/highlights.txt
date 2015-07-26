@@ -1,0 +1,5 @@
+The main objective of the manuscript is to offer a comprehensive treatment on how designers of peer-to-peer systems and respective applications have attempted to address the topology mismatch of the overlay with the actual network upon which such systems operate.
+
+The problem of topology mismatch is clearly defined for peer-to-peer overlay architectures and the techniques used by both unstructured and structured systems to deal with topology mismatch are surveyed.
+
+In depth and comprehensive comparison among the numerous analyzed techniques are provided an in this manner, a solid reference for developers, system architects and researchers in the field is furnished.

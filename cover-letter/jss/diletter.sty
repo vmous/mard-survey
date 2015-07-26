@@ -1,0 +1,207 @@
+%%
+%% Department of Informatics & Telecommunications
+%%    		Letter Style File 
+%%    by Alex Delis (ad@di.uoa.gr) 9/2001
+%%
+
+%%
+%% User-invoked commands
+%%
+\newcommand{\myname}[1]{\renewcommand{\diname}{#1}}
+\newcommand{\myemail}[1]{\renewcommand{\diemail}{#1}}
+\newcommand{\myweb}[1]{\renewcommand{\diweb}{#1}}
+\newcommand{\mytitle}[1]{\renewcommand{\dititle}{#1}}
+\newcommand{\myrank}[1]{\renewcommand{\dirank}{#1}}
+\newcommand{\todayis}[1]{\renewcommand{\didate}{#1}}
+\newcommand{\mydepart}[1]{\renewcommand{\didept}{#1}}
+\newcommand{\myphone}[1]{\renewcommand{\difone}{#1}}
+\newcommand{\myfax}[1]{\renewcommand{\difax}{#1}}
+\newcommand{\mycountry}[1]{\renewcommand{\dicountry}{#1}}
+\newcommand{\recipient}[1]{\renewcommand{\direcipient}{#1}}
+\newcommand{\myopening}[1]{\renewcommand{\diopening}{#1}}
+\newcommand{\myclosing}[1]{\renewcommand{\diclosing}{#1}}
+\newcommand{\myenclosures}[1]{\renewcommand{\dienclosure}{#1}}
+\newcommand{\myCCparties}[1]{\renewcommand{\dicced}{#1}}
+\newcommand{\mypostscript}[1]{\renewcommand{\dipostscript}{#1}}
+\newcommand{\mydoublespace}{\baselineskip=1.2\baselineskip}
+
+%%
+%% Set (default) length/width of the page
+%% 
+\setlength{\oddsidemargin}{.375in}
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{5.75in}
+\setlength{\topmargin}{.25in}
+
+%%
+%% Include this package for displaying eps/ps files.
+%%
+\usepackage{epsfig}
+
+%%
+%% Defining stable letter sizes 
+%% 
+\def\diFivePt{\@setsize\diFivePt{6pt}\vpt\@vpt}
+\def\diSixPt{\@setsize\diSixPt{7pt}\vipt\@vipt}
+\def\diEightPt{\@setsize\dirSevenPt{8pt}\viipt\@viipt}
+\def\diNinePt{\@setsize\diNinePt{11pt}\ixpt\@ixpt}
+\def\diTenPt{\@setsize\diTenPt{12pt}\xpt\@xpt}
+\def\diTwelvePt{\@setsize\diTwelvePt{13.6pt}\xipt\@xipt}
+\def\diFifteenPt{\@setsize\diFifteenPt{18pt}\xivpt\@xivpt}
+\def\diSeventeenPt{\@setsize\diSeventeenPt{22pt}\xviipt\@xviipt}
+\def\diTwentyPt{\@setsize\diTwentyPt{25pt}\xxpt\@xxpt}
+\def\diTwentyfivePt{\@setsize\diTwentyfivePt{30pt}\xxvpt\@xxvpt}
+
+%%
+%% Other Font Definitions 
+%% 
+\newcommand{\LargeDiFnt}[1]{{\normalfont\scshape\Large #1}%
+	\index{#1@{\normalfont\scshape\Large #1}}}
+\newcommand{\largeDiFnt}[1]{{\normalfont\scshape\large #1}%
+	\index{#1@{\normalfont\scshape\large #1}}}
+\newcommand{\normalDiFnt}[1]{{\normalfont\scshape #1}%
+	\index{#1@{\normalfont\scshape #1}}}
+\newcommand{\smallDiFnt}[1]{{\normalfont\scshape\small #1}%
+	\index{#1@{\normalfont\scshape\small #1}}}
+
+%%
+%% Auxiliary Vars
+%% 
+\newlength{\diwidth}
+\newcommand{\dinull}{}
+
+%%
+%% Internal Commands containing default values
+%%
+\newcommand{\didate}{}
+\newcommand{\dicountry}{%
+	Greece % 
+	}
+\newcommand{\didept}{%
+	Department of Informatics \\%
+	and Telecommunications      %
+	}
+\newcommand{\diname}{}
+\newcommand{\diemail}{}
+\newcommand{\difax}{}
+\newcommand{\difone}{}
+\newcommand{\dirank}{}
+\newcommand{\dititle}{}
+\newcommand{\diweb}{}
+\newcommand{\diblgs}{% 
+	Typa Buildings,
+	}
+\newcommand{\direcipient}{}
+\newcommand{\diopening}{% 
+	Dear Madam/Sir:       %
+	}
+\newcommand{\diclosing}{% 
+	Sincerely,      %
+	}
+\newcommand{\dicced}{}
+\newcommand{\dienclosure}{}
+\newcommand{\dipostscript}{}
+
+%%
+%% UoA logo geeration
+%% 
+\newcommand{\uoalogo}{%
+	\vspace*{-60pt}
+	\begin{center}
+	\settowidth{\diwidth}%
+		{\diTwelvePt{\textsc{The National and Kapodistrian}}}
+	\parbox{\diwidth}
+		{\diTwelvePt{\textsc{The National and Kapodistrian}}}\\
+	\vspace*{4pt}
+	{\diTwentyPt\textsc{University of Athens}}\\
+	~\\
+	\end{center}
+	}
+
+%%
+%% Letterhead creation
+%% 
+\newcommand{\HeaderOfLetter}{
+    	\clearpage
+	\setcounter{page}{1}
+	\thispagestyle{empty}
+    	\uoalogo
+	\vspace*{-60pt}
+	\epsfig{file=diAthina.ps,width=0.55in} \\
+	\vspace*{6pt}
+    \parbox[t]{2.50in}{
+	\raggedright
+	\diTenPt 
+	\scshape
+        \ifx\dinull\didept \else \didept \\  \fi
+	\smallskip
+	The University of Athens \\
+	\smallskip
+	\ifx\idNull\diblgs \else \diblgs \fi  Univ. Campus \\
+	\smallskip
+	GR15784, Ilisia, Athens \\	
+	\smallskip
+	\ifx\dinull\dicountry \else \dicountry \fi
+    	}
+    \hfill
+    \parbox[t]{2.50in}{
+	\raggedleft
+	\diTenPt 
+	\scshape
+        \ifx\dinull\dititle \diname  \smallskip \\ 
+		\else \dititle~\diname \smallskip \\%
+		\fi
+        \ifx\dinull\dirank 
+		\else { \dirank}\\% 
+		\fi
+        \ifx\dinull\diemail 
+		\else  e-mail: {\normalfont\textrm \diemail}\\%
+		\fi
+	\ifx\dinull\diweb 
+		\else web: {\normalfont\textrm \diweb }\\% 
+		\fi
+        \ifx\dinull\difone 	
+		\else  \smallskip Phone: {\normalfont\textrm  \difone}\\%
+		\fi
+        \ifx\dinull\difax 
+		\else Fax: {\normalfont\textrm \difax}\\% 
+		\fi
+	\smallskip
+	\ifx\dinull\didate \today 
+		\else \didate 
+		\fi
+    }
+}
+
+
+%%
+%%  Redefinition of the ``letter'' environment
+%%
+\newenvironment{letter}[1]{
+	\HeaderOfLetter
+	~\\ ~\\ ~\\
+	\direcipient
+	~\\ ~\\
+	\normalfont{#1} 
+	}
+	{
+	\vspace*{-5pt}
+	\begin{flushleft}
+	\diclosing
+	\bigskip \bigskip
+
+        \ifx\dinull\dititle \diname \\ \else \dititle~\diname \\ \fi
+	\end{flushleft}
+
+	\vspace{35pt}
+	\ifx\dinull\dicced \else 
+		\noindent CC: \dicced \\ \bigskip \bigskip \fi
+	\ifx\dinull\dienclosure \else 
+		\noindent Encl: \dienclosure \\\fi
+	\vfill
+	\ifx\dinull\dipostscript \else
+			\begin{flushleft}
+			PS: \dipostscript
+			\end{flushleft} 
+			\fi
+	}
