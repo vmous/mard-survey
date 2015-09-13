@@ -55,7 +55,9 @@
 \usepackage{color,soul}
 \usepackage{wasysym}
 \usepackage{pdflscape}
-%\usepackage{tikz}
+
+\usepackage{chronosys}
+
 \usepackage{pgfplots}
 \usetikzlibrary{patterns}
 \usepackage{supertabular}
@@ -72,18 +74,11 @@
 
 \journal{Systems and Software}
 
-\newtheorem{definition}{Definition}
-\newcommand{\p}{\emph{P2P}}
+
+\include{header}
 
 
 \begin{document}
-
-\newcolumntype{R}[2]{%
-    >{\adjustbox{angle=#1,lap=\width-(#2)}\bgroup}%
-    l%
-    <{\egroup}%
-}
-\newcommand*\rot{\multicolumn{1}{R{45}{1em}}}% no optional argument here, please!
 
 
 \begin{frontmatter}
@@ -181,6 +176,7 @@ Distributed systems, peer-to-peer, overlay network, topology mismatch,topology a
 
 \input{conclusion}
 
+\input{acknowledge}
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections

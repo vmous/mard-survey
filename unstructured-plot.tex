@@ -11,49 +11,49 @@
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-%\begin{landscape}
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
+  y dir=reverse,
   bar width=7pt,
   xlabel=\emph{Efficiency},
   ylabel=\emph{Algorithm},
   symbolic x coords={low, medium, high},
-  symbolic y coords={
-    mOverlay,
-    LB,
-    CTAG,
-    DDNO,
-    %HsiaoEtAl,
-    PROP-O,
-    PROP-G,
-    QinEtAl,
-    UTAPS,
-    TopBT,
-    LiuEtAl,
-    Ono,
-    BNS,
-    EGOIST,
-    ITA,
-    APS,
-    HAND,
-    THANCS,
-    SBO,
-    ACE,
-    AOTO,
-    Narada,
-    %Markatos02,
-    SqrtReplication,
-    ProportionalReplication,
-    UniformReplication,
-    DCMP,
-    LTM,
-    Gia,
-    DAPS,
-    LocalIndices,
-    DirectedBFS,
-    IterativeDeepening
+  ytick={0,1,2,...,30},
+  yticklabels={
+    IterativeDeepening - \cite{YG-M2002},
+    DirectedBFS - \cite{YG-M2002},
+    LocalIndices - \cite{YG-M2002},
+    DAPS - \cite{ZL2005},
+    Gia - \cite{CRBLS2003},
+    LTM - \cite{LLXNZ2004},
+    DCMP - \cite{ZKB2008},
+    UniformReplication - \cite{CS2002},
+    ProportionalReplication - \cite{CS2002},
+    SqrtReplication - \cite{CS2002},
+    %\cite{Markatos02},
+    Narada - \cite{CRZ2000},
+    AOTO - \cite{LZXN2003},
+    ACE - \cite{LZXN2004},
+    SBO - \cite{LXN2007},
+    THANCS - \cite{LNXE2005},
+    HAND - \cite{CLZHC2006},
+    APS - \cite{BFLZ2003},
+    ITA - ~\cite{PRFM2013},
+    EGOIST - \cite{SLLBBR2008},
+    BNS - \cite{BCCMSBZ2006},
+    Ono - \cite{CB2008},
+    \cite{LCLX2009},
+    TopBT - \cite{RTLCGZ2010},
+    UTAPS - \cite{LCY2008},
+    \cite{QLZG2009},
+    PROP-G - \cite{QCYCZ2007},
+    PROP-O - \cite{QCYCZ2007},
+    %\cite{HLH2009},
+    DDNO - \cite{Z-YK2005},
+    CTAG - \cite{ZL2006},
+    LB - \cite{RHKS2002},
+    mOverlay - \cite{ZZZSZ2004}
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -76,56 +76,54 @@ table[x=EFFICIENCY,y=ALGORITHM]
 \caption{\emph{Efficiency} Pictorial Comparison of Unstructured Approaches.}
 \label{unstructured:plot:efficiency}
 \end{figure}
-%\end{center}
-%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% OVERHEAD %%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-%\begin{landscape}
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
+  y dir=reverse,
   bar width=7pt,
   xlabel=\emph{Overhead},
   ylabel=\emph{Algorithm},
   symbolic x coords={low, medium, high},
-  symbolic y coords={
-    mOverlay,
-    LB,
-    CTAG,
-    DDNO,
-    %HsiaoEtAl,
-    PROP-O,
-    PROP-G,
-    QinEtAl,
-    UTAPS,
-    TopBT,
-    LiuEtAl,
-    Ono,
-    BNS,
-    EGOIST,
-    ITA,
-    APS,
-    HAND,
-    THANCS,
-    SBO,
-    ACE,
-    AOTO,
-    Narada,
-    %Markatos02,
-    SqrtReplication,
-    ProportionalReplication,
-    UniformReplication,
-    DCMP,
-    LTM,
-    Gia,
-    DAPS,
-    LocalIndices,
-    DirectedBFS,
-    IterativeDeepening
+  ytick={0,1,2,...,30},
+  yticklabels={
+    IterativeDeepening - \cite{YG-M2002},
+    DirectedBFS - \cite{YG-M2002},
+    LocalIndices - \cite{YG-M2002},
+    DAPS - \cite{ZL2005},
+    Gia - \cite{CRBLS2003},
+    LTM - \cite{LLXNZ2004},
+    DCMP - \cite{ZKB2008},
+    UniformReplication - \cite{CS2002},
+    ProportionalReplication - \cite{CS2002},
+    SqrtReplication - \cite{CS2002},
+    %\cite{Markatos02},
+    Narada - \cite{CRZ2000},
+    AOTO - \cite{LZXN2003},
+    ACE - \cite{LZXN2004},
+    SBO - \cite{LXN2007},
+    THANCS - \cite{LNXE2005},
+    HAND - \cite{CLZHC2006},
+    APS - \cite{BFLZ2003},
+    ITA - ~\cite{PRFM2013},
+    EGOIST - \cite{SLLBBR2008},
+    BNS - \cite{BCCMSBZ2006},
+    Ono - \cite{CB2008},
+    \cite{LCLX2009},
+    TopBT - \cite{RTLCGZ2010},
+    UTAPS - \cite{LCY2008},
+    \cite{QLZG2009},
+    PROP-G - \cite{QCYCZ2007},
+    PROP-O - \cite{QCYCZ2007},
+    %\cite{HLH2009},
+    DDNO - \cite{Z-YK2005},
+    CTAG - \cite{ZL2006},
+    LB - \cite{RHKS2002},
+    mOverlay - \cite{ZZZSZ2004}
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -145,59 +143,57 @@ table[x=OVERHEAD,y=ALGORITHM]
 \end{axis}
 \end{tikzpicture}
 }
-\caption{\emph{Overhead} Pictorial Comparison of Unstructured Approaches.}
+\caption{\emph{Overhead} Pictorial Comparison of Unstructured Approaches (Lower is Better).}
 \label{unstructured:plot:overhead}
 \end{figure}
-%\end{center}
-%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% SCALABILITY %%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-%\begin{landscape}
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
+  y dir=reverse,
   bar width=7pt,
   xlabel=\emph{Scalability},
   ylabel=\emph{Algorithm},
   symbolic x coords={low, medium, high},
-  symbolic y coords={
-    mOverlay,
-    LB,
-    CTAG,
-    DDNO,
-    %HsiaoEtAl,
-    PROP-O,
-    PROP-G,
-    QinEtAl,
-    UTAPS,
-    TopBT,
-    LiuEtAl,
-    Ono,
-    BNS,
-    EGOIST,
-    ITA,
-    APS,
-    HAND,
-    THANCS,
-    SBO,
-    ACE,
-    AOTO,
-    Narada,
-    %Markatos02,
-    SqrtReplication,
-    ProportionalReplication,
-    UniformReplication,
-    DCMP,
-    LTM,
-    Gia,
-    DAPS,
-    LocalIndices,
-    DirectedBFS,
-    IterativeDeepening
+  ytick={0,1,2,...,30},
+  yticklabels={
+    IterativeDeepening - \cite{YG-M2002},
+    DirectedBFS - \cite{YG-M2002},
+    LocalIndices - \cite{YG-M2002},
+    DAPS - \cite{ZL2005},
+    Gia - \cite{CRBLS2003},
+    LTM - \cite{LLXNZ2004},
+    DCMP - \cite{ZKB2008},
+    UniformReplication - \cite{CS2002},
+    ProportionalReplication - \cite{CS2002},
+    SqrtReplication - \cite{CS2002},
+    %\cite{Markatos02},
+    Narada - \cite{CRZ2000},
+    AOTO - \cite{LZXN2003},
+    ACE - \cite{LZXN2004},
+    SBO - \cite{LXN2007},
+    THANCS - \cite{LNXE2005},
+    HAND - \cite{CLZHC2006},
+    APS - \cite{BFLZ2003},
+    ITA - ~\cite{PRFM2013},
+    EGOIST - \cite{SLLBBR2008},
+    BNS - \cite{BCCMSBZ2006},
+    Ono - \cite{CB2008},
+    \cite{LCLX2009},
+    TopBT - \cite{RTLCGZ2010},
+    UTAPS - \cite{LCY2008},
+    \cite{QLZG2009},
+    PROP-G - \cite{QCYCZ2007},
+    PROP-O - \cite{QCYCZ2007},
+    %\cite{HLH2009},
+    DDNO - \cite{Z-YK2005},
+    CTAG - \cite{ZL2006},
+    LB - \cite{RHKS2002},
+    mOverlay - \cite{ZZZSZ2004}
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -220,7 +216,5 @@ table[x=SCALABILITY,y=ALGORITHM]
 \caption{\emph{Scalability} Pictorial Comparison of Unstructured Approaches.}
 \label{unstructured:plot:scalability}
 \end{figure}
-%\end{center}
-%\end{landscape}
 
 \twocolumn

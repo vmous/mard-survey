@@ -1,20 +1,20 @@
-ALGORITHM		EFFICIENCY	OVERHEAD	SCALABILITY
-GlobalSoftState		medium		high		low
-Mithos			medium		medium		low
-LAPTOP			medium		low		high
-%Landmark Binning	medium		medium		medium
-ProximityInKademlia	medium		medium		medium
-CHOP6			low		low		medium
-T2MC			high		high		low
-PChord			medium		medium		medium
-AChord			medium		medium		medium
-Chord6			low		low		low
-DHTPNS			medium		medium		medium
-QuasiChord		medium		high		medium
-IPBC			low		low		medium
-%Cone			medium		medium		medium
-%DynaMo			medium		low		high
-DynaMORLM		medium		medium		high
-DynaMOCNPA		medium		low		medium
-3DO			low		low		medium
-SATMatch		high		medium		medium
+ALGORITHM	EFFICIENCY	OVERHEAD	SCALABILITY%	LABEL
+0		medium		high		low%		GlobalSoftState - \cite{XTZ2003}
+1		medium		medium		low%		Mithos - \cite{WR2003}
+2		medium		low		high%		LAPTOP - \cite{WLH2007}
+%-		medium		medium		medium%		Landmark Binning - 
+3		medium		medium		medium%		\cite{KLKP2008}
+4		low		low		medium%		CHOP6 - \cite{MT2007}
+5		high		high		low%		T2MC - \cite{SLCGZ2008}
+6		medium		medium		medium%		PChord - \cite{HLYW2005}
+7		medium		medium		medium%		AChord - \cite{DK2006}
+8		low		low		low%		Chord6 - \cite{XZHL2005}
+9		medium		medium		medium%		DHTPNS - \cite{DLTZZ2006}
+10		medium		high		medium%		QuasiChord - \cite{SZ2008}
+11		low		low		medium%		IPBC - \cite{KM2007}
+%-		medium		medium		medium%		Cone - \cite{HY2007}
+%-		medium		low		high%		DynaMo - \cite{WZS2004}
+12		medium		medium		high%		DynaMORLM - \cite{WZS2004}
+13		medium		low		medium%		DynaMOCNPA - \cite{WZS2004}
+14		low		low		medium%		3DO - \cite{AOS2014}
+15		high		medium		medium%		SATMatch - \cite{RGJZ2004}

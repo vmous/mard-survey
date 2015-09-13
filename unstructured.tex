@@ -34,12 +34,12 @@ proximity.
 % \label{figure:dbfs}
 % \end{figure}
 
-To improve over {\sl Gnutella}'s ``blind flooding'' approach,
+To improve over \emph{Gnutella}'s ``blind flooding'' approach,
 \cite{YG-M2002} proposed a practical and easy to implement solution 
 weaved around three different message forwarding methods, namely
 \emph{iterative deepening}, \emph{directed BFS} and \emph{local indices}.
 
-In \emph{iterative deepening}, 
+In \textbf{\emph{iterative deepening}},
 %(see Figure~\ref{figure:dbfs:iterdeep})
 the search is
 performed on a BFS tree with multiple preset depths. 
@@ -53,7 +53,7 @@ Its major drawback is the delay between successive iterations, as the
 source-node has to examine the results with each attempt before deciding to
 either quit or ``unfreeze'' the query.
 
-The \emph{directed BFS}
+The \textbf{\emph{directed BFS}}
 tries to avoid the aforementioned delay by forwarding 
 query messages only to a selected subset of available neighbors. The selection
 criteria varies, from the number of results received or the distance (hops)
@@ -61,8 +61,8 @@ traveled to locate these results, to the bandwidth, or the
 query load of the neighbor. That way, fewer nodes are visited but quality of
 query responses is maintained, to a large degree, on the premise that the
 selected heuristics can direct the search to the right path.
-%
-In \emph{local indices},
+
+In \textbf{\emph{local indices}},
 each node indexes data hosted by neighboring nodes within a radius of $r$ hops
 and uses this local index to answer queries on behalf of other nodes.
 That way, local indices,
@@ -70,7 +70,7 @@ greatly reduce the aggregate bandwidth usage of the network and
 improve query efficiency. However, updating such indices in 
 the presence of frequent node joins/departures 
 may introduce significant overhead should the radius is kept broad.
-%%
+
 Below, we outline how the techniques in~\cite{YG-M2002}
 fare against the three major performance criteria 
 of Section~\ref{section:background}.
@@ -121,15 +121,15 @@ medium \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \paragraph*{ \bf Delay Aware P2P System}
-A \emph{delay--aware} \p\ system termed {\sl DAPS} 
+A \emph{delay--aware} \p\ system termed \textbf{\emph{DAPS}} 
 was introduced in~\cite{ZL2005}.
-{\sl DAPS}  seeks to attain reduced look-up times by dividing 
+\emph{DAPS}  seeks to attain reduced look-up times by dividing 
 peer routing tables into several sectors of increasing delay. 
 The source node that issues the query designates the delay 
 boundary it may tolerate, by providing a \emph{pruning factor}.
 In this context, user requests are forwarded only to 
 nodes whose expected delay is less than or equal to the indicated boundary. 
-{\sl DAPS} primarily focuses on user ``experience'' and deploys an
+\emph{DAPS} primarily focuses on user ``experience'' and deploys an
 end-to-end delay monitoring mechanism that may enable
 the clustering of routing tables. 
 In a dynamic environment, the formation of such 
@@ -138,12 +138,17 @@ accurate routing tables may be an elusive goal.
 %routing tables and the loose organization of DAPS' overlay network it is
 %considered by is be tween structured and unstructured.
 %%
-In terms of the three performance criteria, {\sl DAPS} stands as follows:
+In terms of the three performance criteria, \emph{DAPS} stands as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{DAPS} &
 % Does not check for close by nodes, it just sorts the contents of a node's
 % routing table.
 % Also in a high churn environment a lot of time could be spend probing for
@@ -160,17 +165,17 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Gia}
-The key objective of the {\sl Gia} system~\cite{CRBLS2003} is 
+The key objective of the \textbf{\emph{Gia}} system~\cite{CRBLS2003} is 
 to help alleviate the scalability omnipresent
 in unstructured \p\ file-sharing systems.
-At first, {\sl Gia} replaced {\sl Gnutella}'s blind flooding 
+At first, \emph{Gia} replaced \emph{Gnutella}'s blind flooding 
 with random walks.
 Although this adoption was 
 a step in the right direction \cite{LCCLS2002},
 issuing a single copy of the query within the network
 effectively reduces the search scope and may negatively affect 
 the success rate of the query in question.
-To overcome this limitation, {\sl Gia} introduces
+To overcome this limitation, \emph{Gia} introduces
 a token-based flow control mechanism 
 that gradually redirects queries to nodes which are more
 likely to answer. This flow control mechanism also helps prevent node
@@ -179,18 +184,18 @@ can handle, in terms of tokens, to its neighbors; to this end,
 peers only forward query requests to nodes that they previously
 received tokens from. Further refinement to the search mechanism is the
 support for \emph{one--hop replication} of pointers to content.
-{\sl Gia} also acknowledges the heterogeneity in peer bandwidth,
+\emph{Gia} also acknowledges the heterogeneity in peer bandwidth,
 processing power, disk speed, etc., of \p\ nodes and uses this
 information when connecting nodes to each other.
 By using a topology adaptation algorithm, 
-{\sl Gia} places low capacity nodes within 
+\emph{Gia} places low capacity nodes within 
 short proximity to peers with high performance features.
 This topology adaptation algorithm is based on the metric 
 each node maintains about its satisfaction --ranging between $0$ and $1$--
 for the neighbors with which it finds itself associated. 
 Through message exchanges, a peer can establish new connections 
 or drop superseded ones to improve its satisfaction.
-Despite the fact that {\sl Gia}'s topology adaptation algorithm 
+Despite the fact that \emph{Gia}'s topology adaptation algorithm 
 improves the network's
 scalability, it falls short in addressing the mismatch problem
 as considerations for the underlying network are not handled in explicit
@@ -198,13 +203,18 @@ terms \cite{LXLNZ2005}. Moreover it reduces the search scope, exhibits poor
 performance in the worst case when matching data is not found quickly
 \cite{PR2004,HJ2004} and can potentially build  disconnected topologies
 \cite{MBL2006}.
-%
-In terms of the three stated criteria, {\sl Gia}'s approach is as follows:
+
+In terms of the three stated criteria, \emph{Gia}'s approach is as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Gia} &
 % Reduces the search scope.
 medium &
 % Only one copy of the query is issued to the network.
@@ -221,7 +231,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Location-aware Topology Matching (LTM)}
 
-\emph{Location-aware Topology Matching (LTM)} \cite{LLXNZ2004}
+\textbf{\emph{Location-aware Topology Matching (LTM)}} \cite{LLXNZ2004}
 seeks to optimize an overlay \p\ structure based on the physical topology.
 To achieve this, peers issue special messages called
 \textit{TTL-detector}s whose \emph{TTL} values are $0$ or $1$;
@@ -299,9 +309,14 @@ effectively addressing the mismatch problem.
 \emph{LTM} fares as follows regarding our three  criteria:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{LTM} &
 % Authors claim 75% reduction on traffic cost and about 65% reduction on query
 % response time.
 medium &
@@ -319,8 +334,8 @@ Another problem with topology unaware
 systems is the duplication of messages due to cycles in the network graph.
 Interestingly, such cycles appear even along the correct forwarding path.
 \cite{ZKB2008} focuses on this exact deficiency of overlay networks and
-introduces the \emph{Distributed Cycle Minimization Protocol
-(DCMP)}, a dynamic, fully distributed method that removes cycles;
+introduces the \textbf{\emph{Distributed Cycle Minimization Protocol(DCMP)}},
+a dynamic, fully distributed method that removes cycles;
 this is accomplished without sacrificing
 overlay connectivity, resilience and other key properties of unstructured
 \p\ architectures and by avoiding a hierarchical organization of peers. 
@@ -336,7 +351,7 @@ the protocol in detecting cycles that span for more than \emph{TTL} nodes.
 Even though cycle elimination does improve network performance, 
 it cannot  directly contribute to the solution of the topology mismatch
 problem, while its performance in high-traffic and churn environments and its
-ability to retain important characteristics of a {\sl Gnutella}-like topology (i.e.,
+ability to retain important characteristics of a \emph{Gnutella}-like topology (i.e.,
 degree distribution, average peer distance, diameter e.t.c.) has been
 doubted~\cite{CSG2010}. 
 On the other hand, overhead is greatly reduced 
@@ -358,9 +373,14 @@ The expected \emph{DCMP} behavior as far as our three criteria is:
 %
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{DCMP} &
 % It returns more result than LTM according to experiments in
 % \cite{ZKB2008}
 medium &
@@ -385,12 +405,12 @@ In \cite{CS2002} and \cite{LCCLS2002}, replication is used as a way to improve
 inefficient blind search. The observation is that as the number of replicas
 increases in the network, it would be relatively easy to locate items even if
 search is random. Concretely, three three approaches for replication allocation
-are proposed: \emph{uniform}, \emph{proportional}, and
-\emph{square-root replication}.
+are proposed: \textbf{\emph{uniform}}, \textbf{\emph{proportional}}, and
+\textbf{\emph{square-root replication}}.
 
-In the uniform model, all objects are replicated without taking into account
+In the \emph{uniform model}, all objects are replicated without taking into account
 the query distribution,
-while in the proportional, objects are replicated analogously to their query
+while in the \emph{proportional}, objects are replicated analogously to their query
 rate, so that frequently queried items can be found more often. Experimental
 outcomes indicate that the uniform allocation minimizes the maximum search
 length and so it can reduce the time spent on unsuccessful searches. The
@@ -399,7 +419,7 @@ but suffers when needing to locate rare items. For allocation ratio ``between''
 1 and the ratio of the query rates, the authors
 prove that the average performance on successful queries is always better
 than in uniform and proportional models. Finally, with the
-square-root model they attempt to find the golden ratio in ``between'', by
+\emph{square-root model} they attempt to find the golden ratio in ``between'', by
 suggesting to set the number of object
 replicas to the square root of the searching rate for an object\footnote{An
 interesting application of the square-root principle has also been explored
@@ -410,7 +430,7 @@ successful queries, a claim that is supported by simulations \cite{LCCLS2002}.
 
 Lv et al.~\cite{LCCLS2002}, present a \emph{k-walker} query algorithm and show
 that using it along side square-root allocation results in performance similar to
-{\sl Gnutella}'s query flooding method but incurs up to two
+\emph{Gnutella}'s query flooding method but incurs up to two
 orders of magnitude less network traffic. Also checks three strategies for
 replica placement, namely \emph{owner replication} where an object is replicated
 at the requesting node, \emph{path replication} that caches the object along the
@@ -464,7 +484,7 @@ low &
 medium &
 %
 low \\
-\emph{Square Root Replication Allocation} &
+\emph{Square-Root Replication} &
 % All (strictly) in-between strategies are (strictly) better than Uniform and
 % Proportional - replication theory
 medium &
@@ -541,14 +561,14 @@ medium \\
 % \label{figure:narada}
 % \end{figure}
 
-{\sl Narada}~\cite{CRZ2000,CRSZ2001,CRSZ2002} is a generic
+\textbf{\emph{Narada}}~\cite{CRZ2000,CRSZ2001,CRSZ2002} is a generic
 protocol for creating self-adapting overlay networks capable of 
 application-layer multicast communications without requiring IP multicast
 infrastructure at the network layer.
 Although IP--multicast would present a choice in implementing
-{\sl Narada}, it is in general considered that it violates the 
+\emph{Narada}, it is in general considered that it violates the 
 stateless design of the current Internet.
-Despite the fact the {\sl Narada} was not designed as \p\ system per se,
+Despite the fact the \emph{Narada} was not designed as \p\ system per se,
 it was the first (along with \emph{Scattercast} \cite{C2000}) to consider the
 feasibility of overlay-based, application-layer services over the Internet while
 taking into account bandwidth and latency properties of the underlying physical
@@ -561,16 +581,21 @@ deployed for the creation of these spanning trees~\cite{LYL2008}.
 The graph and trees are dynamically updated as nodes keep joining 
 or departing the network. The protocol aims to ease the physical link stress,
 the overall resource usage as well as the relative delay among end-systems. 
-Unfortunately, the main limitation for {\sl Narada} is that 
+Unfortunately, the main limitation for \emph{Narada} is that 
 although it works reasonably well for small groups, 
 it does not scale well for larger networks. 
 Hence, it is not a suitable choice for potentially large \p\ networks:
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Narada} &
 %
 medium &
 % The overhead of Narada is proportional to the multicast group size
@@ -584,8 +609,8 @@ low
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Adaptive Overlay Topology Optimization (AOTO)}
 
-Along with {\sl Narada}, the \emph{Adaptive Overlay Topology 
-Optimization (AOTO)} \cite{LZXN2003} is one of the first attempts to address the
+Along with \emph{Narada}, the \textbf{\emph{Adaptive Overlay Topology 
+Optimization (AOTO)}} \cite{LZXN2003} is one of the first attempts to address the
 topology mismatch problem. \emph{AOTO} is a distributed algorithm that seeks to
 optimize the usage of the underlying physical resources and operates in
 $2$ phases:
@@ -634,9 +659,14 @@ table is received.
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{AOTO} &
 %
 medium &
 % tracking of communication costs to all peer's neighbors as well as between
@@ -652,7 +682,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Adaptive Connection Establishment (ACE)}
-The \emph{Adaptive Connection Establishment (ACE)} 
+The \textbf{\emph{Adaptive Connection Establishment (ACE)}} 
 approach~\cite{LZXN2004} uses the network delay as a metric 
 to estimate the costs between nodes. Each peer computes the costs to its
 logical one-hop neighbors and forms a \emph{neighbor cost table (NCT)} 
@@ -702,9 +732,14 @@ at a greater computational overhead.
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{ACE} &
 % compared to LTM it has slow convergence speed because of the information
 % exchange among each peer and all its neighbors.
 medium &
@@ -721,7 +756,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Scalable Bipartite Overlay (SBO)}
 
-The \emph{Scalable Bipartite Overlay (SBO)}~\cite{LXN2007} 
+The \textbf{\emph{Scalable Bipartite Overlay (SBO)}}~\cite{LXN2007} 
 reduces the overhead of creating
 and maintaining a minimum spanning tree 
 by randomly dividing the nodes into
@@ -780,9 +815,14 @@ or search scope \cite{HLH2009}.
 In regards to the three stated criteria, \emph{SBO} behaves as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{SBO} &
 % SBO reduces traffic cost between 85 and 90 percent
 high &
 % compared to LTM it has slower convergence speed thus incurs more, total,
@@ -798,7 +838,7 @@ medium
 % \subsubsection{Two-Hop-Away Neighbor Comparison and Selection (THANCS)}
 
 The distributed heuristic termed 
-\emph{Two-Hop-Away Neighbor Comparison and Selection (THANCS)}~\cite{LNXE2005,L2008}
+\textbf{\emph{Two-Hop-Away Neighbor Comparison and Selection (THANCS)}}~\cite{LNXE2005,L2008}
 attempts to minimize overlay hop costs.
 \emph{THANCS} is essentially a \emph{local search method} as it aims 
 to find a locally optimum solution by exploiting knowledge within 
@@ -813,7 +853,7 @@ The algorithm introduces a special query message type,
 the \emph{Piggy Message (PM)} which includes information about 
 the neighbor identification (\emph{IP}) and measured distance ($d$). PMs are
 piggybacked to normal
-{\sl Gnutella} messages. 
+\emph{Gnutella} messages. 
 When a node $P$ receives a query from $Q$, it constructs a
 $PM_{PQ}$, piggybacks it to the query and forwards it to $P$'s neighbors. 
 As soon as a neighbor detaches a received $PM_{PQ}$, records the distance 
@@ -897,9 +937,14 @@ performance guarantee for the improvement of any given overlay topology~\cite{HL
 %%%%%%%%%%%%%%%%%%%%%%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{THANCS} &
 % 
 medium &
 % trivial overhead compared to the query cost savings and its convergent speed
@@ -912,7 +957,7 @@ high
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The \emph{Hops Adaptive Neighbor Discovery (HAND)} algorithm~\cite{CLZHC2006}
+The \textbf{\emph{Hops Adaptive Neighbor Discovery (HAND)}} algorithm~\cite{CLZHC2006}
 uses a fully-distributed triple--hop adjustment strategy, applied to a network
 graph $G$ to create an optimal graph $G^{*}$, free of the implications
 of topology mismatch. This optimality is attained if all peer hop 
@@ -961,9 +1006,14 @@ The advantages of \emph{HAND} are that it
 In terms of the three stated criteria, \emph{HAND} fares as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{HAND} &
 % similar traffic reduction rate savings to LTM
 medium &
 % The traffic overhead of HAND is much less than that of LTM by an average of
@@ -978,23 +1028,28 @@ high
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Adaptive Peer Selection (APS)}
-The \emph{Adaptive Peer Selection (APS)} approach uses 
+The \textbf{\emph{Adaptive Peer Selection (APS)}} approach uses 
 machine learning techniques to form peer selection strategies based on past
 experience~\cite{BFLZ2003}. A decision tree is used to rate peers based on
 information collected for the characteristics of established connections. Such
 features include connection link load, bandwidth, and past uploading experience.
 Subsequently, a Markov decision process is used
 % introduced as a mechanism 
-to shape the policy for switching among the peers. The success of approach depends on
+to shape the policy for switching among the peers. The success of this approach depends on
 how fast the introduced peer selection functions. Admittedly, \emph{APS} is slow 
 due its on-line learning process and inherent complexity \cite{ZZLZ2009}. 
 \emph{APS}'s behavior regarding the three criteria is as follows:
 % As far as the three criteria is concerned, \emph{APS} has as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{APS} &
 % machine learning the best way to adapt the overlay 
 high &
 % high computation overhead for learning and very slow convergence speed for
@@ -1008,7 +1063,7 @@ low
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The \emph{Innocuous Topology Aware Overlay Construction (ITA)}
+The \textbf{\emph{Innocuous Topology Aware Overlay Construction (ITA)}}
 approach~\cite{PRFM2013} seeks to offer both an overlay formation approach and
 an effective way to carry out searching. When constructing the overlay,
 \emph{ITA} exploits the notion of \emph{short} and \emph{long} connections.
@@ -1052,9 +1107,14 @@ Regarding the three criteria, \emph{ITA} is placed as follows:
 %
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{ITA} &
 % low clustering with larger coverage of peers with the same number of messages
 % and reduced duplication.
 medium &
@@ -1069,7 +1129,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{EGOIST}
-\emph{EGOIST}~\cite{SLLBBR2008} is a set of algorithms used 
+\textbf{\emph{EGOIST}}~\cite{SLLBBR2008} is a set of algorithms used 
 to construct and manage overlay networks. 
 \emph{EGOIST} utilizes a selfish approach in the sense that every participating
 peer continuously updates its neighbors so as to minimize the sum of distances
@@ -1098,9 +1158,14 @@ and only when nodes re-evaluate their connections.
 % Regarding the three criteria, \emph{EGOIST}'s behavior is as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{EGOIST} &
 % peer neighborhood selected to minimize, for example, average delay
 high &
 % link state info (heartbeat) and delay estimation to all other nodes
@@ -1113,17 +1178,17 @@ low
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The main objective of the \emph{Biased Neighbor Selection (BNS)} 
+The main objective of the \textbf{\emph{Biased Neighbor Selection (BNS)}} 
 approach~\cite{BCCMSBZ2006} is to 
-strengthen {\sl BitTorrent}'s~\cite{c_bittorrent_2003} locality 
+strengthen \emph{BitTorrent}'s~\cite{c_bittorrent_2003} locality 
 by carefully choosing most of the neighbors of a peer to come from 
 the same \emph{ISP}, while simultaneously adhering to the near-optimal
 download performance of the protocol.
 %%
-By and large, {\sl BitTorrent} deploys mechanisms that have proved
+By and large, \emph{BitTorrent} deploys mechanisms that have proved
 aggressive to \emph{ISP} networking and accounting as they function 
 in a ``without-borders'' approach. 
-The default {\sl BitTorrent} specification
+The default \emph{BitTorrent} specification
 designates $35$ connections for each peer regardless if such connections are
 placed within or outside the borders of the \emph{ISP} that hosts the node.
 %%
@@ -1160,9 +1225,14 @@ following table qualitatively depicts the expected behavior of \emph{BNS}:
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{BNS} &
 % inter-ISP cost minimized while retaining the near optimal performance of
 % BitTorrent download.
 high &
@@ -1176,8 +1246,8 @@ medium
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\emph{Ono}~\cite{CB2008} is a protocol that helps contain
-{\sl BitTorrent} traffic within individual \emph{ISP}s
+\textbf{\emph{Ono}}~\cite{CB2008} is a protocol that helps contain
+\emph{BitTorrent} traffic within individual \emph{ISP}s
 and enhances the downloading rates by favoring connections
 within the borders of a single autonomous system. Contrary to
 \emph{BNS}~\cite{BCCMSBZ2006},
@@ -1186,42 +1256,47 @@ without requiring any explicit cooperation between
 \emph{ISP} subscribers or any additional
 infrastructure and network topology information.
 \emph{Ono}'s selection approach is 
-landmark-based and leverages existing {\sl CDN}-infrastructure 
-for peer distance estimation. {\sl CDN}s already use both static (i.e.,
+landmark-based and leverages existing \emph{CDN}-infrastructure 
+for peer distance estimation. \emph{CDN}s already use both static (i.e.,
 geographical, \emph{IP}-clustering) and dynamic (i.e., network delay measurement)
 information for their replica selection. Thus, the algorithm leverages the
-observation that peers that are redirected to a specific {\sl CDN} replica does not
+observation that peers that are redirected to a specific \emph{CDN} replica does not
 only mean that these are close by this replica but to each other as well.
 %%
 The redirection behavior is modeled in terms of \emph{ratio map}, 
 a vector of \emph{$<$replica-server,ratio$>$} tuples, where \emph{ratio} is
-the percentage of times the {\sl CDN} redirects the peer 
+the percentage of times the \emph{CDN} redirects the peer 
 to the specific \emph{replica-server}.
 %%
 The protocol's bootstrapping phase consists of the incoming peer performing
-{\sl DNS} lookups to {\sl CDN}-names to build its redirection information.
+\emph{DNS} lookups to \emph{CDN}-names to build its redirection information.
 %%
-Initially, the {\sl DNS} polling interval is set to $30$ seconds 
+Initially, the \emph{DNS} polling interval is set to $30$ seconds 
 and increases by $1$ minute every time redirection information 
-to the {\sl CDN} remains unchanged after the lookup.
-The {\sl DNS} polling interval is halved if pertinent 
+to the \emph{CDN} remains unchanged after the lookup.
+The \emph{DNS} polling interval is halved if pertinent 
 redirection information has changed.
 To avoid the bootstrapping phase when the \emph{ratio map} 
 is sufficiently fresh, 
-\emph{Ono} persists the map after the end of a {\sl BitTorrent} session.
+\emph{Ono} persists the map after the end of a \emph{BitTorrent} session.
 %%
 Experimentation with \emph{Ono} yields minimization of
 inter-\emph{ISP} traffic costs and achieves near optimal performance 
-of {\sl BitTorrent} download~\cite{BCCMSBZ2006}.
+of \emph{BitTorrent} download~\cite{BCCMSBZ2006}.
 The \emph{ISP}-friendly design of \emph{Ono} however has been questioned when 
 it comes to Internet-scale~\cite{PMJKA2009,LCLX2009,CLYSR2011};
 its qualitative rating stands as follows:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Ono} &
 % Authors claim minimization of inter-ISP traffic cost while enhancing the,
 % already, near optimal performance of BitTorrent download.
 medium &
@@ -1236,8 +1311,8 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Locality-Awareness in BitTorrent-like P2P Applications}
-In~\cite{LCLX2009}, three techniques that 
-``inject'' locality awareness in {\sl BitTorrent}-like applications are discussed.
+In~\textbf{\cite{LCLX2009}}, three techniques that 
+``inject'' locality awareness in \emph{BitTorrent}-like applications are discussed.
 The first \emph{macroscopic-level} technique
 focuses on improving the neighbor selection process. 
 When a peer asks a tracker to join, 
@@ -1246,17 +1321,17 @@ their hop-count distance from the requesting peer and
 sends out the top-$k$ list of nodes (e.g., $k$=$50$).
 %%
 The second technique, applied in an \emph{intermediate-level}, manipulates
-{\sl BitTorrent}'s chocking/unchocking mechanism. A peer unchokes its $4$
+\emph{BitTorrent}'s chocking/unchocking mechanism. A peer unchokes its $4$
 closest, in terms of 
 autonomous system hop-count, interested neighbors. 
 The same applies also when the peer turns to 
 the seeding state;  this  \emph{intermediate-level} approach favors
-least distance and is in contrast to the original {\sl BitTorrent} 
+least distance and is in contrast to the original \emph{BitTorrent} 
 implementation which favors uploading speed.
 %%
 The last technique operates at a \emph{microscopic-level} by choosing to pick
 the next chunk to download based on a locality-first policy; this picks first
-the chunk that is closer, as opposed to {\sl BitTorrent}'s rare-first chunk
+the chunk that is closer, as opposed to \emph{BitTorrent}'s rare-first chunk
 picking policy.
 %%VM I once more reworded the above, seemed to complex to me
 The distance value of a chunk is computed as the mean
@@ -1264,11 +1339,11 @@ value of the distances of the peers that posses it.
 Through experimentation on a real-world Internet topology simulated in
 {\sf PlanetLab}, the locality-based approach achieves traffic optimization.
 Nevertheless, it does not do that well when compared with the
-random approach of the standard {\sl BitTorrent} protocol.
+random approach of the standard \emph{BitTorrent} protocol.
 
 All three techniques in~\cite{LCLX2009} seek to harness 
 the locality of the basic functions of the
-{\sl BitTorrent} protocol. 
+\emph{BitTorrent} protocol. 
 Even though they do not restructure the network to map
 better to the underlying infrastructure, they favor the intra-\emph{AS} 
 over inter-\emph{AS} communications thus, reducing the overall communication cost.
@@ -1278,9 +1353,14 @@ as far as the three criteria, the overall approach fares as follows:
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{\cite{LCLX2009}} &
 % minimization of inter-AS traffic but unfair among peers.
 medium &
 % info (AS hop distances) acquired at swarm join
@@ -1294,8 +1374,8 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{TopBT}
-The key objective of \emph{TopBT}~\cite{RTLCGZ2010} is to enhance
-proximity awareness in {\sl BitTorrent}
+The key objective of \textbf{\emph{TopBT}}~\cite{RTLCGZ2010} is to enhance
+proximity awareness in \emph{BitTorrent}
 without the need of additional infrastructure. 
 \emph{TopBT} is built on the conjecture that
 a good peer selection metric should take into account both the
@@ -1305,13 +1385,13 @@ divided by either the link-level $l$ or the number of routing hops required $a$.
 This metric should guarantee selection of peers with high download rate, low
 reciprocal upload demand and decreased routing hops.
 The above \emph{TopBT}-metric is applied in various
-aspects of the original {\sl BitTorrent} protocol to ``inject'' topology
+aspects of the original \emph{BitTorrent} protocol to ``inject'' topology
 awareness for improved peer selection. More concretely, \emph{TopBT} modifies: 
 \begin{inparaenum}[1)]
 \item the peer list the tracker returns when someone first tries
 to connect to the swarm, 
 \item the initial connection establishment, and 
-\item the unchoking mechanism of {\sl BitTorrent}.
+\item the unchoking mechanism of \emph{BitTorrent}.
 \end{inparaenum}
 \emph{TopBT}'s key features are that it does not rely on any Internet infrastructures
 (ISPs or CDNs) whatsoever and it cooperates with already deployed BitTorrent clients.
@@ -1331,13 +1411,18 @@ performance.
 %%
 Through experimentation on hundreds of {\it PlanetLab} and residential hosts,
 \emph{TopBT} offers more than $25\%$ traffic reduction and $15\%$ faster downloads
-compared to popular {\sl BitTorrent} implementations.
+compared to popular \emph{BitTorrent} implementations.
 In reference to the stated three criteria, \emph{TopBT} fares as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{TopBT} &
 % it takes into account both dl speed and network topology. The later though is
 % rather coarse grained since it is taken into account on the AS level.
 medium &
@@ -1358,7 +1443,7 @@ high
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Underlying Topology-Aware Peer Selection (UTAPS)}
-The \emph{Underlying Topology-Aware Peer Selection (UTAPS)}~\cite{LCY2008}
+The \textbf{\emph{Underlying Topology-Aware Peer Selection (UTAPS)}}~\cite{LCY2008}
 presents an enhanced peer selection strategy. 
 \emph{UTAPS} operates in two stages: in the first,
 it collects information to develop a picture of the underlying topology 
@@ -1391,9 +1476,14 @@ and at the same time offer reduced burden on the underlying \emph{ISP}s~\cite{LC
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{UTAPS} &
 % coarse grained approach of the network tomography doesn't provide a detailed
 % picture of the underlying network that the peers can then exploit
 medium &
@@ -1412,12 +1502,12 @@ medium
 % BitTorrent}
 A clustering approach that differentiates peers encountered in a swarm
 in those that are local, intra-\emph{ISP} and inter-\emph{ISP} is 
-presented in~\cite{QLZG2009}.
+presented by \textbf{\cite{QLZG2009}}.
 The classification is carried with the help of the core routers used 
 while peers communicate with the tracker. It is assumed that even though the
 network may be highly volatile, these core routers are usually more stable.
 For this, a newly arriving
-{\sl BitTorrent} peer, trace-routes the tracker and stores vectors containing
+\emph{BitTorrent} peer, trace-routes the tracker and stores vectors containing
 information like the \emph{IP} address and the hop number of a traced router, as well as the
 link delay of the traced router and the previous hop along the trace-route path.
 These vectors are reported to the tracker which uses
@@ -1439,9 +1529,14 @@ to the three criteria:
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{\cite{QLZG2009}} &
 % It incorporates clustering of peers to inter- and intra ISP which is a
 % rather coarse grained method.
 medium &
@@ -1461,7 +1556,7 @@ medium
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Peer-exchange Routing Optimization Protocols (PROP)}
 In~\cite{QCYCZ2007}, two 
-\emph{Peer-exchange Routing Optimization Protocols (PROPs)} 
+\textbf{\emph{Peer-exchange Routing Optimization Protocols (PROPs)}} 
 are introduced to help adjust the neighborhood graph of an overlay network
 while reducing the network's overall link latency.
 \emph{PROPs} are weaved around the concept of
@@ -1582,7 +1677,7 @@ medium \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % \subsubsection{Distributed Domain Name Order (DDNO)}
-The \emph{Distributed Domain Name Order (DDNO)} approach~\cite{Z-YK2005} 
+The \textbf{\emph{Distributed Domain Name Order (DDNO)}} approach~\cite{Z-YK2005}
 uses domain names to detect topologically-close nodes.
 The fundamental assumption of the approach is the nodes found in 
 the same domain are also topologically close.
@@ -1617,9 +1712,14 @@ names and determine domain locality respectively.
 In terms of our three criteria, \emph{DDNO} fares are follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{DDNO} &
 % Clustering approaches reduce search scope (or at least increase search
 % satisfaction time). The algorithm tries to ease this problem by allowing some
 % connections to be random
@@ -1638,7 +1738,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Critical Topology-Aware Grouping (CTAG)}
-The \emph{Critical Topology-Aware Grouping (CTAG)} approach~\cite{ZL2006}
+The \textbf{\emph{Critical Topology-Aware Grouping (CTAG)}} approach~\cite{ZL2006}
 advocates a grouping strategy of peers based on the 
 \emph{Internet Assigned Numbers Authority (IANA)} and 
 the respective \emph{Regional Internet Registry (RIR)}'s \emph{IP} assignments.
@@ -1651,7 +1751,7 @@ a technique which uses the longest matching \emph{IP} segment criterion to
 compute node proximity. \emph{CTAG} focuses on both the construction of the
 overlay as well as its constant and dynamic adaptation.
 In its first phase, called \emph{bootstrapping grouping},
-the {\sl Gnutella} web caching mechanism
+the \emph{Gnutella} web caching mechanism
 is modified so that a newcomer may choose the closest, in terms of \emph{AM},
 cache to retrieve its bootstrapping list. 
 Similarly, during its second stage,
@@ -1662,9 +1762,14 @@ connections, it disconnects those neighbors with the lowest \emph{AM}.
 \emph{CTAG} behaves as follows regarding the three criteria:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{CTAG} &
 % The technique partitions the system reducing the search efficiency
 low &
 % IP-based clustering involves low overhead
@@ -1695,7 +1800,7 @@ medium
 % \label{fig:landmark_binning}
 % \end{figure*}
 
-\emph{Landmark Binning}~\cite{RHKS2002} partitions close-by nodes
+\textbf{\emph{Landmark Binning}}~\cite{RHKS2002} partitions close-by nodes
 into bins based on their distance from well known anchor nodes across the
 Internet.%, as shown in Figure~\ref{fig:landmark_binning}.
 To detect locality, peers mainly use network latency (i.e., \emph{RTT}).
@@ -1717,7 +1822,7 @@ and unilaterally decides to join a specific bin based on its measurements.
 Specifically, the node measures its round-trip time to each of the landmarks and
 orders the landmarks in decreasing order of those \emph{RTT}-values.
 Each permutation of the set of landmarks represents a specific bin. 
-Should there $m$ landmarks be adopted, $m!$  different bins potentially exist. 
+Should there be $m$ landmarks adopted, $m!$  different bins potentially exist. 
 Peers that end up with the same ordering, belong to the same bin, in the sense that
 if they experience similar overall latencies from fixed network points; it
 is also  very likely that the peers in question are close to each other.
@@ -1802,9 +1907,14 @@ Finally, \cite{XTZ2003} underscores the potentially increased maintenance cost(s
 The landmark binning behaves as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Landmark Binning} &
 % The technique is coarse grained thus doesn't achieve optimal results
 % (especially in small networks)
 medium &
@@ -1822,7 +1932,7 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{mOverlay}
-The \emph{mOverlay}~\cite{ZZZSZ2004} approach addresses scalability issues
+The \textbf{\emph{mOverlay}}~\cite{ZZZSZ2004} approach addresses scalability issues
 that might arise when static landmark servers are in use.
 To this end, the use of dynamic landmarks is proposed.
 \emph{mOverlay}'s founding notion is that of a \emph{group} that 
@@ -1896,9 +2006,14 @@ leader selections, should a node either leaves or dies.
 In terms of the stated three criteria, \emph{mOverlay} fares as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{mOverlay} &
 % The technique is coarse grained thus doesn't achieve optimal results
 % (especially in small networks)
 medium &
@@ -1959,12 +2074,27 @@ belong to one of the $4$ aforementioned methodologies.
 For instance, \emph{mOverlay} combines topology adaptation 
 with landmark binning 
 while \emph{Gia} weaves together $3$ methodologies:  topology adaptation, 
-forwarding optimization and caching. 
-This combination inevitably leads to feature/performance trade-offs: for example, 
+forwarding optimization and caching.
+%%
+The timeline in Figure~\ref{unstructured:timeline} further emphasises this trend
+in the broader picture. All characteristics we discuss,
+seem to have been identified and put into practice, early on in the literature.
+In that sense, no breakthrough
+or any revolutionary ideas came out lately but mostly people fine-tuned the
+heuristic parameters in pursue of the goldset that performs best. That doesn't
+render all that work less exciting or important since it led to better theoretical
+understanding of the problem and its difficulty. Moreover, the combination of
+multiple methodologies inevitably leads to interesting feature/performance trade-offs
+that researchers need to tackle in real world applications: for example, 
 the effectiveness of a caching/replication component can be undermined
 by a continuously adapting overlay that removes important links between peers.
+Topology adaptation and forwarding optimization seem to be constant areas of
+concentration for the researchers. This is of no surprise as all seem to
+understand the importance of the volatile nature of unstructured \p systems. 
+%%
 If a technique is to be evaluated for a specific application domain,
 its overall approach as well as its underlying used methodologies have to be considered.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 In what follows, we outline how the surveyed protocols 
@@ -1974,12 +2104,15 @@ approaches applicable for \emph{unstructured}~\p~\emph{systems}.
 Specifically, Table~\ref{unstructured:table} summarizes, for each
 effort, the methodologies it incorporates, its special highlights as well as 
 a brief presentation of the pros and cons in its implementation. 
-Last but not least, Figures~\ref{unstructured:plot:efficiency}, \ref{unstructured:plot:overhead}
+Figures~\ref{unstructured:plot:efficiency}, \ref{unstructured:plot:overhead}
 and \ref{unstructured:plot:scalability} pictorially compare the
 surveyed techniques in terms of \emph{efficiency}, \emph{overhead} and \emph{scalability};
 we defined these three criteria in Subsection~\ref{background:motivation}
 and we collectively used them as a yardstick to qualitatively 
-evaluate the presented approaches.
+evaluate the presented approaches. Last but not least,
+Figure~\ref{unstructured:timeline} creates a timeline of the algorithms
+and their elements where we capture the temporal and trending dimensions
+of the surveyed material.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Topology Adaptation Methodology}
@@ -2266,4 +2399,6 @@ especially in an environment with high churn.
 \input{unstructured-table}
 %%
 \input{unstructured-plot}
+%%
+\input{unstructured-timeline}
 %%

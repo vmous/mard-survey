@@ -46,18 +46,18 @@ centralized search directory that inevitably became
 a single point of failure, a scalability bottleneck or 
 a target of malicious behavior such as \emph{DoS} attacks.
 
-{\sl Napster} was the most successful incarnation of the
+\emph{Napster} was the most successful incarnation of the
 centralized approach in file-sharing~\cite{napster}.
 It maintained a \emph{central index server} based on file-lists 
 that were peer-provided.
 Users would query the index server that would provide 
 pointers to the actual content.
-Thus, by centralizing search while distributing downloads,  {\sl Napster}
+Thus, by centralizing search while distributing downloads,  \emph{Napster}
 achieved a highly efficient design that, at its height, attracted $26$ million
-users sharing approximately $80$ million songs\cite{jmm_naptopusage_2001}.
+users sharing approximately $80$ million songs~\cite{jmm_naptopusage_2001}.
 %%
 The central indexing component played a vital role in the demise of 
-{\sl Napter}, as the \emph{Recording
+\emph{Napter}, as the \emph{Recording
 Industry Association of America} successfully argued in court that this software
 entity was enabling copyright infringement of the artists' songs exchanged
 through the system.
@@ -75,7 +75,7 @@ Unstructured systems are also known as
 \emph{broadcast-based} systems for they use message flooding among %% it is FOR!
 peers to propagate search queries. 
 In its first realization,
-{\sl Gnutella}(\emph{v.0.4}) became a well-known example of the fully
+\emph{Gnutella}(\emph{v.0.4}) became a well-known example of the fully
 decentralized unstructured approach.
 
 A key disadvantage of the unstructured approach is that message flooding burdens
@@ -93,23 +93,23 @@ will, ultimately, be found.
 %%%
 \begin{figure}[ht]
 \centering
-\subfigure[Centralized ({\sl SETI@Home} or {\sl Napster}). Peers query the centralized
+\subfigure[Centralized (\emph{SETI@Home} or \emph{Napster}). Peers query the centralized
 entity (dotted lines) and then establish the connection to the data source.] {
   \includegraphics[scale=0.17]{img/pdf/centralized.pdf}
   \label{figure:p2p-archs:centralized}
 }\qquad\qquad
-\subfigure[Fully unstructured ({\sl Gnutella} \emph{v.0.4}). Data is distributed randomly,
+\subfigure[Fully unstructured (\emph{Gnutella} \emph{v.0.4}). Data is distributed randomly,
 the topology is also random and all participants are equal.] {
   \includegraphics[scale=0.17]{img/pdf/unstructured-full.pdf}
   \label{figure:p2p-archs:unstructred-full}
 }\qquad\qquad
-\subfigure[Hierarchical unstructured ({\sl Gnutella} \emph{v.0.6} or {\sl FastTrack}). Certain
+\subfigure[Hierarchical unstructured (\emph{Gnutella} \emph{v.0.6} or \emph{FastTrack}). Certain
 peers (bigger circles) shoulder specific responsibilities (e.g., data
 indexing).] {
   \includegraphics[scale=0.16]{img/pdf/unstructured-hierarchical.pdf}
   \label{figure:p2p-archs:unstructured-hierarchical}
 }\qquad%\qquad
-\subfigure[Structured ({\sl Chord}~\cite{stoica_chord_2001} and {\sl Kademlia}~\cite{maymounkov_kademlia_2002}). 
+\subfigure[Structured (\emph{Chord}~\cite{stoica_chord_2001} and \emph{Kademlia}~\cite{maymounkov_kademlia_2002}). 
 Peers and data are placed in the overlay in a deterministic manner.] {
   \includegraphics[scale=0.17]{img/pdf/structured.pdf}
   \label{figure:p2p-archs:structured}
@@ -130,8 +130,8 @@ became \emph{ultra/super-peers}
 facilitating less-powerful \emph{leaf-nodes} to find resources of
 interest. 
 Examples of such hierarchical unstructured systems include
-{\sl Gnutella}(\emph{v.0.6})/{\sl Limewire}~\cite{gnutella}, 
-{\sl KaZaA}~\cite{kazaa} and {\sl Skype}~\cite{skype}. 
+\emph{Gnutella}(\emph{v.0.6})/\emph{Limewire}~\cite{gnutella}, 
+\emph{KaZaA}~\cite{kazaa} and \emph{Skype}~\cite{skype}. 
 Although the hierarchical approach relieves network pressure as
 search queries were flooded over the much smaller subset of 
 ultra/super-peers, it fails to address the reduced search scope and
@@ -156,9 +156,9 @@ to content-based retrieval provided by unstructured overlays.
 This means that unstructured overlays can support more versatile 
 resource location queries such as keyword and partial matching searches. 
 Several popular file-sharing \p\ applications have been based on \emph{DHT}s
-including {\sl Overnet}/{\sl eDonkey}~\cite{overnet}, 
-{\sl Kademlia}/{\sl Kad Network}~\cite{maymounkov_kademlia_2002},  and 
-some flavors of {\sl BitTorrent}~\cite{c_bittorrent_2003}.  
+including \emph{Overnet}/\emph{eDonkey}~\cite{overnet}, 
+\emph{Kademlia}/\emph{Kad Network}~\cite{maymounkov_kademlia_2002},  and 
+some flavors of \emph{BitTorrent}~\cite{c_bittorrent_2003}.  
 Moreover, \emph{DHT}s sparked
 a flurry of research for many diverse applications, ranging
 from distributed search engines to event-notification and cloud-based
@@ -320,7 +320,7 @@ restricted to a constant ($k\geq 2$) by the bandwidth of each node $v_i$.
 
 Early overlay protocol implementations gave litte attention to the 
 topology mismatch problem.
-{\sl Gnutella}, for example, is
+\emph{Gnutella}, for example, is
 considered far from scalable~\cite{ritter_gnucantscale_2001} for every peer
 chooses its neighbors without any knowledge of the underlying
 network, resulting in mismatches. 
@@ -333,7 +333,7 @@ this opportunistic and without coordination environment.
 %%
 \cite{matei_mapgnutella_2002} showed that, even when $95$\% of any two nodes 
 are less than $7$ hops away from each other, 
-a \emph{flooding-based} {\sl Gnutella}-like algorithm 
+a \emph{flooding-based} \emph{Gnutella}-like algorithm 
 can generate $330$TB/month traffic in a $50,000$ node network. 
 A topology mismatch can thus have a serious effect 
 on Internet's routing performance.
@@ -409,22 +409,33 @@ For each of these criteria, we use a coarse-grained,
 three-level, gradation to denote how well the algorithms do,
 namely, \emph{low}, \emph{medium} and \emph{high}.
 Each criterion has its own
-interpretation of the above literal values. 
-\emph{Efficiency} means how well the
-algorithm performs its search and topology adaptation functions. Our assessment
-also considers any negative effects that might come along with the application
-of the algorithm on intrinsic characteristics of the system (i.e., search scope
-coverage, download performance etc.).
+interpretation of the above literal values.
 
-For the \emph{overhead} criterion, we evaluate the cost
-of computing and communicating peer join, message forwarding, 
-and overlay topology maintenance. For instance, the overhead that an algorithm,
-which needs global knowledge of the overlay topology, imposes on the system is
-greater compared to a protocol that only relies on peers exchanging routing
-tables within a 2-hop radius from each other.
+We use the term \emph{efficiency} to gauge the competence of a given
+algorithm to match the overlay to the underlying network. Minimization
+of duplicate messages traveling the network, quick object location and
+preservation of search scope as well as ability and
+effectiveness to adapt in high churn environments are some of the
+characteristics we consider when grading an approach on this criterion.
+
+With \emph{overhead}, we, coarsely, quantify the additional cost a given approach
+imposes to the underlying resources when applied to
+\begin{inparaenum}[\itshape i\upshape)]
+  \item create,
+  \item adapt, and
+  \item maintain
+\end{inparaenum}
+the overlay network while preserving its topology awareness. Computing and
+communicating peer join and departure, message forwarding, updating routing tables
+are some of things that we take into account to perform our assessement. Note
+that this is the one criterion of the three we use that its literal values
+``low'' and ``high'' must be interpreted as ``better'' and ``worse'' respectivelly.
 
 For the \emph{scalability} criterion, we consider system behavior with respect
 to the number of participating peers it can reliably support. We characterize
 protocols as being lowly, mediumly or highly scalable if they are proven to
 effectively support hundreds, tenths of thousands, or millions of nodes,
-respectively.
+respectively. One important consideration here is the extent of self-organization
+of a system's peers and thus the overall distributed nature of the overlay network.
+The least a network relies on global knowledge to perform it functions the smoother
+it scales.

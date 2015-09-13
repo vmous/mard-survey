@@ -1,34 +1,34 @@
-ALGORITHM			EFFICIENCY	OVERHEAD	SCALABILITY
-IterativeDeepening		low		low		medium
-DirectedBFS			medium		medium		medium
-LocalIndices			high		medium		medium
-DAPS				low		low		medium
-Gia				medium		low		medium
-LTM				medium		medium		medium
-DCMP				medium		low		high
-UniformReplication		low		low		medium
-ProportionalReplication		low		medium		low
-SqrtReplication			medium		medium		medium
-%Markatos02			-		-		-
-Narada				medium		high		low
-AOTO				medium		high		medium
-ACE				medium		medium		medium
-SBO				high		medium		medium
-THANCS				medium		low		high
-HAND				medium		low		high
-APS				high		high		low
-ITA				medium		low		medium
-EGOIST				high		high		low
-BNS				high		low		medium
-Ono				medium		medium		low
-LiuEtAl				medium		low		medium
-TopBT				medium		low		high
-UTAPS				medium		medium		medium
-QinEtAl				medium		medium		medium
-PROP-G				medium		low		medium
-PROP-O				medium		medium		medium
-%HsiaoEtAl			-		-		-
-DDNO				medium		low		medium
-CTAG				low		low		medium
-LB				medium		low		low
-mOverlay			medium		medium		medium
+ALGORITHM	EFFICIENCY	OVERHEAD	SCALABILITY%	LABEL
+0		low		low		medium%		IterativeDeepening - \cite{YG-M2002}
+1		medium		medium		medium%		DirectedBFS - \cite{YG-M2002}
+2		high		medium		medium%		LocalIndices - \cite{YG-M2002}
+3		low		low		medium%		DAPS - \cite{ZL2005}
+4		medium		low		medium%		Gia - \cite{CRBLS2003}
+5		medium		medium		medium%		LTM - \cite{LLXNZ2004}
+6		medium		low		high%		DCMP - \cite{ZKB2008}
+7		low		low		medium%		UniformReplication - \cite{CS2002}
+8		low		medium		low%		ProportionalReplication - \cite{CS2002}
+9		medium		medium		medium%		SqrtReplication - \cite{CS2002}
+%Markatos02	-		-		-%		\cite{Markatos02}
+10		medium		high		low%		Narada - \cite{CRZ2000}
+11		medium		high		medium%		AOTO - \cite{LZXN2003}
+12		medium		medium		medium%		ACE - \cite{LZXN2004}
+13		high		medium		medium%		SBO - \cite{LXN2007}
+14		medium		low		high%		THANCS - \cite{LNXE2005}
+15		medium		low		high%		HAND - \cite{CLZHC2006}
+16		high		high		low%		APS - \cite{BFLZ2003}
+17		medium		low		medium%		ITA - \cite{PRFM2013}
+18		high		high		low%		EGOIST - \cite{SLLBBR2008}
+19		high		low		medium%		BNS - \cite{BCCMSBZ2006}
+20		medium		medium		low%		Ono - \cite{CB2008}
+21		medium		low		medium%		\cite{LCLX2009}
+22		medium		low		high%		TopBT - \cite{RTLCGZ2010}
+23		medium		medium		medium%		UTAPS - \cite{LCY2008}
+24		medium		medium		medium%		\cite{QLZG2009}
+25		medium		low		medium%		PROP-G - \cite{QCYCZ2007}
+26		medium		medium		medium%		PROP-O - \cite{QCYCZ2007}
+%HsiaoEtAl	-		-		-%		\cite{HLH2009}
+27		medium		low		medium%		DDNO - \cite{Z-YK2005}
+28		low		low		medium%		CTAG - \cite{ZL2006}
+29		medium		low		low%		LB - \cite{RHKS2002}
+30		medium		medium		medium%		mOverlay - \cite{ZZZSZ2004}

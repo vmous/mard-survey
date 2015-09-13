@@ -11,34 +11,35 @@
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-%\begin{landscape}
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
+  y dir=reverse,
   bar width=7pt,
   xlabel=\emph{Efficiency},
   ylabel=\emph{Algorithm},
   symbolic x coords={low, medium, high},
-  symbolic y coords={
-    SATMatch,
-    3DO,
-    DynaMOCNPA,
-    DynaMORLM,
-    %Cone,
-    IPBC,
-    QuasiChord,
-    DHTPNS,
-    Chord6,
-    AChord,
-    PChord,
-    T2MC,
-    CHOP6,
-    ProximityInKademlia,
+  ytick={0,1,2,...,15},
+  yticklabels={
+    GlobalSoftState - \cite{XTZ2003},
+    Mithos - \cite{WR2003},
+    LAPTOP - \cite{WLH2007},
     %Landmark Binning,
-    LAPTOP,
-    Mithos,
-    GlobalSoftState
+    \cite{KLKP2008},
+    CHOP6 - \cite{MT2007},
+    T2MC - \cite{SLCGZ2008},
+    PChord - \cite{HLYW2005},
+    AChord - \cite{DK2006},
+    Chord6 - \cite{XZHL2005},
+    DHTPNS - \cite{DLTZZ2006},
+    QuasiChord - \cite{SZ2008},
+    IPBC - \cite{KM2007},
+    %Cone - \cite{HY2007}
+    %DynaMo - \cite{WZS2004},
+    DynaMORLM - \cite{WZS2004},
+    DynaMOCNPA - \cite{WZS2004},
+    3DO - \cite{AOS2014},
+    SATMatch - \cite{RGJZ2004}
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -61,41 +62,40 @@ table[x=EFFICIENCY,y=ALGORITHM]
 \caption{\emph{Efficiency} Pictorial Comparison of Structured Approaches.}
 \label{structured:plot:efficiency}
 \end{figure}
-%\end{center}
-%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% OVERHEAD %%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-%\begin{landscape}
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
+  y dir=reverse,
   bar width=7pt,
   xlabel=\emph{Overhead},
   ylabel=\emph{Algorithm},
   symbolic x coords={low, medium, high},
-  symbolic y coords={
-    SATMatch,
-    3DO,
-    DynaMOCNPA,
-    DynaMORLM,
-    %Cone,
-    IPBC,
-    QuasiChord,
-    DHTPNS,
-    Chord6,
-    AChord,
-    PChord,
-    T2MC,
-    CHOP6,
-    ProximityInKademlia,
+  ytick={0,1,2,...,15},
+  yticklabels={
+    GlobalSoftState - \cite{XTZ2003},
+    Mithos - \cite{WR2003},
+    LAPTOP - \cite{WLH2007},
     %Landmark Binning,
-    LAPTOP,
-    Mithos,
-    GlobalSoftState
+    \cite{KLKP2008},
+    CHOP6 - \cite{MT2007},
+    T2MC - \cite{SLCGZ2008},
+    PChord - \cite{HLYW2005},
+    AChord - \cite{DK2006},
+    Chord6 - \cite{XZHL2005},
+    DHTPNS - \cite{DLTZZ2006},
+    QuasiChord - \cite{SZ2008},
+    IPBC - \cite{KM2007},
+    %Cone - \cite{HY2007}
+    %DynaMo - \cite{WZS2004},
+    DynaMORLM - \cite{WZS2004},
+    DynaMOCNPA - \cite{WZS2004},
+    3DO - \cite{AOS2014},
+    SATMatch - \cite{RGJZ2004}
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -115,44 +115,43 @@ table[x=OVERHEAD,y=ALGORITHM]
 \end{axis}
 \end{tikzpicture}
 }
-\caption{\emph{Overhead} Pictorial Comparison of Structured Approaches.}
+\caption{\emph{Overhead} Pictorial Comparison of Structured Approaches (Lower is Better).}
 \label{structured:plot:overhead}
 \end{figure}
-%\end{center}
-%\end{landscape}
 
 %%%%%%%%%%%%%%%%%%% SCALABILITY %%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
-%\begin{landscape}
-%\begin{center}
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
+  y dir=reverse,
   bar width=7pt,
   xlabel=\emph{Scalability},
   ylabel=\emph{Algorithm},
   symbolic x coords={low, medium, high},
-  symbolic y coords={
-    SATMatch,
-    3DO,
-    DynaMOCNPA,
-    DynaMORLM,
-    %Cone,
-    IPBC,
-    QuasiChord,
-    DHTPNS,
-    Chord6,
-    AChord,
-    PChord,
-    T2MC,
-    CHOP6,
-    ProximityInKademlia,
+  ytick={0,1,2,...,15},
+  yticklabels={
+    GlobalSoftState - \cite{XTZ2003},
+    Mithos - \cite{WR2003},
+    LAPTOP - \cite{WLH2007},
     %Landmark Binning,
-    LAPTOP,
-    Mithos,
-    GlobalSoftState
+    \cite{KLKP2008},
+    CHOP6 - \cite{MT2007},
+    T2MC - \cite{SLCGZ2008},
+    PChord - \cite{HLYW2005},
+    AChord - \cite{DK2006},
+    Chord6 - \cite{XZHL2005},
+    DHTPNS - \cite{DLTZZ2006},
+    QuasiChord - \cite{SZ2008},
+    IPBC - \cite{KM2007},
+    %Cone - \cite{HY2007}
+    %DynaMo - \cite{WZS2004},
+    DynaMORLM - \cite{WZS2004},
+    DynaMOCNPA - \cite{WZS2004},
+    3DO - \cite{AOS2014},
+    SATMatch - \cite{RGJZ2004}
   },
   every axis y label/.style=
     {at={(ticklabel cs:0.5)},rotate=90,anchor=near ticklabel},
@@ -175,7 +174,5 @@ table[x=SCALABILITY,y=ALGORITHM]
 \caption{\emph{Scalability} Pictorial Comparison of Structured Approaches.}
 \label{structured:plot:scalability}
 \end{figure}
-%\end{center}
-%\end{landscape}
 
 \twocolumn

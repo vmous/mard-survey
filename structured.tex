@@ -39,7 +39,7 @@ found in~\cite{CDHR2002,CDCR2002,RSS2002}.
 %% VM Most of this paragraph on global soft-state rewritten/restructured.
 %% Have a look...
 
-\emph{Global Soft-State} \cite{XTZ2003} builds a global view to help nodes
+\textbf{\emph{Global Soft-State}} \cite{XTZ2003} builds a global view to help nodes
 choose shorter routing paths. To generate the proximity information, it 
 combines the landmark binning method with small
 scale distance probes to reveal the properties 
@@ -144,9 +144,14 @@ limited knowledge about neighboring zones.
 In terms of our three stated criteria, the approach fares as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Global Soft-State} &
 % Unable to identify nodes that are close to routers but it can reduce routing
 % latency to far away node by approximately 50-75%.
 medium &
@@ -181,7 +186,7 @@ low
 
 %%AD what is GNP??? How did it "land" here???
 
-\emph{Mithos}~\cite{WR2003} ensures that neighboring nodes in the overlay are
+\textbf{\emph{Mithos}}~\cite{WR2003} ensures that neighboring nodes in the overlay are
 close also in terms of the underlying layer by integrating proximity layout
 and proximity routing overlay optimizations.
 
@@ -236,9 +241,14 @@ affecting Mithos' scalability.
 In regard to the three criteria, \emph{Mithos} stands as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Mithos} &
 % It has very good results in reducing communication latency among peers but its
 % efficiency is being constrained by the fact that the proximity is calculated
 % at bootstrap, assigning virtual coordinates that are used throughout of a
@@ -260,7 +270,7 @@ low
 %
 %%AD what is the nature of the "structure" overlay here???
 %% VM the structure is that it is organized as a tree hierarchy.
-\emph{LAPTOP} \cite{WLH2007} organizes the overlay 
+\textbf{\emph{LAPTOP}}~\cite{WLH2007} organizes the overlay 
 into a tree-based hierarchy so that 
 hops required during message routing are reduced and 
 maintenance overhead is minimized.
@@ -373,9 +383,14 @@ a parent is responsible for the monitor of its own children.
 \emph{LAPTOP}'s behavior for the three criteria stands as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{LAPTOP} &
 % It minimizes routing length, but may suffer load imbalance since nodes higher
 % in the tree hierarchy are more likely to route most of the messages in the
 % overlay.
@@ -416,7 +431,7 @@ high
 % during lookup and retrieve operations.
 
 To optimize the underlying network use,
-\cite{KLKP2008} introduces proximity
+\textbf{\cite{KLKP2008}} introduces proximity
 controls over the \emph{vanilla Kademlia}~\cite{maymounkov_kademlia_2002} 
 protocol's random \emph{ID} assignment.
 % The work in this paper
@@ -469,7 +484,7 @@ with the least routing cost in the routing table.
 \emph{Kademlia} proximity injection improves 
 locality of connections among peers.
 To enhance traffic locality, the use of 
-{\sl MaxMind GeoIP} database\footnote{\url{http://www.maxmind.com}} 
+\emph{MaxMind GeoIP} database\footnote{\url{http://www.maxmind.com}} 
 is suggested to form clusters of nearby peers.
 To this end, Vivaldi coordinates~\cite{cox_vivaldi_2004} could be 
 also used as an alternative for morphing locality. 
@@ -481,9 +496,14 @@ The behavior of \cite{KLKP2008} with respect to the stated criteria is deemed as
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{\cite{KLKP2008}} &
 % Uses static information to cluster nodes which is not the most efficient
 % approach in dynamic systems
 % PNS reduces lookup latencies by 66\% compared to POK
@@ -507,8 +527,8 @@ medium
 %% either in terms of explicit RTT or implicit RTT (taking regional/national
 %% hops as a proxy of proximity - international RTT > regional RTT > national RTT)
 
-\emph{CHOP6} \cite{MT2007} is a Chord-variant DHT that exploits
-{\sl IPv6} address format as well as available \emph{RTT} information to 
+\textbf{\emph{CHOP6}} \cite{MT2007} is a Chord-variant DHT that exploits
+\emph{IPv6} address format as well as available \emph{RTT} information to 
 enable proximity estimation among peers during message routing.
 %%
 Similar to \emph{Chord}~\cite{stoica_chord_2001}, 
@@ -558,9 +578,14 @@ if no RTT information is available during routing.
 With respect to the three qualitative criteria, \emph{CHOP6} stands as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{CHOP6} &
 % Simple approach that exploits proximity but it is coarse grained and thus not
 % efficient.
 low &
@@ -580,20 +605,20 @@ medium
 %%		.. in the form of 1-2 lines (or short statements). 
 %%
 %% VM Added some extra lines and restructured the text
-\emph{T2MC}'s~\cite{SLCGZ2008} objective is to diminish the redundant multiple
+\textbf{\emph{T2MC}}'s~\cite{SLCGZ2008} objective is to diminish the redundant multiple
 messages that may unnecessarily cross autonomous system (\emph{AS}) boundaries.
 Inter-\emph{AS} links are the costliest to ISPs and hence, 
 minimizing topology mismatches greatly affects pertinent operational expenditure.
 %%
 To achieve this, each node exploits the stable structure of
 the Internet routers to help solve a clustering problem. 
-The algorithm uses {\sl traceroute}-logs to detect inter-\emph{AS} boundaries 
+The algorithm uses \emph{traceroute}-logs to detect inter-\emph{AS} boundaries 
 and clusters peers to either nearby or 
 far-away groups by applying a customized $k$-mean classification ($k=2$).
 %%
 When joining the network, the peer randomly picks an IP and uses
 traceroute and selects the routers with
-minimum and maximum latencies in the above {\sl traceroute} path 
+minimum and maximum latencies in the above \emph{traceroute} path 
 as initial centroids for the ``nearby'' and ``far-away'' sets respectively.
 Following an iterative procedure, the node comes up with the two sets 
 demonstrating minimum intra-set latency variance.
@@ -625,11 +650,11 @@ Peers that share the same edge--gateway or other members in the ``nearby''
 router cluster are considered intra-\emph{AS} neighbors.
 %%AD the final phrase for this is missing! So what??? What is achieved? 1 sentence.
 
-Even though {\sl traceroute}
+Even though \emph{traceroute}
 provides detailed information about the network structure, 
 its extensive use may create overhead on the overall network structure. 
 Administrators thus frequently
-disable {\sl traceroute} support on their routers and this 
+disable \emph{traceroute} support on their routers and this 
 undoubtly affects \emph{T2MC}'s operation.
 %%
 Although overall experimental results have been encouraging, 
@@ -677,9 +702,14 @@ classifies neighbors into two groups \cite{QLZG2009}.
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{T2MC} &
 % The efficiency of choosing close by peers is very good and reported almost
 % 65\% better than that of GNP (and thus generally of static landmarking as a
 % whole)
@@ -699,7 +729,7 @@ low
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{PChord}
-\emph{PChord} \cite{HLYW2005} is based on the \emph{Chord DHT} and incorporates
+\textbf{\emph{PChord}} \cite{HLYW2005} is based on the \emph{Chord DHT} and incorporates
 proximity in its routing mechanism. 
 To achieve this, the standard finger table
 is augmented with a \emph{proximity list} that contains
@@ -782,9 +812,14 @@ and inefficiency in high-churn environments~\cite{DK2006}.
 \emph{PChord} qualitatively behaves as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{PChord} &
 % Small decrease in needed overlay hops per object publishing but rigid in
 % high churn environments.
 medium &
@@ -803,7 +838,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{AChord}
-\emph{AChord} \cite{DK2006} exploits IPv6's \emph{anycast} mechanism to
+\textbf{\emph{AChord}} \cite{DK2006} exploits IPv6's \emph{anycast} mechanism to
 relieve the protocol from complex joining procedures,
 harness network proximity and achieve high routing efficiency. 
 When sending a message to an IPv6 anycast group, 
@@ -832,9 +867,14 @@ and uses both adjacency and finger tables.
 \emph{AChord} behaves as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{AChord} &
 % good routing efficiency but no adaptation to high churn environments.
 medium &
 % Relieves the system from joining overhead and topology aware ID construction
@@ -852,7 +892,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Chord6}
-\emph{Chord6}~\cite{XZHL2005} is another \emph{Chord}-variant that
+\textbf{\emph{Chord6}}~\cite{XZHL2005} is another \emph{Chord}-variant that
 uses IPv6's  hierarchical features to create 
 a substrate that reduces inter-domain traffic among service providers. 
 The key difference between
@@ -884,9 +924,14 @@ a small number of peers within each domain,
 Overall, the approach fares as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Chord6} &
 % Can reduce inter-domain average path length but even though nodes in the same
 % domain would have close identifiers, nodes in two close domains may have very
 % different ones reducing the overall efficiency of the approach in general when
@@ -914,7 +959,7 @@ low
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{DHT-PNS}
 A proximity neighbor selection scheme functioning atop 
-the \emph{Chord DHT} is introduced in~\cite{DLTZZ2006}.
+the \emph{Chord DHT} is introduced by \cite{DLTZZ2006} (\textbf{\emph{DHT-PNS}}).
 Its key objective was to group physically-close nodes as 
 neighbors in the \emph{DHT} table while exploiting proximity information.
 To detect proximity, virtual network coordinates for 
@@ -980,12 +1025,17 @@ simulations were carried out with configurations involving up to 2,048 nodes.
 Moreover the approach assumes uniform node distribution which
 is not always the case, especially in a synthetic coordinate system.
 %%
-\emph{Chord DHT} fares as follows in reference to the stated three criteria:
+\emph{DHT-PNS} fares as follows in reference to the stated three criteria:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{DHT-PNS} &
 %
 medium &
 %
@@ -1000,7 +1050,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{Quasi-Chord}
-\cite{SZ2008} proposes \emph{Quasi-Chord}, a \emph{Chord}-based network that
+\cite{SZ2008} propose \textbf{\emph{Quasi-Chord}}, a \emph{Chord}-based network that
 constructs its overlay network while attempting to match the underlying 
 network topology.
 The overlay creation follows $3$ stages:
@@ -1072,9 +1122,14 @@ ascending order.
 \emph{Quasi-Chord}'s qualitative behavior is as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{Quasi-Chord} &
 % The algorithm shows to reduce end-to-end delay as well as not produce
 % duplicates of messages.
 medium &
@@ -1095,7 +1150,7 @@ medium
 \emph{Proximity neighbor selection} algorithms often 
 use probing to detect proximity. 
 However, such methods suffer by imprecisions often due to network overload.
-IP-based clustering or \emph{IPBC}~\cite{KM2007} uses IP address prefixes
+\textbf{\emph{IP-based clustering}} or \textbf{\emph{IPBC}}~\cite{KM2007} uses IP address prefixes
 ($16$~bits for IPv4) to detect proximity.
 Such proximity information 
 % (IP addresses of network participants) 
@@ -1106,7 +1161,7 @@ characterize it.
 To publish itself, the peer hashes a fixed-length prefix of 
 its IP to obtain a key and stores the resulting \emph{ID} and IP 
 in the DHT. 
-Newly joining nodes with the same {\sl IP} prefix 
+Newly joining nodes with the same \emph{IP} prefix 
 can, thus, query the \emph{DHT} and readily identify all 
 neighbors with the same prefix. 
 Nodes periodically update their entries in the \emph{DHT} 
@@ -1150,9 +1205,14 @@ environments.~\cite{EWF2011}.
 The suggested \emph{IPBC} approach fares as follows:
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{IPBC} &
 % The efficiency of proximity detection through the prefix matching technique
 % is caught in a vicious cycle with the storage space needed for DHT object
 % publishing (how many bits will be used for either).
@@ -1251,7 +1311,7 @@ medium
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \subsubsection{DynaMO}
-\emph{DynaMO}~\cite{WZS2004} creates an overlay that 
+\textbf{\emph{DynaMO}}~\cite{WZS2004} creates an overlay that 
 not only considers physical proximity amongst peers but also
 takes into account mobility attributes of nodes.
 To adapt to mobile ad-hoc networks, \emph{DynaMO} strives
@@ -1271,8 +1331,8 @@ the physical distance between nodes is likely to increase
 resulting in a dominating
 last routing step~\cite{antony_pastry_2001,CDCR2002a}.
 To identify this dominating step, two techniques are used: 
-\emph{Random LandMarking (RLM)} and 
-\emph{Closest Neighbor Prefix Assignment (CNPA)}.
+\textbf{\emph{Random LandMarking (RLM)}} and 
+\textbf{\emph{Closest Neighbor Prefix Assignment (CNPA)}}.
 In \emph{RLM}, a set of peers are chosen to be responsible 
 for a set of landmark keys. These keys have to be chosen in a way that they
 equally divide the overlay space (i.e., in a $16$--base an appropriate split
@@ -1388,7 +1448,7 @@ medium \\
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\emph{3D Overlay (3DO)}~\cite{AOS2014} seeks to address the 
+\textbf{\emph{3D Overlay (3DO)}}~\cite{AOS2014} seeks to address the 
 network mismatch problem  for peers operating in mobile networks.
 As its name suggests, the network logical space is 
 a $3$--$d$ space and the used ``transient'' (continually changing) 
@@ -1459,9 +1519,14 @@ with respect to our three stated criteria:
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{3DO} &
 % 
 low &
 % 
@@ -1489,7 +1554,7 @@ medium
 % \label{figure:sat_match}
 % \end{figure}
 
-\emph{SAT-Match}~\cite{RGJZ2004} defines an iterative process that 
+\textbf{\emph{SAT-Match}}~\cite{RGJZ2004} defines an iterative process that 
 adaptively changes the overlay network to ease the topology mismatch problem. 
 It consists of a \emph{probing phase} in which a peer queries nearby nodes 
 for distances and a \emph{jumping phase} in which the peer decides 
@@ -1512,7 +1577,7 @@ When a peer joins the \emph{DHT}, it starts
 its \emph{probing phase} by contacting the neighborhood with 
 messages having small \emph{TTL=k}~\cite{jiang_lightflood_2008}. 
 Recipients return information to the source and forward the message 
-if not expired. 
+if not expired.
 After discovering its \emph{TTL}-$k$ neighborhood, 
 the source measures \emph{RTT}-times, sorts them
 and picks the two nodes with the smallest \emph{RTT}s.
@@ -1571,9 +1636,14 @@ of the logical to the physical networks.
 %%
 \begin{center}
 {\footnotesize
-\begin{tabular}{ccc}
-\emph{Efficiency} & \emph{Overhead} & \emph{Scalability} \\
-\hline
+\begin{tabular}{rccc}
+\multicolumn{1}{r}{} &
+\multicolumn{1}{c}{\emph{Efficiency}} &
+\multicolumn{1}{c}{\emph{Overhead}} &
+\multicolumn{1}{c}{\emph{Scalability}}
+\\
+\cline{2-4}
+\emph{SAT-Match} &
 % SAT-Match seems to outperform landmark binning in the sense of providing a
 % higher grained differentiation of proximity, adding to the fact that
 % SAT-match is fully distributed. Also to further enhance the efficiency it can
@@ -1636,32 +1706,40 @@ based on the following aspects:
   \item proximity neighbor selection,
 \end{enumerate}
 %%
-%%COM Added the following to mention the hybrid/combo methodologies
+Trends for structured systems depicted in Figure~\ref{structured:timeline}
+show the same lack of paradigm shift we identified for the unstructured
+approaches (check Figure~\ref{unstructured:timeline}). Leveraging proximity
+information for selecting the next hop or to construct and maintain
+routing tables as a whole, seem to be the elements more used in the
+literature throught the years that this area is researched.
+%%%
 Similarly to unstructured approaches, most of the methods
 reviewed in this section entail features from multiple of the above categories. 
 For example, \cite{KLKP2008}~uses both proximity routing 
 and proximity neighbor selection to achieve topology adaptation,
 while \emph{LAPTOP} combines geographic--layout with
-replication strategies to refine its results.
-%%%
-The heuristic nature of the suggested solutions opens them up 
-to trade-offs which, in most cases, are 
+replication strategies to refine its results. What looks a bit different
+compared the trends in unstructred systems is the fact that, here, researchers
+seem to juggle with more methods at the same time. This, and the
+fact that these suggested solutions are also heuristic in nature, opens them up 
+to even harder trade-offs which, in most cases, are 
 highly affected by the application domain and the implementation itself.
-
+ 
 In what follows, we place the surveyed \emph{structured} \p-methods in 
 the three above categories formulated based on 
 utilized proximity and geographic aspects.
-Table~\ref{structured:table} offers a comparative view
-of the algorithms and
 Table~\ref{structured:table} outlines key properties for all surveyed approach 
 that helps differentiate and better position competing techniques.
 Clearly, we do not further elaborate topics that we have included and discussed 
 at length in Section~\ref{section:unstructured}; these aspects entail 
 topology adaptation, landmarking, and caching/replication.
-Finally, Figures~\ref{structured:plot:efficiency}, \ref{structured:plot:overhead}
+Figures~\ref{structured:plot:efficiency}, \ref{structured:plot:overhead}
 and \ref{structured:plot:scalability} help with the pictorial comparison
 of the algorithms' behavior with respect to the three 
-criteria we defined in subsection~\ref{background:motivation}.
+criteria we defined in subsection~\ref{background:motivation}. Finally,
+we embed algorithms and characteristics on the temporal axis in
+Figure~\ref{structured:timeline} to help depict emerging trends during
+all these years of research.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Geographic-layout} \label{section:geographic_layout}
@@ -1886,4 +1964,6 @@ are also possible.
 \input{structured-table}
 %%
 \input{structured-plot}
+%%
+\input{structured-timeline}
 %%
