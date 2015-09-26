@@ -12,7 +12,6 @@
 \newcommand{\myweb}[1]{\renewcommand{\diweb}{#1}}
 \newcommand{\mytitle}[1]{\renewcommand{\dititle}{#1}}
 \newcommand{\myrank}[1]{\renewcommand{\dirank}{#1}}
-\newcommand{\mysignrank}[1]{\renewcommand{\disignrank}{#1}}
 \newcommand{\todayis}[1]{\renewcommand{\didate}{#1}}
 \newcommand{\mydepart}[1]{\renewcommand{\didept}{#1}}
 \newcommand{\myphone}[1]{\renewcommand{\difone}{#1}}
@@ -79,23 +78,18 @@
 	Greece % 
 	}
 \newcommand{\didept}{%
-	Tmhma Plhroforikhc\\%
-	kai Thlepikoinwniwn      %
+	Department of Informatics \\%
+	and Telecommunications      %
 	}
 \newcommand{\diname}{}
 \newcommand{\diemail}{}
 \newcommand{\difax}{}
 \newcommand{\difone}{}
 \newcommand{\dirank}{}
-\newcommand{\disignrank}{%
-	Anaplhrwt'hs Kajhght'hs
-	}
-\newcommand{\dititle}{%
-	kos.
-	}
+\newcommand{\dititle}{}
 \newcommand{\diweb}{}
 \newcommand{\diblgs}{% 
-	\gr Kthrio Plhroforikhs,\la
+	Informatics Bldgs,
 	}
 \newcommand{\direcipient}{}
 \newcommand{\diopening}{% 
@@ -115,11 +109,11 @@
 	\vspace*{-60pt}
 	\begin{center}
 	\settowidth{\diwidth}%
-		{\diTwelvePt{\textsc{Ejnik'o kai Kapodistriak'o}}}
+		{\diTwelvePt{\textsc{The National and Kapodistrian}}}
 	\parbox{\diwidth}
-		{\diTwelvePt{\textsc{Ejnik'o kai Kapodistriak'o}}}\\
+		{\diTwelvePt{\textsc{The National and Kapodistrian}}}\\
 	\vspace*{4pt}
-	{\diTwentyPt\textsc{Panepist'hmio Ajhn'wn}}\\
+	{\diTwentyPt\textsc{University of Athens}}\\
 	~\\
 	\end{center}
 	}
@@ -133,7 +127,7 @@
 	\thispagestyle{empty}
     	\uoalogo
 	\vspace*{-60pt}
-	\epsfig{file=diAthina.ps,width=0.55in} \\
+	\epsfig{file=di-athina.ps,width=0.95in} \\
 	\vspace*{6pt}
     \parbox[t]{2.50in}{
 	\raggedright
@@ -141,11 +135,11 @@
 	\scshape
         \ifx\dinull\didept \else \didept \\  \fi
 	\smallskip
-	Panepisthmio Ajhnwn\\
+	University of Athens \\
 	\smallskip
-	\ifx\idNull\diblgs \else \diblgs \fi  \gr \\ Panepisthmiopolh \gr\\
+	\ifx\idNull\diblgs \else \diblgs \fi  Univ. Campus \\
 	\smallskip
-	15784, Ilisia, Ajhna \\	
+	GR15703, Ilisia, Athens \\	
 	\smallskip
 	\ifx\dinull\dicountry \else \dicountry \fi
     	}
@@ -161,16 +155,16 @@
 		\else { \dirank}\\% 
 		\fi
         \ifx\dinull\diemail 
-		\else  \la e-mail: {\normalfont\textrm \diemail} \gr\\%
+		\else  e-mail: {\normalfont\textrm \diemail}\\%
 		\fi
 	\ifx\dinull\diweb 
-		\else \la web: {\normalfont\textrm \diweb } \la\\% 
+		\else web: {\normalfont\textrm \diweb }\\% 
 		\fi
         \ifx\dinull\difone 	
-		\else  \smallskip \gr Thl: \gr {\normalfont\textrm  \difone}\\%
+		\else  \smallskip Phone: {\normalfont\textrm  \difone}\\%
 		\fi
         \ifx\dinull\difax 
-		\else \la Fax: \gr {\normalfont\textrm \difax}\\% 
+		\else Fax: {\normalfont\textrm \difax}\\% 
 		\fi
 	\smallskip
 	\ifx\dinull\didate \today 
@@ -194,9 +188,11 @@
 	\vspace*{-5pt}
 	\begin{flushleft}
 	\diclosing
-	\bigskip \bigskip
+	% \bigskip \bigskip 
 
-        \ifx\dinull\dititle \dititle \diname \\ \disignrank \\ \else \dititle~\diname \\  \disignrank \\ \fi
+	\epsfig{file=delis-sig.eps,height=0.3in,width=1.75in}
+
+        \ifx\dinull\dititle \diname \\ \else \dititle~\diname \\ \fi
 	\end{flushleft}
 
 	\vspace{35pt}

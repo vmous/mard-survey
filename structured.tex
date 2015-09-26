@@ -655,7 +655,7 @@ provides detailed information about the network structure,
 its extensive use may create overhead on the overall network structure. 
 Administrators thus frequently
 disable \emph{traceroute} support on their routers and this 
-undoubtly affects \emph{T2MC}'s operation.
+undoubtedly affects \emph{T2MC}'s operation.
 %%
 Although overall experimental results have been encouraging, 
 \emph{T2MC} is considered rather coarse-grained as it only
@@ -1365,7 +1365,7 @@ bootstrap phase is required.
 It delegates the task of identifying the physically
 close--node in a \emph{Pastry}-based network; this node is used by the 
 incoming peer to get bootstrapped.
-The new-comer takes the bootstrapping nodes's \emph{ID} prefix 
+The new-comer takes the bootstrapping node's \emph{ID} prefix 
 and fills the remaining bits of its key using the \emph{RLM} technique.
 %%
 \emph{RLM} is evaluated and exhibits good proximity in load-balanced 
@@ -1710,25 +1710,26 @@ Trends for structured systems depicted in Figure~\ref{structured:timeline}
 show the same lack of paradigm shift we identified for the unstructured
 approaches (check Figure~\ref{unstructured:timeline}). Leveraging proximity
 information for selecting the next hop or to construct and maintain
-routing tables as a whole, seem to be the elements more used in the
-literature throught the years that this area is researched.
+routing tables as a whole, are the two predominant elements used 
+throughout the years in 
+the structured systems literature.
 %%%
 Similarly to unstructured approaches, most of the methods
 reviewed in this section entail features from multiple of the above categories. 
 For example, \cite{KLKP2008}~uses both proximity routing 
 and proximity neighbor selection to achieve topology adaptation,
 while \emph{LAPTOP} combines geographic--layout with
-replication strategies to refine its results. What looks a bit different
-compared the trends in unstructred systems is the fact that, here, researchers
+replication strategies to refine its results. What looks different
+compared with the trends in unstructured systems is the fact that, here, researchers
 seem to juggle with more methods at the same time. This, and the
 fact that these suggested solutions are also heuristic in nature, opens them up 
-to even harder trade-offs which, in most cases, are 
-highly affected by the application domain and the implementation itself.
+to trade-offs that are more difficult to manage and are highly 
+affected by both the application domain and the implementation itself.
  
 In what follows, we place the surveyed \emph{structured} \p-methods in 
 the three above categories formulated based on 
 utilized proximity and geographic aspects.
-Table~\ref{structured:table} outlines key properties for all surveyed approach 
+Table~\ref{structured:table} outlines key properties for all surveyed approaches 
 that helps differentiate and better position competing techniques.
 Clearly, we do not further elaborate topics that we have included and discussed 
 at length in Section~\ref{section:unstructured}; these aspects entail 

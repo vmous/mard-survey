@@ -930,7 +930,7 @@ with respect to the underlying network--at least with respect to network
 distances. In addition, will-cut list and distance caches (which store already
 probed peers) minimize the unnecessary messages for the network maintenance.
 %%
-\emph{THANCS} reportedly improves brodcast performance the extent of which, though,
+\emph{THANCS} reportedly improves broadcast performance the extent of which, though,
 depends on the underlying network since \emph{THANCS} does not provide the
 performance guarantee for the improvement of any given overlay topology~\cite{HLY2010}.
 
@@ -2070,27 +2070,27 @@ is that they do not strictly adhere to a single methodology.
 As approaches attempt to address the challenging problem 
 of topology mismatch, they resort to heuristics and so, 
 they do not often furnish ``pure'' approaches that exclusively
-belong to one of the $4$ aforementioned methodologies.
+belong to one of the four aforementioned methodologies.
 For instance, \emph{mOverlay} combines topology adaptation 
 with landmark binning 
-while \emph{Gia} weaves together $3$ methodologies:  topology adaptation, 
+while \emph{Gia} weaves together three methodologies:  topology adaptation, 
 forwarding optimization and caching.
 %%
-The timeline in Figure~\ref{unstructured:timeline} further emphasises this trend
-in the broader picture. All characteristics we discuss,
-seem to have been identified and put into practice, early on in the literature.
-In that sense, no breakthrough
-or any revolutionary ideas came out lately but mostly people fine-tuned the
-heuristic parameters in pursue of the goldset that performs best. That doesn't
-render all that work less exciting or important since it led to better theoretical
+The timeline in Figure~\ref{unstructured:timeline} further emphasizes this trend
+in the broader picture. All methodologies we discuss,
+have been identified and put into practice, early on in the literature,
+while in subsequent years, the research community has mostly focused on fine-tuning
+the heuristic parameters of these methodologies in pursuit of the
+combination that performs best.
+This has led to better theoretical 
 understanding of the problem and its difficulty. Moreover, the combination of
-multiple methodologies inevitably leads to interesting feature/performance trade-offs
-that researchers need to tackle in real world applications: for example, 
+multiple methodologies has inevitably led to interesting feature/performance trade-offs
+that researchers need to tackle in real world applications. For example, 
 the effectiveness of a caching/replication component can be undermined
 by a continuously adapting overlay that removes important links between peers.
-Topology adaptation and forwarding optimization seem to be constant areas of
-concentration for the researchers. This is of no surprise as all seem to
-understand the importance of the volatile nature of unstructured \p systems. 
+In particular, topology adaptation and forwarding optimization have been constant areas of
+focus of the research community. This is of no surprise given 
+the volatile nature of unstructured \p systems. 
 %%
 If a technique is to be evaluated for a specific application domain,
 its overall approach as well as its underlying used methodologies have to be considered.

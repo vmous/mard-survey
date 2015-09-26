@@ -1,0 +1,285 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage{color}
+\usepackage[margin=3cm, a4paper]{geometry}
+\usepackage[hyphens]{url}
+\usepackage{paralist}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+
+\begin{document}
+
+\title{
+	\textbf{\textsf{
+	Revised Manuscript JSS-D-15-00624\\
+	Authors' Responses to the Reviewers' Comments
+	}}
+}
+\author{Vassilis Moustakas, H\"useyin Akcan, Mema Roussopoulos, and Alex Delis}
+\maketitle
+
+% Introduction
+\section*{}
+We would like to thank the reviewers for their comments and recommendations 
+that helped us a lot while revising our manuscript.
+
+In this new version of our survey, 
+we have attempted to address all feasible comments 
+and sufficiently answer all pertinent questions.
+As a consequence, the 
+manuscript has undergone a number 
+of important changes and updates, which are:
+
+\begin{enumerate}
+    
+\item 
+Section 2.3 has been revised to offer more accurate definitions 
+of the evaluation criteria ``efficiency'' and ``overhead'' that 
+better distinguish the two and more accurately articulate
+their distinct purpose in our evaluation.
+\item 
+We have added timeline figures for unstructured and structured families 
+of approaches to depict
+the temporal and trending characteristics of applied methodologies.
+\item 
+Sections 3.2 and 4.2 have been updated with discussion and comments 
+that address aspects of the timeline figures.
+\item 
+Mini-tables have been updated to include 
+algorithm names throughout the text. 
+\item 
+Figures of pages 19-21 and 32-34 have been updated to indicate 
+the year next to the algorithm name.
+
+\end{enumerate}
+
+In the following two segments, we provide detailed replies to 
+the comments and questions raised by the reviewers. 
+Each individual comment has been copied \emph{as-is} from 
+the original decision letter that was sent to us by 
+the Editor--in-Chief followed by our corresponding response. 
+
+% Responses to the First Reviewer
+\clearpage
+\subsection*{\textbf{\textsf{Responses to the First Reviewer}}}
+
+%%R1,C1
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#1}}}
+\noindent
+\emph{I have a minor comment to make to improve the quality of the paper. Most of
+the evaluation is carried out in a ``descriptive'' way, which is fine by me.
+However it would be interesting to see some experimental evaluation (for at least
+one of the metrics, e.g. efficient) using various data sets. I understand this
+could be a lot of work, however if you could focus on three systems and test
+efficiency/scalability, the results would be more convincing. These also will
+support the claims you have made.}\\[6pt]
+
+
+\noindent
+\textbf{\textsf{Response}}:
+%%
+We would like to thank the reviewer for the thoughtful suggestion. 
+It would have been indeed 
+both an exciting and tremendous exercise 
+to put all surveyed approaches under a \emph{common experimental setting} 
+(to the extent possible) 
+and test them against diverse workloads.
+
+As the reviewer has kindly pointed out, this would have 
+translated to an excessive amount of effort with rather uncertain results. 
+More importantly, such an
+effort would have yielded not a survey-type manuscript ---our 
+stated objective--- but rather something much more resembling 
+to an experiment-based monograph. 
+Frankly, we never considered going into this level of evaluation 
+work for the numerous details and diverse points of the algorithms 
+would have posed insurmountable levels of challenge.
+
+We believe that the suggestion of picking $3$ (three)
+out of the $N$ approaches presented and evaluating
+them quantitatively has important practical difficulties and 
+does not guarantee added value to the surveyed material. 
+
+For example, what would be the methodology used to pick those
+three systems? Does one choose three at random, 
+the three most popular/widely deployed or
+the ``best'' three w.r.t. the metric of interest, 
+based on our prediction of which we think will
+fare best? 
+Does one choose the three that are simplest to implement? 
+
+There are reasons for and against following each of the 
+above selection approaches and this apparently non-systematic approach makes
+it unclear whether presenting results for just three of 
+the surveyed approaches would render much added value
+to our survey manuscript.
+
+Enabling comparison through developing functional prototypes and subsequent 
+quantitative evaluation would have been truly an undertaking of 
+enormous dimensions. 
+Not only do we lack pertinent resources, but also 
+performing a fair and complete comparison would be arguably 
+beyond the scope of this survey.
+
+Although we have clearly given the reviewer's comment
+the due consideration, for all the above reasons, it would have been 
+unfair for the manuscript and its carefully crafted balance in 
+presenting a trove of approaches to venture in such an experimental  direction. 
+We do appreciate the comment however and we are thankful for the positive 
+overall evaluation of our survey.
+
+
+% Responses to the Third Reviewer
+\clearpage
+\subsection*{\textbf{\textsf{Responses to the Third Reviewer}}}
+
+%% R3.C1
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#1}}}
+\noindent
+\emph{I do recommend changing terminologies to highlight the differences between
+``efficiency'' and ``overhead''. Maybe instead you can use
+``Topology adaptation cost'' instead of efficiency, and break overhead into both
+``Topology maintenance cost'' and ``Communication overhead''. Again this is just a
+recommendation, mainly to clarify the underlying differences between what is meant
+by efficiency and overhead.}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+Thank you for this suggestion. 
+
+Although a potential change of the 
+term ``Efficiency'' to ``Topology Adaptation Cost''
+followed by a break up of the term 
+``Overhead'' to ``Topology Maintenance Cost'' and ``Communication Overhead''
+would have been feasible, we believe that such modifications would ultimately 
+render the way the overall text has been written somewhat problematic.
+ 
+In particular, we use the term ``Efficiency'' to identify how \emph{closely matched} are the
+overlay and underlying networks after applying a specific approach. 
+We experience good efficiency when few(er) packets travel across the network
+while at the same time, an approach can preserve 
+discoverability of resources (not reducing the search scope). 
+In this context, ``Topology Adaptation Cost'' is intended to describe something 
+different (as stated below). 
+
+We use the ``Overhead'' term to quantify the (mainly communication) cost
+that a given approach carries when applied, to (i) create, (ii) adapt and (iii) maintain
+the topology awareness of the P2P network. 
+
+The proposed distinction of
+``Topology Maintenance Cost'' and ``Communication Overhead'' is, for this reason, not
+accurate as it is not complete in terms of the intented abstraction of the measure we
+want to use in this context.  
+``Communication Cost'' can be thought of as an all encompassing cost 
+that includes ``Topology Maintenance Cost'' (added communication to maintain topology
+awareness in the presence of network churn). 
+
+The above choice also may clarify our intention to have
+``Topology Adaptation Cost'' fall into the ``Overhead'' family of measures and
+not in ``Efficiency'' as suggested by the reviewer above.
+
+Having (hopefully successfully) argued for the use of terms as they appeared in the 
+first version of the manuscript, we also understood the point raised and so, 
+we have attempted to provide an improved definition of pertinent terms and metrics.
+To this end, we updated
+subsection ``2.3 Motivation and Goal of this Survey'' with revised/re-written 
+discussion on the evaluation criteria. We also provided additional examples of
+the features we account for in each of the metrics to further clarify their
+nature/objective(s).
+
+We believe the revised text to have clarified the issue raised and 
+to present a more straightforward reading at this time.
+
+
+%% R3.C2
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#2}}}
+\noindent
+\emph{I also recommend looking for potential trends/patterns in P2P overlay network
+approaches over time of introducing these approaches. Maybe listing approaches by time
+while studying the evaluated metrics.}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+That is a very good point! 
+We have updated our manuscript by
+creating timeline plots for depicting families of all surveyed approaches 
+and elaborated accordingly
+in the respective discussion sections.
+
+Specifically, the timeline figures depict algorithms and methodologies. In one hand, we embed
+algorithms/papers per year and on the other hand we show which of the characteristic methodologies
+are used per surveyed year. We also emphasize when each methodology first appears in the
+literature. That way we are capturing the temporal and trending dimensions of the
+surveyed material. Moreover, we have updated paragraphs 3.2 and 4.2 (for the unstructured
+and structured sections, respectively) by adding discussion points on each of the timeline figures.
+
+\baselineskip=0.95\baselineskip
+
+%% R3.C3 
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#3}}}
+\noindent
+\emph{On this note, you should add the year next to each examined approach in figures 19-21, 31-33.}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+We have updated the respective figures mentioned by the reviewer to contain a year indication
+next to the examined approach.
+
+
+%% R3.C4 
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#4}}}
+\noindent
+\emph{I recommend to add the name of each approach to the left of the
+``efficiency overhead scalability'' mini-tables, and not only with the tables that have
+more than one approach. I also recommend highlighting the name of each approach (in bold)
+at the start of each respective paragraph.}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+Mini tables updated and highlighting approach name added as proposed by the reviewer.
+
+
+%% R3.C5
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#5}}}
+\noindent
+\emph{Page 2, bottom of left column, ``This research area started to become active after The mismatch problem is Interest ...''}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+Removed the line as it was not supposed to be there. Thank you for pointing this out.
+
+
+%% R3.C6
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#6}}}
+\noindent
+\emph{Page 3, first paragraph ``... approximately 80 million songsJupiterMedi...'' insert space after ``songs''}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+Added a space character in the position correctly suggested by the reviewer. 
+
+
+%% R3.C7
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#7}}}
+\noindent
+\emph{Page 8 in the APS paragraph, 8th line ``The success of THIS approach ...'' (add ``this'')}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+Added the word ``this'' to the respective position.
+
+
+%% R3.C7
+\subsubsection*{\textbf{\textsf{Reviewer's Comment\#7}}}
+\noindent
+\emph{Page 11, last line, ``Should there BE m landmarks adopted...'' (move ``be'')}\\[6pt]
+
+\noindent
+\textbf{\textsf{Response}}:
+Moved the verb ``be'' to its correct place in the sentence as pointed out by the reviewer.
+
+
+\end{document}
