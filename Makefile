@@ -17,7 +17,7 @@ b: $(FILE).tex
 	bibtex $(FILE)
 
 clean:
-	rm -f $(FILE).ps $(FILE).pdf $(FILE).log $(FILE).dvi $(FILE).bbl $(FILE).blg $(FILE).aux $(FILE).spl header.aux
+	rm -f $(FILE).out $(FILE).ps $(FILE).pdf $(FILE).log $(FILE).dvi $(FILE).bbl $(FILE).blg $(FILE).aux $(FILE).spl header.aux
 
 pack:
 	tar czvf ../$(shell date "+%Y%m%d:%H:%M")_$(FILE).tar.gz . --exclude=".git" --exclude=".gitignore" --exclude="misc/papers" --exclude="README.md"

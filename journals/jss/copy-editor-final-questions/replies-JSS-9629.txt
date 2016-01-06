@@ -1,0 +1,74 @@
+
+Q1: Please confirm that givennames and surnames have been identified correctly.
+
+ANSWER: They are correct.
+
+
+
+Q2: The number of keywords provided exceeds the maximum allowed by this journal. Please delete two keywords.
+
+ANSWER: use just the following: 
+
+Overlay network topology mismatch; Topology awareness
+
+
+
+Q3: Please provide last accessed date for Ref. (BitTorrent, 2012; Ferguson, 2006; Gnutella 2000, 2009 and Gronvall et al. 2010).
+
+ANSWER: the dates are as follows...
+
+BitTorrent, 2012 -> April 2015
+
+Ferguson, 2006   -> June 2015
+
+Gnutella 2000 2009  -> April 2014
+
+Gronvall et al. 2010 -> April 2015
+
+
+
+
+
+Q4: Please provide last accessed date for Ref. (Hughes et al. 2008; JupiterMediaMetrix, 2001; Kazaa, 2009; Mercier, 2013; Microsoft, 2012; Napster, 2007 and Overnet, 2009).
+
+ANSWER:
+
+Hughes et al. 2008;   -->> January 2015
+
+JupiterMediaMetrix, 2001;  -->> October 2014
+
+Kazaa, 2009;         -->> June 2014
+
+Mercier, 2013; 	     -->> April 2015
+
+Microsoft, 2012;     -->> March 2015
+
+Napster, 2007 	     --> March 2015
+
+Overnet, 2009	     --> March 2015
+
+
+
+Q5: Please provide Last accessed date for Ref. (Project, 2012; Ritter, 2001; Skype 2012; TELECOMPAPER 2011; TeleGeography/PriMetrica 2014; Schulze and Mochalski 2009).
+
+ANSWER:
+
+Project, 2012; 	-->> 
+
+Ritter, 2001; 	-->> November 2014
+
+Skype 2012;     -->> April 2015
+
+TELECOMPAPER 2011;   -->>  March 2015
+
+TeleGeography/PriMetrica 2014;    -->> April 2015
+
+Schulze and Mochalski 2009   --> June 2015
+
+
+
+
+Q6: Please provide publisher name for Ref. (Rinaldi 2002).
+
+ANSWER: IBM Research, 8803 Ruschlikon, Switzerland
+

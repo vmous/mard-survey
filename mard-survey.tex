@@ -56,7 +56,10 @@
 \usepackage{wasysym}
 \usepackage{pdflscape}
 
+
+
 \usepackage{chronosys}
+\usepackage{hyperref}
 
 \usepackage{pgfplots}
 \usetikzlibrary{patterns}
@@ -72,7 +75,7 @@
 %% for the whole article with \linenumbers.
 %% \usepackage{lineno}
 
-\journal{Systems and Software}
+\journal{Journal of Systems \& Software}
 
 
 \include{header}
@@ -122,13 +125,13 @@
 % }
 
 
-\author[rvt0]{Vassilis Moustakas} % \fnref{fn1}}
+\author[rvt0]{Vassilis Moustakas\corref{cor1}} % \fnref{fn1}}
 \ead{vsmoustakas@gmail.com}
 \author[focal]{H\"useyin Akcan} % \fnref{fn2}}
 \ead{huseyin.akcan@ieu.edu.tr}
 \author[rvt]{Mema Roussopoulos} % \fnref{fn3}}
 \ead{mema@di.uoa.gr}
-\author[rvt]{Alex Delis\corref{cor1}} % \fnref{fn3}}
+\author[rvt]{Alex Delis} % \fnref{fn3}}
 \ead{ad@di.uoa.gr}
 \cortext[cor1]{Corresponding author}
 % \cortext[cor2]{Principal corresponding author}
@@ -140,16 +143,17 @@
 \address[focal]{Department of Software Engineering, Izmir University of Economics, 35330 Balcova, Izmir, Turkey}
 \address[rvt]{Department of Informatics and Telecommunications, University of Athens, Athens, 15703, Greece}
 
-
+% \ead[url]{http://dx.doi.org/10.1016/j.jss.2015.11.038}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{abstract}
 \input{abstract}
 \end{abstract}
 
 \begin{keyword}
-Distributed systems, peer-to-peer, overlay network, topology mismatch,topology awareness
+Overlay network, topology mismatch, topology awareness
 
 %% keywords here, in the form: keyword \sep keyword
 
@@ -158,8 +162,10 @@ Distributed systems, peer-to-peer, overlay network, topology mismatch,topology a
 %% MSC codes here, in the form: \MSC code \sep code
 %% or \MSC[2008] code \sep code (2000 is the default)
 
-\end{keyword}
+\vspace*{0.2cm}
+\centerline{\scriptsize\url{http://dx.doi.org/10.1016/j.jss.2015.11.038}}
 
+\end{keyword}
 \end{frontmatter}
 
 %% \linenumbers
@@ -186,6 +192,8 @@ Distributed systems, peer-to-peer, overlay network, topology mismatch,topology a
 
 %% \section{}
 %% \label{}
+
+\section{References}
 
 %% If you have bibdatabase file and want bibtex to generate the
 %% bibitems, please use
